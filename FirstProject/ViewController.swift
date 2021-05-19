@@ -18,24 +18,24 @@ class ViewController: UIViewController {
     private let myUsername: UITextField = UITextField(frame: CGRect(x: 25, y: 320, width: 320.00, height: 50.00));
     private let myPassword: UITextField = UITextField(frame: CGRect(x: 25, y: 380, width: 320.00, height: 50.00));
     
-//    private let usernameTxtField: UITextField = {
-//        let textField = UITextField()
-//        textField.backgroundColor = UIColor.white
-//        textField.placeholder = "Username"
-//        textField.borderStyle = .roundedRect
-//        textField.translatesAutoresizingMaskIntoConstraints = false
-//        return textField
-//    }()
-//
-//    private let passwordTxtField: UITextField = {
-//        let textField = UITextField()
-//        textField.backgroundColor = .red
-//        textField.placeholder = "Password"
-//        textField.borderStyle = .roundedRect
-//        textField.translatesAutoresizingMaskIntoConstraints = false
-//        return textField
-//    }()
-//
+   private let usernameTxtField: UITextField = {
+       let textField = UITextField()
+       textField.translatesAutoresizingMaskIntoConstraints = false
+       textField.backgroundColor = UIColor.white
+       textField.placeholder = "Username"
+       textField.borderStyle = .roundedRect
+       return textField
+   }()
+
+   private let passwordTxtField: UITextField = {
+       let textField = UITextField()
+       textField.translatesAutoresizingMaskIntoConstraints = false
+       textField.backgroundColor = .red
+       textField.placeholder = "Password"
+       textField.borderStyle = .roundedRect
+       return textField
+   }()
+
     let btnLogin: UIButton = {
         let btnLogin = UIButton(type:.system)
         btnLogin.backgroundColor = .blue
@@ -55,8 +55,8 @@ class ViewController: UIViewController {
         
         view.backgroundColor = .white
         
-//        loginContentView.addSubview(usernameTxtField)
-//        loginContentView.addSubview(passwordTxtField)
+       loginContentView.addSubview(usernameTxtField)
+       loginContentView.addSubview(passwordTxtField)
         loginContentView.addSubview(btnLogin)
 
         view.addSubview(loginContentView)

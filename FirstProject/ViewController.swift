@@ -46,7 +46,6 @@ class ViewController: UIViewController {
 
     }()
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -68,8 +67,6 @@ class ViewController: UIViewController {
             // btnLogin.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
-    
-    
 }
 
 

@@ -5,8 +5,6 @@
 //  Created by Fenominall on 18.05.2021.
 //
 
-
-
 import UIKit
 
 class ViewController: UIViewController {
@@ -29,7 +27,7 @@ class ViewController: UIViewController {
    private let passwordTxtField: UITextField = {
        let textField = UITextField()
        textField.translatesAutoresizingMaskIntoConstraints = false
-       textField.backgroundColor = .whote
+       textField.backgroundColor = .white
        textField.placeholder = "Password"
        textField.borderStyle = .roundedRect
        return textField
@@ -51,8 +49,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setUpConstraints ()
         setUpView()
+        setUpConstraints()
 
         view.addSubview(loginContentLabel)
 
@@ -63,19 +61,21 @@ class ViewController: UIViewController {
         ])
     }
 
-    func setUpConstraints () {
-        view.addSubviews(usernameTxtField, passwordTxtField, btnLogin)
-//            Button
+    func setUpConstraints() {
+        view.addSubview(btnLogin)
+
         NSLayoutConstraint.activate([
-            btnLogin.topAnchor.constraint(equalTo: loginContentView.bottomAnchor, constant: 450),
-            btnLogin.leftAnchor.constraint(equalTo: loginContentView.leftAnchor, constant: 15),
-            btnLogin.rightAnchor.constraint(equalTo: loginContentView.rightAnchor, constant: -40),
+            btnLogin.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -350),
+            btnLogin.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 40),
+            btnLogin.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -40),
             btnLogin.heightAnchor.constraint(equalToConstant: 50)
         ])
+        
+        view.addSubview(usernameTxtField)
     }
 
     func setUpView() {
-        view.backgroundColor = .white
+        view.backgroundColor = .gray
     }
     
 }

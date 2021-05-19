@@ -55,8 +55,8 @@ class ViewController: UIViewController {
         
         view.backgroundColor = .white
         
-       loginContentView.addSubview(usernameTxtField)
-       loginContentView.addSubview(passwordTxtField)
+        loginContentView.addSubview(usernameTxtField)
+        loginContentView.addSubview(passwordTxtField)
         loginContentView.addSubview(btnLogin)
 
         view.addSubview(loginContentView)

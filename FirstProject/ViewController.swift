@@ -9,14 +9,14 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    
+//    Screen View
     private lazy var loginContentView:UIView = {
         let view = UIView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
 
-    
+//    Login Screen "Welcome!" Text
     private lazy var logScreennText: UILabel = {
         let screenText = UILabel()
         screenText.translatesAutoresizingMaskIntoConstraints = false
@@ -28,7 +28,7 @@ class ViewController: UIViewController {
 
     
     
-    
+//    Username Text Field
    private let usernameTxtField: UITextField = {
        let textField = UITextField()
        textField.translatesAutoresizingMaskIntoConstraints = false
@@ -38,6 +38,7 @@ class ViewController: UIViewController {
        return textField
    }()
 
+//    Password Text Field
    private let passwordTxtField: UITextField = {
        let textField = UITextField()
        textField.translatesAutoresizingMaskIntoConstraints = false
@@ -47,6 +48,7 @@ class ViewController: UIViewController {
        return textField
    }()
 
+//    Button Text fields
     let btnLogin: UIButton = {
         let btnLogin = UIButton(type:.system)
         btnLogin.backgroundColor = .blue

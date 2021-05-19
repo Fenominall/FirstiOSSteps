@@ -50,9 +50,9 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setUpConstraints ()
         setUpView()
-
 
         view.addSubview(loginContentLabel)
 

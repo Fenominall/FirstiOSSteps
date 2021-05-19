@@ -6,6 +6,7 @@
 //
 
 
+
 import UIKit
 
 class ViewController: UIViewController {
@@ -34,7 +35,7 @@ class ViewController: UIViewController {
        return textField
    }()
 
-    private let btnLogin: UIButton = {
+    let btnLogin: UIButton = {
         let btnLogin = UIButton(type:.system)
         btnLogin.backgroundColor = .blue
         btnLogin.setTitle("Login", for: .normal)
@@ -46,13 +47,12 @@ class ViewController: UIViewController {
 
     }()
     
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
-        
-        // loginContentView.addSubview(usernameTxtField)
-        // loginContentView.addSubview(passwordTxtField)
-        // loginContentView.addSubview(btnLogin)
+        setUpConstraints ()
+        setUpView()
+
 
         view.addSubview(loginContentLabel)
 
@@ -60,13 +60,26 @@ class ViewController: UIViewController {
             loginContentLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
             loginContentLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 10),
             loginContentLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-//            Button
-            // btnLogin.topAnchor.constraint(equalTo: loginContentView.bottomAnchor, constant: 450),
-            // btnLogin.leftAnchor.constraint(equalTo: loginContentView.leftAnchor, constant: 15),
-            // btnLogin.rightAnchor.constraint(equalTo: loginContentView.rightAnchor, constant: -40),
-            // btnLogin.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
+
+    func setUpConstraints () {
+        view.addSubviews(usernameTxtField, passwordTxtField, btnLogin)
+//            Button
+        NSLayoutConstraint.activate([
+            btnLogin.topAnchor.constraint(equalTo: loginContentView.bottomAnchor, constant: 450),
+            btnLogin.leftAnchor.constraint(equalTo: loginContentView.leftAnchor, constant: 15),
+            btnLogin.rightAnchor.constraint(equalTo: loginContentView.rightAnchor, constant: -40),
+            btnLogin.heightAnchor.constraint(equalToConstant: 50)
+        ])
+    }
+
+    func setUpView() {
+        view.backgroundColor = .white
+    }
+    
 }
+
+
 
 

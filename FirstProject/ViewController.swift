@@ -23,6 +23,7 @@ class ViewController: UIViewController {
 //        textField.backgroundColor = UIColor.white
 //        textField.placeholder = "Username"
 //        textField.borderStyle = .roundedRect
+//        textField.translatesAutoresizingMaskIntoConstraints = false
 //        return textField
 //    }()
 //
@@ -31,6 +32,7 @@ class ViewController: UIViewController {
 //        textField.backgroundColor = .red
 //        textField.placeholder = "Password"
 //        textField.borderStyle = .roundedRect
+//        textField.translatesAutoresizingMaskIntoConstraints = false
 //        return textField
 //    }()
 //

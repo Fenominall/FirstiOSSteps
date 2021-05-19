@@ -14,9 +14,7 @@ class ViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-
-
-        
+    
     private let myUsername: UITextField = UITextField(frame: CGRect(x: 25, y: 320, width: 320.00, height: 50.00));
     private let myPassword: UITextField = UITextField(frame: CGRect(x: 25, y: 380, width: 320.00, height: 50.00));
     
@@ -58,14 +56,14 @@ class ViewController: UIViewController {
 //        loginContentView.addSubview(usernameTxtField)
 //        loginContentView.addSubview(passwordTxtField)
         loginContentView.addSubview(btnLogin)
-//
+
         view.addSubview(loginContentView)
-//
+
         NSLayoutConstraint.activate([
             loginContentView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
             loginContentView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 10),
             loginContentView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-//            BTN
+//            Button
             btnLogin.topAnchor.constraint(equalTo: loginContentView.bottomAnchor, constant: 450),
             btnLogin.leftAnchor.constraint(equalTo: loginContentView.leftAnchor, constant: 15),
             btnLogin.rightAnchor.constraint(equalTo: loginContentView.rightAnchor, constant: -40),
@@ -74,7 +72,7 @@ class ViewController: UIViewController {
     }
     
     func displayLoginField() {
-//        Username
+//        Username 
         myUsername.placeholder = "Username"
         myUsername.borderStyle = UITextField.BorderStyle.line
         myUsername.backgroundColor = UIColor.white

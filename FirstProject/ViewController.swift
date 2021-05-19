@@ -34,7 +34,7 @@ class ViewController: UIViewController {
        return textField
    }()
 
-    let btnLogin: UIButton = {
+    private let btnLogin: UIButton = {
         let btnLogin = UIButton(type:.system)
         btnLogin.backgroundColor = .blue
         btnLogin.setTitle("Login", for: .normal)

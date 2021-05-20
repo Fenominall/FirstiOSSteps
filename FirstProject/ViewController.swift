@@ -150,6 +150,7 @@ class SecondViewController: UIViewController {
         return view
     }()
     
+//     Displaye the user`s name on the scond screen
     private let userGreet: UILabel = {
         let greetMessage = UILabel()
         greetMessage.translatesAutoresizingMaskIntoConstraints = false
@@ -157,7 +158,30 @@ class SecondViewController: UIViewController {
         greetMessage.font = greetMessage.font.withSize(40)
         greetMessage.textColor = .white
         return greetMessage
-    }
+    }()
+    
+//     Button to update the user`s info
+    let updateUserDataBtn: UIButton =  {
+        let updateUserDataBtn = UIButton(type:.system)
+        updateUserDataBtn.translatesAutoresizingMaskIntoConstraints = false
+        updateUserDataBtn.backgroundColor = .green
+        updateUserDataBtn.setTitle("Update personal info", for: .normal)
+        updateUserDataBtn.tintColor = .white
+        updateUserDataBtn.layer.cornerRadius = 5
+        updateUserDataBtn.clipsToBounds = true
+        return updateUserDataBtn
+    }()
+    
+//     Button to LogOut to the first screen
+    let logOutBtn: UIButton = {
+        let logOutBtn = UIButton(type:.system)
+        logOutBtn.backgroundColor = .blue
+        logOutBtn.setTitle("Log Out", for: .normal)
+        logOutBtn.tintColor = .white
+        logOutBtn.layer.cornerRadius = true
+        logOutBtn.translatesAutoresizingMaskIntoConstraints = false
+        return logOutBtn
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()

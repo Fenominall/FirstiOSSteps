@@ -175,11 +175,12 @@ class SecondViewController: UIViewController {
 //     Button to LogOut to the first screen
     let logOutBtn: UIButton = {
         let logOutBtn = UIButton(type:.system)
+        logOutBtn.translatesAutoresizingMaskIntoConstraints = false
         logOutBtn.backgroundColor = .blue
         logOutBtn.setTitle("Log Out", for: .normal)
         logOutBtn.tintColor = .white
         logOutBtn.layer.cornerRadius = true
-        logOutBtn.translatesAutoresizingMaskIntoConstraints = false
+        updateUserDataBtn.clipsToBounds = true
         return logOutBtn
     }()
 

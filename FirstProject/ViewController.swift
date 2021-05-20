@@ -7,6 +7,8 @@
 
 import UIKit
 
+
+// First Screen Controller
 class ViewController: UIViewController {
     
 //    Screen View
@@ -22,11 +24,10 @@ class ViewController: UIViewController {
         screenText.translatesAutoresizingMaskIntoConstraints = false
         screenText.text = "Welcome!"
         screenText.font = screenText.font.withSize(40)
+        // screenText.textAlignment = .center
         screenText.textColor = .white
         return screenText
     }()
-
-    
     
 //    Username Text Field
    private let usernameTxtField: UITextField = {
@@ -57,6 +58,7 @@ class ViewController: UIViewController {
         btnLogin.layer.cornerRadius = 5
         btnLogin.clipsToBounds = true
         btnLogin.translatesAutoresizingMaskIntoConstraints = false
+        btnLogin.addTarget(self, action: #seceltor(handleLoginTouchUpInside), for: .touchUpInside)
         return btnLogin
 
     }()
@@ -78,6 +80,7 @@ class ViewController: UIViewController {
         ])
     }
 
+// Function to add subviews of first screen elements
     func setUpConstraints() {
         
 //        Screen message
@@ -119,15 +122,17 @@ class ViewController: UIViewController {
             btnLogin.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -40),
             btnLogin.heightAnchor.constraint(equalToConstant: 50)
         ])
+
+        @objc func handleLoginTouchUpInside() {
+            print("Login has been tapped")
+
+        }
         
     }
-
+// Function to set the preferences of the first screen
     func setUpView() {
         view.backgroundColor = .gray
     }
     
 }
-
-
-
 

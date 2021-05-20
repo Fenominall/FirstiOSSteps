@@ -151,7 +151,12 @@ class SecondViewController: UIViewController {
     }()
     
     private let userGreet: UILabel = {
-        
+        let greetMessage = UILabel()
+        greetMessage.translatesAutoresizingMaskIntoConstraints = false
+        greetMessage.text = "Hey !"
+        greetMessage.font = greetMessage.font.withSize(40)
+        greetMessage.textColor = .white
+        return greetMessage
     }
 
     override func viewDidLoad() {

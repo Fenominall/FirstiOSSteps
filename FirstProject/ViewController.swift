@@ -58,7 +58,7 @@ class ViewController: UIViewController {
         btnLogin.layer.cornerRadius = 5
         btnLogin.clipsToBounds = true
         btnLogin.translatesAutoresizingMaskIntoConstraints = false
-        // btnLogin.addTarget(self, action: #seceltor(handleLoginTouchUpInside), for: .touchUpInside)
+        btnLogin.addTarget(self, action: #seceltor(didTapButton), for: .touchUpInside)
         return btnLogin
 
     }()
@@ -122,26 +122,26 @@ class ViewController: UIViewController {
             btnLogin.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -40),
             btnLogin.heightAnchor.constraint(equalToConstant: 50)
         ])
-
-        @objc func handleLoginTouchUpInside() {
-            print("Login has been tapped")
-
-        }
-        
-    }
-
-    @IBAction func didTapButton() {
-        present(SecondViewController(), animated: true)
+   
     }
 
 // Function to set the preferences of the first screen
     func setUpView() {
         view.backgroundColor = .gray
-    }
+    } 
+
+
+// Navigation controller to the SecondViewController
+     @objc private func didTapButton() {
+         let rootVC = SecondViewController()
+         let navVC = UiNvigationController(rootViewController: rootVC)
+         navVC.modelPresenationStyle = .fullScreen
+         present(navVC, animated: true)
+     }
     
 }
 
-
+// Controller for second screen
 class SecondViewController: UIViewController {
 
     private lazy var loginContentView:UIView = {
@@ -189,7 +189,7 @@ class SecondViewController: UIViewController {
         setUpView()
     }
 
-
+// Function to set the preferences of the second screen
     func setUpView() {
         view.backgroundColor = .gray
     }

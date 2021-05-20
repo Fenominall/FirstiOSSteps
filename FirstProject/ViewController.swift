@@ -19,7 +19,7 @@ class ViewController: UIViewController {
     }()
 
 //    Login Screen "Welcome!" Text
-    private lazy var logScreennText: UILabel = {
+    private lazy let logScreennText: UILabel = {
         let screenText = UILabel()
         screenText.translatesAutoresizingMaskIntoConstraints = false
         screenText.text = "Welcome!"
@@ -30,7 +30,7 @@ class ViewController: UIViewController {
     }()
     
 //    Username Text Field
-   private let usernameTxtField: UITextField = {
+   private var usernameTxtField: UITextField = {
        let textField = UITextField()
        textField.translatesAutoresizingMaskIntoConstraints = false
        textField.backgroundColor = .white
@@ -40,7 +40,7 @@ class ViewController: UIViewController {
    }()
 
 //    Password Text Field
-   private let passwordTxtField: UITextField = {
+   private var passwordTxtField: UITextField = {
        let textField = UITextField()
        textField.translatesAutoresizingMaskIntoConstraints = false
        textField.backgroundColor = .white
@@ -58,7 +58,7 @@ class ViewController: UIViewController {
         btnLogin.layer.cornerRadius = 5
         btnLogin.clipsToBounds = true
         btnLogin.translatesAutoresizingMaskIntoConstraints = false
-        btnLogin.addTarget(self, action: #seceltor(handleLoginTouchUpInside), for: .touchUpInside)
+        // btnLogin.addTarget(self, action: #seceltor(handleLoginTouchUpInside), for: .touchUpInside)
         return btnLogin
 
     }()
@@ -129,6 +129,11 @@ class ViewController: UIViewController {
         }
         
     }
+
+    @IBAction func didTapButton() {
+        present(SecondViewController(), animated: true)
+    }
+
 // Function to set the preferences of the first screen
     func setUpView() {
         view.backgroundColor = .gray
@@ -136,3 +141,27 @@ class ViewController: UIViewController {
     
 }
 
+
+class SecondViewController: UIViewController {
+
+    private lazy var loginContentView:UIView = {
+        let view = UIView(frame: .zero)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    private let userGreet: UILabel = {
+        
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setUpView()
+    }
+
+
+    func setUpView() {
+        view.backgroundColor = .gray
+    }
+
+}

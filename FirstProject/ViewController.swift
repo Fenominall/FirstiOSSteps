@@ -19,7 +19,7 @@ class ViewController: UIViewController {
     }()
 
 //    Login Screen "Welcome!" Text
-    private lazy let logScreennText: UILabel = {
+    private var logScreennText: UILabel = {
         let screenText = UILabel()
         screenText.translatesAutoresizingMaskIntoConstraints = false
         screenText.text = "Welcome!"
@@ -50,7 +50,7 @@ class ViewController: UIViewController {
    }()
 
 //    Button Text fields
-    let btnLogin: UIButton = {
+    private var btnLogin: UIButton = {
         let btnLogin = UIButton(type:.system)
         btnLogin.backgroundColor = .blue
         btnLogin.setTitle("Login", for: .normal)
@@ -58,12 +58,11 @@ class ViewController: UIViewController {
         btnLogin.layer.cornerRadius = 5
         btnLogin.clipsToBounds = true
         btnLogin.translatesAutoresizingMaskIntoConstraints = false
-        btnLogin.addTarget(self, action: #seceltor(didTapButton), for: .touchUpInside)
+//         btnLogin.addTarget(self, action: #seceltor(didTapButton), for: .touchUpInside)
         return btnLogin
 
     }()
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -132,12 +131,12 @@ class ViewController: UIViewController {
 
 
 // Navigation controller to the SecondViewController
-     @objc private func didTapButton() {
-         let rootVC = SecondViewController()
-         let navVC = UiNvigationController(rootViewController: rootVC)
-         navVC.modelPresenationStyle = .fullScreen
-         present(navVC, animated: true)
-     }
+//      @objc private func didTapButton() {
+//          let rootVC = SecondViewController()
+//          let navVC = UiNvigationController(rootViewController: rootVC)
+//          navVC.modelPresenationStyle = .fullScreen
+//          present(navVC, animated: true)
+//      }
     
 }
 

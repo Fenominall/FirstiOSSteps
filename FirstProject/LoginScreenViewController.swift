@@ -19,6 +19,19 @@ class ViewController: UIViewController {
         return view
     }()
 
+    
+//    Image
+    private var loginImageView: UIImageView = {
+        let loginImage = UIImageView()
+        loginImage.image = UIImage(named: "neon")
+        loginImage.contentMode = .scaleToFill
+        loginImage.translatesAutoresizingMaskIntoConstraints = false
+        return loginImage
+    }()
+    
+    
+        
+    
 //    Login Screen "Welcome!" Text
     private lazy var logScreennText: UILabel = {
         let screenText = UILabel()
@@ -31,7 +44,7 @@ class ViewController: UIViewController {
     }()
     
 //    Username Text Field
-   private lazy var usernameTxtField: UITextField = {
+     var usernameTxtField: UITextField = {
        let textField = UITextField()
        textField.translatesAutoresizingMaskIntoConstraints = false
        textField.backgroundColor = .white
@@ -55,7 +68,7 @@ class ViewController: UIViewController {
 //    Button Text fields
     private lazy var btnLogin: UIButton = {
         let btnLogin = UIButton(type:.system)
-        btnLogin.backgroundColor = .blue
+        btnLogin.backgroundColor = .orange
         btnLogin.setTitle("Login", for: .normal)
         btnLogin.tintColor = .white
         btnLogin.layer.cornerRadius = 5
@@ -96,11 +109,18 @@ class ViewController: UIViewController {
             loginContentView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
         ])
         
+        setUpLoginImagecinstraints()
         setupLoginScreennText()
         setupUsernameTxtField()
         setupPasswordTxtField()
         setupbtnLogin()
     }
+    
+    
+    func setUpLoginImagecinstraints() {
+        view.addSubview(loginImageView)
+
+            }
     
     //        Screen message
     func setupLoginScreennText() {
@@ -109,8 +129,8 @@ class ViewController: UIViewController {
         view.addSubview(logScreennText)
         
         NSLayoutConstraint.activate([
-            logScreennText.topAnchor.constraint(equalTo: view.topAnchor, constant: 300),
-            logScreennText.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 110),
+            logScreennText.topAnchor.constraint(equalTo: view.topAnchor, constant: 250),
+            logScreennText.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             logScreennText.heightAnchor.constraint(equalToConstant: 50)
             
         ])
@@ -122,9 +142,9 @@ class ViewController: UIViewController {
                 view.addSubview(usernameTxtField)
                 
                 NSLayoutConstraint.activate([
-                    usernameTxtField.topAnchor.constraint(equalTo: view.topAnchor, constant: 370),
-                    usernameTxtField.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 40),
-                    usernameTxtField.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -40),
+                    usernameTxtField.topAnchor.constraint(equalTo: view.topAnchor, constant: 325),
+                    usernameTxtField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                    usernameTxtField.widthAnchor.constraint(equalToConstant: 280),
                     usernameTxtField.heightAnchor.constraint(equalToConstant: 50)
                 ])
     }
@@ -135,9 +155,9 @@ class ViewController: UIViewController {
                 view.addSubview(passwordTxtField)
                 
                 NSLayoutConstraint.activate([
-                    passwordTxtField.topAnchor.constraint(equalTo: view.topAnchor, constant: 425),
-                    passwordTxtField.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 40),
-                    passwordTxtField.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -40),
+                    passwordTxtField.topAnchor.constraint(equalTo: view.topAnchor, constant: 390),
+                    passwordTxtField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                    passwordTxtField.widthAnchor.constraint(equalToConstant: 280),
                     passwordTxtField.heightAnchor.constraint(equalToConstant: 50)
                 ])
     }
@@ -148,9 +168,9 @@ class ViewController: UIViewController {
                 view.addSubview(btnLogin)
 
                 NSLayoutConstraint.activate([
-                    btnLogin.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -275),
-                    btnLogin.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
-                    btnLogin.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
+                    btnLogin.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -295),
+                    btnLogin.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                    btnLogin.widthAnchor.constraint(equalToConstant: 170),
                     btnLogin.heightAnchor.constraint(equalToConstant: 50)
                 ])
     }
@@ -162,7 +182,7 @@ class ViewController: UIViewController {
     
 // Function to set the preferences of the first screen
     func setUpView() {
-        view.backgroundColor = .gray
+//        view.backgroundColor = .gray
     }
 
 }
@@ -172,10 +192,14 @@ class ViewController: UIViewController {
 //----------------- Controller for second screen-----------------
 class SecondViewController: UIViewController {
 
-    private lazy var loginContentView:UIView = {
+    private lazy var secondLoginContentView:UIView = {
         let view = UIView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
+    }()
+    
+    private lazy var secondImageView = {
+        
     }()
     
 //     Displaye the user`s name on the scond screen
@@ -220,7 +244,7 @@ class SecondViewController: UIViewController {
         super.viewDidLoad()
         
         setupSecondLoginContentView()
-        setupLogOutButtonView()
+      
         setUpView()
     }
     
@@ -236,38 +260,54 @@ class SecondViewController: UIViewController {
     
     
     func setupSecondLoginContentView() {
-        view.addSubview(userGreetMessage)
+        view.addSubview(secondLoginContentView)
         
+        NSLayoutConstraint.activate([
+            secondLoginContentView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
+            secondLoginContentView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 10),
+            secondLoginContentView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+        ])
+        
+        setupUserGreetMessage()
+        setupUpdateInfoButtonView()
+        setupLogOutButtonView()
+    }
+    
+    
+    
+
+    func setupUserGreetMessage() {
+        view.addSubview(userGreetMessage)
+
         NSLayoutConstraint.activate([
             userGreetMessage.topAnchor.constraint(equalTo: view.topAnchor, constant: 150),
             userGreetMessage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
         ])
-        
-        setupUpdateInfoButtonView()
+
     }
-    
+
     func setupUpdateInfoButtonView() {
         view.addSubview(updateUserDataBtn)
-        
+
         NSLayoutConstraint.activate([
             updateUserDataBtn.topAnchor.constraint(equalTo: view.topAnchor, constant: 220),
             updateUserDataBtn.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             updateUserDataBtn.heightAnchor.constraint(equalToConstant: 50),
             updateUserDataBtn.widthAnchor.constraint(equalToConstant: 250),
         ])
-        
+
     }
-    
+
     func setupLogOutButtonView() {
         view.addSubview(logOutBtn)
-        
+
         NSLayoutConstraint.activate([
             logOutBtn.topAnchor.constraint(equalTo: view.topAnchor, constant: 285),
             logOutBtn.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             logOutBtn.heightAnchor.constraint(equalToConstant: 50),
             logOutBtn.widthAnchor.constraint(equalToConstant: 250),
         ])
-        
+
     }
 
 
@@ -289,7 +329,7 @@ class ThirdViewController: UIViewController {
        let changeUserData = UILabel()
         changeUserData.translatesAutoresizingMaskIntoConstraints = false
         changeUserData.text = "Change your data"
-        changeUserData.font = changeUserData.font.withSize(24)
+        changeUserData.font = changeUserData.font.withSize(40)
         changeUserData.textAlignment = .center
         changeUserData.textColor = .white
         
@@ -301,17 +341,21 @@ class ThirdViewController: UIViewController {
         updateUsername.translatesAutoresizingMaskIntoConstraints = false
         updateUsername.backgroundColor = .white
         updateUsername.textColor = .black
+        updateUsername.placeholder = "Update Username"
         updateUsername.borderStyle = .roundedRect
+        updateUsername.textAlignment = .center
         return updateUsername
     }()
     
     private lazy var passwordUsernameField: UITextField = {
-       let passwordUsername = UITextField()
-        passwordUsername.translatesAutoresizingMaskIntoConstraints = false
-        passwordUsername.backgroundColor = .white
-        passwordUsername.textColor = .black
-        passwordUsername.borderStyle = .roundedRect
-        return passwordUsername
+       let passwordUser = UITextField()
+        passwordUser.translatesAutoresizingMaskIntoConstraints = false
+        passwordUser.backgroundColor = .white
+        passwordUser.textColor = .black
+        passwordUser.placeholder = "Update Password"
+        passwordUser.borderStyle = .roundedRect
+        passwordUser.textAlignment = .center
+        return passwordUser
     }()
     
     private lazy var saveUserInfoBtn: UIButton = {
@@ -344,7 +388,45 @@ class ThirdViewController: UIViewController {
             changeUserData.topAnchor.constraint(equalTo: view.topAnchor, constant: 150),
             changeUserData.centerXAnchor.constraint(equalTo: view.centerXAnchor),
         ])
+        setupUpdateUsernameField()
+        setupPasswordUsernameField()
+        setupSaveUserInfoBtn()
     }
+    
+    func setupUpdateUsernameField() {
+        view.addSubview(updateUsernameField)
+        
+        NSLayoutConstraint.activate([
+            updateUsernameField.topAnchor.constraint(equalTo: view.topAnchor, constant: 230),
+            updateUsernameField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            updateUsernameField.heightAnchor.constraint(equalToConstant: 50),
+            updateUsernameField.widthAnchor.constraint(equalToConstant: 250),
+        ])
+    }
+    
+    func setupPasswordUsernameField() {
+        view.addSubview(passwordUsernameField)
+        
+        NSLayoutConstraint.activate([
+            passwordUsernameField.topAnchor.constraint(equalTo: view.topAnchor, constant: 295),
+            passwordUsernameField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            passwordUsernameField.heightAnchor.constraint(equalToConstant: 50),
+            passwordUsernameField.widthAnchor.constraint(equalToConstant: 250),
+            
+        ])
+    }
+    
+    func setupSaveUserInfoBtn() {
+        view.addSubview(saveUserInfoBtn)
+        
+        NSLayoutConstraint.activate([
+            saveUserInfoBtn.topAnchor.constraint(equalTo: view.topAnchor, constant: 380),
+            saveUserInfoBtn.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            saveUserInfoBtn.heightAnchor.constraint(equalToConstant: 50),
+            saveUserInfoBtn.widthAnchor.constraint(equalToConstant: 170),
+        ])
+    }
+    
     
     func setUpView() {
         view.backgroundColor = .gray

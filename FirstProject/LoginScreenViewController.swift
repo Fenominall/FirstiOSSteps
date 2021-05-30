@@ -18,10 +18,11 @@ class ViewController: UIViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
+    
 
     
 //    Image
-    private var loginImageView: UIImageView = {
+    private lazy var loginImageView: UIImageView = {
         let loginImage = UIImageView()
         loginImage.image = UIImage(named: "neon")
         loginImage.contentMode = .scaleToFill
@@ -116,7 +117,6 @@ class ViewController: UIViewController {
         setupbtnLogin()
     }
     
-    
     func setUpLoginImagecinstraints() {
         view.addSubview(loginImageView)
 
@@ -198,8 +198,20 @@ class SecondViewController: UIViewController {
         return view
     }()
     
-    private lazy var secondImageView = {
-        
+    private lazy var secondScreenBackImage: UIImageView = {
+        let secondBackImage = UIImageView()
+        secondBackImage.image = UIImage(named: "gradient")
+        secondBackImage.contentMode = .scaleAspectFit
+        secondBackImage.translatesAutoresizingMaskIntoConstraints = false
+        return secondBackImage
+    }()
+    
+    private lazy var userImage: UIImageView = {
+        let userImage = UIImageView()
+        userImage.image = UIImage(named: "user")
+        userImage.contentMode = .scaleAspectFit
+        userImage.translatesAutoresizingMaskIntoConstraints = false
+        return userImage
     }()
     
 //     Displaye the user`s name on the scond screen
@@ -267,10 +279,34 @@ class SecondViewController: UIViewController {
             secondLoginContentView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 10),
             secondLoginContentView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
         ])
-        
+        setupSecondScreenBackImageConstraints()
+        setupUserImageConstraints()
         setupUserGreetMessage()
         setupUpdateInfoButtonView()
         setupLogOutButtonView()
+    }
+    
+    func setupSecondScreenBackImageConstraints() {
+        view.addSubview(secondScreenBackImage)
+        
+        NSLayoutConstraint.activate([
+            secondScreenBackImage.topAnchor.constraint(equalTo: view.topAnchor, constant: 10),
+        ])
+    }
+    
+    
+    
+    
+    func setupUserImageConstraints() {
+        view.addSubview(userImage)
+        
+        NSLayoutConstraint.activate([
+            userImage.topAnchor.constraint(equalTo: view.topAnchor, constant: 220),
+            userImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            userImage.heightAnchor.constraint(equalToConstant: 150),
+            userImage.widthAnchor.constraint(equalToConstant: 150),
+        ])
+        
     }
     
     
@@ -290,7 +326,7 @@ class SecondViewController: UIViewController {
         view.addSubview(updateUserDataBtn)
 
         NSLayoutConstraint.activate([
-            updateUserDataBtn.topAnchor.constraint(equalTo: view.topAnchor, constant: 220),
+            updateUserDataBtn.topAnchor.constraint(equalTo: view.topAnchor, constant: 400),
             updateUserDataBtn.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             updateUserDataBtn.heightAnchor.constraint(equalToConstant: 50),
             updateUserDataBtn.widthAnchor.constraint(equalToConstant: 250),
@@ -302,7 +338,7 @@ class SecondViewController: UIViewController {
         view.addSubview(logOutBtn)
 
         NSLayoutConstraint.activate([
-            logOutBtn.topAnchor.constraint(equalTo: view.topAnchor, constant: 285),
+            logOutBtn.topAnchor.constraint(equalTo: view.topAnchor, constant: 465),
             logOutBtn.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             logOutBtn.heightAnchor.constraint(equalToConstant: 50),
             logOutBtn.widthAnchor.constraint(equalToConstant: 250),

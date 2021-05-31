@@ -39,7 +39,7 @@ class ViewController: UIViewController {
     }()
     
 //    Username Text Field on the frist screen
-     var usernameTxtField: UITextField = {
+    var usernameTxtField: UITextField = {
        let textField = UITextField()
        textField.translatesAutoresizingMaskIntoConstraints = false
        textField.backgroundColor = .white

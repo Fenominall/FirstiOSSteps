@@ -89,7 +89,7 @@ class ViewController: UIViewController {
     }
     
     
-//Event neglder for btnLogin
+//Function to navigate to the second view controller
     @objc private func loginButtonPressed() {
         let rootVC = SecondViewController()
         let navVC = UINavigationController(rootViewController: rootVC)
@@ -266,7 +266,7 @@ class SecondViewController: UIViewController {
     
     
     
-//Event neglder for btnLogin
+//Function to navigate to the third view controller
     @objc private func UpdateButtonPressed() {
         let rootVC = ThirdViewController()
         let navVC = UINavigationController(rootViewController: rootVC)

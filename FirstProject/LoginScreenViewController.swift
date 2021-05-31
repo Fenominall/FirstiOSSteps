@@ -8,20 +8,17 @@
 import UIKit
 import Foundation
 
-
-// -----------------First Screen Controller-----------------
+// -----------------START OF FIRST VIEW CONTROLLER-----------------
 class ViewController: UIViewController {
     
-//    Screen View
+//    Screen View for the first controller
     private lazy var loginContentView:UIView = {
         let view = UIView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    
 
-    
-//    Image
+//    Backgound image on the first screen
     private lazy var loginImageView: UIImageView = {
         let loginImage = UIImageView()
         loginImage.image = UIImage(named: "neon")
@@ -30,10 +27,7 @@ class ViewController: UIViewController {
         return loginImage
     }()
     
-    
-        
-    
-//    Login Screen "Welcome!" Text
+//    Login Screen "Welcome!" Message
     private lazy var logScreennText: UILabel = {
         let screenText = UILabel()
         screenText.translatesAutoresizingMaskIntoConstraints = false
@@ -44,7 +38,7 @@ class ViewController: UIViewController {
         return screenText
     }()
     
-//    Username Text Field
+//    Username Text Field on the frist screen
      var usernameTxtField: UITextField = {
        let textField = UITextField()
        textField.translatesAutoresizingMaskIntoConstraints = false
@@ -55,7 +49,7 @@ class ViewController: UIViewController {
        return textField
    }()
 
-//    Password Text Field
+//    Password Text Fieldo n the frist screen
    private lazy var passwordTxtField: UITextField = {
        let textField = UITextField()
        textField.translatesAutoresizingMaskIntoConstraints = false
@@ -66,7 +60,7 @@ class ViewController: UIViewController {
        return textField
    }()
 
-//    Button Text fields
+//    Button Text fields to login the user
     private lazy var btnLogin: UIButton = {
         let btnLogin = UIButton(type:.system)
         btnLogin.backgroundColor = .orange
@@ -77,10 +71,9 @@ class ViewController: UIViewController {
         btnLogin.translatesAutoresizingMaskIntoConstraints = false
         btnLogin.addTarget(self, action: #selector(loginButtonPressed), for: .touchUpInside)
         return btnLogin
-
     }()
     
-
+// Function to add setups for the first view controller
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -88,8 +81,7 @@ class ViewController: UIViewController {
         setUpView()
     }
     
-    
-//Function to navigate to the second view controller
+// Navigation Controller for btnLogin to Login the user and move to the second screen
     @objc private func loginButtonPressed() {
         let rootVC = SecondViewController()
         let navVC = UINavigationController(rootViewController: rootVC)
@@ -97,10 +89,10 @@ class ViewController: UIViewController {
         present(navVC, animated: true)
     }
 
+//-------------------Start of constraints for the first screen-------------------
 // Functions to add subviews of first screen elements
     
-    
-    //        Logic Content View
+//   First screen Login content Content View constraints
     func setupLoginContentView() {
         view.addSubview(loginContentView)
 
@@ -109,7 +101,7 @@ class ViewController: UIViewController {
             loginContentView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 10),
             loginContentView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
         ])
-        
+//        Constraints of all elements on the first screen
         setUpLoginImagecinstraints()
         setupLoginScreennText()
         setupUsernameTxtField()
@@ -117,31 +109,23 @@ class ViewController: UIViewController {
         setupbtnLogin()
     }
     
+//    Constraints for the background image on the first screen
     func setUpLoginImagecinstraints() {
         view.addSubview(loginImageView)
 
             }
-    
-    //        Screen message
+//    Constraints for the Welcome message on the first screen
     func setupLoginScreennText() {
-        
-
         view.addSubview(logScreennText)
         
         NSLayoutConstraint.activate([
             logScreennText.topAnchor.constraint(equalTo: view.topAnchor, constant: 255),
             logScreennText.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            logScreennText.heightAnchor.constraint(equalToConstant: 50)
-            
+            logScreennText.heightAnchor.constraint(equalToConstant: 50),
         ])
-//        _ = [
-//            NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-Bold", size: 40.0)!
-//        ]
-        
     }
     
-    
-    //        Username View
+//    Constraints for the Username UITextField  on the first screen
     func setupUsernameTxtField() {
                 view.addSubview(usernameTxtField)
                 
@@ -153,8 +137,7 @@ class ViewController: UIViewController {
                 ])
     }
     
-    
-    //        Password View
+//    Constraints for the password UITextField on the first screen
     func setupPasswordTxtField() {
                 view.addSubview(passwordTxtField)
                 
@@ -166,8 +149,7 @@ class ViewController: UIViewController {
                 ])
     }
     
-    
-    //        Button View
+//    Constraints for the btnLogin on the first screen
     func setupbtnLogin() {
                 view.addSubview(btnLogin)
 
@@ -178,30 +160,28 @@ class ViewController: UIViewController {
                     btnLogin.heightAnchor.constraint(equalToConstant: 50)
                 ])
     }
-    
-
-    // END of Functions to add subviews of first screen elements
-
+//-------------------End of constraints for the first screen-------------------
     
     
 // Function to set the preferences of the first screen
+//    NOW USELESS
     func setUpView() {
 //        view.backgroundColor = .gray
     }
-
 }
-//-----------------End Of First Screen Controller-----------------
+// -----------------END OF FIRST VIEW CONTROLLER-----------------
 
-
-//----------------- Controller for second screen-----------------
+// -----------------START OF SECOND VIEW CONTROLLER-----------------
 class SecondViewController: UIViewController {
 
+//    Screen View for the SECOND controller
     private lazy var secondLoginContentView:UIView = {
         let view = UIView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    
+
+//    Backgound image on the first screen
     private lazy var secondScreenBackImage: UIImageView = {
         let secondBackImage = UIImageView()
         secondBackImage.image = UIImage(named: "gradient")
@@ -210,6 +190,7 @@ class SecondViewController: UIViewController {
         return secondBackImage
     }()
     
+//    User default image on the second screen
     private lazy var userImage: UIImageView = {
         let userImage = UIImageView()
         userImage.image = UIImage(named: "user")
@@ -218,7 +199,7 @@ class SecondViewController: UIViewController {
         return userImage
     }()
     
-//     Displaye the user`s name on the scond screen
+//     Displaye the user`s name on the scond screen "processing..." to develop //
      private lazy var userGreetMessage: UILabel = {
         let greetMessage = UILabel()
         greetMessage.translatesAutoresizingMaskIntoConstraints = false
@@ -226,10 +207,11 @@ class SecondViewController: UIViewController {
         greetMessage.font = greetMessage.font.withSize(40)
         greetMessage.textAlignment = .center
         greetMessage.textColor = .white
-        
+//        processing...
         return greetMessage
     }()
     
+//    Button to the third screen to update the user`s name and password
     private lazy var updateUserDataBtn: UIButton = {
         let updateUserDataBtn = UIButton(type: .system)
         updateUserDataBtn.translatesAutoresizingMaskIntoConstraints = false
@@ -242,8 +224,7 @@ class SecondViewController: UIViewController {
         return updateUserDataBtn
     }()
     
-    
-    
+// Log out Button to log out the user to the first screen
     private lazy var logOutBtn: UIButton = {
         let logOutBtn = UIButton(type: .system)
         logOutBtn.translatesAutoresizingMaskIntoConstraints = false
@@ -252,21 +233,19 @@ class SecondViewController: UIViewController {
         logOutBtn.layer.cornerRadius = 5
         logOutBtn.clipsToBounds = true
         logOutBtn.setTitle("Log Out", for: .normal)
-        
         return logOutBtn
     }()
     
+// Function to add setups for the second view controller
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//        Constraints of the second screen
         setupSecondLoginContentView()
-      
         setUpView()
     }
     
-    
-    
-//Function to navigate to the third view controller
+// Navigation Controller for updateUserDataBtn "Button" to move to the third screen where the user can update his username and password
     @objc private func UpdateButtonPressed() {
         let rootVC = ThirdViewController()
         let navVC = UINavigationController(rootViewController: rootVC)
@@ -274,7 +253,11 @@ class SecondViewController: UIViewController {
         present(navVC, animated: true)
     }
     
+//-------------------Start of constraints for the second screen-------------------
+// Functions to add subviews of first second elements
     
+    
+//   Second screen content view constraints
     func setupSecondLoginContentView() {
         view.addSubview(secondLoginContentView)
         
@@ -283,6 +266,7 @@ class SecondViewController: UIViewController {
             secondLoginContentView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 10),
             secondLoginContentView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
         ])
+//        Constraints of all elements on the second screen
         setupSecondScreenBackImageConstraints()
         setupUserImageConstraints()
         setupUserGreetMessage()
@@ -290,6 +274,7 @@ class SecondViewController: UIViewController {
         setupLogOutButtonView()
     }
     
+//    Constraints for the background image on the second screen
     func setupSecondScreenBackImageConstraints() {
         view.addSubview(secondScreenBackImage)
         
@@ -300,8 +285,7 @@ class SecondViewController: UIViewController {
     }
     
     
-    
-    
+//    Constraints for the USER image on the second screen
     func setupUserImageConstraints() {
         view.addSubview(userImage)
         
@@ -311,12 +295,9 @@ class SecondViewController: UIViewController {
             userImage.heightAnchor.constraint(equalToConstant: 150),
             userImage.widthAnchor.constraint(equalToConstant: 150),
         ])
-        
     }
     
-    
-    
-
+// Display USER`S name constraints on the second screen
     func setupUserGreetMessage() {
         view.addSubview(userGreetMessage)
 
@@ -324,9 +305,9 @@ class SecondViewController: UIViewController {
             userGreetMessage.topAnchor.constraint(equalTo: view.topAnchor, constant: 150),
             userGreetMessage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
         ])
-
     }
 
+//    UPDATE INFO button for the user
     func setupUpdateInfoButtonView() {
         view.addSubview(updateUserDataBtn)
 
@@ -339,6 +320,7 @@ class SecondViewController: UIViewController {
 
     }
 
+//    LOG OUT Button on the second screen
     func setupLogOutButtonView() {
         view.addSubview(logOutBtn)
 
@@ -348,21 +330,20 @@ class SecondViewController: UIViewController {
             logOutBtn.heightAnchor.constraint(equalToConstant: 50),
             logOutBtn.widthAnchor.constraint(equalToConstant: 250),
         ])
-
     }
 
-
-// Function to set the preferences of the second screen
+    
+// Function to add setups for the second view controller
+//    NOW USELESS
     func setUpView() {
-        view.backgroundColor = .gray
+//        view.backgroundColor = .gray
     }
-
 }
 
-//-----------------End of Controller for second screen-----------------
+// -----------------END OF SECOND VIEW CONTROLLER-----------------
 
 
-//-----------------Third View to update the user`s info-----------------
+// -----------------START OF THIRD VIEW CONTROLLER-----------------
 class ThirdViewController: UIViewController {
     
 //    Gradient Backgorund Image on the third screen
@@ -374,9 +355,7 @@ class ThirdViewController: UIViewController {
         return thirdBackImage
     }()
 
-    
-    
-//    Message for the user to change the data
+//    Message for the USER to change the data
     private lazy var changeUserData: UILabel = {
        let changeUserData = UILabel()
         changeUserData.translatesAutoresizingMaskIntoConstraints = false
@@ -384,12 +363,10 @@ class ThirdViewController: UIViewController {
         changeUserData.font = changeUserData.font.withSize(40)
         changeUserData.textAlignment = .center
         changeUserData.textColor = .white
-        
         return changeUserData
     }()
     
-
-    
+// Text field to update user`s name
     private lazy var updateUsernameField: UITextField = {
        let updateUsername = UITextField()
         updateUsername.translatesAutoresizingMaskIntoConstraints = false
@@ -400,7 +377,8 @@ class ThirdViewController: UIViewController {
         updateUsername.textAlignment = .center
         return updateUsername
     }()
-    
+   
+// Text field to update user`s password
     private lazy var passwordUsernameField: UITextField = {
        let passwordUser = UITextField()
         passwordUser.translatesAutoresizingMaskIntoConstraints = false
@@ -412,6 +390,7 @@ class ThirdViewController: UIViewController {
         return passwordUser
     }()
     
+//    Button to save user changed on the third screen
     private lazy var saveUserInfoBtn: UIButton = {
         let saveUserInfoBtn = UIButton(type: .system)
         saveUserInfoBtn.translatesAutoresizingMaskIntoConstraints = false
@@ -420,11 +399,10 @@ class ThirdViewController: UIViewController {
         saveUserInfoBtn.tintColor = .white
         saveUserInfoBtn.layer.cornerRadius = 5
         saveUserInfoBtn.clipsToBounds = true
-        
         return saveUserInfoBtn
     }()
     
-    
+// Function to add setups for the third view controller
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -432,8 +410,10 @@ class ThirdViewController: UIViewController {
         setUpView()
     }
     
-
-    
+//-------------------Start of constraints for the third screen-------------------
+// Functions to add subviews of first screen elements
+        
+// Backgound image on the third View Controller
     func setupThirdBackImageConstraints() {
         view.addSubview(thirdBackImage)
         
@@ -441,21 +421,20 @@ class ThirdViewController: UIViewController {
         setupUpdateUsernameField()
         setupPasswordUsernameField()
         setupSaveUserInfoBtn()
-
     }
         
+    
+//    Constraints for the "CHANGE YOUT DATA" message on the third screen
     func setupchangeUserData() {
-        
         view.addSubview(changeUserData)
         
         NSLayoutConstraint.activate([
             changeUserData.topAnchor.constraint(equalTo: view.topAnchor, constant: 150),
             changeUserData.centerXAnchor.constraint(equalTo: view.centerXAnchor),
         ])
-      
     }
 
-    
+//    Constraints to update Username UITextField on the third screen
     func setupUpdateUsernameField() {
         view.addSubview(updateUsernameField)
         
@@ -466,7 +445,8 @@ class ThirdViewController: UIViewController {
             updateUsernameField.widthAnchor.constraint(equalToConstant: 340),
         ])
     }
-    
+
+//    Constraints to update Password UITextField on the third screen
     func setupPasswordUsernameField() {
         view.addSubview(passwordUsernameField)
         
@@ -475,10 +455,10 @@ class ThirdViewController: UIViewController {
             passwordUsernameField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             passwordUsernameField.heightAnchor.constraint(equalToConstant: 50),
             passwordUsernameField.widthAnchor.constraint(equalToConstant: 340),
-            
         ])
     }
     
+//    Constraints for the Update button on the third screen
     func setupSaveUserInfoBtn() {
         view.addSubview(saveUserInfoBtn)
         
@@ -490,11 +470,14 @@ class ThirdViewController: UIViewController {
         ])
     }
     
-    
+// Function to set the preferences of the first screen
+//    NOW USLESS
     func setUpView() {
 //        view.backgroundColor = .gray
     }
-
 }
-//-----------------End Third View to update the user`s info-----------------
 
+//-------------------END of constraints for the third screen-------------------
+
+// -----------------END OF FIRST VIEW CONTROLLER-----------------
+//processing...

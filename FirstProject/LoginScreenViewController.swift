@@ -252,7 +252,8 @@ class SecondViewController: UIViewController {
         let rootVC = ThirdViewController()
         let navVC = UINavigationController(rootViewController: rootVC)
         navVC.modalPresentationStyle = .fullScreen
-        present(navVC, animated: true)
+//        present(navVC, animated: true)
+        navigationController?.pushViewController(rootVC, animated: true)
     }
     
 //-------------------Start of constraints for the second screen-------------------
@@ -477,7 +478,10 @@ class ThirdViewController: UIViewController {
     func setUpView() {
 //        view.backgroundColor = .gray
     }
+    
 }
+
+    
 
 //-------------------END of constraints for the third screen-------------------
 

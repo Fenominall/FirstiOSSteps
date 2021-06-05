@@ -32,7 +32,7 @@ class ViewController: UIViewController {
         let screenText = UILabel()
         screenText.translatesAutoresizingMaskIntoConstraints = false
         screenText.text = "WELCOME "
-        screenText.font = screenText.font.withSize(40)
+        screenText.font = UIFont.boldSystemFont(ofSize: 40)
         screenText.textAlignment = .center
         screenText.textColor = .white
         return screenText
@@ -40,25 +40,26 @@ class ViewController: UIViewController {
     
 //    Username Text Field on the frist screen
     var usernameTxtField: UITextField = {
-       let textField = UITextField()
-       textField.translatesAutoresizingMaskIntoConstraints = false
-       textField.backgroundColor = .white
-       textField.textColor = .black
-       textField.placeholder = "Username"
-       textField.borderStyle = .roundedRect
-       return textField
+        let textField = UITextField()
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.backgroundColor = .white
+        textField.textColor = .black
+        textField.placeholder = "Username"
+        textField.borderStyle = .roundedRect
+        return textField
    }()
 
 //    Password Text Fieldo n the frist screen
-   private lazy var passwordTxtField: UITextField = {
-       let textField = UITextField()
-       textField.translatesAutoresizingMaskIntoConstraints = false
-       textField.backgroundColor = .white
-       textField.textColor = .black
-       textField.placeholder = "Password"
-       textField.borderStyle = .roundedRect
-       return textField
-   }()
+    private lazy var passwordTxtField: UITextField = {
+        let textField = UITextField()
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.backgroundColor = .white
+        textField.textColor = .black
+        textField.placeholder = "Password"
+        textField.borderStyle = .roundedRect
+        return textField
+        
+    }()
 
 //    Button Text fields to login the user
     private lazy var btnLogin: UIButton = {
@@ -127,38 +128,39 @@ class ViewController: UIViewController {
     
 //    Constraints for the Username UITextField  on the first screen
     func setupUsernameTxtField() {
-                view.addSubview(usernameTxtField)
-                
-                NSLayoutConstraint.activate([
-                    usernameTxtField.topAnchor.constraint(equalTo: view.topAnchor, constant: 325),
-                    usernameTxtField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-                    usernameTxtField.widthAnchor.constraint(equalToConstant: 340),
-                    usernameTxtField.heightAnchor.constraint(equalToConstant: 50)
-                ])
+        view.addSubview(usernameTxtField)
+        
+        NSLayoutConstraint.activate([
+            usernameTxtField.topAnchor.constraint(equalTo: view.topAnchor, constant: 325),
+            usernameTxtField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            usernameTxtField.widthAnchor.constraint(equalToConstant: 340),
+            usernameTxtField.heightAnchor.constraint(equalToConstant: 50)
+        ])
     }
     
 //    Constraints for the password UITextField on the first screen
     func setupPasswordTxtField() {
-                view.addSubview(passwordTxtField)
-                
-                NSLayoutConstraint.activate([
-                    passwordTxtField.topAnchor.constraint(equalTo: view.topAnchor, constant: 385),
-                    passwordTxtField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-                    passwordTxtField.widthAnchor.constraint(equalToConstant: 340),
-                    passwordTxtField.heightAnchor.constraint(equalToConstant: 50)
-                ])
+        view.addSubview(passwordTxtField)
+        
+        NSLayoutConstraint.activate([
+            passwordTxtField.topAnchor.constraint(equalTo: view.topAnchor, constant: 385),
+            passwordTxtField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            passwordTxtField.widthAnchor.constraint(equalToConstant: 340),
+            passwordTxtField.heightAnchor.constraint(equalToConstant: 50)
+        ])
     }
     
 //    Constraints for the btnLogin on the first screen
+    
     func setupbtnLogin() {
-                view.addSubview(btnLogin)
+        view.addSubview(btnLogin)
 
-                NSLayoutConstraint.activate([
-                    btnLogin.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -295),
-                    btnLogin.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-                    btnLogin.widthAnchor.constraint(equalToConstant: 340),
-                    btnLogin.heightAnchor.constraint(equalToConstant: 50)
-                ])
+        NSLayoutConstraint.activate([
+            btnLogin.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -295),
+            btnLogin.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            btnLogin.widthAnchor.constraint(equalToConstant: 340),
+            btnLogin.heightAnchor.constraint(equalToConstant: 50)
+        ])
     }
 //-------------------End of constraints for the first screen-------------------
     
@@ -200,11 +202,11 @@ class SecondViewController: UIViewController {
     }()
     
 //     Displaye the user`s name on the scond screen "processing..." to develop //
-     private lazy var userGreetMessage: UILabel = {
+    private lazy var userGreetMessage: UILabel = {
         let greetMessage = UILabel()
         greetMessage.translatesAutoresizingMaskIntoConstraints = false
         greetMessage.text = "Hey!"
-        greetMessage.font = greetMessage.font.withSize(40)
+        greetMessage.font = UIFont.boldSystemFont(ofSize: 40)
         greetMessage.textAlignment = .center
         greetMessage.textColor = .white
 //        processing...
@@ -357,7 +359,7 @@ class ThirdViewController: UIViewController {
 
 //    Message for the USER to change the data
     private lazy var changeUserData: UILabel = {
-       let changeUserData = UILabel()
+        let changeUserData = UILabel()
         changeUserData.translatesAutoresizingMaskIntoConstraints = false
         changeUserData.text = "Change your data"
         changeUserData.font = changeUserData.font.withSize(40)
@@ -368,7 +370,7 @@ class ThirdViewController: UIViewController {
     
 // Text field to update user`s name
     private lazy var updateUsernameField: UITextField = {
-       let updateUsername = UITextField()
+        let updateUsername = UITextField()
         updateUsername.translatesAutoresizingMaskIntoConstraints = false
         updateUsername.backgroundColor = .white
         updateUsername.textColor = .black
@@ -380,7 +382,7 @@ class ThirdViewController: UIViewController {
    
 // Text field to update user`s password
     private lazy var passwordUsernameField: UITextField = {
-       let passwordUser = UITextField()
+        let passwordUser = UITextField()
         passwordUser.translatesAutoresizingMaskIntoConstraints = false
         passwordUser.backgroundColor = .white
         passwordUser.textColor = .black

@@ -82,7 +82,7 @@ class ViewController: UIViewController {
         setUpView()
     }
     
-//    Disabled autorotation for the fris5t screen
+//    Disabled autorotation for the frist screen
     override open var shouldAutorotate: Bool {
         return false
     }
@@ -406,9 +406,10 @@ class ThirdViewController: UIViewController {
         saveUserInfoBtn.tintColor = .white
         saveUserInfoBtn.layer.cornerRadius = 5
         saveUserInfoBtn.clipsToBounds = true
+        saveUserInfoBtn.isEnabled = false
         return saveUserInfoBtn
     }()
-    
+
 // Function to add setups for the third view controller
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -416,7 +417,7 @@ class ThirdViewController: UIViewController {
         setupThirdBackImageConstraints()
         setUpView()
     }
-    
+
 //-------------------Start of constraints for the third screen-------------------
 // Functions to add subviews of first screen elements
         

@@ -22,7 +22,7 @@ class ViewController: UIViewController {
     private lazy var loginImageView: UIImageView = {
         let loginImage = UIImageView()
         loginImage.image = UIImage(named: "neon")
-        loginImage.contentMode = .scaleToFill
+        loginImage.contentMode = .scaleAspectFit
         loginImage.translatesAutoresizingMaskIntoConstraints = false
         return loginImage
     }()
@@ -31,7 +31,7 @@ class ViewController: UIViewController {
     private lazy var logScreennText: UILabel = {
         let screenText = UILabel()
         screenText.translatesAutoresizingMaskIntoConstraints = false
-        screenText.text = "WELCOME "
+        screenText.text = "WELCOME"
         screenText.font = UIFont.boldSystemFont(ofSize: 40)
         screenText.textAlignment = .center
         screenText.textColor = .white
@@ -81,6 +81,12 @@ class ViewController: UIViewController {
         setupLoginContentView()
         setUpView()
     }
+    
+//    Disabled autorotation for the fris5t screen
+    override open var shouldAutorotate: Bool {
+        return false
+    }
+    
     
 // Navigation Controller for btnLogin to Login the user and move to the second screen
     @objc private func loginButtonPressed() {
@@ -377,7 +383,6 @@ class ThirdViewController: UIViewController {
         updateUsername.textColor = .black
         updateUsername.placeholder = "Update Username"
         updateUsername.borderStyle = .roundedRect
-        updateUsername.textAlignment = .center
         return updateUsername
     }()
    
@@ -389,7 +394,6 @@ class ThirdViewController: UIViewController {
         passwordUser.textColor = .black
         passwordUser.placeholder = "Update Password"
         passwordUser.borderStyle = .roundedRect
-        passwordUser.textAlignment = .center
         return passwordUser
     }()
     

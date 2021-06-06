@@ -15,3 +15,5 @@ This is a simple login app.
 
 3. **Third Screen**
   - The user sees two inputs field with his username and password it has update button which is disabled until somehting is changed in the user`s credentials
+  - By pressing button the data should be updated in the local storage and the user gets a success alert.
+  - After the data is saved, the user is redirected two the second screen where he sees his updated **Username** label.

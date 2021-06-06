@@ -31,8 +31,14 @@ class ViewController: UIViewController {
     private lazy var logScreennText: UILabel = {
         let screenText = UILabel()
         screenText.translatesAutoresizingMaskIntoConstraints = false
-        screenText.text = "WELCOME"
-        screenText.font = UIFont.boldSystemFont(ofSize: 40)
+        let attributedText = NSMutableAttributedString(
+            string: "WELCOME",
+            attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 40),
+                         NSAttributedString.Key.foregroundColor: UIColor.white])
+        screenText.attributedText = attributedText
+//        Which method is more suitable?
+//        screenText.text = "WELCOME"
+//        screenText.font = UIFont.boldSystemFont(ofSize: 40)
         screenText.textAlignment = .center
         screenText.textColor = .white
         return screenText
@@ -83,9 +89,9 @@ class ViewController: UIViewController {
     }
     
 //    Disabled autorotation for the frist screen
-    override open var shouldAutorotate: Bool {
-        return false
-    }
+//    override open var shouldAutorotate: Bool {
+//        return false
+//    }
     
     
 // Navigation Controller for btnLogin to Login the user and move to the second screen
@@ -182,13 +188,6 @@ class ViewController: UIViewController {
 // -----------------START OF SECOND VIEW CONTROLLER-----------------
 class SecondViewController: UIViewController {
 
-//    Screen View for the SECOND controller
-    private lazy var secondLoginContentView:UIView = {
-        let view = UIView(frame: .zero)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-
 //    Backgound image on the first screen
     private lazy var secondScreenBackImage: UIImageView = {
         let secondBackImage = UIImageView()
@@ -215,6 +214,7 @@ class SecondViewController: UIViewController {
         greetMessage.font = UIFont.boldSystemFont(ofSize: 40)
         greetMessage.textAlignment = .center
         greetMessage.textColor = .white
+        greetMessage.contentMode = .scaleAspectFit
 //        processing...
         return greetMessage
     }()
@@ -244,12 +244,26 @@ class SecondViewController: UIViewController {
         return logOutBtn
     }()
     
+//    Container to autolayout two place two elements User Login and User image
+    private let topImageContainerView: UIView = {
+       let topImageContainer = UIView()
+        topImageContainer.translatesAutoresizingMaskIntoConstraints = false
+        return topImageContainer
+    }()
+    
+//    Containter to autoplace button under the frinst autolayout container
+    private let buttonsContainerView: UIView = {
+       let buttonsContainerView = UIView()
+        buttonsContainerView.translatesAutoresizingMaskIntoConstraints = false
+        return buttonsContainerView
+    }()
+    
 // Function to add setups for the second view controller
     override func viewDidLoad() {
         super.viewDidLoad()
         
 //        Constraints of the second screen
-        setupSecondLoginContentView()
+        setupSecondScreenBackImageConstraints()
         setUpView()
     }
     
@@ -265,24 +279,6 @@ class SecondViewController: UIViewController {
 //-------------------Start of constraints for the second screen-------------------
 // Functions to add subviews of first second elements
     
-    
-//   Second screen content view constraints
-    func setupSecondLoginContentView() {
-        view.addSubview(secondLoginContentView)
-        
-        NSLayoutConstraint.activate([
-            secondLoginContentView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
-            secondLoginContentView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 10),
-            secondLoginContentView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-        ])
-//        Constraints of all elements on the second screen
-        setupSecondScreenBackImageConstraints()
-        setupUserImageConstraints()
-        setupUserGreetMessage()
-        setupUpdateInfoButtonView()
-        setupLogOutButtonView()
-    }
-    
 //    Constraints for the background image on the second screen
     func setupSecondScreenBackImageConstraints() {
         view.addSubview(secondScreenBackImage)
@@ -291,57 +287,62 @@ class SecondViewController: UIViewController {
             secondScreenBackImage.topAnchor.constraint(equalTo: view.topAnchor, constant: 10),
             secondScreenBackImage.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 10),
         ])
+        setupUserImageConstraints()
+        setupConstraintsForUpdateLogOutButtons()
     }
     
     
 //    Constraints for the USER image on the second screen
     func setupUserImageConstraints() {
-        view.addSubview(userImage)
+        view.addSubview(topImageContainerView)
+        topImageContainerView.addSubview(userGreetMessage)
+        topImageContainerView.addSubview(userImage)
         
         NSLayoutConstraint.activate([
-            userImage.topAnchor.constraint(equalTo: view.topAnchor, constant: 220),
-            userImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            topImageContainerView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.25),
+            topImageContainerView.topAnchor.constraint(equalTo: view.topAnchor, constant: 25),
+            topImageContainerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            topImageContainerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            
+            userGreetMessage.centerYAnchor.constraint(equalTo: topImageContainerView.centerYAnchor),
+            userGreetMessage.centerXAnchor.constraint(equalTo: topImageContainerView.centerXAnchor),
+            userGreetMessage.heightAnchor.constraint(equalTo: topImageContainerView.heightAnchor, multiplier: 0.75),
+
             userImage.heightAnchor.constraint(equalToConstant: 150),
             userImage.widthAnchor.constraint(equalToConstant: 150),
+            userImage.topAnchor.constraint(equalTo: userGreetMessage.bottomAnchor),
+            userImage.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            userImage.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            userImage.heightAnchor.constraint(equalTo: topImageContainerView.heightAnchor, multiplier: 1),
         ])
-    }
-    
-// Display USER`S name constraints on the second screen
-    func setupUserGreetMessage() {
-        view.addSubview(userGreetMessage)
-
-        NSLayoutConstraint.activate([
-            userGreetMessage.topAnchor.constraint(equalTo: view.topAnchor, constant: 150),
-            userGreetMessage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-        ])
-    }
-
-//    UPDATE INFO button for the user
-    func setupUpdateInfoButtonView() {
-        view.addSubview(updateUserDataBtn)
-
-        NSLayoutConstraint.activate([
-            updateUserDataBtn.topAnchor.constraint(equalTo: view.topAnchor, constant: 400),
-            updateUserDataBtn.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            updateUserDataBtn.heightAnchor.constraint(equalToConstant: 50),
-            updateUserDataBtn.widthAnchor.constraint(equalToConstant: 250),
-        ])
-
     }
 
 //    LOG OUT Button on the second screen
-    func setupLogOutButtonView() {
-        view.addSubview(logOutBtn)
+    func setupConstraintsForUpdateLogOutButtons() {
+        view.addSubview(buttonsContainerView)
+        buttonsContainerView.addSubview(updateUserDataBtn)
+        buttonsContainerView.addSubview(logOutBtn)
 
         NSLayoutConstraint.activate([
-            logOutBtn.topAnchor.constraint(equalTo: view.topAnchor, constant: 465),
-            logOutBtn.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            buttonsContainerView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 1),
+            buttonsContainerView.topAnchor.constraint(equalTo: view.topAnchor),
+            buttonsContainerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            buttonsContainerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            
+            //  Constraints for UPDATE Button on the second screen
+            updateUserDataBtn.topAnchor.constraint(equalTo: buttonsContainerView.centerYAnchor, constant: 30),
+            updateUserDataBtn.heightAnchor.constraint(equalToConstant: 50),
+            updateUserDataBtn.widthAnchor.constraint(equalToConstant: 250),
+            updateUserDataBtn.centerXAnchor.constraint(equalTo: buttonsContainerView.centerXAnchor),
+            
+            //  Constraints for LOG OUT Button on the second screen
             logOutBtn.heightAnchor.constraint(equalToConstant: 50),
             logOutBtn.widthAnchor.constraint(equalToConstant: 250),
+            logOutBtn.topAnchor.constraint(equalTo: updateUserDataBtn.bottomAnchor, constant: 15),
+            logOutBtn.centerXAnchor.constraint(equalTo: updateUserDataBtn.centerXAnchor),
         ])
     }
 
-    
 // Function to add setups for the second view controller
 //    NOW USELESS
     func setUpView() {
@@ -409,6 +410,14 @@ class ThirdViewController: UIViewController {
         saveUserInfoBtn.isEnabled = false
         return saveUserInfoBtn
     }()
+    
+    
+//    Containter to autoplace elemets on the third screen
+    private let thirdScreenAutoLayoutView: UIView = {
+        let thirdScreenAutoLayout = UIView()
+        thirdScreenAutoLayout.translatesAutoresizingMaskIntoConstraints = false
+        return thirdScreenAutoLayout
+    }()
 
 // Function to add setups for the third view controller
     override func viewDidLoad() {
@@ -426,55 +435,48 @@ class ThirdViewController: UIViewController {
         view.addSubview(thirdBackImage)
         
         setupchangeUserData()
-        setupUpdateUsernameField()
-        setupPasswordUsernameField()
-        setupSaveUserInfoBtn()
+//        setupUpdateUsernameField()
+//        setupPasswordUsernameField()
+//        setupSaveUserInfoBtn()
     }
         
     
 //    Constraints for the "CHANGE YOUT DATA" message on the third screen
     func setupchangeUserData() {
-        view.addSubview(changeUserData)
+        view.addSubview(thirdScreenAutoLayoutView)
+        thirdScreenAutoLayoutView.addSubview(changeUserData)
+        thirdScreenAutoLayoutView.addSubview(updateUsernameField)
+        thirdScreenAutoLayoutView.addSubview(passwordUsernameField)
+        thirdScreenAutoLayoutView.addSubview(saveUserInfoBtn)
         
         NSLayoutConstraint.activate([
-            changeUserData.topAnchor.constraint(equalTo: view.topAnchor, constant: 150),
-            changeUserData.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-        ])
-    }
-
-//    Constraints to update Username UITextField on the third screen
-    func setupUpdateUsernameField() {
-        view.addSubview(updateUsernameField)
+            thirdScreenAutoLayoutView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.5),
+            thirdScreenAutoLayoutView.topAnchor.constraint(equalTo: view.topAnchor),
+            thirdScreenAutoLayoutView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            thirdScreenAutoLayoutView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            
+            //    Constraints for the "CHANGE YOUT DATA" message on the third screen
+            changeUserData.topAnchor.constraint(equalTo: thirdScreenAutoLayoutView.topAnchor),
+            changeUserData.centerXAnchor.constraint(equalTo: thirdScreenAutoLayoutView.centerXAnchor),
+            changeUserData.centerYAnchor.constraint(equalTo: thirdScreenAutoLayoutView.centerYAnchor, constant: -20),
         
-        NSLayoutConstraint.activate([
-            updateUsernameField.topAnchor.constraint(equalTo: view.topAnchor, constant: 230),
-            updateUsernameField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            //    Constraints to update Username UITextField on the third screen
+            updateUsernameField.topAnchor.constraint(equalTo: changeUserData.centerYAnchor, constant: 50),
             updateUsernameField.heightAnchor.constraint(equalToConstant: 50),
             updateUsernameField.widthAnchor.constraint(equalToConstant: 340),
-        ])
-    }
-
-//    Constraints to update Password UITextField on the third screen
-    func setupPasswordUsernameField() {
-        view.addSubview(passwordUsernameField)
-        
-        NSLayoutConstraint.activate([
-            passwordUsernameField.topAnchor.constraint(equalTo: view.topAnchor, constant: 290),
-            passwordUsernameField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            updateUsernameField.centerXAnchor.constraint(equalTo: thirdScreenAutoLayoutView.centerXAnchor),
+            
+            //    Constraints to update Password UITextField on the third screen
+            passwordUsernameField.topAnchor.constraint(equalTo: updateUsernameField.bottomAnchor, constant: 15),
             passwordUsernameField.heightAnchor.constraint(equalToConstant: 50),
             passwordUsernameField.widthAnchor.constraint(equalToConstant: 340),
-        ])
-    }
-    
-//    Constraints for the Update button on the third screen
-    func setupSaveUserInfoBtn() {
-        view.addSubview(saveUserInfoBtn)
-        
-        NSLayoutConstraint.activate([
-            saveUserInfoBtn.topAnchor.constraint(equalTo: view.topAnchor, constant: 380),
-            saveUserInfoBtn.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            passwordUsernameField.centerXAnchor.constraint(equalTo: thirdScreenAutoLayoutView.centerXAnchor),
+            
+        //    Constraints for the Update button on the third screen
+            saveUserInfoBtn.topAnchor.constraint(equalTo: passwordUsernameField.bottomAnchor, constant: 30),
             saveUserInfoBtn.heightAnchor.constraint(equalToConstant: 50),
             saveUserInfoBtn.widthAnchor.constraint(equalToConstant: 340),
+            saveUserInfoBtn.centerXAnchor.constraint(equalTo: thirdScreenAutoLayoutView.centerXAnchor),
         ])
     }
     
@@ -483,10 +485,7 @@ class ThirdViewController: UIViewController {
     func setUpView() {
 //        view.backgroundColor = .gray
     }
-    
 }
-
-    
 
 //-------------------END of constraints for the third screen-------------------
 

@@ -456,24 +456,24 @@ class ThirdViewController: UIViewController {
             thirdScreenAutoLayoutView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             
             //    Constraints for the "CHANGE YOUT DATA" message on the third screen
-            changeUserData.topAnchor.constraint(equalTo: thirdScreenAutoLayoutView.topAnchor),
+            changeUserData.topAnchor.constraint(equalTo: thirdScreenAutoLayoutView.safeAreaLayoutGuide.topAnchor),
             changeUserData.centerXAnchor.constraint(equalTo: thirdScreenAutoLayoutView.centerXAnchor),
             changeUserData.centerYAnchor.constraint(equalTo: thirdScreenAutoLayoutView.centerYAnchor, constant: -20),
         
             //    Constraints to update Username UITextField on the third screen
-            updateUsernameField.topAnchor.constraint(equalTo: changeUserData.centerYAnchor, constant: 50),
+            updateUsernameField.topAnchor.constraint(equalTo: changeUserData.safeAreaLayoutGuide.centerYAnchor, constant: 50),
             updateUsernameField.heightAnchor.constraint(equalToConstant: 50),
             updateUsernameField.widthAnchor.constraint(equalToConstant: 340),
             updateUsernameField.centerXAnchor.constraint(equalTo: thirdScreenAutoLayoutView.centerXAnchor),
             
             //    Constraints to update Password UITextField on the third screen
-            passwordUsernameField.topAnchor.constraint(equalTo: updateUsernameField.bottomAnchor, constant: 15),
+            passwordUsernameField.topAnchor.constraint(equalTo: updateUsernameField.safeAreaLayoutGuide.bottomAnchor, constant: 15),
             passwordUsernameField.heightAnchor.constraint(equalToConstant: 50),
             passwordUsernameField.widthAnchor.constraint(equalToConstant: 340),
             passwordUsernameField.centerXAnchor.constraint(equalTo: thirdScreenAutoLayoutView.centerXAnchor),
             
         //    Constraints for the Update button on the third screen
-            saveUserInfoBtn.topAnchor.constraint(equalTo: passwordUsernameField.bottomAnchor, constant: 30),
+            saveUserInfoBtn.topAnchor.constraint(equalTo: passwordUsernameField.safeAreaLayoutGuide.bottomAnchor, constant: 30),
             saveUserInfoBtn.heightAnchor.constraint(equalToConstant: 50),
             saveUserInfoBtn.widthAnchor.constraint(equalToConstant: 340),
             saveUserInfoBtn.centerXAnchor.constraint(equalTo: thirdScreenAutoLayoutView.centerXAnchor),

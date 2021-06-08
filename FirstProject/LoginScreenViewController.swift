@@ -11,13 +11,6 @@ import Foundation
 // -----------------START OF FIRST VIEW CONTROLLER-----------------
 class ViewController: UIViewController {
     
-//    Screen View for the first controller
-    private lazy var loginContentView:UIView = {
-        let view = UIView(frame: .zero)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-
 //    Backgound image on the first screen
     private lazy var loginImageView: UIImageView = {
         let loginImage = UIImageView()
@@ -84,8 +77,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupLoginContentView()
         setUpView()
+        setupLoginScreennText()
     }
     
 //    Disabled autorotation for the frist screen
@@ -104,22 +97,7 @@ class ViewController: UIViewController {
 
 //-------------------Start of constraints for the first screen-------------------
 // Functions to add subviews of first screen elements
-    
-//   First screen Login content Content View constraints
-    func setupLoginContentView() {
-        view.addSubview(loginContentView)
-        view.addSubview(loginImageView)
-
-        NSLayoutConstraint.activate([
-            loginContentView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
-            loginContentView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 10),
-            loginContentView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-        ])
-//        Constraints of all elements on the first screen
-        setupLoginScreennText()
-    }
-
-//    Constraints for the Welcome message on the first screen
+//    Constraints for the "Welcome message, Username and Password TextFields, Login Button" on the first screen
     func setupLoginScreennText() {
         let centerControlStackView = UIStackView(
         arrangedSubviews: [logScreennText, usernameTxtField, passwordTxtField, btnLogin])
@@ -128,7 +106,7 @@ class ViewController: UIViewController {
         centerControlStackView.distribution = .fillEqually
         centerControlStackView.spacing = 20
         view.addSubview(centerControlStackView)
-        
+
         NSLayoutConstraint.activate([
             centerControlStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             centerControlStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
@@ -139,10 +117,10 @@ class ViewController: UIViewController {
 //-------------------End of constraints for the first screen-------------------
     
     
-// Function to set the preferences of the first screen
-//    NOW USELESS
+// Function to set the preferences of the first screen "Was added background image 'Neon"
     func setUpView() {
-//        view.backgroundColor = .gray
+        view.addSubview(loginImageView)
+
     }
 }
 // -----------------END OF FIRST VIEW CONTROLLER-----------------

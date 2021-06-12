@@ -9,7 +9,7 @@ import UIKit
 import Foundation
 
 // -----------------START OF FIRST VIEW CONTROLLER-----------------
-class FirstViewController: UIViewController {
+class FirstViewController: UIViewController, UITextFieldDelegate{
     
 //    Backgound image on the first screen
     private lazy var loginImageView: UIImageView = {
@@ -96,14 +96,39 @@ class FirstViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        usernameTxtField.delegate = self
+        passwordTxtField.delegate = self
+        
         setUpView()
         setupLoginScreennText()
     }
     
+//    Function that limits the number of characters in a UITextField
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+
+        if !["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "c", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"].contains(string.lowercased()) {
+            return false
+        }
+
+        if  (string == " ") {
+            return false
+        }
+
+        let curentText = textField.text ?? ""
+        guard let stringRange = Range(range, in: curentText) else {
+            return false
+        }
+
+
+        let updatedText = curentText.replacingCharacters(in: stringRange, with: string)
+        return updatedText.count <= 20
+
+    }
+    
 //    Disabled autorotation for the frist screen
-//    override open var shouldAutorotate: Bool {
-//        return false
-//    }
+    override open var shouldAutorotate: Bool {
+        return false
+    }
     
     
 // Navigation Controller for btnLogin to Login the user and move to the second screen

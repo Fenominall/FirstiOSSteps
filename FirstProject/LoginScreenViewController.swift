@@ -5,11 +5,11 @@
 //  Created by Fenominall on 18.05.2021.
 //
 
-import UIKit
 import Foundation
+import UIKit
 
 // -----------------START OF FIRST VIEW CONTROLLER-----------------
-class FirstViewController: UIViewController, UITextFieldDelegate{
+class FirstViewController: UIViewController {
     
 //    Backgound image on the first screen
     private lazy var loginImageView: UIImageView = {
@@ -29,11 +29,9 @@ class FirstViewController: UIViewController, UITextFieldDelegate{
             attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 40),
                          NSAttributedString.Key.foregroundColor: UIColor.white])
         screenText.attributedText = attributedText
-//        Which method is more suitable?
 //        screenText.text = "WELCOME"
 //        screenText.font = UIFont.boldSystemFont(ofSize: 40)
         screenText.textAlignment = .center
-//        screenText.textColor = .white
         return screenText
     }()
     
@@ -57,7 +55,14 @@ class FirstViewController: UIViewController, UITextFieldDelegate{
         textField.placeholder = "Password"
         textField.borderStyle = .roundedRect
         return textField
-        
+    }()
+    
+//    Notification Label to notify the user about textField Validations
+    private lazy var notificationLabel: UILabel = {
+        let notificationLabel = UILabel()
+        notificationLabel.translatesAutoresizingMaskIntoConstraints = false
+        notificationLabel.textAlignment = .center
+        return notificationLabel
     }()
 
 //    Button Text fields to login the user
@@ -73,6 +78,7 @@ class FirstViewController: UIViewController, UITextFieldDelegate{
         return btnLogin
     }()
     
+//    Message to SignUp on the Register page
     private let dontHaveAccountText: UILabel = {
         let dontHaveAccountText = UILabel()
         dontHaveAccountText.translatesAutoresizingMaskIntoConstraints = false
@@ -90,39 +96,46 @@ class FirstViewController: UIViewController, UITextFieldDelegate{
         signUpButton.addTarget(self, action: #selector(signUpButtonPressed), for: .touchUpInside)
         return signUpButton
     }()
+// #########################################################
     
+    
+//    Settings up the UIT extField validation
+    
+    private let minimumLength = 8
+    private let maximumLength = 20
+    private lazy var regex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&#-;:`<>|{}[]%])[a-Az-z~,.\\d$@$!%*?&#-;:`<>|{}[]%]]{\(minimumLength),}$"
+    private let password = "VladTest123!"
     
 // Function to add setups for the first view controller
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        usernameTxtField.delegate = self
-        passwordTxtField.delegate = self
-        
         setUpView()
         setupLoginScreennText()
+        
+        
+        usernameTxtField.delegate = self
+        passwordTxtField.delegate = self
+        notificationLabel.numberOfLines = 0
     }
     
-//    Function that limits the number of characters in a UITextField
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-
-        if !["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "c", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"].contains(string.lowercased()) {
-            return false
+    private func checkValdiation(usernameTxtField: String) {
+        guard usernameTxtField.count >= minimumLength else {
+            notificationLabel.text = ""
+            return
         }
-
-        if  (string == " ") {
-            return false
+        guard usernameTxtField.count <= maximumLength else {
+            notificationLabel.text = ""
+            return
         }
-
-        let curentText = textField.text ?? ""
-        guard let stringRange = Range(range, in: curentText) else {
-            return false
+        if usernameTxtField.matches(regex) {
+            notificationLabel.textColor = .green
+            notificationLabel.text = "The password is valid"
+        } else {
+            notificationLabel.textColor = .white
+            notificationLabel.text = "MIn \(minimumLength) symbols\nMax \(maximumLength) symbols \nShould contain: \n1 capital letter, \n1 lower case letter, \n1 number, \n1 special symbol"
         }
-
-
-        let updatedText = curentText.replacingCharacters(in: stringRange, with: string)
-        return updatedText.count <= 20
-
+        
     }
     
 //    Disabled autorotation for the frist screen
@@ -152,6 +165,12 @@ class FirstViewController: UIViewController, UITextFieldDelegate{
 // Functions to add subviews of first screen elements
 //    Constraints for the "Welcome message, Username and Password TextFields, Login Button" on the first screen
     func setupLoginScreennText() {
+        view.addSubview(notificationLabel)
+        
+        NSLayoutConstraint.activate([
+            notificationLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50),
+            notificationLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+        ])
         
 //        UIStack to place login elments in the middle of the first screen"(ogScreennText, usernameTxtField, passwordTxtField, btnLogin)"
         
@@ -195,6 +214,45 @@ class FirstViewController: UIViewController, UITextFieldDelegate{
     func setUpView() {
         view.addSubview(loginImageView)
 
+    }
+}
+
+extension FirstViewController: UITextFieldDelegate {
+
+//    Function that limits the number of characters in a UITextField
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        if  (string == " ") {
+            return false
+        }
+        let text = (textField.text ?? "") + string
+        let result: String
+        
+        if range.length == 1 {
+            let end = text.index(text.startIndex, offsetBy: text.count - 1)
+            result = String(text[text.startIndex..<end])
+        } else {
+            result = text
+        }
+        
+        checkValdiation(usernameTxtField: result)
+        textField.text = result
+        return false
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        let isSucess = (textField.text == password)
+        notificationLabel.text = isSucess ? "Success" : "Error"
+        notificationLabel.textColor = isSucess ? .green : .red
+        textField.resignFirstResponder()
+        return true
+    }
+    
+}
+
+extension String {
+    func matches(_ regex: String) -> Bool {
+        return self.range(of: regex, options: .regularExpression, range: nil, locale: nil) != nil
     }
 }
 // -----------------END OF FIRST VIEW CONTROLLER-----------------

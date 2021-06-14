@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F0362312677C620005DDBB0 /* SwipingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0362302677C620005DDBB0 /* SwipingController.swift */; };
+		4F0362332677CA4A005DDBB0 /* PageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0362322677CA4A005DDBB0 /* PageCell.swift */; };
+		4F0362352677D285005DDBB0 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0362342677D285005DDBB0 /* Page.swift */; };
 		4F07775E2674EA3200CA29F1 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F07775D2674EA3200CA29F1 /* Extensions.swift */; };
 		4F695E902662B6C200606D03 /* LoginScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F695E8F2662B6C200606D03 /* LoginScreenViewController.swift */; };
 		4FF9064526543BEF001387C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF9064426543BEF001387C9 /* AppDelegate.swift */; };
@@ -15,6 +18,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4F0362302677C620005DDBB0 /* SwipingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipingController.swift; sourceTree = "<group>"; };
+		4F0362322677CA4A005DDBB0 /* PageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageCell.swift; sourceTree = "<group>"; };
+		4F0362342677D285005DDBB0 /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
 		4F07775D2674EA3200CA29F1 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		4F695E8F2662B6C200606D03 /* LoginScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenViewController.swift; sourceTree = "<group>"; };
 		4FF9064126543BEF001387C9 /* FirstProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FirstProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -57,6 +63,9 @@
 				4FF9064426543BEF001387C9 /* AppDelegate.swift */,
 				4FF9064626543BEF001387C9 /* SceneDelegate.swift */,
 				4F695E8F2662B6C200606D03 /* LoginScreenViewController.swift */,
+				4F0362302677C620005DDBB0 /* SwipingController.swift */,
+				4F0362322677CA4A005DDBB0 /* PageCell.swift */,
+				4F0362342677D285005DDBB0 /* Page.swift */,
 				4F07775D2674EA3200CA29F1 /* Extensions.swift */,
 				4FF9064D26543BF1001387C9 /* Assets.xcassets */,
 				4FF9065226543BF1001387C9 /* Info.plist */,
@@ -134,7 +143,10 @@
 			files = (
 				4FF9064526543BEF001387C9 /* AppDelegate.swift in Sources */,
 				4FF9064726543BEF001387C9 /* SceneDelegate.swift in Sources */,
+				4F0362332677CA4A005DDBB0 /* PageCell.swift in Sources */,
 				4F695E902662B6C200606D03 /* LoginScreenViewController.swift in Sources */,
+				4F0362352677D285005DDBB0 /* Page.swift in Sources */,
+				4F0362312677C620005DDBB0 /* SwipingController.swift in Sources */,
 				4F07775E2674EA3200CA29F1 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

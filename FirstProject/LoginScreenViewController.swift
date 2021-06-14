@@ -78,6 +78,14 @@ class FirstViewController: UIViewController {
         return btnLogin
     }()
     
+// Navigation Controller for btnLogin to Login the user and move to the second screen
+    @objc private func loginButtonPressed() {
+        let rootVC = ThirdViewController()
+        let navVC = UINavigationController(rootViewController: rootVC)
+        navVC.modalPresentationStyle = .fullScreen
+        present(navVC, animated: true)
+    }
+    
 //    Message to SignUp on the Register page
     private let dontHaveAccountText: UILabel = {
         let dontHaveAccountText = UILabel()
@@ -96,6 +104,15 @@ class FirstViewController: UIViewController {
         signUpButton.addTarget(self, action: #selector(signUpButtonPressed), for: .touchUpInside)
         return signUpButton
     }()
+    
+// Navigation Controller for SignUPButton to navigate the user to register screen
+    @objc private func signUpButtonPressed() {
+        let rootVC = SecondViewController()
+        let navVC = UINavigationController(rootViewController: rootVC)
+        navVC.modalPresentationStyle = .fullScreen
+        present(navVC, animated: true)
+    }
+
 // #########################################################
     
     
@@ -109,10 +126,10 @@ class FirstViewController: UIViewController {
 // Function to add setups for the first view controller
     override func viewDidLoad() {
         super.viewDidLoad()
+        observeKeyboardNofitications()
         
         setUpView()
         setupLoginScreennText()
-        
         
         usernameTxtField.delegate = self
         passwordTxtField.delegate = self
@@ -141,23 +158,6 @@ class FirstViewController: UIViewController {
 //    Disabled autorotation for the frist screen
     override open var shouldAutorotate: Bool {
         return false
-    }
-    
-    
-// Navigation Controller for btnLogin to Login the user and move to the second screen
-    @objc private func loginButtonPressed() {
-        let rootVC = ThirdViewController()
-        let navVC = UINavigationController(rootViewController: rootVC)
-        navVC.modalPresentationStyle = .fullScreen
-        present(navVC, animated: true)
-    }
-    
-// Navigation Controller for SignUPButton to navigate the user to register screen
-    @objc private func signUpButtonPressed() {
-        let rootVC = SecondViewController()
-        let navVC = UINavigationController(rootViewController: rootVC)
-        navVC.modalPresentationStyle = .fullScreen
-        present(navVC, animated: true)
     }
 
 
@@ -207,6 +207,27 @@ class FirstViewController: UIViewController {
             uiStackRegisterUser.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
         ])
     }
+    
+//    Function to move the Keyboardup on the first page
+    fileprivate func observeKeyboardNofitications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(hideKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func hideKeyboard() {
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+            self.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
+        }, completion: nil)
+        
+    }
+    
+    @objc func keyboardShow() {
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+            self.view.frame = CGRect(x: 0, y: -50, width: self.view.frame.width, height: self.view.frame.height)
+        }, completion: nil)
+    }
+//    end of unction to move the Keyboardup on the first page
+    
 //-------------------End of constraints for the first screen-------------------
     
     

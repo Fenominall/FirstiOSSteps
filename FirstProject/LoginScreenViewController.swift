@@ -459,7 +459,7 @@ class ThirdViewController: UIViewController {
     
 // Navigation Controller for updateUserDataBtn "Button" to move to the third screen where the user can update his username and password
     @objc private func UpdateButtonPressed() {
-        let rootVC = FourthiewController()
+        let rootVC = FourthViewController()
         let navVC = UINavigationController(rootViewController: rootVC)
         navVC.modalPresentationStyle = .fullScreen
 //        present(navVC, animated: true)
@@ -585,7 +585,7 @@ class ThirdViewController: UIViewController {
 
 
 // -----------------START OF FOURTH VIEW CONTROLLER-----------------
-class FourthiewController: UIViewController {
+class FourthViewController: UIViewController {
     
 //    Gradient Backgorund Image on the third screen
     private lazy var thirdBackImage: UIImageView = {
@@ -597,49 +597,49 @@ class FourthiewController: UIViewController {
     }()
 
 //    Message for the USER to change the data
-    private lazy var changeUserData: UILabel = {
+    private lazy var changeUserDataLabel: UILabel = {
         let changeUserData = UILabel()
-        changeUserData.translatesAutoresizingMaskIntoConstraints = false
-        changeUserData.text = "Change your data"
-        changeUserData.font = changeUserData.font.withSize(40)
-        changeUserData.textAlignment = .center
-        changeUserData.textColor = .white
-        return changeUserData
+        changeUserDataLabel.translatesAutoresizingMaskIntoConstraints = false
+        changeUserDataLabel.text = "Change your data"
+        changeUserDataLabel.font = changeUserData.font.withSize(40)
+        changeUserDataLabel.textAlignment = .center
+        changeUserDataLabel.textColor = .white
+        return changeUserDataLabel
     }()
     
 // Text field to update user`s name
-    private lazy var updateUsernameField: UITextField = {
-        let updateUsername = UITextField()
-        updateUsername.translatesAutoresizingMaskIntoConstraints = false
-        updateUsername.backgroundColor = .white
-        updateUsername.textColor = .black
-        updateUsername.placeholder = "Update Username"
-        updateUsername.borderStyle = .roundedRect
-        return updateUsername
+    private lazy var updateUsernameTextField: UITextField = {
+        let updateUsernameTextField = UITextField()
+        updateUsernameTextField.translatesAutoresizingMaskIntoConstraints = false
+        updateUsernameTextField.backgroundColor = .white
+        updateUsernameTextField.textColor = .black
+        updateUsernameTextField.placeholder = "Update Username"
+        updateUsernameTextField.borderStyle = .roundedRect
+        return updateUsernameTextField
     }()
    
 // Text field to update user`s password
-    private lazy var updatePasswordField: UITextField = {
-        let passwordUser = UITextField()
-        passwordUser.translatesAutoresizingMaskIntoConstraints = false
-        passwordUser.backgroundColor = .white
-        passwordUser.textColor = .black
-        passwordUser.placeholder = "Update Password"
-        passwordUser.borderStyle = .roundedRect
-        return passwordUser
+    private lazy var updatePasswordTextField: UITextField = {
+        let updatePasswordTextField = UITextField()
+        updatePasswordTextField.translatesAutoresizingMaskIntoConstraints = false
+        updatePasswordTextField.backgroundColor = .white
+        updatePasswordTextField.textColor = .black
+        updatePasswordTextField.placeholder = "Update Password"
+        updatePasswordTextField.borderStyle = .roundedRect
+        return updatePasswordTextField
     }()
     
 //    Button to save user changed on the third screen
-    private lazy var saveUserInfoBtn: UIButton = {
-        let saveUserInfoBtn = UIButton(type: .system)
-        saveUserInfoBtn.translatesAutoresizingMaskIntoConstraints = false
-        saveUserInfoBtn.backgroundColor = .blue
-        saveUserInfoBtn.setTitle("Update", for: .normal)
-        saveUserInfoBtn.tintColor = .white
-        saveUserInfoBtn.layer.cornerRadius = 5
-        saveUserInfoBtn.clipsToBounds = true
-        saveUserInfoBtn.isEnabled = false
-        return saveUserInfoBtn
+    private lazy var saveUserDataButton: UIButton = {
+        let saveUserDataButton = UIButton(type: .system)
+        saveUserDataButton.translatesAutoresizingMaskIntoConstraints = false
+        saveUserDataButton.backgroundColor = .blue
+        saveUserDataButton.setTitle("Update", for: .normal)
+        saveUserDataButton.tintColor = .white
+        saveUserDataButton.layer.cornerRadius = 5
+        saveUserDataButton.clipsToBounds = true
+        saveUserDataButton.isEnabled = false
+        return saveUserDataButton
     }()
 
 // Function to add setups for the third view controller
@@ -647,7 +647,7 @@ class FourthiewController: UIViewController {
         super.viewDidLoad()
         
         setUpView()
-        uiStackToPlaceElementsOfThirdScreen()
+        ElementsOfThirdScreenUIStack()
 
     }
 
@@ -655,9 +655,9 @@ class FourthiewController: UIViewController {
 // Functions to add subviews of first screen elements
         
 // Backgound image on the third View Controller
-    func uiStackToPlaceElementsOfThirdScreen() {
+    func ElementsOfThirdScreenUIStack() {
         let thirdScreenUIStack = UIStackView(
-        arrangedSubviews: [changeUserData, updateUsernameField, updatePasswordField, saveUserInfoBtn])
+        arrangedSubviews: [changeUserDataLabel, updateUsernameTextField, updatePasswordTextField, saveUserDataButton])
         thirdScreenUIStack.translatesAutoresizingMaskIntoConstraints = false
         thirdScreenUIStack.axis = .vertical
         thirdScreenUIStack.distribution = .fillEqually

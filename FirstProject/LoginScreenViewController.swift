@@ -475,8 +475,17 @@ class ThirdViewController: UIViewController {
         logOutBtn.layer.cornerRadius = 5
         logOutBtn.clipsToBounds = true
         logOutBtn.setTitle("Log Out", for: .normal)
+        logOutBtn.addTarget(self, action: #selector(LogOutUserPressed), for: .touchUpInside)
         return logOutBtn
     }()
+    
+//    Navigation Button to FirstViewController
+    @objc private func LogOutUserPressed() {
+        let rootVC = FirstViewController()
+        let navVC = UINavigationController(rootViewController: rootVC)
+        navVC.modalPresentationStyle = .fullScreen
+        navigationController?.pushViewController(rootVC, animated: true)
+    }
     
 //    Container to autolayout two place two elements User Login and User image
     private let userImageContainerView: UIView = {

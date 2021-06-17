@@ -20,41 +20,41 @@ class FirstViewController: UIViewController {
         return loginImage
     }()
     
-//    Login Screen "Welcome!" Message
-    private lazy var logScreennText: UILabel = {
-        let screenText = UILabel()
-        screenText.translatesAutoresizingMaskIntoConstraints = false
+//    Login Screen "Welcome!" Label
+    private lazy var loginScreenLabel: UILabel = {
+        let loginScreenLabel = UILabel()
+        loginScreenLabel.translatesAutoresizingMaskIntoConstraints = false
         let attributedText = NSMutableAttributedString(
             string: "WELCOME",
             attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 40),
                          NSAttributedString.Key.foregroundColor: UIColor.white])
-        screenText.attributedText = attributedText
+        loginScreenLabel.attributedText = attributedText
 //        screenText.text = "WELCOME"
 //        screenText.font = UIFont.boldSystemFont(ofSize: 40)
-        screenText.textAlignment = .center
-        return screenText
+        loginScreenLabel.textAlignment = .center
+        return loginScreenLabel
     }()
     
 //    Username Text Field on the frist screen
     private lazy var usernameTxtField: UITextField = {
-        let textField = UITextField()
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.backgroundColor = .white
-        textField.textColor = .black
-        textField.placeholder = "Username"
-        textField.borderStyle = .roundedRect
-        return textField
+        let usernameTxtField = UITextField()
+        usernameTxtField.translatesAutoresizingMaskIntoConstraints = false
+        usernameTxtField.backgroundColor = .white
+        usernameTxtField.textColor = .black
+        usernameTxtField.placeholder = "Username"
+        usernameTxtField.borderStyle = .roundedRect
+        return usernameTxtField
    }()
 
 //    Password Text Fieldo n the frist screen
     private lazy var passwordTxtField: UITextField = {
-        let textField = UITextField()
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.backgroundColor = .white
-        textField.textColor = .black
-        textField.placeholder = "Password"
-        textField.borderStyle = .roundedRect
-        return textField
+        let passwordTxtField = UITextField()
+        passwordTxtField.translatesAutoresizingMaskIntoConstraints = false
+        passwordTxtField.backgroundColor = .white
+        passwordTxtField.textColor = .black
+        passwordTxtField.placeholder = "Password"
+        passwordTxtField.borderStyle = .roundedRect
+        return passwordTxtField
     }()
     
 //    Notification Label to notify the user about textField Validations
@@ -66,7 +66,7 @@ class FirstViewController: UIViewController {
     }()
 
 //    Button Text fields to login the user
-    private lazy var btnLogin: UIButton = {
+    private lazy var loginButton: UIButton = {
         let btnLogin = UIButton(type:.system)
         btnLogin.backgroundColor = .orange
         btnLogin.setTitle("Login", for: .normal)
@@ -87,14 +87,14 @@ class FirstViewController: UIViewController {
     }
     
 //    Message to SignUp on the Register page
-    private let dontHaveAccountText: UILabel = {
-        let dontHaveAccountText = UILabel()
-        dontHaveAccountText.translatesAutoresizingMaskIntoConstraints = false
+    private let dontHaveAccountLabel: UILabel = {
+        let dontHaveAccountLabel = UILabel()
+        dontHaveAccountLabel.translatesAutoresizingMaskIntoConstraints = false
         let attributedText = NSMutableAttributedString(
             string: "Dont have an account?", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14), NSAttributedString.Key.foregroundColor: UIColor.white])
-        dontHaveAccountText.attributedText = attributedText
-        dontHaveAccountText.textAlignment = .center
-        return dontHaveAccountText
+        dontHaveAccountLabel.attributedText = attributedText
+        dontHaveAccountLabel.textAlignment = .center
+        return dontHaveAccountLabel
     }()
     
     private let signUpButton: UIButton = {
@@ -115,11 +115,10 @@ class FirstViewController: UIViewController {
 
 // #########################################################
     
-    
 //    Settings up the UIT extField validation
     
-    private let minimumLength = 8
-    private let maximumLength = 20
+    private let minimumPasswordLength = 8
+    private let maximumPasswordLength = 20
     private lazy var regex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&#-;:`<>|{}[]%])[a-Az-z~,.\\d$@$!%*?&#-;:`<>|{}[]%]]{\(minimumLength),}$"
     private let password = "VladTest123!"
     
@@ -129,7 +128,7 @@ class FirstViewController: UIViewController {
         observeKeyboardNofitications()
         
         setUpView()
-        setupLoginScreennText()
+        firstViewControllerConstraints()
         
         usernameTxtField.delegate = self
         passwordTxtField.delegate = self
@@ -137,11 +136,11 @@ class FirstViewController: UIViewController {
     }
     
     private func checkValdiation(usernameTxtField: String) {
-        guard usernameTxtField.count >= minimumLength else {
+        guard usernameTxtField.count >= minimumPasswordLength else {
             notificationLabel.text = ""
             return
         }
-        guard usernameTxtField.count <= maximumLength else {
+        guard usernameTxtField.count <= maximumPasswordLength else {
             notificationLabel.text = ""
             return
         }
@@ -150,7 +149,7 @@ class FirstViewController: UIViewController {
             notificationLabel.text = "The password is valid"
         } else {
             notificationLabel.textColor = .white
-            notificationLabel.text = "MIn \(minimumLength) symbols\nMax \(maximumLength) symbols \nShould contain: \n1 capital letter, \n1 lower case letter, \n1 number, \n1 special symbol"
+            notificationLabel.text = "MIn \(minimumPasswordLength) symbols\nMax \(maximumPasswordLength) symbols \nShould contain: \n1 capital letter, \n1 lower case letter, \n1 number, \n1 special symbol"
         }
         
     }
@@ -160,11 +159,11 @@ class FirstViewController: UIViewController {
         return false
     }
 
-
 //-------------------Start of constraints for the first screen-------------------
 // Functions to add subviews of first screen elements
 //    Constraints for the "Welcome message, Username and Password TextFields, Login Button" on the first screen
-    func setupLoginScreennText() {
+    func firstViewControllerConstraints() {
+        view.addSubview(loginImageView)
         view.addSubview(notificationLabel)
         
         NSLayoutConstraint.activate([
@@ -175,7 +174,7 @@ class FirstViewController: UIViewController {
 //        UIStack to place login elments in the middle of the first screen"(ogScreennText, usernameTxtField, passwordTxtField, btnLogin)"
         
         let centerControlStackView = UIStackView(
-        arrangedSubviews: [logScreennText, usernameTxtField, passwordTxtField, btnLogin])
+        arrangedSubviews: [loginScreenLabel, usernameTxtField, passwordTxtField, loginButton])
         centerControlStackView.translatesAutoresizingMaskIntoConstraints = false
         centerControlStackView.axis = .vertical
         centerControlStackView.distribution = .fillEqually
@@ -191,20 +190,20 @@ class FirstViewController: UIViewController {
         ])
         
 //        UIStack for elements to register a user
-        let uiStackRegisterUser = UIStackView(
-        arrangedSubviews: [dontHaveAccountText, signUpButton])
-        uiStackRegisterUser.translatesAutoresizingMaskIntoConstraints = false
-        uiStackRegisterUser.axis = .horizontal
-        uiStackRegisterUser.distribution = .fill
-        uiStackRegisterUser.spacing = 10
-        uiStackRegisterUser.contentMode = .scaleAspectFit
+        let registerUserLabelAButton = UIStackView(
+        arrangedSubviews: [dontHaveAccountLabel, signUpButton])
+        registerUserLabelAButton.translatesAutoresizingMaskIntoConstraints = false
+        registerUserLabelAButton.axis = .horizontal
+        registerUserLabelAButton.distribution = .fill
+        registerUserLabelAButton.spacing = 10
+        registerUserLabelAButton.contentMode = .scaleAspectFit
         
         
-        view.addSubview(uiStackRegisterUser)
+        view.addSubview(registerUserLabelAButton)
         
         NSLayoutConstraint.activate([
-            uiStackRegisterUser.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -30),
-            uiStackRegisterUser.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+            registerUserLabelAButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -30),
+            registerUserLabelAButton.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
         ])
     }
     
@@ -230,12 +229,6 @@ class FirstViewController: UIViewController {
     
 //-------------------End of constraints for the first screen-------------------
     
-    
-// Function to set the preferences of the first screen "Was added background image 'Neon"
-    func setUpView() {
-        view.addSubview(loginImageView)
-
-    }
 }
 
 extension FirstViewController: UITextFieldDelegate {

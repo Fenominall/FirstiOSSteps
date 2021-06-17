@@ -11,7 +11,7 @@ import UIKit
 // -----------------START OF FIRST VIEW CONTROLLER-----------------
 class FirstViewController: UIViewController {
     
-//    Backgound image on the first screen
+//    Backgound Image
     private lazy var loginImageView: UIImageView = {
         let loginImage = UIImageView()
         loginImage.image = UIImage(named: "neon")
@@ -35,7 +35,7 @@ class FirstViewController: UIViewController {
         return loginScreenLabel
     }()
     
-//    Username Text Field on the frist screen
+//    Username Placeholder
     private lazy var usernameTxtField: UITextField = {
         let usernameTxtField = UITextField()
         usernameTxtField.translatesAutoresizingMaskIntoConstraints = false
@@ -46,7 +46,7 @@ class FirstViewController: UIViewController {
         return usernameTxtField
    }()
 
-//    Password Text Fieldo n the frist screen
+//    Password Placeholder
     private lazy var passwordTxtField: UITextField = {
         let passwordTxtField = UITextField()
         passwordTxtField.translatesAutoresizingMaskIntoConstraints = false
@@ -65,7 +65,7 @@ class FirstViewController: UIViewController {
         return notificationLabel
     }()
 
-//    Button Text fields to login the user
+//    Login Button
     private lazy var loginButton: UIButton = {
         let btnLogin = UIButton(type:.system)
         btnLogin.backgroundColor = .orange
@@ -97,6 +97,7 @@ class FirstViewController: UIViewController {
         return dontHaveAccountLabel
     }()
     
+//     SignUp Button
     private let signUpButton: UIButton = {
         let signUpButton = UIButton(type: .system)
         signUpButton.translatesAutoresizingMaskIntoConstraints = false
@@ -115,8 +116,7 @@ class FirstViewController: UIViewController {
 
 // #########################################################
     
-//    Settings up the UIT extField validation
-    
+// UITextField validation
     private let minimumPasswordLength = 8
     private let maximumPasswordLength = 20
     private lazy var regex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&#-;:`<>|{}[]%])[a-Az-z~,.\\d$@$!%*?&#-;:`<>|{}[]%]]{\(minimumLength),}$"
@@ -125,9 +125,9 @@ class FirstViewController: UIViewController {
 // Function to add setups for the first view controller
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         observeKeyboardNofitications()
         
-        setUpView()
         firstViewControllerConstraints()
         
         usernameTxtField.delegate = self
@@ -135,6 +135,7 @@ class FirstViewController: UIViewController {
         notificationLabel.numberOfLines = 0
     }
     
+//     UITextField Validator
     private func checkValdiation(usernameTxtField: String) {
         guard usernameTxtField.count >= minimumPasswordLength else {
             notificationLabel.text = ""
@@ -154,14 +155,14 @@ class FirstViewController: UIViewController {
         
     }
     
-//    Disabled autorotation for the frist screen
+//    Disabled autorotation for the FirstViewController
     override open var shouldAutorotate: Bool {
         return false
     }
 
 //-------------------Start of constraints for the first screen-------------------
-// Functions to add subviews of first screen elements
-//    Constraints for the "Welcome message, Username and Password TextFields, Login Button" on the first screen
+   
+// First
     func firstViewControllerConstraints() {
         view.addSubview(loginImageView)
         view.addSubview(notificationLabel)

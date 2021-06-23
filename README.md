@@ -1,5 +1,5 @@
 # FirstiOSSteps
-This is a simple login app.
+This is a simple ogin app.
 
 1. **First screen** - has two inputs "Login and Username" - restrictions:
   - The Username can be only English letters up to 20 symbols;

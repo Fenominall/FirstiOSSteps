@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4F07775E2674EA3200CA29F1 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F07775D2674EA3200CA29F1 /* Extensions.swift */; };
 		4F695E902662B6C200606D03 /* LoginScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F695E8F2662B6C200606D03 /* LoginScreenViewController.swift */; };
+		4FBBE319268B97E400D518B8 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBBE318268B97E400D518B8 /* UserModel.swift */; };
 		4FD2745C2683317300C8FA32 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD2745B2683317300C8FA32 /* SecondViewController.swift */; };
 		4FD2745E268332F700C8FA32 /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD2745D268332F700C8FA32 /* ThirdViewController.swift */; };
 		4FD4D58E26833C8D0078633E /* AppDataValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD4D58D26833C8D0078633E /* AppDataValidator.swift */; };
@@ -18,8 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4F07775D2674EA3200CA29F1 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		4F695E8F2662B6C200606D03 /* LoginScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenViewController.swift; sourceTree = "<group>"; };
+		4FBBE318268B97E400D518B8 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		4FD2745B2683317300C8FA32 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		4FD2745D268332F700C8FA32 /* ThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
 		4FD4D58D26833C8D0078633E /* AppDataValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDataValidator.swift; sourceTree = "<group>"; };
@@ -41,6 +41,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4FBBE315268B97B000D518B8 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4F695E8F2662B6C200606D03 /* LoginScreenViewController.swift */,
+				4FD2745B2683317300C8FA32 /* SecondViewController.swift */,
+				4FD2745D268332F700C8FA32 /* ThirdViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		4FBBE316268B97BB00D518B8 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				4FF9064426543BEF001387C9 /* AppDelegate.swift */,
+				4FF9064626543BEF001387C9 /* SceneDelegate.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		4FBBE317268B97D000D518B8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4FBBE318268B97E400D518B8 /* UserModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		4FF9063826543BEF001387C9 = {
 			isa = PBXGroup;
 			children = (
@@ -60,13 +87,10 @@
 		4FF9064326543BEF001387C9 /* FirstProject */ = {
 			isa = PBXGroup;
 			children = (
+				4FBBE317268B97D000D518B8 /* Models */,
+				4FBBE316268B97BB00D518B8 /* Common */,
+				4FBBE315268B97B000D518B8 /* Controllers */,
 				4FD4D58D26833C8D0078633E /* AppDataValidator.swift */,
-				4FF9064426543BEF001387C9 /* AppDelegate.swift */,
-				4FF9064626543BEF001387C9 /* SceneDelegate.swift */,
-				4F695E8F2662B6C200606D03 /* LoginScreenViewController.swift */,
-				4FD2745B2683317300C8FA32 /* SecondViewController.swift */,
-				4FD2745D268332F700C8FA32 /* ThirdViewController.swift */,
-				4F07775D2674EA3200CA29F1 /* Extensions.swift */,
 				4FF9064D26543BF1001387C9 /* Assets.xcassets */,
 				4FF9065226543BF1001387C9 /* Info.plist */,
 			);
@@ -142,11 +166,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				4FD2745C2683317300C8FA32 /* SecondViewController.swift in Sources */,
+				4FBBE319268B97E400D518B8 /* UserModel.swift in Sources */,
 				4FD2745E268332F700C8FA32 /* ThirdViewController.swift in Sources */,
 				4FF9064526543BEF001387C9 /* AppDelegate.swift in Sources */,
 				4FF9064726543BEF001387C9 /* SceneDelegate.swift in Sources */,
 				4F695E902662B6C200606D03 /* LoginScreenViewController.swift in Sources */,
-				4F07775E2674EA3200CA29F1 /* Extensions.swift in Sources */,
 				4FD4D58E26833C8D0078633E /* AppDataValidator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

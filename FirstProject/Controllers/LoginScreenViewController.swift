@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-// -----------------START OF FIRST VIEW CONTROLLER-----------------
+// -----------------START OF FIRST VIEW CONTROLLER------------------
 class FirstViewController: UIViewController {
     
 //    Backgound Image

@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 // -----------------START OF FIRST VIEW CONTROLLER------------------
-class FirstViewController: UIViewController {
+class LoginScreenViewController: UIViewController {
     
 //    Backgound Image
     private lazy var loginImageView: UIImageView = {
@@ -195,7 +195,7 @@ class FirstViewController: UIViewController {
     
 }
 
-extension FirstViewController: UITextFieldDelegate {
+extension LoginScreenViewController: UITextFieldDelegate {
 
 //    Function that limits the number of characters in a UITextField
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {

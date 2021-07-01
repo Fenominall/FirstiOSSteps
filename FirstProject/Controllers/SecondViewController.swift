@@ -80,7 +80,7 @@ class SecondViewController: UIViewController {
     
 //    Navigation Button to FirstViewController
     @objc private func LogOutUserPressed() {
-        let rootVC = FirstViewController()
+        let rootVC = LoginScreenViewController()
         let navVC = UINavigationController(rootViewController: rootVC)
         navVC.modalPresentationStyle = .fullScreen
         present(navVC, animated: true)

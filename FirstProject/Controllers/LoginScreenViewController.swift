@@ -84,6 +84,12 @@ class LoginScreenViewController: UIViewController {
         let navVC = UINavigationController(rootViewController: rootVC)
         navVC.modalPresentationStyle = .fullScreen
         present(navVC, animated: true)
+        
+        let defaults = UserDefaults.standard
+        if (usernameTxtField.text?.count)! > 0 && (passwordTxtField.text!.count) > 0 {
+            defaults.setValue(usernameTxtField.text!, forKey: User.storageKey)
+            defaults.setValue(passwordTxtField.text!, forKey: User.storageKey)
+        }
     }
 
 // #########################################################
@@ -95,6 +101,8 @@ class LoginScreenViewController: UIViewController {
     private let password = "VladTest123!"
     
 // Function to add setups for the first view controller
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

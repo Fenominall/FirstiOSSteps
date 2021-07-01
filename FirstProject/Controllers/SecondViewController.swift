@@ -115,6 +115,10 @@ class SecondViewController: UIViewController {
         
 //        Constraints of the second screen
         setupSecondScreenBackImageConstraints()
+        
+        if let usernameLablel = UserDefaults.standard.string(forKey: User.storageKey) {
+            userGreetMessageLabel.text = usernameLablel
+        }
     }
 
     

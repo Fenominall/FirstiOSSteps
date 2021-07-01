@@ -75,6 +75,11 @@ class ThirdViewController: UIViewController {
         
         setUpView()
         elementsOfThirdScreenUIStack()
+        
+        if let updateUsername = UserDefaults.standard.string(forKey: User.storageKey) {
+            updateUsernameTextField.text = updateUsername
+            updatePasswordTextField.text = updateUsername
+        }
 
     }
 

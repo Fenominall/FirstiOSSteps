@@ -92,7 +92,7 @@ class LoginScreenViewController: UIViewController {
         }
     }
 
-// #########################################################
+// ########################################################
     
 // UITextField validation
     private let minimumPasswordLength = 8

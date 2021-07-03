@@ -39,6 +39,7 @@ class ThirdViewController: UIViewController {
         updateUsernameTextField.textColor = .black
         updateUsernameTextField.placeholder = "Update Username"
         updateUsernameTextField.borderStyle = .roundedRect
+        updateUsernameTextField.addTarget(self, action: Selector(("textFieldEditingChanged:")), for: .editingChanged)
         return updateUsernameTextField
     }()
    
@@ -50,6 +51,7 @@ class ThirdViewController: UIViewController {
         updatePasswordTextField.textColor = .black
         updatePasswordTextField.placeholder = "Update Password"
         updatePasswordTextField.borderStyle = .roundedRect
+        updatePasswordTextField.addTarget(self, action: Selector(("textFieldEditingChanged:")), for: .editingChanged)
         return updatePasswordTextField
     }()
     
@@ -62,7 +64,8 @@ class ThirdViewController: UIViewController {
         saveUserDataButton.tintColor = .white
         saveUserDataButton.layer.cornerRadius = 5
         saveUserDataButton.clipsToBounds = true
-        saveUserDataButton.isEnabled = false
+        saveUserDataButton.isEnabled = true
+        saveUserDataButton.addTarget(self, action: #selector(updateDataButton), for: .touchUpInside)
         return saveUserDataButton
     }()
 
@@ -74,16 +77,44 @@ class ThirdViewController: UIViewController {
         observeKeyboardNofitications()
         
         setUpView()
+        
         elementsOfThirdScreenUIStack()
         
-        if let updateUsername = UserDefaults.standard.string(forKey: User.storageKey) {
+        saveUpdatedUsernameAndPassword()
+        
+    }
+
+    
+    private func saveUpdatedUsernameAndPassword() {
+        if let updateUsername = UserDefaults.standard.string(forKey: UserKeysDefaults.keyUsername) {
             updateUsernameTextField.text = updateUsername
-            updatePasswordTextField.text = updateUsername
+        }
+        if let updatePassword = UserDefaults.standard.string(forKey: UserKeysDefaults.keyPassword) {
+            updatePasswordTextField.text = updatePassword
         }
 
     }
-
-//-------------------Start of constraints for the FOURTH screen-------------------
+    
+    
+    @objc private func textFieldEditingChanged(_ sender: UITextField) {
+        print(updateUsernameTextField.text ?? "no value")
+        print(updatePasswordTextField.text ?? "no value")
+    }
+    
+    @objc private func updateDataButton() {
+        let updatedUsername = updateUsernameTextField.text!
+        let updatedPassword = updatePasswordTextField.text!
+        
+        defaults.setValue(updatedUsername, forKey: UserKeysDefaults.keyUsername)
+        defaults.setValue(updatedPassword, forKey: UserKeysDefaults.keyPassword)
+        
+        let rootVC = SecondViewController()
+        let navVC = UINavigationController(rootViewController: rootVC)
+        navVC.modalPresentationStyle = .fullScreen
+        present(navVC, animated: true, completion: nil)
+        
+    }
+    
 // Functions to add subviews of first screen elements
         
 // Backgound image on the third View Controller

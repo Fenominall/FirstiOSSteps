@@ -32,17 +32,20 @@ struct AppDataValidator {
         guard let password = password else { return false }
             
         let passwordPattern =
-            // At least 8 characters
-            #"(?=.{8,})"# +
+            // At least 8 characters up to 20
+            #"(?=.{8,20})"# +
 
             // At least one capital letter
-            #"(?=.*[A-Z])"# +
+//            #"(?=.*[A-Z])"# +
                 
             // At least one lowercase letter
-            #"(?=.*[a-z])"# +
+//            #"(?=.*[a-z])"# +
+            
+//          All number are available
+            #"(?=.*[0-9])"# +
                 
             // At least one digit
-            #"(?=.*\d)"# +
+//            #"(?=.*\d)"# +
                 
             // At least one special character
             #"(?=.*[ !$%&?._-])"#
@@ -62,7 +65,7 @@ struct AppDataValidator {
         
         let userNamePattern =
             // At least 4 characters
-            #"(?=.{4,})"# +
+            #"(?=.{4,20})"# +
         
             // All characters avaible
             #"^[a-zA-Z-]"#

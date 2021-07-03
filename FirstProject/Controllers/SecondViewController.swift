@@ -116,8 +116,8 @@ class SecondViewController: UIViewController {
 //        Constraints of the second screen
         setupSecondScreenBackImageConstraints()
         
-        if let usernameLablel = UserDefaults.standard.string(forKey: User.storageKey) {
-            userGreetMessageLabel.text = usernameLablel
+        if let usernameLablel = defaults.string(forKey: UserKeysDefaults.keyUsername) {
+            userGreetMessageLabel.text! = usernameLablel
         }
     }
 
@@ -139,7 +139,6 @@ class SecondViewController: UIViewController {
         setupUserImageConstraints()
         setupConstraintsForUpdateLogOutButtons()
     }
-    
     
 //    Constraints for the USER image on the second screen
     func setupUserImageConstraints() {

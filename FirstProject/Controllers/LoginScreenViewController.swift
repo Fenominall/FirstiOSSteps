@@ -8,6 +8,14 @@
 import Foundation
 import UIKit
 
+
+let defaults = UserDefaults.standard
+
+struct UserKeysDefaults {
+    static let keyUsername = "username"
+    static let keyPassword = "password"
+}
+
 // -----------------START OF FIRST VIEW CONTROLLER------------------
 class LoginScreenViewController: UIViewController {
     
@@ -77,28 +85,11 @@ class LoginScreenViewController: UIViewController {
         btnLogin.addTarget(self, action: #selector(loginButtonPressed), for: .touchUpInside)
         return btnLogin
     }()
-    
-// Navigation Controller for btnLogin to Login the user and move to the second screen
-    @objc private func loginButtonPressed() {
-        let rootVC = SecondViewController()
-        let navVC = UINavigationController(rootViewController: rootVC)
-        navVC.modalPresentationStyle = .fullScreen
-        present(navVC, animated: true)
-        
-        let defaults = UserDefaults.standard
-        if (usernameTxtField.text?.count)! > 0 && (passwordTxtField.text!.count) > 0 {
-            defaults.setValue(usernameTxtField.text!, forKey: User.storageKey)
-            defaults.setValue(passwordTxtField.text!, forKey: User.storageKey)
-        }
-    }
 
+    
 // ########################################################
     
-// UITextField validation
-    private let minimumPasswordLength = 8
-    private let maximumPasswordLength = 20
-    private lazy var regex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&#-;:`<>|{}[]%])[a-Az-z~,.\\d$@$!%*?&#-;:`<>|{}[]%]]{\(minimumPasswordLength),}$"
-    private let password = "VladTest123!"
+
     
 // Function to add setups for the first view controller
     
@@ -110,11 +101,45 @@ class LoginScreenViewController: UIViewController {
         
         firstViewControllerConstraints()
         
+        saveUsernameAndPassword()
+        
         usernameTxtField.delegate = self
         passwordTxtField.delegate = self
         notificationLabel.numberOfLines = 0
+    
     }
     
+    
+//    Save password in UITextField placeholders
+    private func saveUsernameAndPassword() {
+        
+        if let enteredUsername = defaults.string(forKey: UserKeysDefaults.keyUsername) {
+            usernameTxtField.text = enteredUsername
+        }
+        if let enteredPassword = defaults.string(forKey: UserKeysDefaults.keyPassword) {
+            passwordTxtField.text = enteredPassword
+        }
+    }
+    
+// Navigation Controller for btnLogin to Login the user and move to the second screen
+    @objc private func loginButtonPressed() {
+        
+        let username = usernameTxtField.text!
+        let password = passwordTxtField.text!
+
+        
+        if ((username.count != 0) && (password.count != 0)) {
+            defaults.setValue(username, forKey: UserKeysDefaults.keyUsername)
+            defaults.setValue(passwordTxtField.text!, forKey: UserKeysDefaults.keyPassword)
+        }
+        let rootVC = SecondViewController()
+        let navVC = UINavigationController(rootViewController: rootVC)
+        navVC.modalPresentationStyle = .fullScreen
+        present(navVC, animated: true)
+    }
+    
+    
+//    Handaling navigation controller to disable it
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.isNavigationBarHidden = true
     }
@@ -122,26 +147,9 @@ class LoginScreenViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         navigationController?.isNavigationBarHidden = false
     }
+//    Handaling navigation controller to disable it
     
-//     UITextField Validator
-    private func checkValdiation(usernameTxtField: String) {
-        guard usernameTxtField.count >= minimumPasswordLength else {
-            notificationLabel.text = ""
-            return
-        }
-        guard usernameTxtField.count <= maximumPasswordLength else {
-            notificationLabel.text = ""
-            return
-        }
-        if usernameTxtField.matches(regex) {
-            notificationLabel.textColor = .green
-            notificationLabel.text = "The password is valid"
-        } else {
-            notificationLabel.textColor = .white
-            notificationLabel.text = "MIn \(minimumPasswordLength) symbols\nMax \(maximumPasswordLength) symbols \nShould contain: \n1 capital letter, \n1 lower case letter, \n1 number, \n1 special symbol"
-        }
-        
-    }
+
     
 //    Disabled autorotation for the FirstViewController
     override open var shouldAutorotate: Bool {
@@ -149,7 +157,7 @@ class LoginScreenViewController: UIViewController {
     }
 
 //-------------------Start of constraints for the first screen-------------------
-   
+    
 // First
     func firstViewControllerConstraints() {
         view.addSubview(loginImageView)
@@ -200,8 +208,36 @@ class LoginScreenViewController: UIViewController {
 //    end of unction to move the Keyboardup on the first page
     
 //-------------------End of constraints for the first screen-------------------
+
+    // UITextField validation
+    private let minimumPasswordLength = 8
+    private let maximumPasswordLength = 20
+    private lazy var regex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&#-;:`<>|{}[]%])[a-Az-z~,.\\d$@$!%*?&#-;:`<>|{}[]%]]{\(minimumPasswordLength),}$"
+    private let password = "VladTest123!"
+    
+//     UITextField Validator
+    private func checkValdiation(usernameTxtField: String) {
+        guard usernameTxtField.count >= minimumPasswordLength else {
+            notificationLabel.text = ""
+            return
+        }
+        guard usernameTxtField.count <= maximumPasswordLength else {
+            notificationLabel.text = ""
+            return
+        }
+        if usernameTxtField.matches(regex) {
+            notificationLabel.textColor = .green
+            notificationLabel.text = "The password is valid"
+        } else {
+            notificationLabel.textColor = .white
+            notificationLabel.text = "MIn \(minimumPasswordLength) symbols\nMax \(maximumPasswordLength) symbols \nShould contain: \n1 capital letter, \n1 lower case letter, \n1 number, \n1 special symbol"
+        }
+        
+    }
     
 }
+
+
 
 extension LoginScreenViewController: UITextFieldDelegate {
 

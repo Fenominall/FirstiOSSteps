@@ -8,9 +8,10 @@
 import Foundation
 import UIKit
 
-
+// Shortcut key to use UserDefaults
 let defaults = UserDefaults.standard
 
+// Created keys for Username and Password for UserDefaults
 struct UserKeysDefaults {
     static let keyUsername = "username"
     static let keyPassword = "password"

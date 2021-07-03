@@ -1,3 +1,19 @@
+//
+//  UserDefaults+.swift
+//  FirstProject
+//
+//  Created by Fenominall on 03.07.2021.
+//
+
+import Foundation
+
+
+protocol ObjectSavable {
+    func setObject<Object>(_ object: Object, forKey: String) throws where Object: Encodable
+    func getObject<Object>(forKey: String, castTo type: Object.Type) throws -> Object where Object: Decodable
+}
+
+
 extension UserDefaults: ObjectSavable {
     func setObject<Object>(_ object: Object, forKey: String) throws where Object: Encodable {
         let encoder = JSONEncoder()

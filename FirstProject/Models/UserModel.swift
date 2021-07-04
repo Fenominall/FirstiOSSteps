@@ -6,12 +6,47 @@
 //
 
 import Foundation
+//
+//class Base {
+//    let defaults = UserDefaults.standard
+//
+//    struct User: Codable {
+//        var username: String
+//        var password: String
+//        var name: String {
+//            return "\(username)"
+//        }
+//    }
+//
+//    static let storageKey: String = "Users"
+//
+//    var userData: [User]{
+//        get {
+//            if let data = defaults.value(forKey: Base.storageKey) as? Data {
+//                return try! PropertyListDecoder().decode([User].self, from: data)
+//            }
+//        } else {
+//            return [User]
+//        }
+//        set {
+//            if let data = try? PropertyListEncoder().encode(newValue) {
+//                defaults.set(data, forKey: Base.storageKey)
+//            }
+//        }
+//    }
+//
+//    func saveUser(username: String, password: String) {
+//        let user = User(username: username, password: password)
+//        userData.insert(user, at: 0)
+//    }
+//
+//}
 
 struct User: Codable {
     var username: String
     var password: String
 }
-
+		
 
 extension User: Equatable {
     static func == (lhs: User, rhs: User) -> Bool {

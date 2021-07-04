@@ -84,7 +84,7 @@ class ThirdViewController: UIViewController {
         
     }
 
-    
+//    Save input with UserDefaults in UITextFields
     private func saveUpdatedUsernameAndPassword() {
         if let updateUsername = UserDefaults.standard.string(forKey: UserKeysDefaults.keyUsername) {
             updateUsernameTextField.text = updateUsername
@@ -95,12 +95,13 @@ class ThirdViewController: UIViewController {
 
     }
     
-    
+//    Check editing in UITextFields
     @objc private func textFieldEditingChanged(_ sender: UITextField) {
         print(updateUsernameTextField.text ?? "no value")
         print(updatePasswordTextField.text ?? "no value")
     }
      
+//    Button to update UserDefaults and return back to the SecondViewController
     @objc private func updateDataButton() {
         let updatedUsername = updateUsernameTextField.text!
         let updatedPassword = updatePasswordTextField.text!
@@ -159,6 +160,8 @@ class ThirdViewController: UIViewController {
     }
     
 }
+//    //    Function to move the content with the Keyboard
+
 
 //-------------------END of constraints for the FOURTH screen-------------------
 

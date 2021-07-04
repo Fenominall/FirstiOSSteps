@@ -128,7 +128,6 @@ class LoginScreenViewController: UIViewController {
         let username = usernameTxtField.text!
         let password = passwordTxtField.text!
 
-        
         if ((username.count != 0) && (password.count != 0)) {
             defaults.setValue(username, forKey: UserKeysDefaults.keyUsername)
             defaults.setValue(passwordTxtField.text!, forKey: UserKeysDefaults.keyPassword)

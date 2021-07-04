@@ -266,8 +266,8 @@ extension LoginScreenViewController: UITextFieldDelegate {
         return false
     }
     
-//    MARK - Keyboard will hide if the user confirms that editing changed;
-//    MARK 2 - The notification will be shown based on checkValidation func;
+//    MARK: - Keyboard will hide if the user confirms that editing changed;
+//    MARK: 2 - The notification will be shown based on checkValidation func;
     internal func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == usernameTxtField || textField == passwordTxtField {
             self.usernameTxtField.resignFirstResponder()

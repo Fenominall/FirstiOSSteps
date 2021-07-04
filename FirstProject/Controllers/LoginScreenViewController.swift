@@ -8,19 +8,19 @@
 import Foundation
 import UIKit
 
-// Shortcut key to use UserDefaults
+// MARK: Shortcut key to use UserDefaults
 let defaults = UserDefaults.standard
 
-// Created keys for Username and Password for UserDefaults
+// MARK: Created keys for Username and Password for UserDefaults
 struct UserKeysDefaults {
     static let keyUsername = "username"
     static let keyPassword = "password"
 }
 
-// -----------------START OF FIRST VIEW CONTROLLER------------------
+// MARK: -----------------START OF FIRST VIEW CONTROLLER------------------
 class LoginScreenViewController: UIViewController {
     
-//    Backgound Image
+// MARK: Backgound Image
     private lazy var loginImageView: UIImageView = {
         let loginImage = UIImageView()
         loginImage.image = UIImage(named: "neon")
@@ -29,7 +29,7 @@ class LoginScreenViewController: UIViewController {
         return loginImage
     }()
     
-//    Login Screen "Welcome!" Label
+// MARK: Login Screen "Welcome!" Label
     private lazy var loginScreenLabel: UILabel = {
         let loginScreenLabel = UILabel()
         loginScreenLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -44,7 +44,7 @@ class LoginScreenViewController: UIViewController {
         return loginScreenLabel
     }()
     
-//    Username Placeholder
+//  MARK:  Username UITextField
     private lazy var usernameTxtField: UITextField = {
         let usernameTxtField = UITextField()
         usernameTxtField.translatesAutoresizingMaskIntoConstraints = false
@@ -55,7 +55,7 @@ class LoginScreenViewController: UIViewController {
         return usernameTxtField
    }()
 
-//    Password Placeholder
+//  MARK:  Password UITextField
     private lazy var passwordTxtField: UITextField = {
         let passwordTxtField = UITextField()
         passwordTxtField.translatesAutoresizingMaskIntoConstraints = false
@@ -66,7 +66,7 @@ class LoginScreenViewController: UIViewController {
         return passwordTxtField
     }()
     
-//    Notification Label to notify the user about textField Validations
+//  MARK:  Notification Label to notify the user about textField Validations
     private lazy var notificationLabel: UILabel = {
         let notificationLabel = UILabel()
         notificationLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -92,26 +92,30 @@ class LoginScreenViewController: UIViewController {
     
 
     
-// Function to add setups for the first view controller
-    
+// MARK: Function to add setups for the first view controller
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        // MARK: Notifications for swhowing and hiding keyboard
         observeKeyboardNofitications()
         
+        // #
         firstViewControllerConstraints()
         
+        // MARK: Function for UserDefaults for saving data
         saveUsernameAndPassword()
         
+        // MARK: Defining number of lines for notificationLabel
+        notificationLabel.numberOfLines = 0
+        
+        // #
         usernameTxtField.delegate = self
         passwordTxtField.delegate = self
-        notificationLabel.numberOfLines = 0
     
     }
     
     
-//    Save password in UITextField placeholders
+//   MARK: Save password in UITextField placeholders
     private func saveUsernameAndPassword() {
         
         if let enteredUsername = defaults.string(forKey: UserKeysDefaults.keyUsername) {
@@ -122,13 +126,13 @@ class LoginScreenViewController: UIViewController {
         }
     }
     
-// Navigation Controller for btnLogin to Login the user and move to the second screen
+// MARK: Navigation Controller for btnLogin to Login the user and move to the second screen
     @objc private func loginButtonPressed() {
         
         let username = usernameTxtField.text!
         let password = passwordTxtField.text!
 
-        
+        // Check for UITextFields if it`s not empty then save it to UserDefaults
         if ((username.count != 0) && (password.count != 0)) {
             defaults.setValue(username, forKey: UserKeysDefaults.keyUsername)
             defaults.setValue(passwordTxtField.text!, forKey: UserKeysDefaults.keyPassword)
@@ -139,8 +143,7 @@ class LoginScreenViewController: UIViewController {
         present(navVC, animated: true)
     }
     
-    
-//    Handaling navigation controller to disable it
+//  MARK: Handaling navigation controller to disable it
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.isNavigationBarHidden = true
     }
@@ -148,18 +151,17 @@ class LoginScreenViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         navigationController?.isNavigationBarHidden = false
     }
-//    Handaling navigation controller to disable it
+//   #
     
 
     
-//    Disabled autorotation for the FirstViewController
+//  MARK:  Disabled autorotation for the FirstViewController
     override open var shouldAutorotate: Bool {
         return false
     }
 
-//-------------------Start of constraints for the first screen-------------------
+// MARK: -------------------Start of constraints for the first screen-------------------
     
-// First
     func firstViewControllerConstraints() {
         view.addSubview(loginImageView)
         view.addSubview(notificationLabel)
@@ -169,7 +171,7 @@ class LoginScreenViewController: UIViewController {
             notificationLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
         ])
         
-//        UIStack to place login elments in the middle of the first screen"(ogScreennText, usernameTxtField, passwordTxtField, btnLogin)"
+// MARK: UIStack to place login elments in the middle of the first screen"(ogScreennText, usernameTxtField, passwordTxtField, btnLogin)"
         
         let centerControlStackView = UIStackView(
         arrangedSubviews: [loginScreenLabel, usernameTxtField, passwordTxtField, loginButton])
@@ -188,7 +190,7 @@ class LoginScreenViewController: UIViewController {
         ])
     }
     
-//    Function to move the Keyboardup on the first page
+//  MARK:  Function to move the Keyboardup on the first page
     fileprivate func observeKeyboardNofitications() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(hideKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -206,11 +208,12 @@ class LoginScreenViewController: UIViewController {
             self.view.frame = CGRect(x: 0, y: -50, width: self.view.frame.width, height: self.view.frame.height)
         }, completion: nil)
     }
-//    end of unction to move the Keyboardup on the first page
+//  MARK:  end of unction to move the Keyboardup on the first page
     
-//-------------------End of constraints for the first screen-------------------
+// MARK: -------------------End of constraints for the first screen-------------------
 
-    // UITextField validation
+    
+//  MARK: UITextField validation
     private let minimumPasswordLength = 8
     private let maximumPasswordLength = 20
     private lazy var regex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&#-;:`<>|{}[]%])[a-Az-z~,.\\d$@$!%*?&#-;:`<>|{}[]%]]{\(minimumPasswordLength),}$"
@@ -263,14 +266,18 @@ extension LoginScreenViewController: UITextFieldDelegate {
         return false
     }
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        let isSucess = (textField.text == password)
-        notificationLabel.text = isSucess ? "Success" : "Error"
-        notificationLabel.textColor = isSucess ? .green : .red
-        textField.resignFirstResponder()
+//    MARK - Keyboard will hide if the user confirms that editing changed;
+//    MARK 2 - The notification will be shown based on checkValidation func;
+    internal func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == usernameTxtField || textField == passwordTxtField {
+            self.usernameTxtField.resignFirstResponder()
+            self.passwordTxtField.resignFirstResponder()
+            let isSucess = (textField.text == password)
+            notificationLabel.text = isSucess ? "Success" : "Error"
+            notificationLabel.textColor = isSucess ? .green : .red
+        }
         return true
     }
-    
 }
 
 extension String {
@@ -278,5 +285,5 @@ extension String {
         return self.range(of: regex, options: .regularExpression, range: nil, locale: nil) != nil
     }
 }
-// -----------------END OF FIRST VIEW CONTROLLER-----------------
+// MARK: -----------------END OF FIRST VIEW CONTROLLER-----------------
 

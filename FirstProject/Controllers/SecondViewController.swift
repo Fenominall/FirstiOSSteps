@@ -56,15 +56,6 @@ class SecondViewController: UIViewController {
         return updateUserDataBtn
     }()
     
-// Navigation Controller for updateUserDataBtn "Button" to move to the third screen where the user can update his username and password
-    @objc private func UpdateButtonPressed() {
-        let rootVC = ThirdViewController()
-        let navVC = UINavigationController(rootViewController: rootVC)
-        navVC.modalPresentationStyle = .fullScreen
-//        present(navVC, animated: true)
-        navigationController?.pushViewController(rootVC, animated: true)
-    }
-    
 // Log out Button to log out the user to the first screen
     private lazy var logOutUserButton: UIButton = {
         let logOutBtn = UIButton(type: .system)
@@ -77,15 +68,6 @@ class SecondViewController: UIViewController {
         logOutBtn.addTarget(self, action: #selector(LogOutUserPressed), for: .touchUpInside)
         return logOutBtn
     }()
-    
-//    Navigation Button to FirstViewController
-    @objc private func LogOutUserPressed() {
-        let rootVC = LoginScreenViewController()
-        let navVC = UINavigationController(rootViewController: rootVC)
-        navVC.modalPresentationStyle = .fullScreen
-        present(navVC, animated: true)
-//        navigationController?.pushViewController(rootVC, animated: true)
-    }
     
 //    Container to autolayout two place two elements User Login and User image
     private let userImageContainerView: UIView = {
@@ -101,14 +83,6 @@ class SecondViewController: UIViewController {
         return buttonsContainerView
     }()
     
-    override func viewWillAppear(_ animated: Bool) {
-        navigationController?.isNavigationBarHidden = true
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        navigationController?.isNavigationBarHidden = false
-    }
-    
 // Function to add setups for the second view controller
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -119,8 +93,45 @@ class SecondViewController: UIViewController {
         if let usernameLablel = defaults.string(forKey: UserKeysDefaults.keyUsername) {
             userGreetMessageLabel.text! = usernameLablel
         }
+        
+//        if let username = self.loginviewModel.load() {
+//            userGreetMessageLabel.text! = username
+//        }
+    }
+    
+// Navigation Controller for updateUserDataBtn "Button" to move to the third screen where the user can update his username and password
+    @objc private func UpdateButtonPressed() {
+        let rootVC = ThirdViewController()
+        navigationController?.pushViewController(rootVC, animated: true)
     }
 
+//    Navigation Button to FirstViewController
+    @objc private func LogOutUserPressed() {
+        
+//      MARK: Recieving the current array of controllers
+        var currentControllerArray = self.navigationController?.viewControllers
+        
+//      MARK: Removing the last controller
+        currentControllerArray?.removeLast()
+        
+//      MARK: Assign Controller
+        if let newController = currentControllerArray {
+            self.navigationController?.popViewController(animated: true)
+            self.navigationController?.viewControllers = newController
+        }
+    }
+    
+    
+// MARK: Instance of LoginViewModel
+//    private var loginviewModel: LoginViewModel!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.isNavigationBarHidden = true
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        navigationController?.isNavigationBarHidden = false
+    }
     
 //-------------------Start of constraints for the second screen-------------------
 // Functions to add subviews of first second elements

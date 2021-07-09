@@ -17,3 +17,18 @@ struct LoginViewModel {
         self.password = password
     }
 }
+
+
+extension LoginViewModel {
+    static let storageKey: String = "Users"
+    
+    func save() {
+        let user = User(vm: self)
+        
+        UserDefaults.standard.setValue(user, forKey: LoginViewModel.storageKey)
+    }
+    
+    func load() {
+        UserDefaults.standard.string(forKey: LoginViewModel.storageKey)
+    }
+}

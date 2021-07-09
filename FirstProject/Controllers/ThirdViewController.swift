@@ -105,15 +105,18 @@ class ThirdViewController: UIViewController {
     @objc private func updateDataButton() {
         let updatedUsername = updateUsernameTextField.text!
         let updatedPassword = updatePasswordTextField.text!
-        
+
         defaults.setValue(updatedUsername, forKey: UserKeysDefaults.keyUsername)
         defaults.setValue(updatedPassword, forKey: UserKeysDefaults.keyPassword)
         
-        let rootVC = SecondViewController()
-        let navVC = UINavigationController(rootViewController: rootVC)
-        navVC.modalPresentationStyle = .fullScreen
-        present(navVC, animated: true, completion: nil)
+        var currentViewController = self.navigationController?.viewControllers
         
+        currentViewController?.removeLast()
+        
+        if let newController = currentViewController {
+            self.navigationController?.popViewController(animated: true)
+            self.navigationController?.viewControllers = newController
+        }
     }
     
 // Functions to add subviews of first screen elements

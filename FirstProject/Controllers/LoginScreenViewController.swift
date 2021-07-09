@@ -88,8 +88,8 @@ class LoginScreenViewController: UIViewController {
     }()
 
     
-// ########################################################
-    
+// MARK: Instance of LoginViewModel
+    private var loginViewModel: LoginViewModel!
 
     
 // MARK: Function to add setups for the first view controller
@@ -111,13 +111,12 @@ class LoginScreenViewController: UIViewController {
         // #
         usernameTxtField.delegate = self
         passwordTxtField.delegate = self
-    
     }
     
     
 //   MARK: Save password in UITextField placeholders
     private func saveUsernameAndPassword() {
-        
+
         if let enteredUsername = defaults.string(forKey: UserKeysDefaults.keyUsername) {
             usernameTxtField.text = enteredUsername
         }
@@ -127,20 +126,22 @@ class LoginScreenViewController: UIViewController {
     }
     
 // MARK: Navigation Controller for btnLogin to Login the user and move to the second screen
-    @objc private func loginButtonPressed() {
+    @objc private func loginButtonPressed(sender: Any) {
         
-        let username = usernameTxtField.text!
-        let password = passwordTxtField.text!
-
-        // Check for UITextFields if it`s not empty then save it to UserDefaults
+        let username = self.usernameTxtField.text!
+        let password = self.passwordTxtField.text!
+        
+//        self.loginViewModel = LoginViewModel(username: username, password: password)
+//        self.loginViewModel.save()
+        
+//         Check for UITextFields if it`s not empty then save it to UserDefaults
         if ((username.count != 0) && (password.count != 0)) {
             defaults.setValue(username, forKey: UserKeysDefaults.keyUsername)
             defaults.setValue(passwordTxtField.text!, forKey: UserKeysDefaults.keyPassword)
+            let secondVC = SecondViewController()
+            self.navigationController?.pushViewController(secondVC, animated: true)
         }
-        let rootVC = SecondViewController()
-        let navVC = UINavigationController(rootViewController: rootVC)
-        navVC.modalPresentationStyle = .fullScreen
-        present(navVC, animated: true)
+   
     }
     
 //  MARK: Handaling navigation controller to disable it
@@ -151,9 +152,6 @@ class LoginScreenViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         navigationController?.isNavigationBarHidden = false
     }
-//   #
-    
-
     
 //  MARK:  Disabled autorotation for the FirstViewController
     override open var shouldAutorotate: Bool {

@@ -131,9 +131,6 @@ class LoginScreenViewController: UIViewController {
         let username = self.usernameTxtField.text!
         let password = self.passwordTxtField.text!
         
-//        self.loginViewModel = LoginViewModel(username: username, password: password)
-//        self.loginViewModel.save()
-        
 //         Check for UITextFields if it`s not empty then save it to UserDefaults
         if ((username.count != 0) && (password.count != 0)) {
             defaults.setValue(username, forKey: UserKeysDefaults.keyUsername)
@@ -234,9 +231,7 @@ class LoginScreenViewController: UIViewController {
             notificationLabel.textColor = .white
             notificationLabel.text = "MIn \(minimumPasswordLength) symbols\nMax \(maximumPasswordLength) symbols \nShould contain: \n1 capital letter, \n1 lower case letter, \n1 number, \n1 special symbol"
         }
-        
     }
-    
 }
 
 

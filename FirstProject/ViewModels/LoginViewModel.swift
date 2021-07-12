@@ -24,11 +24,11 @@ extension LoginViewModel {
     
     func save() {
         let user = User(vm: self)
-        
-        UserDefaults.standard.setValue(user, forKey: LoginViewModel.storageKey)
+     
+        defaults.setValue(user, forKey: LoginViewModel.storageKey)
     }
     
     func load() {
-        UserDefaults.standard.string(forKey: LoginViewModel.storageKey)
+        defaults.string(forKey: LoginViewModel.storageKey)
     }
 }

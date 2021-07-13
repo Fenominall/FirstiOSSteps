@@ -39,7 +39,6 @@ class SecondViewController: UIViewController {
         greetMessage.textAlignment = .center
         greetMessage.textColor = .white
         greetMessage.contentMode = .scaleAspectFit
-//        processing...
         return greetMessage
     }()
     
@@ -93,10 +92,6 @@ class SecondViewController: UIViewController {
         if let usernameLablel = defaults.string(forKey: UserKeysDefaults.keyUsername) {
             userGreetMessageLabel.text! = usernameLablel
         }
-        
-//        if let username = self.loginviewModel.load() {
-//            userGreetMessageLabel.text! = username
-//        }
     }
     
 // Navigation Controller for updateUserDataBtn "Button" to move to the third screen where the user can update his username and password

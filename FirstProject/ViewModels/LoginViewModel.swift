@@ -7,6 +7,8 @@
 
 import Foundation
 
+// MARK: Shortcut key to use UserDefaults
+let defaults = UserDefaults.standard
 
 struct LoginViewModel {
     var username: String
@@ -29,6 +31,7 @@ extension LoginViewModel {
     }
     
     func load() {
+        
         defaults.string(forKey: LoginViewModel.storageKey)
     }
 }

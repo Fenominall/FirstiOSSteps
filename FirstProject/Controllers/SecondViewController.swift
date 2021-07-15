@@ -89,9 +89,9 @@ class SecondViewController: UIViewController {
 //        Constraints of the second screen
         setupSecondScreenBackImageConstraints()
         
-        if let usernameLablel = defaults.string(forKey: UserKeysDefaults.keyUsername) {
-            userGreetMessageLabel.text! = usernameLablel
-        }
+//        if let usernameLablel = defaults.string(forKey: UserKeysDefaults.keyUsername) {
+//            userGreetMessageLabel.text! = usernameLablel
+//        }
     }
     
 // Navigation Controller for updateUserDataBtn "Button" to move to the third screen where the user can update his username and password

@@ -8,14 +8,13 @@
 import Foundation
 import UIKit
 
-// MARK: Shortcut key to use UserDefaults
-let defaults = UserDefaults.standard
+
 
 // MARK: Created keys for Username and Password for UserDefaults
-struct UserKeysDefaults {
-    static let keyUsername = "username"
-    static let keyPassword = "password"
-}
+//struct UserKeysDefaults {
+//    static let keyUsername = "username"
+//    static let keyPassword = "password"
+//}
 
 // MARK: -----------------START OF FIRST VIEW CONTROLLER------------------
 class LoginScreenViewController: UIViewController {
@@ -103,7 +102,8 @@ class LoginScreenViewController: UIViewController {
         firstViewControllerConstraints()
         
         // MARK: Function for UserDefaults for saving data
-        saveUsernameAndPassword()
+//        saveUsernameAndPassword()
+        self.loginViewModel.load()
         
         // MARK: Defining number of lines for notificationLabel
         notificationLabel.numberOfLines = 0
@@ -114,16 +114,19 @@ class LoginScreenViewController: UIViewController {
     }
     
     
+    
+    
+    
 //   MARK: Save password in UITextField placeholders
-    private func saveUsernameAndPassword() {
-
-        if let enteredUsername = defaults.string(forKey: UserKeysDefaults.keyUsername) {
-            usernameTxtField.text = enteredUsername
-        }
-        if let enteredPassword = defaults.string(forKey: UserKeysDefaults.keyPassword) {
-            passwordTxtField.text = enteredPassword
-        }
-    }
+//    private func saveUsernameAndPassword() {
+//
+//        if let enteredUsername = defaults.string(forKey: UserKeysDefaults.keyUsername) {
+//            usernameTxtField.text = enteredUsername
+//        }
+//        if let enteredPassword = defaults.string(forKey: UserKeysDefaults.keyPassword) {
+//            passwordTxtField.text = enteredPassword
+//        }
+//    }
     
 // MARK: Navigation Controller for btnLogin to Login the user and move to the second screen
     @objc private func loginButtonPressed(sender: Any) {
@@ -133,8 +136,12 @@ class LoginScreenViewController: UIViewController {
         
 //         Check for UITextFields if it`s not empty then save it to UserDefaults
         if ((username.count != 0) && (password.count != 0)) {
-            defaults.setValue(username, forKey: UserKeysDefaults.keyUsername)
-            defaults.setValue(passwordTxtField.text!, forKey: UserKeysDefaults.keyPassword)
+            
+            self.loginViewModel = LoginViewModel(username: username, password: password)
+            self.loginViewModel.save()
+//
+//            defaults.setValue(username, forKey: UserKeysDefaults.keyUsername)
+//            defaults.setValue(passwordTxtField.text!, forKey: UserKeysDefaults.keyPassword)
             let secondVC = SecondViewController()
             self.navigationController?.pushViewController(secondVC, animated: true)
         }

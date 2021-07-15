@@ -80,20 +80,20 @@ class ThirdViewController: UIViewController {
         
         elementsOfThirdScreenUIStack()
         
-        saveUpdatedUsernameAndPassword()
+//        saveUpdatedUsernameAndPassword()
         
     }
 
 //    Save input with UserDefaults in UITextFields
-    private func saveUpdatedUsernameAndPassword() {
-        if let updateUsername = UserDefaults.standard.string(forKey: UserKeysDefaults.keyUsername) {
-            updateUsernameTextField.text = updateUsername
-        }
-        if let updatePassword = UserDefaults.standard.string(forKey: UserKeysDefaults.keyPassword) {
-            updatePasswordTextField.text = updatePassword
-        }
-
-    }
+//    private func saveUpdatedUsernameAndPassword() {
+//        if let updateUsername = UserDefaults.standard.string(forKey: UserKeysDefaults.keyUsername) {
+//            updateUsernameTextField.text = updateUsername
+//        }
+//        if let updatePassword = UserDefaults.standard.string(forKey: UserKeysDefaults.keyPassword) {
+//            updatePasswordTextField.text = updatePassword
+//        }
+//
+//    }
     
 //    Check editing in UITextFields
     @objc private func textFieldEditingChanged(_ sender: UITextField) {
@@ -103,11 +103,11 @@ class ThirdViewController: UIViewController {
      
 //    Button to update UserDefaults and return back to the SecondViewController
     @objc private func updateDataButton() {
-        let updatedUsername = updateUsernameTextField.text!
-        let updatedPassword = updatePasswordTextField.text!
-
-        defaults.setValue(updatedUsername, forKey: UserKeysDefaults.keyUsername)
-        defaults.setValue(updatedPassword, forKey: UserKeysDefaults.keyPassword)
+//        let updatedUsername = updateUsernameTextField.text!
+//        let updatedPassword = updatePasswordTextField.text!
+////
+//        defaults.setValue(updatedUsername, forKey: UserKeysDefaults.keyUsername)
+//        defaults.setValue(updatedPassword, forKey: UserKeysDefaults.keyPassword)
         
         var currentViewController = self.navigationController?.viewControllers
         

@@ -103,7 +103,7 @@ class LoginScreenViewController: UIViewController {
         
         // MARK: Function for UserDefaults for saving data
 //        saveUsernameAndPassword()
-        self.loginViewModel.load()
+//         self.loginViewModel.load()
         
         // MARK: Defining number of lines for notificationLabel
         notificationLabel.numberOfLines = 0

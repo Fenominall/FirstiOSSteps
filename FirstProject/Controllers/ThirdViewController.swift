@@ -68,6 +68,26 @@ class ThirdViewController: UIViewController {
         saveUserDataButton.addTarget(self, action: #selector(updateDataButton), for: .touchUpInside)
         return saveUserDataButton
     }()
+    
+//    MARK: UISwitch for dark mode
+    private lazy var backGroundColorSwitcher: UISwitch = {
+        let backGroundColorSwitcher = UISwitch()
+        backGroundColorSwitcher.frame = CGRect(x: 100, y: 100, width: 0, height: 0)
+        backGroundColorSwitcher.setOn(false, animated: true)
+        backGroundColorSwitcher.addTarget(self, action: #selector(switchChanged), for: .valueChanged)
+        return backGroundColorSwitcher
+    }()
+    
+    
+//    MARK: DARK MODE LABEL
+    private lazy var darkModeUiLabel: UILabel = {
+        let darkModeUiLabel = UILabel()
+        darkModeUiLabel.text = "Change to dark mode"
+        darkModeUiLabel.font = darkModeUiLabel.font.withSize(30)
+        darkModeUiLabel.textAlignment = .center
+        darkModeUiLabel.textColor = .white
+        return darkModeUiLabel
+    }()
 
 // Function to add setups for the third view controller
     override func viewDidLoad() {
@@ -79,6 +99,7 @@ class ThirdViewController: UIViewController {
         setUpView()
         
         elementsOfThirdScreenUIStack()
+        
         
 //        saveUpdatedUsernameAndPassword()
         
@@ -94,6 +115,17 @@ class ThirdViewController: UIViewController {
 //        }
 //
 //    }
+    
+//    Switch Change
+    @objc func switchChanged(paramTarget: UISwitch) {
+        if paramTarget.isOn {
+            view.backgroundColor = .black
+            print("It`s ON!")
+        } else {
+            view.backgroundColor = .orange
+            print("It`s OFF!")
+        }
+    }
     
 //    Check editing in UITextFields
     @objc private func textFieldEditingChanged(_ sender: UITextField) {
@@ -123,8 +155,22 @@ class ThirdViewController: UIViewController {
         
 // Backgound image on the third View Controller
     func elementsOfThirdScreenUIStack() {
+        
+        let darkModeUIStackView = UIStackView(arrangedSubviews: [darkModeUiLabel, backGroundColorSwitcher])
+        darkModeUIStackView.translatesAutoresizingMaskIntoConstraints = false
+        darkModeUIStackView.axis = .horizontal
+        darkModeUIStackView.distribution = .fill
+        darkModeUIStackView.spacing = 15
+        view.addSubview(darkModeUIStackView)
+        
+        NSLayoutConstraint.activate([
+            darkModeUIStackView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+            darkModeUIStackView.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor),
+            darkModeUIStackView.heightAnchor.constraint(equalToConstant: 50),
+        ])
+      
         let thirdScreenUIStack = UIStackView(
-        arrangedSubviews: [changeUserDataLabel, updateUsernameTextField, updatePasswordTextField, saveUserDataButton])
+            arrangedSubviews: [changeUserDataLabel, updateUsernameTextField, updatePasswordTextField, saveUserDataButton, darkModeUIStackView])
         thirdScreenUIStack.translatesAutoresizingMaskIntoConstraints = false
         thirdScreenUIStack.axis = .vertical
         thirdScreenUIStack.distribution = .fillEqually
@@ -137,11 +183,18 @@ class ThirdViewController: UIViewController {
             thirdScreenUIStack.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
             thirdScreenUIStack.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
         ])
+        
+        NSLayoutConstraint.activate([
+            changeUserDataLabel.heightAnchor.constraint(equalToConstant: 50),
+        ])
+
+        
     }
     
 // Function to stores background image of third screen
     func setUpView() {
-        view.addSubview(thirdBackImage)
+//        view.addSubview(thirdBackImage)
+        view.backgroundColor = .orange
     }
     
     //    Function to move the content with the Keyboard

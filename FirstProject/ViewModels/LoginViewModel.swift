@@ -10,7 +10,7 @@ import Foundation
 // MARK: Shortcut key to use UserDefaults
 let defaults = UserDefaults.standard
 
-struct LoginViewModel {
+class LoginViewModel {
     var username: String
     var password: String
     
@@ -23,15 +23,19 @@ struct LoginViewModel {
 
 extension LoginViewModel {
     static let storageKey: String = "Users"
-    
+
     func save() {
         let user = User(vm: self)
-     
-        defaults.setValue(user, forKey: LoginViewModel.storageKey)
-    }
-    
-    func load() {
         
+        do {
+            try defaults.setObject(user, forKey: LoginViewModel.storageKey)
+        } catch {
+            print(error)
+        }
+    }
+
+    func load() {
+
         defaults.string(forKey: LoginViewModel.storageKey)
     }
 }

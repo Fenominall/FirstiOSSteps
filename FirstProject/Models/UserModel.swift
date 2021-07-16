@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: UserModel
-struct User: Codable {
+class User: Codable {
     var username: String
     var password: String
     
@@ -24,4 +24,3 @@ extension User: Equatable {
         return lhs.username == rhs.username && lhs.password == rhs.password
     }
 }
-

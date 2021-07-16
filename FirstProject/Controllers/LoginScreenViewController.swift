@@ -103,7 +103,10 @@ class LoginScreenViewController: UIViewController {
         
         // MARK: Function for UserDefaults for saving data
 //        saveUsernameAndPassword()
-        self.loginViewModel.load()
+        
+        if loginViewModel != nil {
+            self.loginViewModel.load()
+        }
         
         // MARK: Defining number of lines for notificationLabel
         notificationLabel.numberOfLines = 0
@@ -113,10 +116,7 @@ class LoginScreenViewController: UIViewController {
         passwordTxtField.delegate = self
     }
     
-    
-    
-    
-    
+
 //   MARK: Save password in UITextField placeholders
 //    private func saveUsernameAndPassword() {
 //
@@ -135,16 +135,18 @@ class LoginScreenViewController: UIViewController {
         let password = self.passwordTxtField.text!
         
 //         Check for UITextFields if it`s not empty then save it to UserDefaults
-        if ((username.count != 0) && (password.count != 0)) {
+//        if ((username.count != 0) && (password.count != 0)) {
             
-            self.loginViewModel = LoginViewModel(username: username, password: password)
-            self.loginViewModel.save()
-//
 //            defaults.setValue(username, forKey: UserKeysDefaults.keyUsername)
 //            defaults.setValue(passwordTxtField.text!, forKey: UserKeysDefaults.keyPassword)
-            let secondVC = SecondViewController()
-            self.navigationController?.pushViewController(secondVC, animated: true)
-        }
+        
+        
+//        }
+        self.loginViewModel = LoginViewModel(username: username, password: password)
+        self.loginViewModel.save()
+
+        let secondVC = SecondViewController()
+        self.navigationController?.pushViewController(secondVC, animated: true)
    
     }
     

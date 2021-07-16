@@ -107,6 +107,8 @@ class LoginScreenViewController: UIViewController {
         if loginViewModel != nil {
             self.loginViewModel.load()
         }
+                
+    
         
         // MARK: Defining number of lines for notificationLabel
         notificationLabel.numberOfLines = 0

@@ -80,4 +80,8 @@ struct AppDataValidator {
     
 }
 
+var pass = "tesT"
+
+
+let validate = AppDataValidator.validateUserName(pass)
 

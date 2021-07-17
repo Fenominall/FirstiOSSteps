@@ -78,9 +78,15 @@ class LoginScreenViewController: UIViewController {
     }()
 
     
+    
+    
 // MARK: Instance of LoginViewModel
     private var loginViewModel: LoginViewModel!
+    
 
+// MARK: Instance of ValidationViewModel
+//    private var validationViewModel: UsernamePasswordViewModel = UsernamePasswordViewModel()
+    
     
 // MARK: Function to add setups for the first view controller
     
@@ -102,20 +108,44 @@ class LoginScreenViewController: UIViewController {
 // MARK: Navigation Controller for btnLogin to Login the user and move to the second screen
     @objc private func loginButtonPressed(sender: Any) {
         
-        let username = self.usernameTxtField.text!
-        let password = self.passwordTxtField.text!
-        
-//         Check for UITextFields if it`s not empty then save it to UserDefaults
-        if ((username.count != 0) && (password.count != 0)) {
-        }
-        
-        self.loginViewModel = LoginViewModel(username: username, password: password)
-        self.loginViewModel.save()
+//        
+//        self.loginViewModel.username = self.usernameTxtField.text!
+//        self.loginViewModel.password = self.passwordTxtField.text!
 
-        let secondVC = SecondViewController()
-        self.navigationController?.pushViewController(secondVC, animated: true)
-   
+        
+//        self.loginViewModel = LoginViewModel(username: username, password: password)
+//        self.loginViewModel.save()
+//         Check for UITextFields if it`s not empty then save it to UserDefaults
+//        if ((username.count != 0) && (password.count != 0)) {
+//        }
+        
+        
+        let username = self.usernameTxtField.text
+        let password = self.passwordTxtField.text
+        
+        let isUsernameValid = AppDataValidator.validateUserName(username)
+        let isPasswordValid = AppDataValidator.validatePassword(password)
+        
+//        let errorAlertMessage = "Username or Password shouldnot be empty!"
+        let successAlertMessage = "Your account created your are logged in"
+        let passwordRequirmentsAlertMessage = """
+                                  Username should be at least (min-4, max-20) charachters long.
+                                  Password can be only digits and at least 1 special charechter, should contain (min-8, max-20) charachters long.
+                                  """
+    
+        if isUsernameValid && isPasswordValid {
+            
+            let secondVC = SecondViewController()
+            self.navigationController?.pushViewController(secondVC, animated: true)
+            
+            self.successUIAlert(title: "Success", message: successAlertMessage, preferedStyle: .alert)
+        } else {
+            self.errorUIAlert(title: "Error", message: passwordRequirmentsAlertMessage, preferedStyle: .alert)
+        }
+  
     }
+    
+    
     
 //  MARK: Handaling navigation controller to disable it
     override func viewWillAppear(_ animated: Bool) {
@@ -160,6 +190,8 @@ class LoginScreenViewController: UIViewController {
             centerControlStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
         ])
     }
+// MARK: -------------------End of constraints for the first screen-------------------
+    
     
 //  MARK:  Function to move the Keyboardup on the first page
     fileprivate func observeKeyboardNofitications() {
@@ -181,7 +213,27 @@ class LoginScreenViewController: UIViewController {
     }
 //  MARK:  end of unction to move the Keyboardup on the first page
     
-// MARK: -------------------End of constraints for the first screen-------------------
+    
+//    MARK: UI
+    
+    func errorUIAlert(title: String, message: String, preferedStyle: UIAlertController.Style) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "Dismiss", style: .destructive) { (action) in
+            
+        }
+        alertController.addAction(action)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func successUIAlert(title: String, message: String, preferedStyle: UIAlertController.Style) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "Ok", style: .default) { (action) in
+            
+        }
+        alertController.addAction(action)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
 }
 
 // MARK: -----------------END OF FIRST VIEW CONTROLLER-----------------

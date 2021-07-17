@@ -86,7 +86,7 @@ import Foundation
 //
 ////    Function that limits the number of characters in a UITextField
 //    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-//
+////
 //        if  (string == " ") {
 //            return false
 //        }

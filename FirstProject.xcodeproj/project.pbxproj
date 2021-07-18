@@ -14,7 +14,7 @@
 		4FD2745E268332F700C8FA32 /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD2745D268332F700C8FA32 /* ThirdViewController.swift */; };
 		4FD4D58E26833C8D0078633E /* AppDataValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD4D58D26833C8D0078633E /* AppDataValidator.swift */; };
 		4FE0574A26909C2C00132103 /* UserDefaults+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE0574926909C2C00132103 /* UserDefaults+.swift */; };
-		4FE55FD126A33535003874B1 /* MyExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE55FD026A33535003874B1 /* MyExtensions.swift */; };
+		4FE55FD126A33535003874B1 /* ExtensionsForLoginScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE55FD026A33535003874B1 /* ExtensionsForLoginScreenViewController.swift */; };
 		4FE69EC726A2B59C00F23965 /* TestFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE69EC626A2B59C00F23965 /* TestFile.swift */; };
 		4FE69EC926A2B80E00F23965 /* UsernamePasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE69EC826A2B80E00F23965 /* UsernamePasswordViewModel.swift */; };
 		4FF9064526543BEF001387C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF9064426543BEF001387C9 /* AppDelegate.swift */; };
@@ -30,7 +30,7 @@
 		4FD2745D268332F700C8FA32 /* ThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
 		4FD4D58D26833C8D0078633E /* AppDataValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDataValidator.swift; sourceTree = "<group>"; };
 		4FE0574926909C2C00132103 /* UserDefaults+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+.swift"; sourceTree = "<group>"; };
-		4FE55FD026A33535003874B1 /* MyExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyExtensions.swift; sourceTree = "<group>"; };
+		4FE55FD026A33535003874B1 /* ExtensionsForLoginScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionsForLoginScreenViewController.swift; sourceTree = "<group>"; };
 		4FE69EC626A2B59C00F23965 /* TestFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestFile.swift; sourceTree = "<group>"; };
 		4FE69EC826A2B80E00F23965 /* UsernamePasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernamePasswordViewModel.swift; sourceTree = "<group>"; };
 		4FF9064126543BEF001387C9 /* FirstProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FirstProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -90,12 +90,12 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		4FE55FCF26A33520003874B1 /* Extensiona */ = {
+		4FE55FCF26A33520003874B1 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				4FE55FD026A33535003874B1 /* MyExtensions.swift */,
+				4FE55FD026A33535003874B1 /* ExtensionsForLoginScreenViewController.swift */,
 			);
-			path = Extensiona;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		4FF9063826543BEF001387C9 = {
@@ -117,7 +117,7 @@
 		4FF9064326543BEF001387C9 /* FirstProject */ = {
 			isa = PBXGroup;
 			children = (
-				4FE55FCF26A33520003874B1 /* Extensiona */,
+				4FE55FCF26A33520003874B1 /* Extensions */,
 				4F4FDFBA268D860700736440 /* ViewModels */,
 				4FBBE317268B97D000D518B8 /* Models */,
 				4FBBE316268B97BB00D518B8 /* Common */,
@@ -199,7 +199,7 @@
 				4FE69EC926A2B80E00F23965 /* UsernamePasswordViewModel.swift in Sources */,
 				4FD2745C2683317300C8FA32 /* SecondViewController.swift in Sources */,
 				4FE0574A26909C2C00132103 /* UserDefaults+.swift in Sources */,
-				4FE55FD126A33535003874B1 /* MyExtensions.swift in Sources */,
+				4FE55FD126A33535003874B1 /* ExtensionsForLoginScreenViewController.swift in Sources */,
 				4FBBE319268B97E400D518B8 /* UserModel.swift in Sources */,
 				4FE69EC726A2B59C00F23965 /* TestFile.swift in Sources */,
 				4FD2745E268332F700C8FA32 /* ThirdViewController.swift in Sources */,

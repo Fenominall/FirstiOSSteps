@@ -10,7 +10,7 @@ import UIKit
 
 
 // MARK: -----------------START OF FIRST VIEW CONTROLLER------------------
-class LoginScreenViewController: UIViewController, UITextFieldDelegate {
+class LoginScreenViewController: UIViewController {
     
 // MARK: Backgound Image
     private lazy var loginImageView: UIImageView = {
@@ -42,6 +42,8 @@ class LoginScreenViewController: UIViewController, UITextFieldDelegate {
         usernameTxtField.textColor = .black
         usernameTxtField.placeholder = "Username"
         usernameTxtField.borderStyle = .roundedRect
+        // # Delegate UITextFields
+        usernameTxtField.delegate = self
         return usernameTxtField
    }()
 
@@ -53,6 +55,8 @@ class LoginScreenViewController: UIViewController, UITextFieldDelegate {
         passwordTxtField.textColor = .black
         passwordTxtField.placeholder = "Password"
         passwordTxtField.borderStyle = .roundedRect
+        // # Delegate UITextFields
+        passwordTxtField.delegate = self
         return passwordTxtField
     }()
     
@@ -77,9 +81,6 @@ class LoginScreenViewController: UIViewController, UITextFieldDelegate {
         return btnLogin
     }()
 
-    
-    
-    
 // MARK: Instance of LoginViewModel
     private var loginViewModel: LoginViewModel!
     
@@ -92,26 +93,25 @@ class LoginScreenViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // MARK: Notifications for swhowing and hiding keyboard
         observeKeyboardNofitications()
         
-        // #
+        //# AutoLayout constraints
         firstViewControllerConstraints()
         
-        //MARK: LOAD SAVED USER DATA, (DON`T WORK.)
-        if loginViewModel != nil {
-            self.loginViewModel.load()        }
         
-        // # Delegate UITextFields
-        usernameTxtField.delegate = self
-        passwordTxtField.delegate = self
+        //MARK: LOAD SAVED USER DATA, (Does`t WORK.)
+        if loginViewModel != nil {
+            self.loginViewModel.load()
+        }
+        
     }
-    
     
 //  MARK: Handaling navigation controller to disable it
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.isNavigationBarHidden = true
-        usernameTxtField.becomeFirstResponder()
+//        usernameTxtField.becomeFirstResponder()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -119,14 +119,10 @@ class LoginScreenViewController: UIViewController, UITextFieldDelegate {
     }
     
     
-    // MARK: Function to return false if the input in UITextFiled is " "
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if (string == " ") {
-            return false
-        }
+//  MARK:  Disabled autorotation for the FirstViewController
+    override open var shouldAutorotate: Bool {
         return true
     }
-    
 
 // MARK: Navigation Controller for btnLogin to Login the user and move to the second screen
     @objc private func loginButtonPressed(sender: Any) {
@@ -140,6 +136,7 @@ class LoginScreenViewController: UIViewController, UITextFieldDelegate {
 //        self.loginViewModel.save()
 //         Check for UITextFields if it`s not empty then save it to UserDefaults
 //        if ((username.count != 0) && (password.count != 0)) {
+        
 //        }
         
         
@@ -168,11 +165,6 @@ class LoginScreenViewController: UIViewController, UITextFieldDelegate {
   
     }
 
-    
-//  MARK:  Disabled autorotation for the FirstViewController
-    override open var shouldAutorotate: Bool {
-        return false
-    }
 
 // MARK: -------------------Start of constraints for the first screen-------------------
     
@@ -204,30 +196,10 @@ class LoginScreenViewController: UIViewController, UITextFieldDelegate {
         ])
     }
 // MARK: -------------------End of constraints for the first screen-------------------
+
     
     
-//  MARK:  Function to move the Keyboardup on the first page
-    fileprivate func observeKeyboardNofitications() {
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(hideKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
-    
-    @objc func hideKeyboard() {
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-            self.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
-        }, completion: nil)
-        
-    }
-    
-    @objc func keyboardShow() {
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-            self.view.frame = CGRect(x: 0, y: -50, width: self.view.frame.width, height: self.view.frame.height)
-        }, completion: nil)
-    }
-//  MARK:  end of unction to move the Keyboardup on the first page
-    
-    
-//    MARK: UI
+    //    MARK: Alert for validation to inform the user about the "Incorrect input"
     
     func errorUIAlert(title: String, message: String, preferedStyle: UIAlertController.Style) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -238,6 +210,7 @@ class LoginScreenViewController: UIViewController, UITextFieldDelegate {
         self.present(alertController, animated: true, completion: nil)
     }
     
+    //    MARK: Alert for validation to inform the user "Success"
     func successUIAlert(title: String, message: String, preferedStyle: UIAlertController.Style) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let action = UIAlertAction(title: "Ok", style: .default) { (action) in
@@ -250,4 +223,3 @@ class LoginScreenViewController: UIViewController, UITextFieldDelegate {
 }
 
 // MARK: -----------------END OF FIRST VIEW CONTROLLER-----------------
-

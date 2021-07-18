@@ -10,7 +10,7 @@ import UIKit
 
 
 // MARK: -----------------START OF FIRST VIEW CONTROLLER------------------
-class LoginScreenViewController: UIViewController {
+class LoginScreenViewController: UIViewController, UITextFieldDelegate {
     
 // MARK: Backgound Image
     private lazy var loginImageView: UIImageView = {
@@ -98,12 +98,35 @@ class LoginScreenViewController: UIViewController {
         // #
         firstViewControllerConstraints()
         
-        
+        //MARK: LOAD SAVED USER DATA, (DON`T WORK.)
         if loginViewModel != nil {
-            self.loginViewModel.load()
-        }
-
+            self.loginViewModel.load()        }
+        
+        // # Delegate UITextFields
+        usernameTxtField.delegate = self
+        passwordTxtField.delegate = self
     }
+    
+    
+//  MARK: Handaling navigation controller to disable it
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.isNavigationBarHidden = true
+        usernameTxtField.becomeFirstResponder()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        navigationController?.isNavigationBarHidden = false
+    }
+    
+    
+    // MARK: Function to return false if the input in UITextFiled is " "
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if (string == " ") {
+            return false
+        }
+        return true
+    }
+    
 
 // MARK: Navigation Controller for btnLogin to Login the user and move to the second screen
     @objc private func loginButtonPressed(sender: Any) {
@@ -144,17 +167,7 @@ class LoginScreenViewController: UIViewController {
         }
   
     }
-    
-    
-    
-//  MARK: Handaling navigation controller to disable it
-    override func viewWillAppear(_ animated: Bool) {
-        navigationController?.isNavigationBarHidden = true
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        navigationController?.isNavigationBarHidden = false
-    }
+
     
 //  MARK:  Disabled autorotation for the FirstViewController
     override open var shouldAutorotate: Bool {
@@ -237,3 +250,4 @@ class LoginScreenViewController: UIViewController {
 }
 
 // MARK: -----------------END OF FIRST VIEW CONTROLLER-----------------
+

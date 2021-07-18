@@ -90,7 +90,6 @@ class LoginScreenViewController: UIViewController {
     
     
 // MARK: Function to add setups for the first view controller
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -104,8 +103,7 @@ class LoginScreenViewController: UIViewController {
         //MARK: LOAD SAVED USER DATA, (Does`t WORK.)
         if loginViewModel != nil {
             self.loginViewModel.load()
-        }
-        
+        } 
     }
     
 //  MARK: Handaling navigation controller to disable it

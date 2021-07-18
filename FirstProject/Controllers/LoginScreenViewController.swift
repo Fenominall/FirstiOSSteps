@@ -122,10 +122,11 @@ class LoginScreenViewController: UIViewController {
         return true
     }
 
-// MARK: Navigation Controller for btnLogin to Login the user and move to the second screen
+    
+    /// Function for loginButton: Check validation, saves the user data into UserDefaults, pushes the user to the SecondViewController if requirments suitable
+    /// - Parameter sender: Any
     @objc private func loginButtonPressed(sender: Any) {
         
-//        
 //        self.loginViewModel.username = self.usernameTxtField.text!
 //        self.loginViewModel.password = self.passwordTxtField.text!
 
@@ -137,20 +138,12 @@ class LoginScreenViewController: UIViewController {
         
 //        }
         
-        
         let username = self.usernameTxtField.text
         let password = self.passwordTxtField.text
         
         let isUsernameValid = AppDataValidator.validateUserName(username)
         let isPasswordValid = AppDataValidator.validatePassword(password)
-        
-//        let errorAlertMessage = "Username or Password shouldnot be empty!"
-        let successAlertMessage = "Your account created your are logged in"
-        let passwordRequirmentsAlertMessage = """
-                                  Username should be at least (min-4, max-20) charachters long.
-                                  Password can be only digits and at least 1 special charechter, should contain (min-8, max-20) charachters long.
-                                  """
-    
+
         if isUsernameValid && isPasswordValid {
             
             let secondVC = SecondViewController()
@@ -160,7 +153,6 @@ class LoginScreenViewController: UIViewController {
         } else {
             self.errorUIAlert(title: "Error", message: passwordRequirmentsAlertMessage, preferedStyle: .alert)
         }
-  
     }
 
 
@@ -197,8 +189,13 @@ class LoginScreenViewController: UIViewController {
 
     
     
-    //    MARK: Alert for validation to inform the user about the "Incorrect input"
+    //    MARK: UIAlerts for UITextField validations dependent on user interactions
     
+    /// Alert for validation to inform the user about the "Incorrect input"
+    /// - Parameters:
+    ///   - title: Dismiss
+    ///   - message: let passwordRequirmentsAlertMessage
+    ///   - preferedStyle: .alert
     func errorUIAlert(title: String, message: String, preferedStyle: UIAlertController.Style) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let action = UIAlertAction(title: "Dismiss", style: .destructive) { (action) in
@@ -208,7 +205,11 @@ class LoginScreenViewController: UIViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
-    //    MARK: Alert for validation to inform the user "Success"
+    /// Alert for validation to inform the user "Success"
+    /// - Parameters:
+    ///   - title: Ok
+    ///   - message: let successAlertMessage
+    ///   - preferedStyle: .alert
     func successUIAlert(title: String, message: String, preferedStyle: UIAlertController.Style) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let action = UIAlertAction(title: "Ok", style: .default) { (action) in
@@ -217,6 +218,15 @@ class LoginScreenViewController: UIViewController {
         alertController.addAction(action)
         self.present(alertController, animated: true, completion: nil)
     }
+    
+    // MARK: # AlertsMessages
+//        let errorAlertMessage = "Username or Password shouldnot be empty!"
+    let successAlertMessage = "Your account created your are logged in"
+    let passwordRequirmentsAlertMessage = """
+                              Username should be at least (min-4, max-20) charachters long.
+                              Password can be only digits and at least 1 special charechter, should contain (min-8, max-20) charachters long.
+                              """
+
     
 }
 

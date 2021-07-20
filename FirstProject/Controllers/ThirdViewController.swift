@@ -64,7 +64,7 @@ class ThirdViewController: UIViewController {
         saveUserDataButton.tintColor = .white
         saveUserDataButton.layer.cornerRadius = 5
         saveUserDataButton.clipsToBounds = true
-        saveUserDataButton.isEnabled = true
+        saveUserDataButton.isEnabled = false
         saveUserDataButton.addTarget(self, action: #selector(updateDataButton), for: .touchUpInside)
         return saveUserDataButton
     }()
@@ -94,7 +94,7 @@ class ThirdViewController: UIViewController {
         super.viewDidLoad()
         
 //        Keboard taggling
-        observeKeyboardNofitications()
+        observerKeyboardNotifications()
         
         setUpView()
         
@@ -132,23 +132,39 @@ class ThirdViewController: UIViewController {
         print(updateUsernameTextField.text ?? "no value")
         print(updatePasswordTextField.text ?? "no value")
     }
-     
+    
 //    Button to update UserDefaults and return back to the SecondViewController
     @objc private func updateDataButton() {
-//        let updatedUsername = updateUsernameTextField.text!
-//        let updatedPassword = updatePasswordTextField.text!
+        
+        let updatedUsername = self.updateUsernameTextField.text
+        let updatedPassword = self.updatePasswordTextField.text
+        
+        let isUpdatedUsernameValid = AppDataValidator.validateUserName(updatedUsername)
+        let isUpdatedPasswordValid = AppDataValidator.validatePassword(updatedPassword)
+        
+        
+        if isUpdatedUsernameValid && isUpdatedPasswordValid {
+            
+            saveUserDataButton.isEnabled = true
+            
+            // # Success Alert
+            AppAlerts.showIncompleteSuccessUIAlert(on: self)
+        } else {
+            // # Error Alert
+            AppAlerts.showIncompleteErrorUIAlert(on: self)
+        }
 ////
 //        defaults.setValue(updatedUsername, forKey: UserKeysDefaults.keyUsername)
 //        defaults.setValue(updatedPassword, forKey: UserKeysDefaults.keyPassword)
         
-        var currentViewController = self.navigationController?.viewControllers
+//        var currentViewController = self.navigationController?.viewControllers
         
-        currentViewController?.removeLast()
+//        currentViewController?.removeLast()
         
-        if let newController = currentViewController {
-            self.navigationController?.popViewController(animated: true)
-            self.navigationController?.viewControllers = newController
-        }
+//        if let newController = currentViewController {
+//            self.navigationController?.popViewController(animated: true)
+//            self.navigationController?.viewControllers = newController
+//        }
     }
     
 // Functions to add subviews of first screen elements
@@ -197,27 +213,7 @@ class ThirdViewController: UIViewController {
         view.backgroundColor = .orange
     }
     
-    //    Function to move the content with the Keyboard
-    fileprivate func observeKeyboardNofitications() {
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(hideKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
-    
-    @objc func keyboardShow() {
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-            self.view.frame = CGRect(x: 0, y: -80, width: self.view.frame.width, height: self.view.frame.height)
-        }, completion: nil)
-    }
-    
-    @objc func hideKeyboard() {
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-            self.view.frame = CGRect(x: 0, y: -50, width: self.view.frame.width, height: self.view.frame.height)
-        }, completion: nil)
-    }
-    
 }
-//    //    Function to move the content with the Keyboard
-
 
 //-------------------END of constraints for the FOURTH screen-------------------
 

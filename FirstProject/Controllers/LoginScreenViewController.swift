@@ -121,22 +121,10 @@ class LoginScreenViewController: UIViewController {
     override open var shouldAutorotate: Bool {
         return true
     }
-
     
     /// Function for loginButton: Check validation, saves the user data into UserDefaults, pushes the user to the SecondViewController if requirments suitable
     /// - Parameter sender: Any
     @objc private func loginButtonPressed(sender: Any) {
-        
-//        self.loginViewModel.username = self.usernameTxtField.text!
-//        self.loginViewModel.password = self.passwordTxtField.text!
-
-        
-//        self.loginViewModel = LoginViewModel(username: username, password: password)
-//        self.loginViewModel.save()
-//         Check for UITextFields if it`s not empty then save it to UserDefaults
-//        if ((username.count != 0) && (password.count != 0)) {
-        
-//        }
         
         let username = self.usernameTxtField.text
         let password = self.passwordTxtField.text
@@ -149,9 +137,11 @@ class LoginScreenViewController: UIViewController {
             let secondVC = SecondViewController()
             self.navigationController?.pushViewController(secondVC, animated: true)
             
-            self.successUIAlert(title: "Success", message: successAlertMessage, preferedStyle: .alert)
+            // # Success Alert
+            AppAlerts.showIncompleteSuccessUIAlert(on: self)
         } else {
-            self.errorUIAlert(title: "Error", message: passwordRequirmentsAlertMessage, preferedStyle: .alert)
+            // # Error Alert
+            AppAlerts.showIncompleteErrorUIAlert(on: self)
         }
     }
 
@@ -186,47 +176,6 @@ class LoginScreenViewController: UIViewController {
         ])
     }
 // MARK: -------------------End of constraints for the first screen-------------------
-
-    
-    
-    //    MARK: UIAlerts for UITextField validations dependent on user interactions
-    
-    /// Alert for validation to inform the user about the "Incorrect input"
-    /// - Parameters:
-    ///   - title: Dismiss
-    ///   - message: let passwordRequirmentsAlertMessage
-    ///   - preferedStyle: .alert
-    func errorUIAlert(title: String, message: String, preferedStyle: UIAlertController.Style) {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let action = UIAlertAction(title: "Dismiss", style: .destructive) { (action) in
-            
-        }
-        alertController.addAction(action)
-        self.present(alertController, animated: true, completion: nil)
-    }
-    
-    /// Alert for validation to inform the user "Success"
-    /// - Parameters:
-    ///   - title: Ok
-    ///   - message: let successAlertMessage
-    ///   - preferedStyle: .alert
-    func successUIAlert(title: String, message: String, preferedStyle: UIAlertController.Style) {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let action = UIAlertAction(title: "Ok", style: .default) { (action) in
-            
-        }
-        alertController.addAction(action)
-        self.present(alertController, animated: true, completion: nil)
-    }
-    
-    // MARK: # AlertsMessages
-//        let errorAlertMessage = "Username or Password shouldnot be empty!"
-    let successAlertMessage = "Your account created your are logged in"
-    let passwordRequirmentsAlertMessage = """
-                              Username should be at least (min-4, max-20) charachters long.
-                              Password can be only digits and at least 1 special charechter, should contain (min-8, max-20) charachters long.
-                              """
-
     
 }
 

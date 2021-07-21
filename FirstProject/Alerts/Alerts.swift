@@ -41,13 +41,36 @@ struct AppAlerts {
     static func showIncompleteSuccessUIAlert(on vc: UIViewController) {
         successUIAlert(on: vc, title: "Success", message: successAlertMessage, preferedStyle: .alert)
     }
-  
+    
+
+    
+    
+    
+    //    Test Alert
+    private static func updatedDataUIAler(on viewController: UIViewController, title: String, message: String, preferedStyle: UIAlertController.Style) {
+        let successUpdatedDataUIAlert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let updateAction = UIAlertAction(title: "OK", style: .default) { (_) -> () in
+            
+            let secondVC = SecondViewController()
+            let navController = UINavigationController(rootViewController: secondVC)
+            navController.modalPresentationStyle = .fullScreen
+            viewController.present(navController, animated: true)
+        }
+
+        successUpdatedDataUIAlert.addAction(updateAction)
+        viewController.present(successUpdatedDataUIAlert, animated: true, completion: nil)
+    }
+    
+    static func showIncompleteUpdatedDataAlert(on vc: UIViewController) {
+        updatedDataUIAler(on: vc, title: "Success", message: successUpdatedDataMessage, preferedStyle: .alert)
+    }
 }
 
 
 
 // MARK: # AlertsMessages
 //        let errorAlertMessage = "Username or Password shouldnot be empty!"
+let successUpdatedDataMessage = "Your data was successfully updated"
 let successAlertMessage = "Your account created your are logged in"
 let passwordRequirmentsAlertMessage = """
                           Username should be at least (min-4, max-20) charachters long.

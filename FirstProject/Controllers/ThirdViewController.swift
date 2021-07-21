@@ -39,7 +39,7 @@ class ThirdViewController: UIViewController {
         updateUsernameTextField.textColor = .black
         updateUsernameTextField.placeholder = "Update Username"
         updateUsernameTextField.borderStyle = .roundedRect
-        updateUsernameTextField.addTarget(self, action: Selector(("textFieldEditingChanged:")), for: .editingChanged)
+        updateUsernameTextField.addTarget(self, action: #selector(textFieldEditingChanged(_:)), for: .editingChanged)
         return updateUsernameTextField
     }()
    
@@ -51,7 +51,7 @@ class ThirdViewController: UIViewController {
         updatePasswordTextField.textColor = .black
         updatePasswordTextField.placeholder = "Update Password"
         updatePasswordTextField.borderStyle = .roundedRect
-        updatePasswordTextField.addTarget(self, action: Selector(("textFieldEditingChanged:")), for: .editingChanged)
+        updatePasswordTextField.addTarget(self, action: #selector(textFieldEditingChanged(_:)), for: .editingChanged)
         return updatePasswordTextField
     }()
     
@@ -74,7 +74,7 @@ class ThirdViewController: UIViewController {
         let backGroundColorSwitcher = UISwitch()
         backGroundColorSwitcher.frame = CGRect(x: 100, y: 100, width: 0, height: 0)
         backGroundColorSwitcher.setOn(false, animated: true)
-        backGroundColorSwitcher.addTarget(self, action: #selector(switchChanged), for: .valueChanged)
+        backGroundColorSwitcher.addTarget(self, action: #selector(switchChanged), for: .editingChanged)
         return backGroundColorSwitcher
     }()
     
@@ -128,7 +128,17 @@ class ThirdViewController: UIViewController {
     }
     
 //    Check editing in UITextFields
-    @objc private func textFieldEditingChanged(_ sender: UITextField) {
+    @objc private func textFieldEditingChanged(_ sender: Any) {
+        
+        let updatedUsername = self.updateUsernameTextField.text
+        let updatedPassword = self.updatePasswordTextField.text
+        
+        if AppDataValidator.validateUserName(updatedUsername) && AppDataValidator.validatePassword(updatedPassword) {
+            // #correct password
+            saveUserDataButton.isEnabled = true
+        } else {
+            saveUserDataButton.isEnabled = false
+        }
         print(updateUsernameTextField.text ?? "no value")
         print(updatePasswordTextField.text ?? "no value")
     }
@@ -144,11 +154,8 @@ class ThirdViewController: UIViewController {
         
         
         if isUpdatedUsernameValid && isUpdatedPasswordValid {
-            
-            saveUserDataButton.isEnabled = true
-            
             // # Success Alert
-            AppAlerts.showIncompleteSuccessUIAlert(on: self)
+            AppAlerts.showIncompleteUpdatedDataAlert(on: self)
         } else {
             // # Error Alert
             AppAlerts.showIncompleteErrorUIAlert(on: self)

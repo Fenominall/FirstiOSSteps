@@ -43,6 +43,7 @@ class LoginScreenViewController: UIViewController {
         usernameTxtField.textColor = .black
         usernameTxtField.placeholder = "Username"
         usernameTxtField.borderStyle = .roundedRect
+        usernameTxtField.layer.borderWidth = 0
         return usernameTxtField
    }()
 
@@ -54,6 +55,7 @@ class LoginScreenViewController: UIViewController {
         passwordTxtField.textColor = .black
         passwordTxtField.placeholder = "Password"
         passwordTxtField.borderStyle = .roundedRect
+        passwordTxtField.layer.borderWidth = 0
         return passwordTxtField
     }()
     
@@ -77,11 +79,7 @@ class LoginScreenViewController: UIViewController {
         btnLogin.addTarget(self, action: #selector(loginButtonPressed), for: .touchUpInside)
         return btnLogin
     }()
-    
-    
-    // MARK: LoginViewModel
-    private var loginViewModel: LoginViewModel!
-    
+        
     
     //MARK: - ViewController lifecycle
     override func viewDidLoad() {
@@ -127,16 +125,26 @@ class LoginScreenViewController: UIViewController {
     
     /// Function for loginButton: Check validation, saves the user data into UserDefaults, pushes the user to the SecondViewController if requirments suitable
     /// - Parameter sender: Any
-    @objc private func loginButtonPressed(sender: UIButton) {
+    @objc private func loginButtonPressed(_ sender: UIButton) {
                         
-        
-        
         let username = self.usernameTxtField.text!
         let password = self.passwordTxtField.text!
         
-        
         let isUsernameValid = AppDataValidator.validateUserName(username)
         let isPasswordValid = AppDataValidator.validatePassword(password)
+        
+        
+        if username.isEmpty && password.isEmpty {
+            AppAlerts.emptyFieldsErrorAlert(on: self)
+        }
+        
+        if username.isEmpty {
+            AppAlerts.emptyUsernameErrorAlert(on: self)
+        }
+        
+        if password.isEmpty {
+            AppAlerts.emptyPasswordErrorAlert(on: self)
+        }
         
         
         if isUsernameValid && isPasswordValid {
@@ -144,10 +152,6 @@ class LoginScreenViewController: UIViewController {
             // Navigation controller
             let secondVC = SecondViewController()
             self.navigationController?.pushViewController(secondVC, animated: true)
-            
-            self.loginViewModel = LoginViewModel(username: username, password: password)
-            self.loginViewModel.saveUserData()
-                        
             
             // # Phone Vibration
             HapticsManager.shared.vibrateForType(for: .success)
@@ -165,8 +169,6 @@ class LoginScreenViewController: UIViewController {
             
             // # Error Alert
             AppAlerts.showIncompleteErrorUIAlert(on: self)
-            
-            
         }
     }
 

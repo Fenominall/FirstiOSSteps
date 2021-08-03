@@ -8,16 +8,31 @@
 import Foundation
 
 // MARK: UserModel
+
 struct User: Codable {
     
-    var username: String
-    var password: String
-    
-    init(vm: LoginViewModel) {
-        self.username = vm.username
-        self.password = vm.password
-    }
+    var username: String = ""
+    var password: String = ""
 }
+
+
+
+
+
+
+
+
+
+//struct User: Codable {
+//
+//    var username: String
+//    var password: String
+//
+//    init(vm: LoginViewModel) {
+//        self.username = vm.username
+//        self.password = vm.password
+//    }
+//}
 
 
 // MARK: Protocol to compare objects

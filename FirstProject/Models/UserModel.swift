@@ -8,7 +8,8 @@
 import Foundation
 
 // MARK: UserModel
-class User: Codable {
+struct User: Codable {
+    
     var username: String
     var password: String
     
@@ -17,10 +18,11 @@ class User: Codable {
         self.password = vm.password
     }
 }
-		
+
+
 // MARK: Protocol to compare objects
-extension User: Equatable {
-    static func == (lhs: User, rhs: User) -> Bool {
-        return lhs.username == rhs.username && lhs.password == rhs.password
-    }
-}
+//extension User: Equatable {
+//    static func == (lhs: User, rhs: User) -> Bool {
+//        return lhs.username == rhs.username && lhs.password == rhs.password
+//    }
+//}

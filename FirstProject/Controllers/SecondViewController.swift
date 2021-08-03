@@ -82,6 +82,15 @@ class SecondViewController: UIViewController {
         return buttonsContainerView
     }()
     
+    
+//    Test Scroll View
+//    private lazy var scrollView: UIScrollView = {
+//        let scrollView = UIScrollView(frame: view.bounds)
+//        scrollView.translatesAutoresizingMaskIntoConstraints = false
+//        return scrollView
+//    }()
+        
+    
 // Function to add setups for the second view controller
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -104,16 +113,8 @@ class SecondViewController: UIViewController {
     @objc private func LogOutUserPressed() {
         
 //      MARK: Recieving the current array of controllers
-        var currentControllerArray = self.navigationController?.viewControllers
-        
-//      MARK: Removing the last controller
-        currentControllerArray?.removeLast()
-        
-//      MARK: Assign Controller
-        if let newController = currentControllerArray {
-            self.navigationController?.popViewController(animated: true)
-            self.navigationController?.viewControllers = newController
-        }
+        let rootVC = LoginScreenViewController()
+        navigationController?.pushViewController(rootVC, animated: true)
     }
     
     
@@ -131,7 +132,12 @@ class SecondViewController: UIViewController {
 //-------------------Start of constraints for the second screen-------------------
 // Functions to add subviews of first second elements
 
-    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+//        view.addSubview(scrollView)
+
+    }
     
 ////    Constraints for the background image on the second screen
     func setupSecondScreenBackImageConstraints() {
@@ -153,7 +159,6 @@ class SecondViewController: UIViewController {
         view.addSubview(userImageContainerView)
         userImageContainerView.addSubview(userGreetMessageLabel)
         userImageContainerView.addSubview(userUImageView)
-
 
         NSLayoutConstraint.activate([
 
@@ -182,7 +187,7 @@ class SecondViewController: UIViewController {
         view.addSubview(buttonsContainerView)
         buttonsContainerView.addSubview(updateUserDataButton)
         buttonsContainerView.addSubview(logOutUserButton)
-
+        
         NSLayoutConstraint.activate([
             buttonsContainerView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 1),
             buttonsContainerView.topAnchor.constraint(equalTo: view.topAnchor),

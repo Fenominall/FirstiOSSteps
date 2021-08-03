@@ -11,6 +11,7 @@ import UIKit
 
 // MARK: -----------------START OF FIRST VIEW CONTROLLER------------------
 class LoginScreenViewController: UIViewController {
+
     
 // MARK: Backgound Image
     private lazy var loginImageView: UIImageView = {
@@ -42,8 +43,6 @@ class LoginScreenViewController: UIViewController {
         usernameTxtField.textColor = .black
         usernameTxtField.placeholder = "Username"
         usernameTxtField.borderStyle = .roundedRect
-        // # Delegate UITextFields
-        usernameTxtField.delegate = self
         return usernameTxtField
    }()
 
@@ -55,8 +54,6 @@ class LoginScreenViewController: UIViewController {
         passwordTxtField.textColor = .black
         passwordTxtField.placeholder = "Password"
         passwordTxtField.borderStyle = .roundedRect
-        // # Delegate UITextFields
-        passwordTxtField.delegate = self
         return passwordTxtField
     }()
     
@@ -80,30 +77,31 @@ class LoginScreenViewController: UIViewController {
         btnLogin.addTarget(self, action: #selector(loginButtonPressed), for: .touchUpInside)
         return btnLogin
     }()
-
-// MARK: Instance of LoginViewModel
+    
+    
+    // MARK: LoginViewModel
     private var loginViewModel: LoginViewModel!
     
-
-// MARK: Instance of ValidationViewModel
-//    private var validationViewModel: UsernamePasswordViewModel = UsernamePasswordViewModel()
     
-    
-// MARK: Function to add setups for the first view controller
+    //MARK: - ViewController lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // MARK: Notifications for swhowing and hiding keyboard
         observeKeyboardNofitications()
         
+        setDelegates()
+        
         //# AutoLayout constraints
         firstViewControllerConstraints()
         
+//        saveUsernameAndPassword()
         
-        //MARK: LOAD SAVED USER DATA, (Does`t WORK.)
-        if loginViewModel != nil {
-            self.loginViewModel.load()
-        } 
+    }
+    
+    func setDelegates() {
+        usernameTxtField.delegate = self
+        passwordTxtField.delegate = self
     }
     
 //  MARK: Handaling navigation controller to disable it
@@ -116,32 +114,59 @@ class LoginScreenViewController: UIViewController {
         navigationController?.isNavigationBarHidden = false
     }
     
-    
-//  MARK:  Disabled autorotation for the FirstViewController
-    override open var shouldAutorotate: Bool {
-        return true
-    }
+    //   MARK: Save password in UITextField placeholders
+//        private func saveUsernameAndPassword() {
+//
+//            if let enteredUsername = defaults.string(forKey: UserKeysDefaults.keyUsername) {
+//                usernameTxtField.text = enteredUsername
+//            }
+//            if let enteredPassword = defaults.string(forKey: UserKeysDefaults.keyPassword) {
+//                passwordTxtField.text = enteredPassword
+//            }
+//        }
     
     /// Function for loginButton: Check validation, saves the user data into UserDefaults, pushes the user to the SecondViewController if requirments suitable
     /// - Parameter sender: Any
-    @objc private func loginButtonPressed(sender: Any) {
+    @objc private func loginButtonPressed(sender: UIButton) {
+                        
         
-        let username = self.usernameTxtField.text
-        let password = self.passwordTxtField.text
+        
+        let username = self.usernameTxtField.text!
+        let password = self.passwordTxtField.text!
+        
         
         let isUsernameValid = AppDataValidator.validateUserName(username)
         let isPasswordValid = AppDataValidator.validatePassword(password)
-
+        
+        
         if isUsernameValid && isPasswordValid {
             
+            // Navigation controller
             let secondVC = SecondViewController()
             self.navigationController?.pushViewController(secondVC, animated: true)
             
+            self.loginViewModel = LoginViewModel(username: username, password: password)
+            self.loginViewModel.saveUserData()
+                        
+            
+            // # Phone Vibration
+            HapticsManager.shared.vibrateForType(for: .success)
+            
             // # Success Alert
             AppAlerts.showIncompleteSuccessUIAlert(on: self)
+            
         } else {
+            
+            // # Phone Vibration
+            HapticsManager.shared.vibrateForType(for: .error)
+            
+            // # Button shake
+            sender.shake()
+            
             // # Error Alert
             AppAlerts.showIncompleteErrorUIAlert(on: self)
+            
+            
         }
     }
 

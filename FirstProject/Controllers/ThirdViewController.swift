@@ -40,6 +40,7 @@ class ThirdViewController: UIViewController {
         updateUsernameTextField.placeholder = "Update Username"
         updateUsernameTextField.borderStyle = .roundedRect
         updateUsernameTextField.addTarget(self, action: #selector(textFieldEditingChanged(_:)), for: .editingChanged)
+        updateUsernameTextField.delegate = self
         return updateUsernameTextField
     }()
    
@@ -52,6 +53,7 @@ class ThirdViewController: UIViewController {
         updatePasswordTextField.placeholder = "Update Password"
         updatePasswordTextField.borderStyle = .roundedRect
         updatePasswordTextField.addTarget(self, action: #selector(textFieldEditingChanged(_:)), for: .editingChanged)
+        updatePasswordTextField.delegate = self
         return updatePasswordTextField
     }()
     
@@ -74,7 +76,7 @@ class ThirdViewController: UIViewController {
         let backGroundColorSwitcher = UISwitch()
         backGroundColorSwitcher.frame = CGRect(x: 100, y: 100, width: 0, height: 0)
         backGroundColorSwitcher.setOn(false, animated: true)
-        backGroundColorSwitcher.addTarget(self, action: #selector(switchChanged), for: .editingChanged)
+        backGroundColorSwitcher.addTarget(self, action: #selector(switchChanged), for: .valueChanged)
         return backGroundColorSwitcher
     }()
     
@@ -100,21 +102,8 @@ class ThirdViewController: UIViewController {
         
         elementsOfThirdScreenUIStack()
         
-        
-//        saveUpdatedUsernameAndPassword()
-        
     }
 
-//    Save input with UserDefaults in UITextFields
-//    private func saveUpdatedUsernameAndPassword() {
-//        if let updateUsername = UserDefaults.standard.string(forKey: UserKeysDefaults.keyUsername) {
-//            updateUsernameTextField.text = updateUsername
-//        }
-//        if let updatePassword = UserDefaults.standard.string(forKey: UserKeysDefaults.keyPassword) {
-//            updatePasswordTextField.text = updatePassword
-//        }
-//
-//    }
     
 //    Switch Change
     @objc func switchChanged(paramTarget: UISwitch) {
@@ -133,7 +122,10 @@ class ThirdViewController: UIViewController {
         let updatedUsername = self.updateUsernameTextField.text
         let updatedPassword = self.updatePasswordTextField.text
         
-        if AppDataValidator.validateUserName(updatedUsername) && AppDataValidator.validatePassword(updatedPassword) {
+        let isUpdatedUsername = AppDataValidator.validateUserName(updatedUsername)
+        let isUpdatedPassword = AppDataValidator.validatePassword(updatedPassword)
+        
+        if isUpdatedUsername && isUpdatedPassword {
             // #correct password
             saveUserDataButton.isEnabled = true
         } else {
@@ -154,24 +146,23 @@ class ThirdViewController: UIViewController {
         
         
         if isUpdatedUsernameValid && isUpdatedPasswordValid {
+            
+            // # Vibration for success
+            HapticsManager.shared.vibrateForType(for: .success)
+            
             // # Success Alert
             AppAlerts.showIncompleteUpdatedDataAlert(on: self)
+
         } else {
+            
+            // # Vibration for the Error
+            HapticsManager.shared.vibrateForType(for: .error)
+            
             // # Error Alert
             AppAlerts.showIncompleteErrorUIAlert(on: self)
+
         }
-////
-//        defaults.setValue(updatedUsername, forKey: UserKeysDefaults.keyUsername)
-//        defaults.setValue(updatedPassword, forKey: UserKeysDefaults.keyPassword)
         
-//        var currentViewController = self.navigationController?.viewControllers
-        
-//        currentViewController?.removeLast()
-        
-//        if let newController = currentViewController {
-//            self.navigationController?.popViewController(animated: true)
-//            self.navigationController?.viewControllers = newController
-//        }
     }
     
 // Functions to add subviews of first screen elements
@@ -216,7 +207,6 @@ class ThirdViewController: UIViewController {
     
 // Function to stores background image of third screen
     func setUpView() {
-//        view.addSubview(thirdBackImage)
         view.backgroundColor = .orange
     }
     

@@ -16,13 +16,6 @@ struct User: Codable {
 }
 
 
-
-
-
-
-
-
-
 //struct User: Codable {
 //
 //    var username: String

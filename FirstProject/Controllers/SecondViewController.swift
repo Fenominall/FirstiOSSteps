@@ -55,7 +55,7 @@ class SecondViewController: UIViewController {
         return updateUserDataBtn
     }()
     
-    // #
+    // # Button to the source code on GitHub
     private lazy var sourceCodeButton: UIButton = {
         let sourceCodeButton = UIButton(type: .system)
         sourceCodeButton.translatesAutoresizingMaskIntoConstraints = false
@@ -122,6 +122,7 @@ class SecondViewController: UIViewController {
         navigationController?.pushViewController(rootVC, animated: true)
     }
     
+    // navigation controller for WebUIViewController
     @objc private func didTapSourceCodeButton() {
         guard let url = URL(string: "https://github.com/Fenominall/FirstiOSSteps") else { return }
         let webViewViewController = WebUIViewController(url: url, title: "GitHub")

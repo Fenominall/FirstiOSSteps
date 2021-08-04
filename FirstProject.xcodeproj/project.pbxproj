@@ -20,6 +20,7 @@
 		4FE2E46C26AC831800F707A6 /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE2E46B26AC831800F707A6 /* HapticsManager.swift */; };
 		4FE55FD126A33535003874B1 /* ExtensionsForLoginScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE55FD026A33535003874B1 /* ExtensionsForLoginScreenViewController.swift */; };
 		4FE69EC926A2B80E00F23965 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE69EC826A2B80E00F23965 /* UserViewModel.swift */; };
+		4FEF699D26BAC0190022CAFD /* WebUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEF699C26BAC0190022CAFD /* WebUIViewController.swift */; };
 		4FF9064526543BEF001387C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF9064426543BEF001387C9 /* AppDelegate.swift */; };
 		4FF9064726543BEF001387C9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF9064626543BEF001387C9 /* SceneDelegate.swift */; };
 		4FF9064E26543BF1001387C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FF9064D26543BF1001387C9 /* Assets.xcassets */; };
@@ -39,6 +40,7 @@
 		4FE2E46B26AC831800F707A6 /* HapticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HapticsManager.swift; path = "../New Group/HapticsManager.swift"; sourceTree = "<group>"; };
 		4FE55FD026A33535003874B1 /* ExtensionsForLoginScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionsForLoginScreenViewController.swift; sourceTree = "<group>"; };
 		4FE69EC826A2B80E00F23965 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
+		4FEF699C26BAC0190022CAFD /* WebUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebUIViewController.swift; sourceTree = "<group>"; };
 		4FF9064126543BEF001387C9 /* FirstProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FirstProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FF9064426543BEF001387C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4FF9064626543BEF001387C9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 				4F695E8F2662B6C200606D03 /* LoginScreenViewController.swift */,
 				4FD2745B2683317300C8FA32 /* SecondViewController.swift */,
 				4FD2745D268332F700C8FA32 /* ThirdViewController.swift */,
+				4FEF699C26BAC0190022CAFD /* WebUIViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -252,6 +255,7 @@
 				4F695E902662B6C200606D03 /* LoginScreenViewController.swift in Sources */,
 				4F05462F26B9810B006C5A04 /* UIButtonAnimationsExtension.swift in Sources */,
 				4FD4D58E26833C8D0078633E /* AppDataValidator.swift in Sources */,
+				4FEF699D26BAC0190022CAFD /* WebUIViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

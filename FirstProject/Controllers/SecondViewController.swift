@@ -46,13 +46,26 @@ class SecondViewController: UIViewController {
     private lazy var updateUserDataButton: UIButton = {
         let updateUserDataBtn = UIButton(type: .system)
         updateUserDataBtn.translatesAutoresizingMaskIntoConstraints = false
-        updateUserDataBtn.backgroundColor = .orange
+        updateUserDataBtn.backgroundColor = .blue
         updateUserDataBtn.setTitle("Update personal info", for: .normal)
         updateUserDataBtn.tintColor = .white
         updateUserDataBtn.layer.cornerRadius = 5
         updateUserDataBtn.clipsToBounds = true
         updateUserDataBtn.addTarget(self, action: #selector(UpdateButtonPressed), for: .touchUpInside)
         return updateUserDataBtn
+    }()
+    
+    // #
+    private lazy var sourceCodeButton: UIButton = {
+        let sourceCodeButton = UIButton(type: .system)
+        sourceCodeButton.translatesAutoresizingMaskIntoConstraints = false
+        sourceCodeButton.backgroundColor = .blue
+        sourceCodeButton.setTitle("App Source Code", for: .normal)
+        sourceCodeButton.tintColor = .white
+        sourceCodeButton.layer.cornerRadius = 5
+        sourceCodeButton.clipsToBounds = true
+        sourceCodeButton.addTarget(self, action: #selector(didTapSourceCodeButton), for: .touchUpInside)
+        return sourceCodeButton
     }()
     
 // Log out Button to log out the user to the first screen
@@ -107,6 +120,14 @@ class SecondViewController: UIViewController {
     @objc private func UpdateButtonPressed() {
         let rootVC = ThirdViewController()
         navigationController?.pushViewController(rootVC, animated: true)
+    }
+    
+    @objc private func didTapSourceCodeButton() {
+        guard let url = URL(string: "https://github.com/Fenominall/FirstiOSSteps") else { return }
+        let webViewViewController = WebUIViewController(url: url, title: "GitHub")
+        let navVc = UINavigationController(rootViewController: webViewViewController)
+        navVc.modalPresentationStyle = .fullScreen
+        present(navVc, animated: true, completion: nil)
     }
 
 //    Navigation Button to FirstViewController
@@ -186,6 +207,7 @@ class SecondViewController: UIViewController {
         
         view.addSubview(buttonsContainerView)
         buttonsContainerView.addSubview(updateUserDataButton)
+        buttonsContainerView.addSubview(sourceCodeButton)
         buttonsContainerView.addSubview(logOutUserButton)
         
         NSLayoutConstraint.activate([
@@ -199,12 +221,19 @@ class SecondViewController: UIViewController {
             updateUserDataButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
             updateUserDataButton.heightAnchor.constraint(equalToConstant: 50),
             updateUserDataButton.centerXAnchor.constraint(equalTo: buttonsContainerView.centerXAnchor),
+            
+            sourceCodeButton.topAnchor.constraint(equalTo: updateUserDataButton.bottomAnchor, constant: 15),
+            sourceCodeButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
+            sourceCodeButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
+            sourceCodeButton.heightAnchor.constraint(equalToConstant: 50),
+            sourceCodeButton.centerXAnchor.constraint(equalTo: updateUserDataButton.centerXAnchor),
+            
 
             //  Constraints for LOG OUT Button on the second screen
             logOutUserButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
             logOutUserButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
             logOutUserButton.heightAnchor.constraint(equalToConstant: 50),
-            logOutUserButton.topAnchor.constraint(equalTo: updateUserDataButton.bottomAnchor, constant: 15),
+            logOutUserButton.topAnchor.constraint(equalTo: sourceCodeButton.bottomAnchor, constant: 15),
             logOutUserButton.centerXAnchor.constraint(equalTo: updateUserDataButton.centerXAnchor),
         ])
     }

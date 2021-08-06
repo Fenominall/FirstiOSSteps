@@ -20,7 +20,6 @@ extension UIButton {
         pulse.repeatCount = 2
         pulse.initialVelocity = 0.5
         pulse.damping = 1.0
-
         layer.add(pulse, forKey: nil)
 
     }
@@ -33,7 +32,6 @@ extension UIButton {
         flash.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
         flash.autoreverses = true
         flash.repeatCount = 3
-
         layer.add(flash, forKey: nil)
 
     }
@@ -51,6 +49,5 @@ extension UIButton {
         shake.toValue = toValue
         layer.add(shake, forKey: nil)
     }
-
 }
 

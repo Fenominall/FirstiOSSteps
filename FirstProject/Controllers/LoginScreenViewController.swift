@@ -126,9 +126,9 @@ class LoginScreenViewController: UIViewController {
     /// Function for loginButton: Check validation, saves the user data into UserDefaults, pushes the user to the SecondViewController if requirments suitable
     /// - Parameter sender: Any
     @objc private func loginButtonPressed(_ sender: UIButton) {
-                        
-        let username = self.usernameTxtField.text!
-        let password = self.passwordTxtField.text!
+        
+        guard let username = usernameTxtField.text,
+              let password = passwordTxtField.text else { return }
         
         let isUsernameValid = AppDataValidator.validateUserName(username)
         let isPasswordValid = AppDataValidator.validatePassword(password)
@@ -145,7 +145,6 @@ class LoginScreenViewController: UIViewController {
         if password.isEmpty {
             AppAlerts.emptyPasswordErrorAlert(on: self)
         }
-        
         
         if isUsernameValid && isPasswordValid {
             

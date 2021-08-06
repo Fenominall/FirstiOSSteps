@@ -82,14 +82,14 @@ class SecondViewController: UIViewController {
     }()
     
 //    Container to autolayout two place two elements User Login and User image
-    private let userImageContainerView: UIView = {
+    private lazy var userImageContainerView: UIView = {
         let topImageContainer = UIView(frame: .zero)
         topImageContainer.translatesAutoresizingMaskIntoConstraints = false
         return topImageContainer
     }()
     
 //    Containter to autoplace button under the frinst autolayout container
-    private let buttonsContainerView: UIView = {
+    private lazy var buttonsContainerView: UIView = {
         let buttonsContainerView = UIView(frame: .zero)
         buttonsContainerView.translatesAutoresizingMaskIntoConstraints = false
         return buttonsContainerView

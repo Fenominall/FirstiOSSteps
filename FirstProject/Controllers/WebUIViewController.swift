@@ -10,7 +10,7 @@ import WebKit
 
 class WebUIViewController: UIViewController {
     
-    private let webView: WKWebView = {
+    private lazy var webView: WKWebView = {
         let preferences = WKWebpagePreferences()
         preferences.allowsContentJavaScript = true
         let configuration = WKWebViewConfiguration()
@@ -36,7 +36,7 @@ class WebUIViewController: UIViewController {
         super.viewDidLoad()
         
         webViewSetUp()
-        configureButtons()
+        configureWebViewButtons()
     }
     
     
@@ -51,16 +51,16 @@ class WebUIViewController: UIViewController {
         webView.load(URLRequest(url: url))
     }
     
-    private func configureButtons() {
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(didTapDone))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(didTapRefresh))
+    private func configureWebViewButtons() {
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(didTapDoneButton))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(didTapRefreshButton))
     }
     
-    @objc private func didTapDone() {
+    @objc private func didTapDoneButton() {
         dismiss(animated: true, completion: nil)
     }
     
-    @objc private func didTapRefresh() {
+    @objc private func didTapRefreshButton() {
         webView.load(URLRequest(url: url))
     }
     

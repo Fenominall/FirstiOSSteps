@@ -9,7 +9,7 @@ import Foundation
 
 // MARK: UserModel
 
-struct User: Codable {
+public struct User: Codable {
     
     var username: String = ""
     var password: String = ""

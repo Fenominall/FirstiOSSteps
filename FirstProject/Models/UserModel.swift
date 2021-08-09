@@ -8,7 +8,6 @@
 import Foundation
 
 // MARK: UserModel
-
 public struct User: Codable {
     
     var username: String = ""

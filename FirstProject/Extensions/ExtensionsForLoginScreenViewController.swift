@@ -56,3 +56,16 @@ extension LoginScreenViewController {
     }
 }
 
+//  MARK: Handaling navigation controller to disable it
+extension LoginScreenViewController {
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.isNavigationBarHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        navigationController?.isNavigationBarHidden = false
+    }
+}
+
+

@@ -9,28 +9,36 @@ import Foundation
 
 // MARK: UserModel
 
-public struct User: Codable {
+struct UserModel {
     
-    var username: String = ""
-    var password: String = ""
+    var username: String
+    var password: String
 }
 
 
-//struct User: Codable {
-//
+
+
+
+//class User: NSObject, NSCoding {
+
 //    var username: String
 //    var password: String
+    
+//    func encode(with coder: NSCoder) {
+//        coder.encode(username, forKey: "name")
+//        coder.encode(password, forKey: "password")
+//    }
 //
-//    init(vm: LoginViewModel) {
-//        self.username = vm.username
-//        self.password = vm.password
+//    required init?(coder: NSCoder) {
+//        username = coder.decodeObject(forKey: "name") as? String ?? ""
+//        password = coder.decodeObject(forKey: "password") as? String ?? ""
 //    }
+    
+//    init(username: String, password: String) {
+//        self.username = username
+//        self.password = password
+//    }
+//
 //}
 
 
-// MARK: Protocol to compare objects
-//extension User: Equatable {
-//    static func == (lhs: User, rhs: User) -> Bool {
-//        return lhs.username == rhs.username && lhs.password == rhs.password
-//    }
-//}

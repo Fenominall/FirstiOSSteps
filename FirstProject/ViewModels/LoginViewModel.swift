@@ -7,6 +7,21 @@
 
 import Foundation
 
+
+class LoginViewModel {
+    
+    var username: String
+    var password: String
+
+    init(username: String, password: String) {
+        self.username = username
+        self.password = password
+    }
+    
+}
+
+
+
 //class LoginViewModel {
 //    // MARK: Stored Properties
 ////    private let loginManager: LoginManager
@@ -58,37 +73,4 @@ import Foundation
 //        case Correct
 //        case Incorrect
 //    }
-//}
-
-
-
-//class LoginViewModel {
-//
-//    var username: String
-//    var password: String
-//
-//    init(username: String, password: String) {
-//        self.username = username
-//        self.password = password
-//    }
-//}
-//
-//
-//extension LoginViewModel {
-//
-//    static let strogaeKey: String = "Users"
-//
-//    func saveUserData() {
-//
-//        let user = User(vm: self)
-//
-//        defaults.setCodable(user, forKey: LoginViewModel.strogaeKey)
-//    }
-////
-////    func loadUser() {
-////
-////        defaults.string(forKey: LoginViewModel.strogaeKey)
-////    }
-//
-//
 //}

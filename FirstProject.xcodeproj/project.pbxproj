@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4F05462F26B9810B006C5A04 /* UIButtonAnimationsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F05462E26B9810B006C5A04 /* UIButtonAnimationsExtension.swift */; };
+		4F0806AA26C068C200DD0AE4 /* LocalStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0806A926C068C200DD0AE4 /* LocalStorageManager.swift */; };
 		4F4FDFBC268D862000736440 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4FDFBB268D862000736440 /* LoginViewModel.swift */; };
 		4F695E902662B6C200606D03 /* LoginScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F695E8F2662B6C200606D03 /* LoginScreenViewController.swift */; };
 		4F92895626A6B06600624B6E /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F92895526A6B06600624B6E /* Alerts.swift */; };
@@ -16,18 +17,20 @@
 		4FD2745C2683317300C8FA32 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD2745B2683317300C8FA32 /* SecondViewController.swift */; };
 		4FD2745E268332F700C8FA32 /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD2745D268332F700C8FA32 /* ThirdViewController.swift */; };
 		4FD4D58E26833C8D0078633E /* AppDataValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD4D58D26833C8D0078633E /* AppDataValidator.swift */; };
-		4FE0574A26909C2C00132103 /* UserDefaults+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE0574926909C2C00132103 /* UserDefaults+.swift */; };
+		4FE0574A26909C2C00132103 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE0574926909C2C00132103 /* UserSettings.swift */; };
 		4FE55FD126A33535003874B1 /* ExtensionsForLoginScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE55FD026A33535003874B1 /* ExtensionsForLoginScreenViewController.swift */; };
 		4FE69EC926A2B80E00F23965 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE69EC826A2B80E00F23965 /* UserViewModel.swift */; };
 		4FEF699D26BAC0190022CAFD /* WebUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEF699C26BAC0190022CAFD /* WebUIViewController.swift */; };
 		4FF9064526543BEF001387C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF9064426543BEF001387C9 /* AppDelegate.swift */; };
 		4FF9064726543BEF001387C9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF9064626543BEF001387C9 /* SceneDelegate.swift */; };
 		4FF9064E26543BF1001387C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FF9064D26543BF1001387C9 /* Assets.xcassets */; };
+		4FFCD45B26BEC87000770D33 /* LoginScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFCD45A26BEC87000770D33 /* LoginScreenView.swift */; };
 		4FFF2A1626BD27560064E610 /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFF2A1526BD27560064E610 /* HapticsManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4F05462E26B9810B006C5A04 /* UIButtonAnimationsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonAnimationsExtension.swift; sourceTree = "<group>"; };
+		4F0806A926C068C200DD0AE4 /* LocalStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageManager.swift; sourceTree = "<group>"; };
 		4F4FDFBB268D862000736440 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		4F695E8F2662B6C200606D03 /* LoginScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenViewController.swift; sourceTree = "<group>"; };
 		4F92895526A6B06600624B6E /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
@@ -36,7 +39,7 @@
 		4FD2745B2683317300C8FA32 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		4FD2745D268332F700C8FA32 /* ThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
 		4FD4D58D26833C8D0078633E /* AppDataValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDataValidator.swift; sourceTree = "<group>"; };
-		4FE0574926909C2C00132103 /* UserDefaults+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+.swift"; sourceTree = "<group>"; };
+		4FE0574926909C2C00132103 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		4FE55FD026A33535003874B1 /* ExtensionsForLoginScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionsForLoginScreenViewController.swift; sourceTree = "<group>"; };
 		4FE69EC826A2B80E00F23965 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		4FEF699C26BAC0190022CAFD /* WebUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebUIViewController.swift; sourceTree = "<group>"; };
@@ -45,6 +48,7 @@
 		4FF9064626543BEF001387C9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		4FF9064D26543BF1001387C9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4FF9065226543BF1001387C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4FFCD45A26BEC87000770D33 /* LoginScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenView.swift; sourceTree = "<group>"; };
 		4FFF2A1526BD27560064E610 /* HapticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -116,7 +120,8 @@
 			children = (
 				4FF9064426543BEF001387C9 /* AppDelegate.swift */,
 				4FF9064626543BEF001387C9 /* SceneDelegate.swift */,
-				4FE0574926909C2C00132103 /* UserDefaults+.swift */,
+				4FE0574926909C2C00132103 /* UserSettings.swift */,
+				4F0806A926C068C200DD0AE4 /* LocalStorageManager.swift */,
 			);
 			path = AppDelegate;
 			sourceTree = "<group>";
@@ -165,8 +170,17 @@
 				4FBBE317268B97D000D518B8 /* Models */,
 				4FFF2A1326BD26730064E610 /* Resources */,
 				4F4FDFBA268D860700736440 /* ViewModels */,
+				4FFCD45926BEC84900770D33 /* Views */,
 			);
 			path = FirstProject;
+			sourceTree = "<group>";
+		};
+		4FFCD45926BEC84900770D33 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4FFCD45A26BEC87000770D33 /* LoginScreenView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		4FFF2A1326BD26730064E610 /* Resources */ = {
@@ -258,12 +272,14 @@
 			files = (
 				4FE69EC926A2B80E00F23965 /* UserViewModel.swift in Sources */,
 				4FD2745C2683317300C8FA32 /* SecondViewController.swift in Sources */,
-				4FE0574A26909C2C00132103 /* UserDefaults+.swift in Sources */,
+				4FFCD45B26BEC87000770D33 /* LoginScreenView.swift in Sources */,
+				4FE0574A26909C2C00132103 /* UserSettings.swift in Sources */,
 				4FE55FD126A33535003874B1 /* ExtensionsForLoginScreenViewController.swift in Sources */,
 				4FBBE319268B97E400D518B8 /* UserModel.swift in Sources */,
 				4F92895826A6BB0500624B6E /* ExtensionForThirdViewController.swift in Sources */,
 				4FD2745E268332F700C8FA32 /* ThirdViewController.swift in Sources */,
 				4FFF2A1626BD27560064E610 /* HapticsManager.swift in Sources */,
+				4F0806AA26C068C200DD0AE4 /* LocalStorageManager.swift in Sources */,
 				4FF9064526543BEF001387C9 /* AppDelegate.swift in Sources */,
 				4F92895626A6B06600624B6E /* Alerts.swift in Sources */,
 				4F4FDFBC268D862000736440 /* LoginViewModel.swift in Sources */,
@@ -409,7 +425,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.FirstScreen.FirstProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -428,7 +444,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.FirstScreen.FirstProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

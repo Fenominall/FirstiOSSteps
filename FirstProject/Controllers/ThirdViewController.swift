@@ -107,6 +107,7 @@ class ThirdViewController: UIViewController {
     
 //    Switch Change
     @objc func switchChanged(paramTarget: UISwitch) {
+        
         if paramTarget.isOn {
             view.backgroundColor = .black
             print("It`s ON!")

@@ -7,6 +7,9 @@
 import Foundation
 import UIKit
 
+
+
+/// Manager class for phones vibrations
 final class HapticsManager {
     
     static let shared = HapticsManager()

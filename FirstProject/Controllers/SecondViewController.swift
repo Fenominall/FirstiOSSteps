@@ -95,25 +95,13 @@ class SecondViewController: UIViewController {
         return buttonsContainerView
     }()
     
-    
-//    Test Scroll View
-//    private lazy var scrollView: UIScrollView = {
-//        let scrollView = UIScrollView(frame: view.bounds)
-//        scrollView.translatesAutoresizingMaskIntoConstraints = false
-//        return scrollView
-//    }()
-        
-    
 // Function to add setups for the second view controller
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        Constraints of the second screen
+        // Constraints of the second screen
         setupSecondScreenBackImageConstraints()
         
-//        if let usernameLablel = defaults.string(forKey: UserKeysDefaults.keyUsername) {
-//            userGreetMessageLabel.text! = usernameLablel
-//        }
     }
     
 // Navigation Controller for updateUserDataBtn "Button" to move to the third screen where the user can update his username and password
@@ -139,10 +127,6 @@ class SecondViewController: UIViewController {
         navigationController?.pushViewController(rootVC, animated: true)
     }
     
-    
-// MARK: Instance of LoginViewModel
-//    private var loginviewModel: LoginViewModel!
-    
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.isNavigationBarHidden = true
     }
@@ -152,18 +136,16 @@ class SecondViewController: UIViewController {
     }
     
 //-------------------Start of constraints for the second screen-------------------
-// Functions to add subviews of first second elements
+    // Functions to add subviews of first second elements
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
-//        view.addSubview(scrollView)
 
     }
     
 ////    Constraints for the background image on the second screen
     func setupSecondScreenBackImageConstraints() {
-//         ThirdScreenUIImage
+
         view.addSubview(thirdScreenUIImage)
         
         NSLayoutConstraint.activate([

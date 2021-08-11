@@ -9,10 +9,10 @@ import Foundation
 
 // MARK: UserModel
 
-struct UserModel {
+struct User {
     
-    var username: String
-    var password: String
+    var username: String = ""
+    var password: String = ""
 }
 
 

@@ -25,7 +25,7 @@ class UserViewModel {
     
     var username: String
     
-    init(user: UserModel) {
+    init(user: User) {
         self.username = user.username
     }
     

@@ -88,7 +88,7 @@ class LoginScreenViewController: UIViewController {
         return btnLogin
     }()
 
-    private var loginViewModel: LoginViewModel?
+    private var loginViewModel = LoginViewModel()
     
     //MARK: - ViewController lifecycle
     override func viewDidLoad() {
@@ -102,8 +102,6 @@ class LoginScreenViewController: UIViewController {
         //# AutoLayout constraints
         firstViewControllerConstraints()
         
-//        saveUsernameAndPassword()
-        
     }
     
     func setDelegates() {
@@ -111,18 +109,37 @@ class LoginScreenViewController: UIViewController {
         passwordTxtField.delegate = self
     }
 
+    
+    //# Function to return false if the input in UITextFiled is " " or "    ".
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let newString = (textField.text! as NSString).replacingCharacters(in: range, with: string)
+        
+        if textField == usernameTxtField {
+            loginViewModel.updateUsername(username: newString)
+        } else if textField == passwordTxtField {
+            loginViewModel.updatePassword(password: newString)
+        }
+        
+        if (string == " " || string == "    ") {
+            return false
+        }
+        return true
+        
+        
+    }
+    
     /// Function for loginButton: Check validation, saves the user data into UserDefaults, pushes the user to the SecondViewController if requirments suitable
     /// - Parameter sender: Any
     @objc private func loginButtonPressed(_ sender: UIButton) {
 
         guard let username = usernameTxtField.text,
               let password = passwordTxtField.text else { return }
-
+//
         let userNameTrimmingText = username.trimmingCharacters(in: .whitespaces)
         let passwordTrimmingText = password.trimmingCharacters(in: .whitespaces)
 
-        let isUsernameValid = AppDataValidator.validateUserName(username)
-        let isPasswordValid = AppDataValidator.validatePassword(password)
+        let isUsernameValid = AppDataValidator.validateUserName(userNameTrimmingText)
+        let isPasswordValid = AppDataValidator.validatePassword(passwordTrimmingText)
 
 
         if username.isEmpty && password.isEmpty {
@@ -140,7 +157,7 @@ class LoginScreenViewController: UIViewController {
         if isUsernameValid && isPasswordValid {
 
 
-            self.loginViewModel = LoginViewModel(username: userNameTrimmingText, password: passwordTrimmingText)
+//            self.loginViewModel = LoginViewModel(username: userNameTrimmingText, password: passwordTrimmingText)
 
             // Navigation controller
             let secondVC = SecondViewController()
@@ -168,6 +185,7 @@ class LoginScreenViewController: UIViewController {
 // MARK: -------------------Start of constraints for the first screen-------------------
 
     func firstViewControllerConstraints() {
+        view.addSubview(containerView)
 
         view.addSubview(loginImageView)
         view.addSubview(contentStackView)

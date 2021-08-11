@@ -7,15 +7,51 @@
 
 import Foundation
 
+enum UserValidationState {
+    case Valid
+    case Invalid(String)
+}
+
 
 class LoginViewModel {
     
-    var username: String
-    var password: String
+    private var user = User()
+    
+    var username: String {
+        return user.username
+    }
+    
+    var password: String {
+        return user.password
+    }
+   
+}
 
-    init(username: String, password: String) {
-        self.username = username
-        self.password = password
+extension LoginViewModel {
+        
+    func updateUsername(username: String) {
+        user.username = username
+    }
+    
+    func updatePassword(password: String) {
+        user.password = password
+    }
+    
+    func validate() -> UserValidationState {
+        let userNameTriimingText = username.trimmingCharacters(in: .whitespaces)
+        let passwordTrimmingText = password.trimmingCharacters(in: .whitespaces)
+        
+        if user.username.isEmpty || user.password.isEmpty {
+            return .Invalid("Username and password are required ")
+            
+        } else if !AppDataValidator.validateUserName(userNameTriimingText) && !AppDataValidator.validatePassword(passwordTrimmingText){
+            return .Invalid("""
+                          Username should be at least (min-4, max-20) charachters long.
+                          Password can be only digits and at least 1 special charechter, should contain (min-8, max-20) charachters long.
+                """)
+        }
+        
+        return .Valid
     }
     
 }

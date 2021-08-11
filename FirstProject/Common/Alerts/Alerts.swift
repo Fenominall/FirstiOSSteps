@@ -19,7 +19,7 @@ struct AppAlerts {
     ///   - preferedStyle: .alert
     private static func errorUIAlert(on viewController: UIViewController, with title: String, message: String, preferedStyle: UIAlertController.Style) {
         let errorAlertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        errorAlertController.addAction(UIAlertAction(title: "Dismiss", style: .destructive, handler: nil))
+        errorAlertController.addAction(UIAlertAction(title: "Ok", style: .destructive, handler: nil))
         viewController.present(errorAlertController, animated: true)
     }
     
@@ -82,7 +82,7 @@ struct AppAlerts {
 
 
 // MARK: # AlertsMessages
-fileprivate let emptyFieldsAlertMessage = "Please provide username and password."
+fileprivate let emptyFieldsAlertMessage = "Password and username fields are required."
 fileprivate let usernameEmptyAlert = "Username field is empty."
 fileprivate let passwordEmptyAlert = "Password field is empty."
 fileprivate let successUpdatedDataMessage = "Your data was successfully updated"

@@ -93,100 +93,58 @@ class LoginScreenViewController: UIViewController {
     //MARK: - ViewController lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // MARK: Notifications for swhowing and hiding keyboard
         observeKeyboardNofitications()
         
         setDelegates()
-        
         //# AutoLayout constraints
-        firstViewControllerConstraints()
-        
-    }
-    
-    func setDelegates() {
-        usernameTxtField.delegate = self
-        passwordTxtField.delegate = self
-    }
-
-    
-    //# Function to return false if the input in UITextFiled is " " or "    ".
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let newString = (textField.text! as NSString).replacingCharacters(in: range, with: string)
-        
-        if textField == usernameTxtField {
-            loginViewModel.updateUsername(username: newString)
-        } else if textField == passwordTxtField {
-            loginViewModel.updatePassword(password: newString)
-        }
-        
-        if (string == " " || string == "    ") {
-            return false
-        }
-        return true
-        
+        configureLoginScreenUIElements()
         
     }
     
     /// Function for loginButton: Check validation, saves the user data into UserDefaults, pushes the user to the SecondViewController if requirments suitable
     /// - Parameter sender: Any
     @objc private func loginButtonPressed(_ sender: UIButton) {
-
-        guard let username = usernameTxtField.text,
-              let password = passwordTxtField.text else { return }
-//
-        let userNameTrimmingText = username.trimmingCharacters(in: .whitespaces)
-        let passwordTrimmingText = password.trimmingCharacters(in: .whitespaces)
-
-        let isUsernameValid = AppDataValidator.validateUserName(userNameTrimmingText)
-        let isPasswordValid = AppDataValidator.validatePassword(passwordTrimmingText)
-
-
-        if username.isEmpty && password.isEmpty {
-            AppAlerts.emptyFieldsErrorAlert(on: self)
-        }
-
-        if username.isEmpty {
-            AppAlerts.emptyUsernameErrorAlert(on: self)
-        }
-
-        if password.isEmpty {
-            AppAlerts.emptyPasswordErrorAlert(on: self)
-        }
-
-        if isUsernameValid && isPasswordValid {
-
-
-//            self.loginViewModel = LoginViewModel(username: userNameTrimmingText, password: passwordTrimmingText)
-
-            // Navigation controller
+        
+        switch loginViewModel.validate() {
+        case .Valid:
+            loginViewModel.login()
+            // SecondVC Navigation Controller
             let secondVC = SecondViewController()
             self.navigationController?.pushViewController(secondVC, animated: true)
-
-            // # Phone Vibration
+            // Phone Vibrations
             HapticsManager.shared.vibrateForType(for: .success)
-
-            // # Success Alert
+            // Success Alert
             AppAlerts.showIncompleteSuccessUIAlert(on: self)
-
-        } else {
-
-            // # Phone Vibration
+           
+        case .Empty:
+            // Phone Vibration
             HapticsManager.shared.vibrateForType(for: .error)
-
-            // # Button shake
+            // Button Shake
             sender.shake()
-
-            // # Error Alert
+            // Empty fields Error Alert
+            AppAlerts.emptyFieldsErrorAlert(on: self)
+        case .Invalid:
+            // Phone Vibration
+            HapticsManager.shared.vibrateForType(for: .warning)
+            // Button Shake
+            sender.shake()
+            // Inproper credentials Alert
             AppAlerts.showIncompleteErrorUIAlert(on: self)
         }
     }
+}
 
-// MARK: -------------------Start of constraints for the first screen-------------------
-
-    func firstViewControllerConstraints() {
-        view.addSubview(containerView)
-
+// MARK: -------------------UI Elements configuration-------------------
+extension LoginScreenViewController {
+    
+    func setDelegates() {
+        usernameTxtField.delegate = self
+        passwordTxtField.delegate = self
+    }
+    
+    func configureLoginScreenUIElements() {
+        
         view.addSubview(loginImageView)
         view.addSubview(contentStackView)
 
@@ -197,6 +155,30 @@ class LoginScreenViewController: UIViewController {
             contentStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
         ])
     }
-// MARK: -------------------End of constraints for the first screen-------------------
+}
+
+extension LoginScreenViewController {
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField == usernameTxtField {
+            textField.text = loginViewModel.username
+        }
+    }
+    
+    //# Function to return false if the input in UITextFiled is " " or "    ".
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let newString = (textField.text! as NSString).replacingCharacters(in: range, with: string)
+        
+        if textField == usernameTxtField {
+            loginViewModel.updateUsername(username: newString.trimmingCharacters(in: .whitespaces))
+        } else if textField == passwordTxtField {
+            loginViewModel.updatePassword(password: newString.trimmingCharacters(in: .whitespaces))
+        }
+        
+        if (string == " " || string == "    ") {
+            return false
+        }
+        return true
+    }
     
 }

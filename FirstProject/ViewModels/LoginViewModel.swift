@@ -18,7 +18,6 @@ class LoginViewModel {
     var username: String {
         return user.username
     }
-
     var password: String {
         return user.password
     }
@@ -29,7 +28,7 @@ extension LoginViewModel {
     func updateUsername(username: String) {
         user.username = username
     }
-
+    
     func updatePassword(password: String) {
         user.password = password
     }

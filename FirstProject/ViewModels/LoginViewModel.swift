@@ -13,6 +13,7 @@ enum UserValidationState {
     case Empty
 }
 class LoginViewModel {
+    // Model instance     
     private var user = User()
 
     var username: String {
@@ -32,7 +33,7 @@ extension LoginViewModel {
     func updatePassword(password: String) {
         user.password = password
     }
-
+    
     func validate() -> UserValidationState {
         
         if user.username.isEmpty || user.password.isEmpty {

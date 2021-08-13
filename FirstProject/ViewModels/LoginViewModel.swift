@@ -39,7 +39,7 @@ extension LoginViewModel {
         if user.username.isEmpty || user.password.isEmpty {
             return .Empty
 
-        } else if !AppDataValidator.validateUserName(username) && !AppDataValidator.validatePassword(password){
+        } else if !AppDataValidator.validateUserName(username) || !AppDataValidator.validatePassword(password){
             return .Invalid
         }
 

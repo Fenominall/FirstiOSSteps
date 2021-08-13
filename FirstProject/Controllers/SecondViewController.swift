@@ -113,7 +113,7 @@ class SecondViewController: UIViewController {
     // navigation controller for WebUIViewController
     @objc private func didTapSourceCodeButton() {
         guard let url = URL(string: "https://github.com/Fenominall/FirstiOSSteps") else { return }
-        let webViewViewController = WebUIViewController(url: url, title: "GitHub")
+        let webViewViewController = SourceCodeWebUIViewController(url: url, title: "GitHub")
         let navVc = UINavigationController(rootViewController: webViewViewController)
         navVc.modalPresentationStyle = .fullScreen
         present(navVc, animated: true, completion: nil)

@@ -12,6 +12,7 @@
 		4F695E902662B6C200606D03 /* LoginScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F695E8F2662B6C200606D03 /* LoginScreenViewController.swift */; };
 		4F92895626A6B06600624B6E /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F92895526A6B06600624B6E /* Alerts.swift */; };
 		4F92895826A6BB0500624B6E /* ExtensionForThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F92895726A6BB0500624B6E /* ExtensionForThirdViewController.swift */; };
+		4FAF3A7A26C6ED04009C803E /* GitHubWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FAF3A7926C6ED04009C803E /* GitHubWebViewController.swift */; };
 		4FBBE319268B97E400D518B8 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBBE318268B97E400D518B8 /* UserModel.swift */; };
 		4FD2745C2683317300C8FA32 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD2745B2683317300C8FA32 /* SecondViewController.swift */; };
 		4FD2745E268332F700C8FA32 /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD2745D268332F700C8FA32 /* ThirdViewController.swift */; };
@@ -20,7 +21,7 @@
 		4FE0574A26909C2C00132103 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE0574926909C2C00132103 /* UserSettings.swift */; };
 		4FE55FD126A33535003874B1 /* ExtensionsForLoginScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE55FD026A33535003874B1 /* ExtensionsForLoginScreenViewController.swift */; };
 		4FE69EC926A2B80E00F23965 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE69EC826A2B80E00F23965 /* UserViewModel.swift */; };
-		4FEF699D26BAC0190022CAFD /* WebUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEF699C26BAC0190022CAFD /* WebUIViewController.swift */; };
+		4FEF699D26BAC0190022CAFD /* SourceCodeWebUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEF699C26BAC0190022CAFD /* SourceCodeWebUIViewController.swift */; };
 		4FF9064526543BEF001387C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF9064426543BEF001387C9 /* AppDelegate.swift */; };
 		4FF9064726543BEF001387C9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF9064626543BEF001387C9 /* SceneDelegate.swift */; };
 		4FF9064E26543BF1001387C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FF9064D26543BF1001387C9 /* Assets.xcassets */; };
@@ -34,6 +35,7 @@
 		4F695E8F2662B6C200606D03 /* LoginScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenViewController.swift; sourceTree = "<group>"; };
 		4F92895526A6B06600624B6E /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
 		4F92895726A6BB0500624B6E /* ExtensionForThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionForThirdViewController.swift; sourceTree = "<group>"; };
+		4FAF3A7926C6ED04009C803E /* GitHubWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubWebViewController.swift; sourceTree = "<group>"; };
 		4FBBE318268B97E400D518B8 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		4FD2745B2683317300C8FA32 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		4FD2745D268332F700C8FA32 /* ThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
@@ -42,7 +44,7 @@
 		4FE0574926909C2C00132103 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		4FE55FD026A33535003874B1 /* ExtensionsForLoginScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionsForLoginScreenViewController.swift; sourceTree = "<group>"; };
 		4FE69EC826A2B80E00F23965 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
-		4FEF699C26BAC0190022CAFD /* WebUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebUIViewController.swift; sourceTree = "<group>"; };
+		4FEF699C26BAC0190022CAFD /* SourceCodeWebUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceCodeWebUIViewController.swift; sourceTree = "<group>"; };
 		4FF9064126543BEF001387C9 /* FirstProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FirstProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FF9064426543BEF001387C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4FF9064626543BEF001387C9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -104,13 +106,22 @@
 			path = Alerts;
 			sourceTree = "<group>";
 		};
+		4FAF3A7B26C6ED08009C803E /* WebViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4FEF699C26BAC0190022CAFD /* SourceCodeWebUIViewController.swift */,
+				4FAF3A7926C6ED04009C803E /* GitHubWebViewController.swift */,
+			);
+			path = WebViewController;
+			sourceTree = "<group>";
+		};
 		4FBBE315268B97B000D518B8 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				4F695E8F2662B6C200606D03 /* LoginScreenViewController.swift */,
 				4FD2745B2683317300C8FA32 /* SecondViewController.swift */,
 				4FD2745D268332F700C8FA32 /* ThirdViewController.swift */,
-				4FEF699C26BAC0190022CAFD /* WebUIViewController.swift */,
+				4FAF3A7B26C6ED08009C803E /* WebViewController */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -288,6 +299,7 @@
 				4FD2745E268332F700C8FA32 /* ThirdViewController.swift in Sources */,
 				4FFF2A1626BD27560064E610 /* HapticsManager.swift in Sources */,
 				4FF9064526543BEF001387C9 /* AppDelegate.swift in Sources */,
+				4FAF3A7A26C6ED04009C803E /* GitHubWebViewController.swift in Sources */,
 				4F92895626A6B06600624B6E /* Alerts.swift in Sources */,
 				4F4FDFBC268D862000736440 /* LoginViewModel.swift in Sources */,
 				4FF9064726543BEF001387C9 /* SceneDelegate.swift in Sources */,
@@ -295,7 +307,7 @@
 				4F05462F26B9810B006C5A04 /* UIButtonAnimationsExtension.swift in Sources */,
 				4FD4D58E26833C8D0078633E /* AppDataValidator.swift in Sources */,
 				4FDA385226C4594C0098B935 /* TrashFile.swift in Sources */,
-				4FEF699D26BAC0190022CAFD /* WebUIViewController.swift in Sources */,
+				4FEF699D26BAC0190022CAFD /* SourceCodeWebUIViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

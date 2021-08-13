@@ -158,7 +158,7 @@ extension LoginScreenViewController {
 }
 
 extension LoginScreenViewController {
-//    
+//
 //    func textFieldDidBeginEditing(_ textField: UITextField) {
 //        if textField == usernameTxtField {
 //            textField.text = loginViewModel.username

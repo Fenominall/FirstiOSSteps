@@ -8,7 +8,7 @@
 import UIKit
 import WebKit
 
-class WebUIViewController: UIViewController {
+class SourceCodeWebUIViewController: UIViewController {
     
     private lazy var webView: WKWebView = {
         let preferences = WKWebpagePreferences()

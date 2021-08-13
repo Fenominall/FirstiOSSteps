@@ -12,6 +12,7 @@ enum UserValidationState {
     case Invalid
     case Empty
 }
+
 class LoginViewModel {
     // Model instance     
     private var user = User()

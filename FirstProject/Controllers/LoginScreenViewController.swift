@@ -158,12 +158,12 @@ extension LoginScreenViewController {
 }
 
 extension LoginScreenViewController {
-    
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        if textField == usernameTxtField {
-            textField.text = loginViewModel.username
-        }
-    }
+//    
+//    func textFieldDidBeginEditing(_ textField: UITextField) {
+//        if textField == usernameTxtField {
+//            textField.text = loginViewModel.username
+//        }
+//    }
     
     //# Function to return false if the input in UITextFiled is " " or "    ".
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4F05462F26B9810B006C5A04 /* UIButtonAnimationsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F05462E26B9810B006C5A04 /* UIButtonAnimationsExtension.swift */; };
+		4F2A17B726C7050600205E03 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2A17B626C7050600205E03 /* Box.swift */; };
 		4F4FDFBC268D862000736440 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4FDFBB268D862000736440 /* LoginViewModel.swift */; };
 		4F695E902662B6C200606D03 /* LoginScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F695E8F2662B6C200606D03 /* LoginScreenViewController.swift */; };
 		4F92895626A6B06600624B6E /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F92895526A6B06600624B6E /* Alerts.swift */; };
@@ -31,6 +32,7 @@
 
 /* Begin PBXFileReference section */
 		4F05462E26B9810B006C5A04 /* UIButtonAnimationsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonAnimationsExtension.swift; sourceTree = "<group>"; };
+		4F2A17B626C7050600205E03 /* Box.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
 		4F4FDFBB268D862000736440 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		4F695E8F2662B6C200606D03 /* LoginScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenViewController.swift; sourceTree = "<group>"; };
 		4F92895526A6B06600624B6E /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 				4FF9064426543BEF001387C9 /* AppDelegate.swift */,
 				4FF9064626543BEF001387C9 /* SceneDelegate.swift */,
 				4FE0574926909C2C00132103 /* UserSettings.swift */,
+				4F2A17B626C7050600205E03 /* Box.swift */,
 			);
 			path = AppDelegate;
 			sourceTree = "<group>";
@@ -298,6 +301,7 @@
 				4F92895826A6BB0500624B6E /* ExtensionForThirdViewController.swift in Sources */,
 				4FD2745E268332F700C8FA32 /* ThirdViewController.swift in Sources */,
 				4FFF2A1626BD27560064E610 /* HapticsManager.swift in Sources */,
+				4F2A17B726C7050600205E03 /* Box.swift in Sources */,
 				4FF9064526543BEF001387C9 /* AppDelegate.swift in Sources */,
 				4FAF3A7A26C6ED04009C803E /* GitHubWebViewController.swift in Sources */,
 				4F92895626A6B06600624B6E /* Alerts.swift in Sources */,

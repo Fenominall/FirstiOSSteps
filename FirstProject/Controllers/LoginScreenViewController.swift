@@ -8,7 +8,6 @@ import Foundation
 import UIKit
 
 
-// MARK: -----------------START OF FIRST VIEW CONTROLLER------------------
 class LoginScreenViewController: UIViewController {
     
 //     MARK: UI Elements:
@@ -90,6 +89,8 @@ class LoginScreenViewController: UIViewController {
 
     private var loginViewModel = LoginViewModel()
     
+    
+    
     //MARK: - ViewController lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -100,6 +101,9 @@ class LoginScreenViewController: UIViewController {
         //# AutoLayout constraints
         configureLoginScreenUIElements()
         
+        loginViewModel.username.bind {
+            print("Username cahnged: \($0)")
+        }
     }
     
     /// Function for loginButton: Check validation, saves the user data into UserDefaults, pushes the user to the SecondViewController if requirments suitable
@@ -145,8 +149,16 @@ extension LoginScreenViewController {
     
     func configureLoginScreenUIElements() {
         
-        view.addSubview(loginImageView)
-        view.addSubview(contentStackView)
+        view.addSubview(containerView)
+        containerView.addSubview(loginImageView)
+        containerView.addSubview(contentStackView)
+        
+        NSLayoutConstraint.activate([
+            containerView.topAnchor.constraint(equalTo: view.topAnchor),
+            containerView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            containerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            containerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+        ])
 
         NSLayoutConstraint.activate([
             contentStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -158,23 +170,23 @@ extension LoginScreenViewController {
 }
 
 extension LoginScreenViewController {
-//
-//    func textFieldDidBeginEditing(_ textField: UITextField) {
-//        if textField == usernameTxtField {
-//            textField.text = loginViewModel.username
-//        }
-//    }
+
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField == usernameTxtField {
+            textField.text = loginViewModel.username.value
+        }
+    }
     
-    //# Function to return false if the input in UITextFiled is " " or "    ".
+//    # Function to return false if the input in UITextFiled is " " or "    ".
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let newString = (textField.text! as NSString).replacingCharacters(in: range, with: string)
-        
+
         if textField == usernameTxtField {
             loginViewModel.updateUsername(username: newString.trimmingCharacters(in: .whitespaces))
         } else if textField == passwordTxtField {
             loginViewModel.updatePassword(password: newString.trimmingCharacters(in: .whitespaces))
         }
-        
+
         if (string == " " || string == "    ") {
             return false
         }

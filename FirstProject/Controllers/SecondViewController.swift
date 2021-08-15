@@ -33,7 +33,7 @@ class SecondViewController: UIViewController {
     private lazy var userGreetMessageLabel: UILabel = {
         let greetMessage = UILabel()
         greetMessage.translatesAutoresizingMaskIntoConstraints = false
-        greetMessage.text = "Hey!"
+//        greetMessage.text = "Hey!"
         greetMessage.font = UIFont.boldSystemFont(ofSize: 40)
         greetMessage.adjustsFontSizeToFitWidth = true
         greetMessage.textAlignment = .center
@@ -95,12 +95,15 @@ class SecondViewController: UIViewController {
         return buttonsContainerView
     }()
     
+   
+    
 // Function to add setups for the second view controller
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Constraints of the second screen
         setupSecondScreenBackImageConstraints()
+    
         
     }
     

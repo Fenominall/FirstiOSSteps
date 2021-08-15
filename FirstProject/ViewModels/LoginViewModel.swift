@@ -15,13 +15,25 @@ enum UserValidationState {
 
 class LoginViewModel {
     // Model instance     
-    private var user = User()
-
-    var username: String {
-        return user.username
+    private var user = User() {
+        didSet {
+            username.value = user.username
+        }
     }
+    
+//    var users: Box<UserViewModel> = Box(UserViewModel())
+    
+    var username: Box<String> = Box("")
+    
+//    var username: String {
+//        return user.username
+//    }
     var password: String {
         return user.password
+    }
+    
+    init(user: User = User()) {
+        self.user = user
     }
 }
 
@@ -40,7 +52,7 @@ extension LoginViewModel {
         if user.username.isEmpty || user.password.isEmpty {
             return .Empty
 
-        } else if !AppDataValidator.validateUserName(username) || !AppDataValidator.validatePassword(password){
+        } else if !AppDataValidator.validateUserName(username.value) || !AppDataValidator.validatePassword(password) {
             return .Invalid
         }
 

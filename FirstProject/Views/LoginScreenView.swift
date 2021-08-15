@@ -88,15 +88,15 @@ class LoginScreenView: UIView {
     }()
 
     func configure() {
-        self.containerView.addSubview(containerView)
+        containerView.addSubview(containerView)
 
         containerView.addSubview(contentStackView)
 
         NSLayoutConstraint.activate([
-            containerView.topAnchor.constraint(equalTo: self.containerView.topAnchor),
-            containerView.bottomAnchor.constraint(equalTo: self.containerView.bottomAnchor),
-            containerView.leadingAnchor.constraint(equalTo: self.containerView.leadingAnchor),
-            containerView.trailingAnchor.constraint(equalTo: self.containerView.trailingAnchor),
+            containerView.topAnchor.constraint(equalTo: containerView.topAnchor),
+            containerView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
+            containerView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            containerView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
 
             contentStackView.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
             contentStackView.centerYAnchor.constraint(equalTo: containerView.centerYAnchor),

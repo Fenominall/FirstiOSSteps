@@ -80,6 +80,18 @@ struct AppAlerts {
 }
 
 
+enum UserAlertMessages: String, Error {
+    case emptyFieldsAlertMessage = "Password and username fields are required."
+    case usernameEmptyAlert = "Username field is empty."
+    case passwordEmptyAlert = "Password field is empty."
+    case successUpdatedDataMessage = "Your data was successfully updated"
+    case successAlertMessage = "Your account created your are logged in"
+    case passwordRequirmentsAlertMessage = """
+                          Username should be at least (min-4, max-20) charachters long.
+                          Password can be only digits and at least 1 special charechter, should contain (min-8, max-20) charachters long.
+                          """
+}
+
 
 // MARK: # AlertsMessages
 fileprivate let emptyFieldsAlertMessage = "Password and username fields are required."

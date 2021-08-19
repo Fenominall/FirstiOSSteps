@@ -89,7 +89,9 @@ class LoginScreenViewController: UIViewController {
 
     private var loginViewModel = LoginViewModel()
     
-    
+    override func loadView() {
+        
+    }
     
     //MARK: - ViewController lifecycle
     override func viewDidLoad() {

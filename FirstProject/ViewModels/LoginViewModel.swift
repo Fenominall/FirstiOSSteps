@@ -18,6 +18,7 @@ class LoginViewModel {
     private var user = User() {
         didSet {
             username.value = user.username
+            password.value = user.password
         }
     }
     
@@ -25,12 +26,14 @@ class LoginViewModel {
     
     var username: Box<String> = Box("")
     
+    var password: Box<String> = Box("")
+    
 //    var username: String {
 //        return user.username
-//    }
-    var password: String {
-        return user.password
-    }
+// //    }
+//     var password: String {
+//         return user.password
+//     }
     
     init(user: User = User()) {
         self.user = user
@@ -52,7 +55,7 @@ extension LoginViewModel {
         if user.username.isEmpty || user.password.isEmpty {
             return .Empty
 
-        } else if !AppDataValidator.validateUserName(username.value) || !AppDataValidator.validatePassword(password) {
+        } else if !AppDataValidator.validateUserName(username.value) || !AppDataValidator.validatePassword(password.value) {
             return .Invalid
         }
 

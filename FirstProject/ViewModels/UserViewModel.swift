@@ -6,17 +6,12 @@
 //
 
 class UserViewModel {
+    var username: Box<String>!
+    var password: Box<String>!
     
-    private(set) var user = User() {
-        didSet {
-            userUsername.value = user.username
-        }
-    }
-    
-    var userUsername: Box<String> = Box("")
-    
-    init(user: User = User()) {
-        self.user = user
+    init(username: String, password: String) {
+        self.username = Box<String>(username)
+        self.password = Box<String>(password)
     }
     
 }

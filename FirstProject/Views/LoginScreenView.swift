@@ -86,9 +86,20 @@ class LoginScreenView: UIView {
 //        btnLogin.addTarget(self, action: #selector(loginButtonPressed(_:)), for: .touchUpInside)
         return btnLogin
     }()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        configure()
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        configure()
+    }
+
 
     func configure() {
-        containerView.addSubview(containerView)
+        addSubview(containerView)
 
         containerView.addSubview(contentStackView)
 

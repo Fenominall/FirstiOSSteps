@@ -6,8 +6,8 @@
 //
 
 class UserViewModel {
-    var username: Box<String>!
-    var password: Box<String>!
+    var username: Box<String> = Box("")
+    var password: Box<String> = Box("")
     
     init(username: String, password: String) {
         self.username = Box<String>(username)

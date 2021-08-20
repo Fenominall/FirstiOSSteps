@@ -13,10 +13,11 @@
 		4F695E902662B6C200606D03 /* LoginScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F695E8F2662B6C200606D03 /* LoginScreenViewController.swift */; };
 		4F92895626A6B06600624B6E /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F92895526A6B06600624B6E /* Alerts.swift */; };
 		4F92895826A6BB0500624B6E /* ExtensionForThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F92895726A6BB0500624B6E /* ExtensionForThirdViewController.swift */; };
+		4FA5BB1826CEDB5F001C486D /* UserSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA5BB1726CEDB5F001C486D /* UserSettingsView.swift */; };
 		4FAF3A7A26C6ED04009C803E /* GitHubWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FAF3A7926C6ED04009C803E /* GitHubWebViewController.swift */; };
 		4FBBE319268B97E400D518B8 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBBE318268B97E400D518B8 /* UserModel.swift */; };
 		4FD2745C2683317300C8FA32 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD2745B2683317300C8FA32 /* SecondViewController.swift */; };
-		4FD2745E268332F700C8FA32 /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD2745D268332F700C8FA32 /* ThirdViewController.swift */; };
+		4FD2745E268332F700C8FA32 /* UserSettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD2745D268332F700C8FA32 /* UserSettingsController.swift */; };
 		4FD4D58E26833C8D0078633E /* AppDataValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD4D58D26833C8D0078633E /* AppDataValidator.swift */; };
 		4FDA385226C4594C0098B935 /* TrashFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDA385126C4594C0098B935 /* TrashFile.swift */; };
 		4FE0574A26909C2C00132103 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE0574926909C2C00132103 /* UserSettings.swift */; };
@@ -37,10 +38,11 @@
 		4F695E8F2662B6C200606D03 /* LoginScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenViewController.swift; sourceTree = "<group>"; };
 		4F92895526A6B06600624B6E /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
 		4F92895726A6BB0500624B6E /* ExtensionForThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionForThirdViewController.swift; sourceTree = "<group>"; };
+		4FA5BB1726CEDB5F001C486D /* UserSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsView.swift; sourceTree = "<group>"; };
 		4FAF3A7926C6ED04009C803E /* GitHubWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubWebViewController.swift; sourceTree = "<group>"; };
 		4FBBE318268B97E400D518B8 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		4FD2745B2683317300C8FA32 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
-		4FD2745D268332F700C8FA32 /* ThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
+		4FD2745D268332F700C8FA32 /* UserSettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsController.swift; sourceTree = "<group>"; };
 		4FD4D58D26833C8D0078633E /* AppDataValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDataValidator.swift; sourceTree = "<group>"; };
 		4FDA385126C4594C0098B935 /* TrashFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashFile.swift; sourceTree = "<group>"; };
 		4FE0574926909C2C00132103 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
@@ -122,7 +124,7 @@
 			children = (
 				4F695E8F2662B6C200606D03 /* LoginScreenViewController.swift */,
 				4FD2745B2683317300C8FA32 /* SecondViewController.swift */,
-				4FD2745D268332F700C8FA32 /* ThirdViewController.swift */,
+				4FD2745D268332F700C8FA32 /* UserSettingsController.swift */,
 				4FAF3A7B26C6ED08009C803E /* WebViewController */,
 			);
 			path = Controllers;
@@ -201,6 +203,7 @@
 			isa = PBXGroup;
 			children = (
 				4FFCD45A26BEC87000770D33 /* LoginScreenView.swift */,
+				4FA5BB1726CEDB5F001C486D /* UserSettingsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -299,7 +302,7 @@
 				4FE55FD126A33535003874B1 /* ExtensionsForLoginScreenViewController.swift in Sources */,
 				4FBBE319268B97E400D518B8 /* UserModel.swift in Sources */,
 				4F92895826A6BB0500624B6E /* ExtensionForThirdViewController.swift in Sources */,
-				4FD2745E268332F700C8FA32 /* ThirdViewController.swift in Sources */,
+				4FD2745E268332F700C8FA32 /* UserSettingsController.swift in Sources */,
 				4FFF2A1626BD27560064E610 /* HapticsManager.swift in Sources */,
 				4F2A17B726C7050600205E03 /* Box.swift in Sources */,
 				4FF9064526543BEF001387C9 /* AppDelegate.swift in Sources */,
@@ -311,6 +314,7 @@
 				4F05462F26B9810B006C5A04 /* UIButtonAnimationsExtension.swift in Sources */,
 				4FD4D58E26833C8D0078633E /* AppDataValidator.swift in Sources */,
 				4FDA385226C4594C0098B935 /* TrashFile.swift in Sources */,
+				4FA5BB1826CEDB5F001C486D /* UserSettingsView.swift in Sources */,
 				4FEF699D26BAC0190022CAFD /* SourceCodeWebUIViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

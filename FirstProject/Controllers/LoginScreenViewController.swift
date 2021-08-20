@@ -10,87 +10,12 @@ import UIKit
 
 class LoginScreenViewController: UIViewController {
     
-//     MARK: UI Elements:
-//     - containerView
-//     - contentStackView
-//     - Backgound Image
-//     - Login Screen "Welcome!" Label
-//     - Username UITextField
-//     - Password UITextField
-
-    private lazy var containerView: UIView = {
-        let containerView = UIView()
-        containerView.translatesAutoresizingMaskIntoConstraints = false
-        return containerView
-    }()
-
-    private lazy var loginImageView: UIImageView = {
-        let loginImage = UIImageView()
-        loginImage.image = UIImage(named: "neon")
-        loginImage.contentMode = .scaleAspectFit
-        loginImage.translatesAutoresizingMaskIntoConstraints = false
-        return loginImage
-    }()
-
-    private lazy var contentStackView: UIStackView = {
-        let contentStackView = UIStackView(arrangedSubviews: [loginScreenLabel, usernameTxtField, passwordTxtField, loginButton])
-        contentStackView.translatesAutoresizingMaskIntoConstraints = false
-        contentStackView.axis = .vertical
-        contentStackView.distribution = .fillEqually
-        contentStackView.spacing = 20
-        return contentStackView
-    }()
-
-    private lazy var loginScreenLabel: UILabel = {
-        let loginScreenLabel = UILabel()
-        loginScreenLabel.translatesAutoresizingMaskIntoConstraints = false
-        let attributedText = NSMutableAttributedString(
-            string: "WELCOME",
-            attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 40),
-                         NSAttributedString.Key.foregroundColor: UIColor.white])
-        loginScreenLabel.attributedText = attributedText
-        loginScreenLabel.textAlignment = .center
-        return loginScreenLabel
-    }()
-
-    private lazy var usernameTxtField: UITextField = {
-        let usernameTxtField = UITextField()
-        usernameTxtField.translatesAutoresizingMaskIntoConstraints = false
-        usernameTxtField.backgroundColor = .white
-        usernameTxtField.textColor = .black
-        usernameTxtField.placeholder = "Username"
-        usernameTxtField.borderStyle = .roundedRect
-        usernameTxtField.layer.borderWidth = 0
-        return usernameTxtField
-   }()
-
-    private lazy var passwordTxtField: UITextField = {
-        let passwordTxtField = UITextField()
-        passwordTxtField.translatesAutoresizingMaskIntoConstraints = false
-        passwordTxtField.backgroundColor = .white
-        passwordTxtField.textColor = .black
-        passwordTxtField.placeholder = "Password"
-        passwordTxtField.borderStyle = .roundedRect
-        passwordTxtField.layer.borderWidth = 0
-        return passwordTxtField
-    }()
-
-    private lazy var loginButton: UIButton = {
-        let btnLogin = UIButton(type:.system)
-        btnLogin.backgroundColor = .orange
-        btnLogin.setTitle("Login", for: .normal)
-        btnLogin.tintColor = .white
-        btnLogin.layer.cornerRadius = 5
-        btnLogin.clipsToBounds = true
-        btnLogin.translatesAutoresizingMaskIntoConstraints = false
-        btnLogin.addTarget(self, action: #selector(loginButtonPressed), for: .touchUpInside)
-        return btnLogin
-    }()
-
     private var loginViewModel = LoginViewModel()
     
+    var shareView = LoginScreenView()
+    
     override func loadView() {
-        
+        view = shareView
     }
     
     //MARK: - ViewController lifecycle
@@ -99,13 +24,14 @@ class LoginScreenViewController: UIViewController {
         // MARK: Notifications for swhowing and hiding keyboard
         observeKeyboardNofitications()
         
-        setDelegates()
-        //# AutoLayout constraints
-        configureLoginScreenUIElements()
+        shareView.loginButton.addTarget(self, action: #selector(loginButtonPressed), for: .touchUpInside)
         
+        setDelegates()
+
         loginViewModel.username.bind {
             print("Username cahnged: \($0)")
         }
+
     }
     
     /// Function for loginButton: Check validation, saves the user data into UserDefaults, pushes the user to the SecondViewController if requirments suitable
@@ -141,51 +67,26 @@ class LoginScreenViewController: UIViewController {
     }
 }
 
-// MARK: -------------------UI Elements configuration-------------------
 extension LoginScreenViewController {
     
     func setDelegates() {
-        usernameTxtField.delegate = self
-        passwordTxtField.delegate = self
+        shareView.usernameTxtField.delegate = self
+        shareView.passwordTxtField.delegate = self
     }
-    
-    func configureLoginScreenUIElements() {
-        
-        view.addSubview(containerView)
-        containerView.addSubview(loginImageView)
-        containerView.addSubview(contentStackView)
-        
-        NSLayoutConstraint.activate([
-            containerView.topAnchor.constraint(equalTo: view.topAnchor),
-            containerView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            containerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            containerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-        ])
-
-        NSLayoutConstraint.activate([
-            contentStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            contentStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            contentStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-            contentStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
-        ])
-    }
-}
-
-extension LoginScreenViewController {
 
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        if textField == usernameTxtField {
+        if textField == shareView.usernameTxtField {
             textField.text = loginViewModel.username.value
         }
     }
-    
+
 //    # Function to return false if the input in UITextFiled is " " or "    ".
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let newString = (textField.text! as NSString).replacingCharacters(in: range, with: string)
 
-        if textField == usernameTxtField {
+        if textField == shareView.usernameTxtField {
             loginViewModel.updateUsername(username: newString.trimmingCharacters(in: .whitespaces))
-        } else if textField == passwordTxtField {
+        } else if textField == shareView.passwordTxtField {
             loginViewModel.updatePassword(password: newString.trimmingCharacters(in: .whitespaces))
         }
 
@@ -194,5 +95,5 @@ extension LoginScreenViewController {
         }
         return true
     }
-    
+
 }

@@ -1,10 +1,10 @@
-////
-////  LoginScreenView.swift
-////  FirstProject
-////
-////  Created by Fenominall on 07.08.2021.
-////
-//
+////////
+////////  LoginScreenView.swift
+////////  FirstProject
+////////
+////////  Created by Fenominall on 07.08.2021.
+////////
+//////
 import Foundation
 import UIKit
 
@@ -18,7 +18,8 @@ class LoginScreenView: UIView {
     // - Username UITextField
     // - Password UITextField
 
-    private lazy var containerView: UIView = {
+
+    private lazy var containerUIView: UIView = {
         let containerView = UIView()
         containerView.translatesAutoresizingMaskIntoConstraints = false
         return containerView
@@ -53,7 +54,7 @@ class LoginScreenView: UIView {
         return loginScreenLabel
     }()
 
-    private lazy var usernameTxtField: UITextField = {
+    private(set) lazy var usernameTxtField: UITextField = {
         let usernameTxtField = UITextField()
         usernameTxtField.translatesAutoresizingMaskIntoConstraints = false
         usernameTxtField.backgroundColor = .white
@@ -64,7 +65,7 @@ class LoginScreenView: UIView {
         return usernameTxtField
    }()
 
-    private lazy var passwordTxtField: UITextField = {
+    private(set) lazy var passwordTxtField: UITextField = {
         let passwordTxtField = UITextField()
         passwordTxtField.translatesAutoresizingMaskIntoConstraints = false
         passwordTxtField.backgroundColor = .white
@@ -75,7 +76,7 @@ class LoginScreenView: UIView {
         return passwordTxtField
     }()
 
-    private lazy var loginButton: UIButton = {
+    private(set) lazy var loginButton: UIButton = {
         let btnLogin = UIButton(type:.system)
         btnLogin.backgroundColor = .orange
         btnLogin.setTitle("Login", for: .normal)
@@ -83,10 +84,11 @@ class LoginScreenView: UIView {
         btnLogin.layer.cornerRadius = 5
         btnLogin.clipsToBounds = true
         btnLogin.translatesAutoresizingMaskIntoConstraints = false
-//        btnLogin.addTarget(self, action: #selector(loginButtonPressed(_:)), for: .touchUpInside)
+//        btnLogin.addTarget(self, action: #selector(loginButtonPressed), for: .touchUpInside)
         return btnLogin
     }()
-    
+
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
@@ -99,24 +101,22 @@ class LoginScreenView: UIView {
 
 
     func configure() {
-        addSubview(containerView)
 
-        containerView.addSubview(contentStackView)
+        addSubview(containerUIView)
+        containerUIView.addSubview(loginImageView)
+        containerUIView.addSubview(contentStackView)
 
         NSLayoutConstraint.activate([
-            containerView.topAnchor.constraint(equalTo: containerView.topAnchor),
-            containerView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
-            containerView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
-            containerView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+            containerUIView.topAnchor.constraint(equalTo: topAnchor),
+            containerUIView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            containerUIView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            containerUIView.trailingAnchor.constraint(equalTo: trailingAnchor),
 
-            contentStackView.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
-            contentStackView.centerYAnchor.constraint(equalTo: containerView.centerYAnchor),
-            contentStackView.leadingAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-            contentStackView.trailingAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.trailingAnchor, constant: -20),
+            contentStackView.centerYAnchor.constraint(equalTo: containerUIView.centerYAnchor),
+            contentStackView.centerXAnchor.constraint(equalTo: containerUIView.centerXAnchor),
+            contentStackView.leadingAnchor.constraint(equalTo: containerUIView.safeAreaLayoutGuide.leadingAnchor, constant: 20),
+            contentStackView.trailingAnchor.constraint(equalTo: containerUIView.safeAreaLayoutGuide.trailingAnchor, constant: -20),
         ])
-
-
-
     }
 
 }

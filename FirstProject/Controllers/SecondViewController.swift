@@ -33,7 +33,7 @@ class SecondViewController: UIViewController {
     private lazy var userGreetMessageLabel: UILabel = {
         let greetMessage = UILabel()
         greetMessage.translatesAutoresizingMaskIntoConstraints = false
-//        greetMessage.text = "Hey!"
+        greetMessage.text = "Hey!"
         greetMessage.font = UIFont.boldSystemFont(ofSize: 40)
         greetMessage.adjustsFontSizeToFitWidth = true
         greetMessage.textAlignment = .center
@@ -109,7 +109,7 @@ class SecondViewController: UIViewController {
     
 // Navigation Controller for updateUserDataBtn "Button" to move to the third screen where the user can update his username and password
     @objc private func UpdateButtonPressed() {
-        let rootVC = ThirdViewController()
+        let rootVC = UserSettingsController()
         navigationController?.pushViewController(rootVC, animated: true)
     }
     

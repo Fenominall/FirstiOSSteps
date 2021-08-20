@@ -10,7 +10,7 @@ import UIKit
 
 
 // MARK: Extension to handle Dismiss/Hide The KeyBoard
-extension ThirdViewController: UITextFieldDelegate {
+extension UserSettingsController: UITextFieldDelegate {
     
     /// Dismiss/Hide the KeyBoard.
     /// - Parameter textField: UITextField
@@ -38,7 +38,7 @@ extension ThirdViewController: UITextFieldDelegate {
 
 
 //MARK: Extension to move the content up when the keyboard is called
-extension ThirdViewController {
+extension UserSettingsController {
     
     
     //# Function to move the Keyboardup on the first page

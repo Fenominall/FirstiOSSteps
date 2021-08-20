@@ -42,7 +42,7 @@ class LoginScreenViewController: UIViewController {
         case .Valid:
             loginViewModel.login()
             // SecondVC Navigation Controller
-            let secondVC = SecondViewController()
+            let secondVC = HomeScreenViewController()
             self.navigationController?.pushViewController(secondVC, animated: true)
             // Phone Vibrations
             HapticsManager.shared.vibrateForType(for: .success)

@@ -64,7 +64,7 @@ struct AppAlerts {
         let successUpdatedDataUIAlert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let updateAction = UIAlertAction(title: "OK", style: .default) { (_) -> () in
             
-            let secondVC = SecondViewController()
+            let secondVC = HomeScreenViewController()
             let navController = UINavigationController(rootViewController: secondVC)
             navController.modalPresentationStyle = .fullScreen
             viewController.present(navController, animated: true)

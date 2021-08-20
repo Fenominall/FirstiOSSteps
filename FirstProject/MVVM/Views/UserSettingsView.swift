@@ -5,8 +5,8 @@
 //  Created by Fenominall on 19.08.2021.
 //
 
-import Foundation
 import UIKit
+import SnapKit
 
 class UserSettingsView: UIView {
     
@@ -127,26 +127,23 @@ class UserSettingsView: UIView {
         containerUIView.addSubview(thirdBackImage)
         containerUIView.addSubview(contentStackView)
         containerUIView.addSubview(darkModeUIStackView)
+        
+        containerUIView.snp.makeConstraints {
+            $0.top.bottom.leading.trailing.equalToSuperview()
+        }
+        
+        contentStackView.snp.makeConstraints {
+            $0.centerX.centerY.leading.trailing.equalToSuperview().inset(20)
+        }
+        
+        changeUserDataLabel.snp.makeConstraints {
+            $0.height.equalTo(50)
+        }
 
         NSLayoutConstraint.activate([
-            containerUIView.topAnchor.constraint(equalTo: topAnchor),
-            containerUIView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            containerUIView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            containerUIView.trailingAnchor.constraint(equalTo: trailingAnchor),
-                                        
-            contentStackView.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
-            contentStackView.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor),
-            contentStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 20),
-            contentStackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -20),
-                                        
-            changeUserDataLabel.heightAnchor.constraint(equalToConstant: 50),
-        
             darkModeUIStackView.topAnchor.constraint(equalTo: contentStackView.bottomAnchor, constant: 10),
             darkModeUIStackView.centerXAnchor.constraint(equalTo: contentStackView.safeAreaLayoutGuide.centerXAnchor),
-            darkModeUIStackView.centerYAnchor.constraint(equalTo: contentStackView.safeAreaLayoutGuide.centerYAnchor),
             darkModeUIStackView.heightAnchor.constraint(equalToConstant: 50),
         ])
     }
-    
-    
 }

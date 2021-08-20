@@ -5,8 +5,8 @@
 ////////  Created by Fenominall on 07.08.2021.
 ////////
 //////
-import Foundation
 import UIKit
+import SnapKit
 
 class LoginScreenView: UIView {
 
@@ -17,8 +17,7 @@ class LoginScreenView: UIView {
     // - Login Screen "Welcome!" Label
     // - Username UITextField
     // - Password UITextField
-
-
+    
     private lazy var containerUIView: UIView = {
         let containerView = UIView()
         containerView.translatesAutoresizingMaskIntoConstraints = false
@@ -84,10 +83,8 @@ class LoginScreenView: UIView {
         btnLogin.layer.cornerRadius = 5
         btnLogin.clipsToBounds = true
         btnLogin.translatesAutoresizingMaskIntoConstraints = false
-//        btnLogin.addTarget(self, action: #selector(loginButtonPressed), for: .touchUpInside)
         return btnLogin
     }()
-
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -99,24 +96,18 @@ class LoginScreenView: UIView {
         configure()
     }
 
-
     func configure() {
-
         addSubview(containerUIView)
         containerUIView.addSubview(loginImageView)
         containerUIView.addSubview(contentStackView)
-
-        NSLayoutConstraint.activate([
-            containerUIView.topAnchor.constraint(equalTo: topAnchor),
-            containerUIView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            containerUIView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            containerUIView.trailingAnchor.constraint(equalTo: trailingAnchor),
-
-            contentStackView.centerYAnchor.constraint(equalTo: containerUIView.centerYAnchor),
-            contentStackView.centerXAnchor.constraint(equalTo: containerUIView.centerXAnchor),
-            contentStackView.leadingAnchor.constraint(equalTo: containerUIView.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-            contentStackView.trailingAnchor.constraint(equalTo: containerUIView.safeAreaLayoutGuide.trailingAnchor, constant: -20),
-        ])
+        
+        containerUIView.snp.makeConstraints {
+            $0.top.bottom.leading.trailing.equalToSuperview()
+        }
+        
+        contentStackView.snp.makeConstraints {
+            $0.centerX.centerY.leading.trailing.equalToSuperview().inset(20)
+        }
     }
 
 }

@@ -146,20 +146,20 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
-		4FBBE316268B97BB00D518B8 /* AppDelegate */ = {
+		4FBBE316268B97BB00D518B8 /* Application */ = {
 			isa = PBXGroup;
 			children = (
 				4FF9064426543BEF001387C9 /* AppDelegate.swift */,
 				4FF9064626543BEF001387C9 /* SceneDelegate.swift */,
 				4FE0574926909C2C00132103 /* UserSettings.swift */,
-				4F2A17B626C7050600205E03 /* Box.swift */,
 			);
-			path = AppDelegate;
+			path = Application;
 			sourceTree = "<group>";
 		};
 		4FBBE317268B97D000D518B8 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				4F2A17B626C7050600205E03 /* Box.swift */,
 				4FBBE318268B97E400D518B8 /* UserModel.swift */,
 			);
 			path = Models;
@@ -196,9 +196,8 @@
 		4FF9064326543BEF001387C9 /* FirstProject */ = {
 			isa = PBXGroup;
 			children = (
-				4FBBE316268B97BB00D518B8 /* AppDelegate */,
-				4FFF2A1426BD26C40064E610 /* Common */,
-				4FE55FCF26A33520003874B1 /* Extensions */,
+				4FBBE316268B97BB00D518B8 /* Application */,
+				4FFF2A1426BD26C40064E610 /* Core */,
 				4F7D97B326D03C4000A9D253 /* MVVM */,
 				4FFF2A1326BD26730064E610 /* Resources */,
 			);
@@ -224,14 +223,15 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		4FFF2A1426BD26C40064E610 /* Common */ = {
+		4FFF2A1426BD26C40064E610 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				4F92895326A6AFBF00624B6E /* Validators */,
-				4F046E1D26B9BF9B00CC4CBB /* Vibrations */,
 				4F92895426A6B04F00624B6E /* Alerts */,
+				4F92895326A6AFBF00624B6E /* Validators */,
+				4FE55FCF26A33520003874B1 /* Extensions */,
+				4F046E1D26B9BF9B00CC4CBB /* Vibrations */,
 			);
-			path = Common;
+			path = Core;
 			sourceTree = "<group>";
 		};
 		5119FE9EE5E6A8CDDD06C90C /* Frameworks */ = {

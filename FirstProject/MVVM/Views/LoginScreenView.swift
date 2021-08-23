@@ -96,6 +96,7 @@ class LoginScreenView: UIView {
         configure()
     }
 
+    // MARK: Configure UIElements     
     func configure() {
         addSubview(containerUIView)
         containerUIView.addSubview(loginImageView)

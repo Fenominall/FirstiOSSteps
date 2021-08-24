@@ -22,8 +22,6 @@ class LoginViewModel {
         }
     }
     
-//    var users: Box<UserViewModel> = Box(UserViewModel())
-    
     var username: Box<String> = Box("")
     
     var password: Box<String> = Box("")

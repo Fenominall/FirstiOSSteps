@@ -21,7 +21,7 @@ class HomeScreenView: UIView {
     }()
     
     private lazy var labelAndUserImageStack: UIStackView = {
-        let labelAndUserImageStack = UIStackView(arrangedSubviews: [userGreetMessageLabel, userUImageView])
+        let labelAndUserImageStack = UIStackView(arrangedSubviews: [usernameLabel, userUImageView])
         labelAndUserImageStack.translatesAutoresizingMaskIntoConstraints = false
         labelAndUserImageStack.axis = .vertical
         labelAndUserImageStack.spacing = 40
@@ -30,7 +30,7 @@ class HomeScreenView: UIView {
     
     
 //     Displaye the user`s name on the scond screen "processing..." to develop //
-    private lazy var userGreetMessageLabel: UILabel = {
+    private lazy var usernameLabel: UILabel = {
         let greetMessage = UILabel()
         greetMessage.translatesAutoresizingMaskIntoConstraints = false
         greetMessage.text = "Hey!"

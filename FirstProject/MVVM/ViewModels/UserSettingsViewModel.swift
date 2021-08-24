@@ -5,7 +5,8 @@
 //  Created by Fenominall on 17.07.2021.
 //
 
-class UserViewModel {
+class UserSettingsViewModel {
+    
     var username: Box<String> = Box("")
     var password: Box<String> = Box("")
     

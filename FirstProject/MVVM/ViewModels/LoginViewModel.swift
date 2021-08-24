@@ -50,7 +50,7 @@ extension LoginViewModel {
         user.password = password
     }
     
-    func validate() -> UserValidationState {
+    func validateUser() -> UserValidationState {
         
         if user.username.isEmpty || user.password.isEmpty {
             return .Empty

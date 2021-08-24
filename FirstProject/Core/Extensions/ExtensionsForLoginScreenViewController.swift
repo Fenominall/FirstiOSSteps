@@ -23,14 +23,6 @@ extension LoginScreenViewController: UITextFieldDelegate {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
-//
-//    //# Function to return false if the input in UITextFiled is " " or "    ".
-//    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-//        if (string == " " || string == "    ") {
-//            return false
-//        }
-//        return true
-//    }
 }
 
 //MARK: Extension to move the content up when the keyboard is called

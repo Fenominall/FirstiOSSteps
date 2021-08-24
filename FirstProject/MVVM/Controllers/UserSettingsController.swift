@@ -19,11 +19,11 @@ class UserSettingsController: UIViewController {
         view = userSettingsView
     }
     
-// Function to add setups for the third view controller
+    // Lif eCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        Keboard taggling
+        //  Keboard taggling
         observerKeyboardNotifications()
         
         setUpView()
@@ -40,7 +40,6 @@ class UserSettingsController: UIViewController {
     
 //    Switch Change
     @objc func switchChanged(paramTarget: UISwitch) {
-
         if paramTarget.isOn {
             view.backgroundColor = .black
             print("It`s ON!")

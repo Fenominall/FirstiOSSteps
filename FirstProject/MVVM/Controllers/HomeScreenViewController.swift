@@ -23,7 +23,7 @@ class HomeScreenViewController: UIViewController {
         
         homeSharedView.updateUserDataButton.addTarget(self, action: #selector(UpdateButtonPressed), for: .touchUpInside)
         homeSharedView.sourceCodeButton.addTarget(self, action: #selector(didTapSourceCodeButton), for: .touchUpInside)
-        homeSharedView.logOutUserButton.addTarget(self, action: #selector(LogOutUserPressed), for: .touchUpInside)
+        homeSharedView.logOutUserButton.addTarget(self, action: #selector(LogOutButtonPressed), for: .touchUpInside)
         
     }
 
@@ -42,15 +42,14 @@ class HomeScreenViewController: UIViewController {
         present(navVc, animated: true, completion: nil)
     }
 
-//    Navigation Button to FirstViewController
-    @objc private func LogOutUserPressed() {
-//      MARK: Recieving the current array of controllers
+    //    Navigation Button to FirstViewController
+    @objc private func LogOutButtonPressed() {
         let rootVC = LoginScreenViewController()
         navigationController?.pushViewController(rootVC, animated: true)
     }
 }
 
-
+// MARK: Extension to disable NavigationBar
 extension HomeScreenViewController {
     
     override func viewWillAppear(_ animated: Bool) {

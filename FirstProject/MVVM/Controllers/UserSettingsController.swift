@@ -9,8 +9,8 @@ import Foundation
 import UIKit
 
 // -----------------START OF FOURTH VIEW CONTROLLER-----------------
-class UserSettingsController: UIViewController {
-    
+class userSettingsController: UIViewController {
+
     var userSettingsView = UserSettingsView()
 
     override func loadView() {

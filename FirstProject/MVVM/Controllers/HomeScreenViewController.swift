@@ -9,8 +9,10 @@ import SnapKit
 import UIKit
 
 
-class HomeScreenViewController: UIViewController {
-
+class HomeScreenViewController: UIViewController, Coordinating {
+    
+    var coordinator: Coordinator?
+    
     private var homeSharedView = HomeScreenView()
 
     override func loadView() {
@@ -26,11 +28,10 @@ class HomeScreenViewController: UIViewController {
         homeSharedView.logOutUserButton.addTarget(self, action: #selector(LogOutButtonPressed), for: .touchUpInside)
         
     }
-
-// Navigation Controller for updateUserDataBtn "Button" to move to the third screen where the user can update his username and password
+    
+    // Navigation to UserSettingsViewController
     @objc private func UpdateButtonPressed() {
-        let rootVC = UserSettingsController()
-        navigationController?.pushViewController(rootVC, animated: true)
+        coordinator?.eventOccured(with: .userSettingsTapped)
     }
     
     // navigation controller for WebUIViewController
@@ -44,8 +45,9 @@ class HomeScreenViewController: UIViewController {
 
     //    Navigation Button to FirstViewController
     @objc private func LogOutButtonPressed() {
-        let rootVC = LoginScreenViewController()
-        navigationController?.pushViewController(rootVC, animated: true)
+        coordinator?.eventOccured(with: .logOuteButtonTapped)
+//        let rootVC = LoginScreenViewController()
+//        navigationController?.pushViewController(rootVC, animated: true)
     }
 }
 

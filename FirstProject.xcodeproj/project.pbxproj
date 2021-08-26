@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		4F05462F26B9810B006C5A04 /* UIButtonAnimationsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F05462E26B9810B006C5A04 /* UIButtonAnimationsExtension.swift */; };
+		4F083EE926D8063200B63DD7 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F083EE826D8063200B63DD7 /* Coordinator.swift */; };
+		4F083EEB26D806B400B63DD7 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F083EEA26D806B400B63DD7 /* MainCoordinator.swift */; };
 		4F2A17B726C7050600205E03 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2A17B626C7050600205E03 /* Box.swift */; };
 		4F4FDFBC268D862000736440 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4FDFBB268D862000736440 /* LoginViewModel.swift */; };
 		4F695E902662B6C200606D03 /* LoginScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F695E8F2662B6C200606D03 /* LoginScreenViewController.swift */; };
@@ -36,6 +38,8 @@
 		1913A254B428B7B74E687733 /* Pods-FirstProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirstProject.release.xcconfig"; path = "Target Support Files/Pods-FirstProject/Pods-FirstProject.release.xcconfig"; sourceTree = "<group>"; };
 		20857101C429DB56C714CCC4 /* Pods_FirstProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FirstProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F05462E26B9810B006C5A04 /* UIButtonAnimationsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonAnimationsExtension.swift; sourceTree = "<group>"; };
+		4F083EE826D8063200B63DD7 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		4F083EEA26D806B400B63DD7 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		4F2A17B626C7050600205E03 /* Box.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
 		4F4FDFBB268D862000736440 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		4F695E8F2662B6C200606D03 /* LoginScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenViewController.swift; sourceTree = "<group>"; };
@@ -90,6 +94,15 @@
 			path = UIButtonAnimations;
 			sourceTree = "<group>";
 		};
+		4F083EE726D8061A00B63DD7 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				4F083EE826D8063200B63DD7 /* Coordinator.swift */,
+				4F083EEA26D806B400B63DD7 /* MainCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
 		4F4FDFBA268D860700736440 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -138,6 +151,7 @@
 		4FBBE315268B97B000D518B8 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				4F083EE726D8061A00B63DD7 /* Coordinator */,
 				4F695E8F2662B6C200606D03 /* LoginScreenViewController.swift */,
 				4FD2745B2683317300C8FA32 /* HomeScreenViewController.swift */,
 				4FD2745D268332F700C8FA32 /* UserSettingsController.swift */,
@@ -369,7 +383,9 @@
 				4FE0574A26909C2C00132103 /* UserSettings.swift in Sources */,
 				4FE55FD126A33535003874B1 /* ExtensionsForLoginScreenViewController.swift in Sources */,
 				4FBBE319268B97E400D518B8 /* UserModel.swift in Sources */,
+				4F083EE926D8063200B63DD7 /* Coordinator.swift in Sources */,
 				4F92895826A6BB0500624B6E /* ExtensionForUserSettingsController.swift in Sources */,
+				4F083EEB26D806B400B63DD7 /* MainCoordinator.swift in Sources */,
 				4F7D97B226D0391A00A9D253 /* HomeScreenView.swift in Sources */,
 				4FD2745E268332F700C8FA32 /* UserSettingsController.swift in Sources */,
 				4FFF2A1626BD27560064E610 /* HapticsManager.swift in Sources */,

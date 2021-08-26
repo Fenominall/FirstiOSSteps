@@ -9,7 +9,9 @@ import Foundation
 import UIKit
 
 // -----------------START OF FOURTH VIEW CONTROLLER-----------------
-class userSettingsController: UIViewController {
+class UserSettingsController: UIViewController, Coordinating {
+    var coordinator: Coordinator?
+    
 
     var userSettingsView = UserSettingsView()
 

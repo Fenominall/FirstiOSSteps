@@ -38,15 +38,12 @@ class LoginScreenViewController: UIViewController, Coordinating {
         switch loginViewModel.validateUser() {
         case .Valid:
             loginViewModel.login()
-//             // SecondVC Navigation Controller
-            coordinator?.eventOccurred(with: )
-//             let secondVC = HomeScreenViewController()
-//             self.navigationController?.pushViewController(secondVC, animated: true)
+            // Navigation to HomeScreenViewController
+            coordinator?.eventOccured(with: .loginButtonTapped)
             // Phone Vibrations
             HapticsManager.shared.vibrateForType(for: .success)
             // Success Alert
             AppAlerts.showIncompleteSuccessUIAlert(on: self)
-           
         case .Empty:
             // Phone Vibration
             HapticsManager.shared.vibrateForType(for: .error)

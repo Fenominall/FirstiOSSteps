@@ -10,7 +10,9 @@ import UIKit
 
 
 //    MARK: UIAlerts for UITextField validations dependent on user interactions
-struct AppAlerts {
+struct AppAlerts: Coordinating {
+    
+    var coordinator: Coordinator?
     
     /// Alert for validation to inform the user about the "Incorrect input"
     /// - Parameters:
@@ -67,7 +69,9 @@ struct AppAlerts {
             let secondVC = HomeScreenViewController()
             let navController = UINavigationController(rootViewController: secondVC)
             navController.modalPresentationStyle = .fullScreen
+            navController.popViewController(animated: true)
             viewController.present(navController, animated: true)
+            
         }
 
         successUpdatedDataUIAlert.addAction(updateAction)

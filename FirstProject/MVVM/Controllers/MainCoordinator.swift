@@ -10,6 +10,8 @@ class MainCoordinator: Coordinator {
     }
 
     func start() {
-
+        var loginViewController: UIViewController & Coordinating = LoginScreenViewController()
+        loginViewController.coordinator = self
+        navigationController.setViewControllers([vc], animated: true)
     }
 }

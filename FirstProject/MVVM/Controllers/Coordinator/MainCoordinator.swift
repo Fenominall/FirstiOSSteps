@@ -21,18 +21,15 @@ class MainCoordinator: Coordinator {
                 homeVC.coordinator = self
                 homeVC.modalPresentationStyle = .fullScreen
                 navigationController?.pushViewController(homeVC, animated: true)
-        //                navigationController?.pushViewController(homeVC, animated: true)
             case .userSettingsTapped:
                 var userSettingsVC: UIViewController & Coordinating = UserSettingsController()
                 userSettingsVC.coordinator = self
                 navigationController?.pushViewController(userSettingsVC, animated: true)
-        case .logOuteButtonTapped:
-            var loginsSreenViewController: UIViewController & Coordinating = LoginScreenViewController()
-            loginsSreenViewController.coordinator = self
-            navigationController?.pushViewController(loginsSreenViewController, animated: true)
-            
-//        case .updateButtonTapped:
-//
+            case .logOuteButtonTapped:
+                var loginsSreenViewController: UIViewController & Coordinating = LoginScreenViewController()
+                loginsSreenViewController.coordinator = self
+                navigationController?.pushViewController(loginsSreenViewController, animated: true)
+
         }
     }
 

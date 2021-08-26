@@ -36,28 +36,28 @@ class LoginScreenViewController: UIViewController, Coordinating {
     @objc private func loginButtonPressed(_ sender: UIButton) {
         
         switch loginViewModel.validateUser() {
-        case .Valid:
-            loginViewModel.login()
-            // Navigation to HomeScreenViewController
-            coordinator?.eventOccured(with: .loginButtonTapped)
-            // Phone Vibrations
-            HapticsManager.shared.vibrateForType(for: .success)
-            // Success Alert
-            AppAlerts.showIncompleteSuccessUIAlert(on: self)
-        case .Empty:
-            // Phone Vibration
-            HapticsManager.shared.vibrateForType(for: .error)
-            // Button Shake
-            sender.shake()
-            // Empty fields Error Alert
-            AppAlerts.emptyFieldsErrorAlert(on: self)
-        case .Invalid:
-            // Phone Vibration
-            HapticsManager.shared.vibrateForType(for: .warning)
-            // Button Shake
-            sender.shake()
-            // Inproper credentials Alert
-            AppAlerts.showIncompleteErrorUIAlert(on: self)
+            case .Valid:
+                loginViewModel.login()
+                // Navigation to HomeScreenViewController
+                coordinator?.eventOccured(with: .loginButtonTapped)
+                // Phone Vibrations
+                HapticsManager.shared.vibrateForType(for: .success)
+                // Success Alert
+                AppAlerts.showIncompleteSuccessUIAlert(on: self)
+            case .Empty:
+                // Phone Vibration
+                HapticsManager.shared.vibrateForType(for: .error)
+                // Button Shake
+                sender.shake()
+                // Empty fields Error Alert
+                AppAlerts.emptyFieldsErrorAlert(on: self)
+            case .Invalid:
+                // Phone Vibration
+                HapticsManager.shared.vibrateForType(for: .warning)
+                // Button Shake
+                sender.shake()
+                // Inproper credentials Alert
+                AppAlerts.showIncompleteErrorUIAlert(on: self)
         }
     }
 }

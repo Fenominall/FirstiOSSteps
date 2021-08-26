@@ -8,7 +8,9 @@ import Foundation
 import UIKit
 
 
-class LoginScreenViewController: UIViewController {
+class LoginScreenViewController: UIViewController, Coordinating {
+    
+    var coordinator: Coordinator?
     
     private var loginViewModel = LoginViewModel()
     
@@ -36,9 +38,10 @@ class LoginScreenViewController: UIViewController {
         switch loginViewModel.validateUser() {
         case .Valid:
             loginViewModel.login()
-            // SecondVC Navigation Controller
-            let secondVC = HomeScreenViewController()
-            self.navigationController?.pushViewController(secondVC, animated: true)
+//             // SecondVC Navigation Controller
+            coordinator?.eventOccurred(with: )
+//             let secondVC = HomeScreenViewController()
+//             self.navigationController?.pushViewController(secondVC, animated: true)
             // Phone Vibrations
             HapticsManager.shared.vibrateForType(for: .success)
             // Success Alert

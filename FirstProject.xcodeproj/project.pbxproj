@@ -31,12 +31,10 @@
 		4FF9064E26543BF1001387C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FF9064D26543BF1001387C9 /* Assets.xcassets */; };
 		4FFCD45B26BEC87000770D33 /* LoginScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFCD45A26BEC87000770D33 /* LoginScreenView.swift */; };
 		4FFF2A1626BD27560064E610 /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFF2A1526BD27560064E610 /* HapticsManager.swift */; };
-		88343EB19D3A17A78C33ED87 /* Pods_FirstProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20857101C429DB56C714CCC4 /* Pods_FirstProject.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1913A254B428B7B74E687733 /* Pods-FirstProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirstProject.release.xcconfig"; path = "Target Support Files/Pods-FirstProject/Pods-FirstProject.release.xcconfig"; sourceTree = "<group>"; };
-		20857101C429DB56C714CCC4 /* Pods_FirstProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FirstProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F05462E26B9810B006C5A04 /* UIButtonAnimationsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonAnimationsExtension.swift; sourceTree = "<group>"; };
 		4F083EE826D8063200B63DD7 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		4F083EEA26D806B400B63DD7 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
@@ -71,7 +69,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				88343EB19D3A17A78C33ED87 /* Pods_FirstProject.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -218,7 +215,6 @@
 				4FF9064326543BEF001387C9 /* FirstProject */,
 				4FF9064226543BEF001387C9 /* Products */,
 				98AEE7FE9DF2CAF348CE0878 /* Pods */,
-				5119FE9EE5E6A8CDDD06C90C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -270,14 +266,6 @@
 				4F046E1D26B9BF9B00CC4CBB /* Vibrations */,
 			);
 			path = Core;
-			sourceTree = "<group>";
-		};
-		5119FE9EE5E6A8CDDD06C90C /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				20857101C429DB56C714CCC4 /* Pods_FirstProject.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		98AEE7FE9DF2CAF348CE0878 /* Pods */ = {

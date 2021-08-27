@@ -19,7 +19,8 @@ class HomeScreenViewController: UIViewController, Coordinating {
         super.loadView()
         view = homeSharedView
     }
-// Function to add setups for the second view controller
+
+    // Lifecycle     
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -46,8 +47,6 @@ class HomeScreenViewController: UIViewController, Coordinating {
     //    Navigation Button to FirstViewController
     @objc private func LogOutButtonPressed() {
         coordinator?.eventOccured(with: .logOuteButtonTapped)
-//        let rootVC = LoginScreenViewController()
-//        navigationController?.pushViewController(rootVC, animated: true)
     }
 }
 

@@ -15,21 +15,33 @@ class MainCoordinator: Coordinator {
 
     
     func eventOccured(with type: Event) {
+        
         switch type {
+        
             case .loginButtonTapped:
                 var homeVC: UIViewController & Coordinating = HomeScreenViewController()
                 homeVC.coordinator = self
                 homeVC.modalPresentationStyle = .fullScreen
                 navigationController?.pushViewController(homeVC, animated: true)
+                
             case .userSettingsTapped:
                 var userSettingsVC: UIViewController & Coordinating = UserSettingsController()
                 userSettingsVC.coordinator = self
                 navigationController?.pushViewController(userSettingsVC, animated: true)
+                
             case .logOuteButtonTapped:
                 var loginsSreenViewController: UIViewController & Coordinating = LoginScreenViewController()
                 loginsSreenViewController.coordinator = self
                 navigationController?.pushViewController(loginsSreenViewController, animated: true)
-
+                
+            case .sourceCodeButtonTapped:
+                guard let url = URL(string: "https://github.com/Fenominall/FirstiOSSteps") else { return }
+                var webViewViewController: UIViewController & Coordinating = SourceCodeWebUIViewController(url: url, title: "GitHub")
+                webViewViewController.coordinator = self
+                navigationController?.pushViewController(webViewViewController, animated: true)
+                
+            case .finishedViewingSourceCode:
+                navigationController?.popViewController(animated: true)
         }
     }
 

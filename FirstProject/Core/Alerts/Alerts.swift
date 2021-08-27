@@ -71,7 +71,6 @@ struct AppAlerts: Coordinating {
             navController.modalPresentationStyle = .fullScreen
             navController.popViewController(animated: true)
             viewController.present(navController, animated: true)
-            
         }
 
         successUpdatedDataUIAlert.addAction(updateAction)

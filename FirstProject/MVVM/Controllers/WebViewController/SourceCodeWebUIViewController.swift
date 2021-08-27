@@ -8,8 +8,9 @@
 import UIKit
 import WebKit
 
-class SourceCodeWebUIViewController: UIViewController {
-    
+class SourceCodeWebUIViewController: UIViewController, Coordinating {
+    var coordinator: Coordinator?
+
     private lazy var webView: WKWebView = {
         let preferences = WKWebpagePreferences()
         preferences.allowsContentJavaScript = true
@@ -31,11 +32,15 @@ class SourceCodeWebUIViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func loadView() {
+        super.loadView()
+        
+        webViewSetUp()
+    }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        webViewSetUp()
         configureWebViewButtons()
     }
     
@@ -57,7 +62,7 @@ class SourceCodeWebUIViewController: UIViewController {
     }
     
     @objc private func didTapDoneButton() {
-        dismiss(animated: true, completion: nil)
+        coordinator?.eventOccured(with: .finishedViewingSourceCode)
     }
     
     @objc private func didTapRefreshButton() {

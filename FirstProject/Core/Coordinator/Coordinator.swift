@@ -13,8 +13,8 @@ enum Event {
     case loginButtonTapped
     case userSettingsTapped
     case logOuteButtonTapped
-//    case updateButtonTapped
-    
+    case sourceCodeButtonTapped
+    case finishedViewingSourceCode
 }
 
 protocol Coordinator {

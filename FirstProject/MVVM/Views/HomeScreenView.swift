@@ -28,8 +28,6 @@ class HomeScreenView: UIView {
         return labelAndUserImageStack
     }()
     
-    
-//     Displaye the user`s name on the scond screen "processing..." to develop //
     private lazy var usernameLabel: UILabel = {
         let greetMessage = UILabel()
         greetMessage.translatesAutoresizingMaskIntoConstraints = false
@@ -42,7 +40,6 @@ class HomeScreenView: UIView {
         return greetMessage
     }()
     
-//    Button to the third screen to update the user`s name and password
     private(set) lazy var updateUserDataButton: UIButton = {
         let updateUserDataBtn = UIButton(type: .system)
         updateUserDataBtn.translatesAutoresizingMaskIntoConstraints = false
@@ -54,7 +51,6 @@ class HomeScreenView: UIView {
         return updateUserDataBtn
     }()
     
-    // # Button to the source code on GitHub
     private(set) lazy var sourceCodeButton: UIButton = {
         let sourceCodeButton = UIButton(type: .system)
         sourceCodeButton.translatesAutoresizingMaskIntoConstraints = false
@@ -66,7 +62,6 @@ class HomeScreenView: UIView {
         return sourceCodeButton
     }()
     
-// Log out Button to log out the user to the first screen
     private(set) lazy var logOutUserButton: UIButton = {
         let logOutBtn = UIButton(type: .system)
         logOutBtn.translatesAutoresizingMaskIntoConstraints = false

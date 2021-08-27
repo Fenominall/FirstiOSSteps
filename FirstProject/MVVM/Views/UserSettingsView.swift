@@ -16,7 +16,6 @@ class UserSettingsView: UIView {
         return containerView
     }()
     
-    
     private lazy var contentStackView: UIStackView = {
         let contentStackView = UIStackView(arrangedSubviews: [changeUserDataLabel, updateUsernameTextField, updatePasswordTextField, saveUserDataButton])
         contentStackView.translatesAutoresizingMaskIntoConstraints = false
@@ -34,15 +33,6 @@ class UserSettingsView: UIView {
         darkModeUIStackView.spacing = 15
         return darkModeUIStackView
     }()
-
-//    //    Gradient Backgorund Image on the third screen
-//    private lazy var thirdBackImage: UIImageView = {
-//        let thirdBackImage = UIImageView()
-//        thirdBackImage.image = UIImage(named: "gradient2")
-//        thirdBackImage.translatesAutoresizingMaskIntoConstraints = false
-//        thirdBackImage.contentMode = .scaleToFill
-//        return thirdBackImage
-//    }()
 
     //    Message for the USER to change the data
     private lazy var changeUserDataLabel: UILabel = {
@@ -124,7 +114,6 @@ class UserSettingsView: UIView {
     func elementsOfThirdScreenUIStack() {
         
         addSubview(containerUIView)
-//        containerUIView.addSubview(thirdBackImage)
         containerUIView.addSubview(contentStackView)
         containerUIView.addSubview(darkModeUIStackView)
         

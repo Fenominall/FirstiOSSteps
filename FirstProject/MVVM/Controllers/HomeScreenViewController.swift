@@ -27,7 +27,6 @@ class HomeScreenViewController: UIViewController, Coordinating {
         homeSharedView.updateUserDataButton.addTarget(self, action: #selector(UpdateButtonPressed), for: .touchUpInside)
         homeSharedView.sourceCodeButton.addTarget(self, action: #selector(didTapSourceCodeButton), for: .touchUpInside)
         homeSharedView.logOutUserButton.addTarget(self, action: #selector(LogOutButtonPressed), for: .touchUpInside)
-        
     }
     
     // Navigation to UserSettingsViewController
@@ -37,11 +36,7 @@ class HomeScreenViewController: UIViewController, Coordinating {
     
     // navigation controller for WebUIViewController
     @objc private func didTapSourceCodeButton() {
-        guard let url = URL(string: "https://github.com/Fenominall/FirstiOSSteps") else { return }
-        let webViewViewController = SourceCodeWebUIViewController(url: url, title: "GitHub")
-        let navVc = UINavigationController(rootViewController: webViewViewController)
-        navVc.modalPresentationStyle = .fullScreen
-        present(navVc, animated: true, completion: nil)
+        coordinator?.eventOccured(with: .sourceCodeButtonTapped)
     }
 
     //    Navigation Button to FirstViewController

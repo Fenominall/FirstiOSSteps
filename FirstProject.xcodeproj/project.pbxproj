@@ -103,10 +103,34 @@
 			path = Coordinator;
 			sourceTree = "<group>";
 		};
-		4F4FDFBA268D860700736440 /* ViewModels */ = {
+		4F1F59F526D962E800F08424 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				4F695E8F2662B6C200606D03 /* LoginScreenViewController.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		4F1F59F626D962FE00F08424 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				4FFCD45A26BEC87000770D33 /* LoginScreenView.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		4F1F59F726D9630600F08424 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
 				4F4FDFBB268D862000736440 /* LoginViewModel.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		4F4FDFBA268D860700736440 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				4F1F59F726D9630600F08424 /* Auth */,
 				4FE69EC826A2B80E00F23965 /* UserSettingsViewModel.swift */,
 			);
 			path = ViewModels;
@@ -151,8 +175,7 @@
 		4FBBE315268B97B000D518B8 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				4F083EE726D8061A00B63DD7 /* Coordinator */,
-				4F695E8F2662B6C200606D03 /* LoginScreenViewController.swift */,
+				4F1F59F526D962E800F08424 /* Auth */,
 				4FD2745B2683317300C8FA32 /* HomeScreenViewController.swift */,
 				4FD2745D268332F700C8FA32 /* UserSettingsController.swift */,
 				4FAF3A7B26C6ED08009C803E /* WebViewController */,
@@ -221,7 +244,7 @@
 		4FFCD45926BEC84900770D33 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				4FFCD45A26BEC87000770D33 /* LoginScreenView.swift */,
+				4F1F59F626D962FE00F08424 /* Auth */,
 				4F7D97B126D0391A00A9D253 /* HomeScreenView.swift */,
 				4FA5BB1726CEDB5F001C486D /* UserSettingsView.swift */,
 			);
@@ -240,6 +263,7 @@
 		4FFF2A1426BD26C40064E610 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				4F083EE726D8061A00B63DD7 /* Coordinator */,
 				4F92895426A6B04F00624B6E /* Alerts */,
 				4F92895326A6AFBF00624B6E /* Validators */,
 				4FE55FCF26A33520003874B1 /* Extensions */,

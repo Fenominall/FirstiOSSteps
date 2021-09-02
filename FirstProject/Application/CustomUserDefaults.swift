@@ -12,6 +12,7 @@ class CustomUserDefaults {
   enum DefaultsKey: String, CaseIterable {
     case username
     case password
+    case isUserLogin
   }
   
   static let shared = CustomUserDefaults()
@@ -27,6 +28,20 @@ class CustomUserDefaults {
     func get(key: DefaultsKey) -> Any? {
         return defaults.value(forKey: key.rawValue)
     }
+  
+    // check value if exist or nil
+    func hasValue(key: DefaultsKey) -> Bool {
+        return defaults.value(forKey: key.rawValue) != nil
+    }
+  
+    // remove all stored values
+    func removeAll() {
+        for key in DefaultsKey.allCases {
+            defaults.removeObject(forKey: key.rawValue)
+        }
+    }
 }
 
-
+// if let savedName = CustomUserDefaults.shared.get(key: .name) as? String {
+//     print(savedName) // result: john@example.com
+// }

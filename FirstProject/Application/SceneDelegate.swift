@@ -28,15 +28,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.makeKeyAndVisible()
         window?.rootViewController = navVC
         
-        coordinator.start()
-        
-//         guard let windowScene = (scene as? UIWindowScene) else { return }
-        
-//         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
-//         window?.windowScene = windowScene
-//         window?.makeKeyAndVisible()
-//         let navVC = UINavigationController(rootViewController: LoginScreenViewController())
-//         window?.rootViewController = navVC     
+        coordinator.start()  
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

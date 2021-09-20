@@ -29,6 +29,20 @@ class LoginScreenViewController: UIViewController, Coordinating {
         shareLoginScreenView.loginButton.addTarget(self, action: #selector(loginButtonPressed), for: .touchUpInside)
         
         setDelegatesOfUITextFields()
+        
+        
+
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        
+        self.shareLoginScreenView.usernameTxtField.addBottomBorder()
+        self.shareLoginScreenView.passwordTxtField.addBottomBorder()
+        
+//        self.shareLoginScreenView.appIconImageView.dropShadow()
+        self.shareLoginScreenView.loginScreenLabel.addShadow()
+//        self.shareLoginScreenView.loginScreenLabel.addShadow()
     }
     
     /// Function for loginButton: Check validation, pushes the user to the SecondViewController if requirments suitable

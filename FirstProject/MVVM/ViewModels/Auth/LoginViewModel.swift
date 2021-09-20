@@ -51,6 +51,7 @@ extension LoginViewModel {
     func validateUser() -> UserValidationState {
         
         if user.username.isEmpty || user.password.isEmpty {
+            
             return .Empty
 
         } else if !AppDataValidator.validateUserName(username.value) || !AppDataValidator.validatePassword(password.value) {

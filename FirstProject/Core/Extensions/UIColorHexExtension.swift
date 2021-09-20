@@ -44,4 +44,35 @@ extension UIColor {
 }
 
 // example
-// let mattPurpleColor = UIColor(hex: "#8c7ae6")
+ let lightGrayLogin = UIColor(hex: "#595959")
+
+
+//Adding Shadow
+extension UIView {
+    func addShadow(
+       cornerRadius: CGFloat = 16,
+       shadowColor: UIColor = UIColor(white: 0.0, alpha: 0.5),
+       shadowOffset: CGSize = CGSize(width: 0.0, height: 3.0),
+       shadowOpacity: Float = 0.3,
+       shadowRadius: CGFloat = 5) {
+      
+          layer.cornerRadius = cornerRadius
+          layer.shadowColor = shadowColor.cgColor
+          layer.shadowOffset = shadowOffset
+          layer.shadowOpacity = shadowOpacity
+          layer.shadowRadius = shadowRadius
+    }
+}
+
+extension UIImageView {
+    func dropShadow() {
+        self.layer.masksToBounds = false
+        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowOpacity = 0.5
+        self.layer.shadowOffset = CGSize(width: -1, height: 1)
+        self.layer.shadowRadius = 1
+        self.layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
+        self.layer.shouldRasterize = true
+        self.layer.rasterizationScale = UIScreen.main.scale
+    }
+}

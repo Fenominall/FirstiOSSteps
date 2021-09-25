@@ -49,7 +49,6 @@ class LoginScreenView: UIView {
         appIconImageView.image = UIImage(named: "appIconF")
         appIconImageView.contentMode = .scaleAspectFit
         appIconImageView.translatesAutoresizingMaskIntoConstraints = false
-        appIconImageView.dropShadow()
         return appIconImageView
     }()
 
@@ -102,6 +101,8 @@ class LoginScreenView: UIView {
         let userTxtField = CustomTextField()
         userTxtField.translatesAutoresizingMaskIntoConstraints = false
         userTxtField.textColor = .white
+        userTxtField.clearButtonMode = .always
+        userTxtField.clearButtonMode = .whileEditing
         return userTxtField
    }()
     
@@ -109,15 +110,17 @@ class LoginScreenView: UIView {
         let passwordTxtField = CustomTextField()
         passwordTxtField.translatesAutoresizingMaskIntoConstraints = false
         passwordTxtField.textColor = .white
+        passwordTxtField.isSecureTextEntry = true
         // adding a button in inside the TextField
-        let overlayButton = UIButton(type: .system)
-        let eyeImage = UIImage(systemName: "eye.fill")
-        overlayButton.setImage(eyeImage, for: .normal)
-        overlayButton.sizeToFit()
-        overlayButton.tintColor = .white
+//        let overlayButton = UIButton(type: .system)
+//        let eyeImage = UIImage(systemName: "eye.fill")
+//        overlayButton.setImage(eyeImage, for: .normal)
+//        overlayButton.sizeToFit()
+//        overlayButton.tintColor = .white
         //
-        passwordTxtField.rightView = overlayButton
-        passwordTxtField.rightViewMode = .always
+//        passwordTxtField.rightView = overlayButton
+//        passwordTxtField.rightViewMode = .always
+        passwordTxtField.enablePasswordToggle()
         return passwordTxtField
     }()
 
@@ -130,8 +133,6 @@ class LoginScreenView: UIView {
         return btnLogin
     }()
     
-    
-
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
@@ -205,10 +206,6 @@ class LoginScreenView: UIView {
             $0.centerX.equalTo(bottomContainerUIView)
             $0.bottom.equalTo(bottomContainerUIView.safeAreaLayoutGuide.snp.bottom).offset(-70)
         }
-        
-        
-        
-        
     }
 }
 

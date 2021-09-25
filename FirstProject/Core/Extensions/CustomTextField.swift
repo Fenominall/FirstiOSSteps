@@ -26,7 +26,28 @@ class CustomTextField: UITextField {
         let rect = super.editingRect(forBounds: bounds)
         return rect.inset(by: textPadding)
     }
+}
 
+
+// MARK: Overriding isSecureTextEntry an becomeFirstResponder to have text returnred after toggling isSecureTextEntry bool
+extension CustomTextField {
+    override var isSecureTextEntry: Bool {
+        didSet {
+            if isFirstResponder {
+                _ = becomeFirstResponder()
+            }
+        }
+    }
+
+    override func becomeFirstResponder() -> Bool {
+
+        let success = super.becomeFirstResponder()
+        if isSecureTextEntry, let text = self.text {
+            self.text?.removeAll()
+            insertText(text)
+        }
+        return success
+    }
 }
 
 
@@ -41,17 +62,32 @@ extension UITextField {
     }
 }
 
+
+private let toggleButton = UIButton(type: .custom)
+
 extension UITextField {
-    fileprivate func setPasswordToggleImage(_ button: UIButton) {
-        if (isSecureTextEntry) {
-            button.setImage(UIImage(systemName: "eye.slash.fill"), for: .normal)
-        } else {
-            button.setImage(UIImage(systemName: "eye.fill"), for: .normal)
-        }
-    }
     
     func enablePasswordToggle() {
         
+        toggleButton.setImage(UIImage(systemName: "eye.fill"), for: .selected)
+        toggleButton.setImage(UIImage(systemName: "eye.slash"), for: .normal)
+        toggleButton.sizeToFit()
+        toggleButton.tintColor = .white
+        toggleButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: -12, bottom: 0, right: 0)
+        toggleButton.addTarget(self, action: #selector(togglePasswordView(_:)), for: .touchUpInside)
+        rightView = toggleButton
+        rightViewMode = .always
+        toggleButton.alpha = 0.4
+    }
+    
+    @objc func togglePasswordView(_ sender: Any) {
+        
+        if isSecureTextEntry {
+            toggleButton.setImage(UIImage(systemName: "eye.fill"), for: .normal)
+            isSecureTextEntry.toggle()
+        } else {
+            toggleButton.setImage(UIImage(systemName: "eye.slash"), for: .normal)
+            isSecureTextEntry.toggle()
+        }
     }
 }
-

@@ -40,9 +40,6 @@ class LoginScreenViewController: UIViewController, Coordinating {
         self.shareLoginScreenView.usernameTxtField.addBottomBorder()
         self.shareLoginScreenView.passwordTxtField.addBottomBorder()
         
-//        self.shareLoginScreenView.appIconImageView.dropShadow()
-        self.shareLoginScreenView.loginScreenLabel.addShadow()
-//        self.shareLoginScreenView.loginScreenLabel.addShadow()
     }
     
     /// Function for loginButton: Check validation, pushes the user to the SecondViewController if requirments suitable

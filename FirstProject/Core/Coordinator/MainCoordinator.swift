@@ -14,7 +14,7 @@ class MainCoordinator: Coordinator {
     var children: [Coordinator]? = nil
 
     
-    func eventOccured(with type: Event) {
+    func eventOccurred(with type: Event) {
         
         switch type {
         
@@ -29,7 +29,7 @@ class MainCoordinator: Coordinator {
                 userSettingsVC.coordinator = self
                 navigationController?.pushViewController(userSettingsVC, animated: true)
                 
-            case .logOuteButtonTapped:
+            case .logOutButtonTapped:
                 var loginsSreenViewController: UIViewController & Coordinating = LoginScreenViewController()
                 loginsSreenViewController.coordinator = self
                 navigationController?.pushViewController(loginsSreenViewController, animated: true)

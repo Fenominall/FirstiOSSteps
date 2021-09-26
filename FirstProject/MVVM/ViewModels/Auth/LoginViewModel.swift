@@ -23,15 +23,8 @@ class LoginViewModel {
     }
     
     var username: Box<String> = Box("")
-    
     var password: Box<String> = Box("")
-    
-//    var username: String {
-//        return user.username
-//   }
-//     var password: String {
-//         return user.password
-//     }
+
     
     init(user: User = User()) {
         self.user = user

@@ -7,6 +7,7 @@
 
 import UIKit
 
+// MARK: Adding UIButton to the right or left of an object
 extension UIButton {
     
     func leftImage(image: UIImage, renderMode: UIImage.RenderingMode) {

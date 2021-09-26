@@ -28,8 +28,8 @@ extension LoginScreenViewController: UITextFieldDelegate {
 //MARK: Extension to move the content up when the keyboard is called
 extension LoginScreenViewController {
     
-    //# Function to move the Keyboardup on the first page
-    func observeKeyboardNofitications() {
+    //# Function to move the Keyboard-up on the first page
+    func observeKeyboardNotifications() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(hideKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
@@ -48,16 +48,5 @@ extension LoginScreenViewController {
     }
 }
 
-//  MARK: Handaling navigation controller to disable it
-extension LoginScreenViewController {
-    
-    override func viewWillAppear(_ animated: Bool) {
-        navigationController?.isNavigationBarHidden = true
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        navigationController?.isNavigationBarHidden = false
-    }
-}
 
 

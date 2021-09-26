@@ -23,15 +23,12 @@ class LoginScreenViewController: UIViewController, Coordinating {
     //MARK: - ViewController lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        // MARK: Notifications for swhowing and hiding keyboard
-        observeKeyboardNofitications()
+        // MARK: Notifications for showing and hiding keyboard
+        observeKeyboardNotifications()
         
         shareLoginScreenView.loginButton.addTarget(self, action: #selector(loginButtonPressed), for: .touchUpInside)
         
         setDelegatesOfUITextFields()
-        
-        
-
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -42,7 +39,7 @@ class LoginScreenViewController: UIViewController, Coordinating {
         
     }
     
-    /// Function for loginButton: Check validation, pushes the user to the SecondViewController if requirments suitable
+    /// Function for loginButton: Check validation, pushes the user to the SecondViewController if requirements suitable
     /// - Parameter sender: Any
     @objc private func loginButtonPressed(_ sender: UIButton) {
         
@@ -50,7 +47,7 @@ class LoginScreenViewController: UIViewController, Coordinating {
             case .Valid:
                 loginViewModel.login()
                 // Navigation to HomeScreenViewController
-                coordinator?.eventOccured(with: .loginButtonTapped)
+                coordinator?.eventOccurred(with: .loginButtonTapped)
                 // Phone Vibrations
                 HapticsManager.shared.vibrateForType(for: .success)
                 // Success Alert
@@ -67,7 +64,7 @@ class LoginScreenViewController: UIViewController, Coordinating {
                 HapticsManager.shared.vibrateForType(for: .warning)
                 // Button Shake
                 sender.shake()
-                // Inproper credentials Alert
+                // Improper credentials Alert
                 AppAlerts.showIncompleteErrorUIAlert(on: self)
         }
     }
@@ -97,4 +94,16 @@ extension LoginScreenViewController {
         return true
     }
 
+}
+
+//  MARK: Handling navigation controller to disable it
+extension LoginScreenViewController {
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.isNavigationBarHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        navigationController?.isNavigationBarHidden = false
+    }
 }

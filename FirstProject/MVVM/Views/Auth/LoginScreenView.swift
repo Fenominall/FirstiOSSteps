@@ -13,7 +13,7 @@ class LoginScreenView: UIView {
     // MARK: UI Elements:
     // - containerView
     // - contentStackView
-    // - Backgound Image
+    // - Background Image
     // - Login Screen "Welcome!" Label
     // - Username UITextField
     // - Password UITextField
@@ -111,15 +111,6 @@ class LoginScreenView: UIView {
         passwordTxtField.translatesAutoresizingMaskIntoConstraints = false
         passwordTxtField.textColor = .white
         passwordTxtField.isSecureTextEntry = true
-        // adding a button in inside the TextField
-//        let overlayButton = UIButton(type: .system)
-//        let eyeImage = UIImage(systemName: "eye.fill")
-//        overlayButton.setImage(eyeImage, for: .normal)
-//        overlayButton.sizeToFit()
-//        overlayButton.tintColor = .white
-        //
-//        passwordTxtField.rightView = overlayButton
-//        passwordTxtField.rightViewMode = .always
         passwordTxtField.enablePasswordToggle()
         return passwordTxtField
     }()
@@ -208,15 +199,3 @@ class LoginScreenView: UIView {
         }
     }
 }
-
-
-//class ButtonWithImage: UIButton {
-//
-//    override func layoutSubviews() {
-//        super.layoutSubviews()
-//        if imageView != nil {
-//            imageEdgeInsets = UIEdgeInsets(top: 5, left: (bounds.width - 35), bottom: 5, right: 5)
-//            titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: (imageView?.frame.width)!)
-//        }
-//    }
-//}

@@ -7,7 +7,7 @@
 
 import UIKit
 
-// MARK: Settings padding for UITextField
+// MARK: Setting paddings for UITextField
 class CustomTextField: UITextField {
 
     var textPadding = UIEdgeInsets(
@@ -29,7 +29,7 @@ class CustomTextField: UITextField {
 }
 
 
-// MARK: Overriding isSecureTextEntry an becomeFirstResponder to have text returnred after toggling isSecureTextEntry bool
+// MARK: Overriding isSecureTextEntry an becomeFirstResponder to have text returned after toggling isSecureTextEntry bool
 extension CustomTextField {
     override var isSecureTextEntry: Bool {
         didSet {
@@ -63,6 +63,8 @@ extension UITextField {
 }
 
 
+
+// MARK: Create toggling UIButton
 private let toggleButton = UIButton(type: .custom)
 
 extension UITextField {

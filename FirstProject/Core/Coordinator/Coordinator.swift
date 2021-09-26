@@ -12,7 +12,7 @@ import UIKit
 enum Event {
     case loginButtonTapped
     case userSettingsTapped
-    case logOuteButtonTapped
+    case logOutButtonTapped
     case sourceCodeButtonTapped
     case finishedViewingSourceCode
 }
@@ -21,7 +21,7 @@ protocol Coordinator {
     var navigationController: UINavigationController? { get set }
     var children: [Coordinator]? { get set }
 
-    func eventOccured(with type: Event)
+    func eventOccurred(with type: Event)
     func start()
 }
 

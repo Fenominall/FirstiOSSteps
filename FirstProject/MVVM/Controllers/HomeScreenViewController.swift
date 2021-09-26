@@ -31,17 +31,17 @@ class HomeScreenViewController: UIViewController, Coordinating {
     
     // Navigation to UserSettingsViewController
     @objc private func UpdateButtonPressed() {
-        coordinator?.eventOccured(with: .userSettingsTapped)
+        coordinator?.eventOccurred(with: .userSettingsTapped)
     }
     
     // navigation controller for WebUIViewController
     @objc private func didTapSourceCodeButton() {
-        coordinator?.eventOccured(with: .sourceCodeButtonTapped)
+        coordinator?.eventOccurred(with: .sourceCodeButtonTapped)
     }
 
     //    Navigation Button to FirstViewController
     @objc private func LogOutButtonPressed() {
-        coordinator?.eventOccured(with: .logOuteButtonTapped)
+        coordinator?.eventOccurred(with: .logOutButtonTapped)
     }
 }
 

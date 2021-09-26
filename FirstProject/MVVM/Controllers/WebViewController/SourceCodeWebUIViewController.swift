@@ -62,7 +62,7 @@ class SourceCodeWebUIViewController: UIViewController, Coordinating {
     }
     
     @objc private func didTapDoneButton() {
-        coordinator?.eventOccured(with: .finishedViewingSourceCode)
+        coordinator?.eventOccurred(with: .finishedViewingSourceCode)
     }
     
     @objc private func didTapRefreshButton() {

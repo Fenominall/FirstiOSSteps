@@ -20,7 +20,7 @@ extension UserSettingsController: UITextFieldDelegate {
     }
     
     
-    /// Dismiss keboard when touching in any part of the view.
+    /// Dismiss keyboard when touching in any part of the view.
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
@@ -41,7 +41,7 @@ extension UserSettingsController: UITextFieldDelegate {
 extension UserSettingsController {
     
     
-    //# Function to move the Keyboardup on the first page
+    //# Function to move the Keyboard-up on the first page
     func observerKeyboardNotifications() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(hideKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)

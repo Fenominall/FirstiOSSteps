@@ -9,7 +9,7 @@ import UIKit
 
 // MARK: Setting paddings for UITextField
 class CustomTextField: UITextField {
-
+    
     var textPadding = UIEdgeInsets(
         top: 10,
         left: 45,
@@ -38,9 +38,9 @@ extension CustomTextField {
             }
         }
     }
-
+    
     override func becomeFirstResponder() -> Bool {
-
+        
         let success = super.becomeFirstResponder()
         if isSecureTextEntry, let text = self.text {
             self.text?.removeAll()

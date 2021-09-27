@@ -11,12 +11,23 @@ import SnapKit
 class HomeScreenView: UIView {
     
 //    User default image on the second screen
-    private lazy var userUImageView: UIImageView = {
+    private(set) lazy var userUImageView: UIImageView = {
         let userImage = UIImageView()
         userImage.image = UIImage(named: "user")
+        userImage.translatesAutoresizingMaskIntoConstraints = false
+        userImage.layer.masksToBounds = false
         userImage.contentMode = .scaleAspectFit
         userImage.frame = CGRect(x: 0, y: 0, width: 150, height: 150)
+        userImage.layer.cornerRadius = userImage.frame.size.width / 2
+        userImage.clipsToBounds = true
+        return userImage
+    }()
+    
+    private(set) lazy var homeScreenBackgroundImage: UIImageView = {
+        let userImage = UIImageView()
+        userImage.image = UIImage(named: "blob-scene")
         userImage.translatesAutoresizingMaskIntoConstraints = false
+        userImage.contentMode = .scaleAspectFit
         return userImage
     }()
     
@@ -92,7 +103,12 @@ class HomeScreenView: UIView {
     }
     
     func initialize() {
-        backgroundColor = UIColor(red: 255/255, green: 170/255, blue: 0/255, alpha: 1)
+//        backgroundColor = UIColor(red: 255/255, green: 170/255, blue: 0/255, alpha: 1)
+        
+        addSubview(homeScreenBackgroundImage)
+        homeScreenBackgroundImage.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
         
         addSubview(labelAndUserImageStack)
         labelAndUserImageStack.snp.makeConstraints {
@@ -119,5 +135,7 @@ class HomeScreenView: UIView {
             $0.top.equalTo(labelAndUserImageStack).inset(300)
             $0.left.right.equalToSuperview().inset(30)
         }
+        
+    
     }
 }

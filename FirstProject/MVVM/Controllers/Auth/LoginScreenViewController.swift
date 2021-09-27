@@ -48,10 +48,13 @@ class LoginScreenViewController: UIViewController, Coordinating {
                 loginViewModel.login()
                 // Navigation to HomeScreenViewController
                 coordinator?.eventOccurred(with: .loginButtonTapped)
+                // Success Alert
+                afterBlock(seconds: 1, queue: .main) {
+                    AppAlerts.showIncompleteSuccessUIAlert(on: self)
+                    print(Thread.current)
+                }
                 // Phone Vibrations
                 HapticsManager.shared.vibrateForType(for: .success)
-                // Success Alert
-                AppAlerts.showIncompleteSuccessUIAlert(on: self)
             case .Empty:
                 // Phone Vibration
                 HapticsManager.shared.vibrateForType(for: .error)
@@ -105,5 +108,15 @@ extension LoginScreenViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         navigationController?.isNavigationBarHidden = false
+    }
+}
+
+
+// Function to to do something in some time
+extension LoginScreenViewController {
+    func afterBlock(seconds: Int, queue: DispatchQueue = DispatchQueue.global(), completion: @escaping () -> ()) {
+        queue.asyncAfter(deadline: .now() + .seconds(seconds)) {
+            completion()
+        }
     }
 }

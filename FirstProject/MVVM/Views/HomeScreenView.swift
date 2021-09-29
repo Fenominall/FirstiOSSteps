@@ -54,7 +54,7 @@ class HomeScreenView: UIView {
     private(set) lazy var updateUserDataButton: UIButton = {
         let updateUserDataBtn = UIButton(type: .system)
         updateUserDataBtn.translatesAutoresizingMaskIntoConstraints = false
-        updateUserDataBtn.backgroundColor = .blue
+        updateUserDataBtn.backgroundColor = lightGrayLogin
         updateUserDataBtn.setTitle("Update personal info", for: .normal)
         updateUserDataBtn.tintColor = .white
         updateUserDataBtn.layer.cornerRadius = 5
@@ -65,7 +65,7 @@ class HomeScreenView: UIView {
     private(set) lazy var sourceCodeButton: UIButton = {
         let sourceCodeButton = UIButton(type: .system)
         sourceCodeButton.translatesAutoresizingMaskIntoConstraints = false
-        sourceCodeButton.backgroundColor = .blue
+        sourceCodeButton.backgroundColor = lightGrayLogin
         sourceCodeButton.setTitle("App Source Code", for: .normal)
         sourceCodeButton.tintColor = .white
         sourceCodeButton.layer.cornerRadius = 5
@@ -76,7 +76,7 @@ class HomeScreenView: UIView {
     private(set) lazy var logOutUserButton: UIButton = {
         let logOutBtn = UIButton(type: .system)
         logOutBtn.translatesAutoresizingMaskIntoConstraints = false
-        logOutBtn.backgroundColor = .blue
+        logOutBtn.backgroundColor = lightGrayLogin
         logOutBtn.tintColor = .white
         logOutBtn.layer.cornerRadius = 5
         logOutBtn.clipsToBounds = true

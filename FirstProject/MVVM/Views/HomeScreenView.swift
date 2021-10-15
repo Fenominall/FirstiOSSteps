@@ -10,13 +10,20 @@ import SnapKit
 
 class HomeScreenView: UIView {
     
-//    User default image on the second screen
+    
+    private(set) lazy var circleBackGroundForUserImage: UIImageView = {
+        let circleImage = UIImageView()
+        circleImage.image = UIImage(named: "lightCircle")
+        circleImage.translatesAutoresizingMaskIntoConstraints = false
+        return circleImage
+    }()
+    
     private(set) lazy var userUImageView: UIImageView = {
         let userImage = UIImageView()
         userImage.image = UIImage(named: "user")
         userImage.translatesAutoresizingMaskIntoConstraints = false
-        userImage.layer.masksToBounds = false
         userImage.contentMode = .scaleAspectFit
+        userImage.layer.masksToBounds = false
         userImage.frame = CGRect(x: 0, y: 0, width: 150, height: 150)
         userImage.layer.cornerRadius = userImage.frame.size.width / 2
         userImage.clipsToBounds = true
@@ -31,80 +38,69 @@ class HomeScreenView: UIView {
         return userImage
     }()
     
-    private lazy var labelAndUserImageStack: UIStackView = {
-        let labelAndUserImageStack = UIStackView(arrangedSubviews: [usernameLabel, userUImageView])
-        labelAndUserImageStack.translatesAutoresizingMaskIntoConstraints = false
-        labelAndUserImageStack.axis = .vertical
-        labelAndUserImageStack.spacing = 40
-        return labelAndUserImageStack
-    }()
-    
-    private lazy var usernameLabel: UILabel = {
+    private(set) lazy var usernameLabel: UILabel = {
         let greetMessage = UILabel()
         greetMessage.translatesAutoresizingMaskIntoConstraints = false
         greetMessage.text = "Hey!"
-        greetMessage.font = UIFont.boldSystemFont(ofSize: 40)
-        greetMessage.adjustsFontSizeToFitWidth = true
+        greetMessage.font = UIFont.systemFont(ofSize: 40, weight: .bold)
         greetMessage.textAlignment = .center
         greetMessage.textColor = .white
         greetMessage.contentMode = .scaleAspectFit
         return greetMessage
     }()
     
-    private(set) lazy var updateUserDataButton: UIButton = {
-        let updateUserDataBtn = UIButton(type: .system)
-        updateUserDataBtn.translatesAutoresizingMaskIntoConstraints = false
-        updateUserDataBtn.backgroundColor = lightGrayLogin
-        updateUserDataBtn.setTitle("Update personal info", for: .normal)
-        updateUserDataBtn.tintColor = .white
-        updateUserDataBtn.layer.cornerRadius = 5
-        updateUserDataBtn.clipsToBounds = true
-        return updateUserDataBtn
-    }()
     
-    private(set) lazy var sourceCodeButton: UIButton = {
-        let sourceCodeButton = UIButton(type: .system)
-        sourceCodeButton.translatesAutoresizingMaskIntoConstraints = false
-        sourceCodeButton.backgroundColor = lightGrayLogin
-        sourceCodeButton.setTitle("App Source Code", for: .normal)
-        sourceCodeButton.tintColor = .white
-        sourceCodeButton.layer.cornerRadius = 5
-        sourceCodeButton.clipsToBounds = true
-        return sourceCodeButton
-    }()
+    // MARK: - UIButtons
+    private func customUIButton(title: String, backgroundColor: UIColor, tintColor: UIColor, cornerRadius: Int) -> UIButton {
+        let customUIButton = UIButton(type: .system)
+        customUIButton.translatesAutoresizingMaskIntoConstraints = false
+        customUIButton.backgroundColor = backgroundColor
+        customUIButton.setTitle(title, for: .normal)
+        customUIButton.tintColor = tintColor
+        customUIButton.layer.cornerRadius = CGFloat(cornerRadius)
+        customUIButton.layer.shadowColor = UIColor.black.cgColor
+        customUIButton.layer.shadowOffset = CGSize(width: 0.0, height: 5.5)
+        customUIButton.layer.shadowRadius = 2.0
+        customUIButton.layer.shadowOpacity = 0.5
+        return customUIButton
+    }
     
-    private(set) lazy var logOutUserButton: UIButton = {
-        let logOutBtn = UIButton(type: .system)
-        logOutBtn.translatesAutoresizingMaskIntoConstraints = false
-        logOutBtn.backgroundColor = lightGrayLogin
-        logOutBtn.tintColor = .white
-        logOutBtn.layer.cornerRadius = 5
-        logOutBtn.clipsToBounds = true
-        logOutBtn.setTitle("Log Out", for: .normal)
-        return logOutBtn
+    private(set) lazy var editProfileButton = customUIButton(title: "Edit Profile", backgroundColor: lightGrayLogin ?? .lightGray, tintColor: .white, cornerRadius: 5)
+    private(set) lazy var sourceCodeButton = customUIButton(title: "App Source Code", backgroundColor: lightGrayLogin ?? .lightGray, tintColor: .white, cornerRadius: 5)
+    private(set) lazy var logOutUserButton = customUIButton(title: "Log Out", backgroundColor: lightGrayLogin ?? .lightGray, tintColor: .white, cornerRadius: 5)
+    
+    // MARK: - UIStackVies
+    private lazy var labelAndUserImageStack: UIStackView = {
+        let labelAndUserImageStack = UIStackView(arrangedSubviews: [usernameLabel, circleBackGroundForUserImage])
+        labelAndUserImageStack.translatesAutoresizingMaskIntoConstraints = false
+        labelAndUserImageStack.axis = .vertical
+        //        labelAndUserImageStack.distribution = .fillEqually
+        labelAndUserImageStack.spacing = 10
+        return labelAndUserImageStack
     }()
     
     private lazy var buttonsStackView: UIStackView = {
-        let buttonsStackView = UIStackView(arrangedSubviews: [updateUserDataButton, sourceCodeButton, logOutUserButton])
+        let buttonsStackView = UIStackView(arrangedSubviews: [editProfileButton, sourceCodeButton, logOutUserButton])
         buttonsStackView.translatesAutoresizingMaskIntoConstraints = false
         buttonsStackView.axis = .vertical
         buttonsStackView.spacing = 15
         return buttonsStackView
     }()
     
+    // MARK: UIView initialization
     override init(frame: CGRect) {
         super.init(frame: frame)
         initialize()
     }
-
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         initialize()
     }
     
+    
+    // MARK: Configure auto-layout of UIElements
     func initialize() {
-//        backgroundColor = UIColor(red: 255/255, green: 170/255, blue: 0/255, alpha: 1)
-        
         addSubview(homeScreenBackgroundImage)
         homeScreenBackgroundImage.snp.makeConstraints {
             $0.edges.equalToSuperview()
@@ -115,16 +111,16 @@ class HomeScreenView: UIView {
             $0.topMargin.centerXWithinMargins.equalToSuperview().inset(70)
         }
         
-        addSubview(updateUserDataButton)
-        updateUserDataButton.snp.makeConstraints {
+        addSubview(editProfileButton)
+        editProfileButton.snp.makeConstraints {
             $0.height.equalTo(50)
         }
-
+        
         addSubview(sourceCodeButton)
         sourceCodeButton.snp.makeConstraints {
             $0.height.equalTo(50)
         }
-
+        
         addSubview(logOutUserButton)
         logOutUserButton.snp.makeConstraints {
             $0.height.equalTo(50)
@@ -136,6 +132,15 @@ class HomeScreenView: UIView {
             $0.left.right.equalToSuperview().inset(30)
         }
         
-    
+        circleBackGroundForUserImage.snp.makeConstraints {
+            $0.width.height.equalTo(200)
+        }
+        
+        circleBackGroundForUserImage.addSubview(userUImageView)
+        userUImageView.snp.makeConstraints {
+            $0.centerX.centerY.equalTo(circleBackGroundForUserImage)
+            $0.width.height.equalTo(150)
+        }
     }
 }
+

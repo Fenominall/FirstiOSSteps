@@ -33,7 +33,7 @@ class UserSettingsView: UIView {
         darkModeUIStackView.spacing = 15
         return darkModeUIStackView
     }()
-
+    
     //    Message for the USER to change the data
     private lazy var changeUserDataLabel: UILabel = {
         let changeUserDataLabel = UILabel()
@@ -44,7 +44,7 @@ class UserSettingsView: UIView {
         changeUserDataLabel.textColor = .white
         return changeUserDataLabel
     }()
-
+    
     // Text field to update user`s name
     private(set) lazy var updateUsernameTextField: UITextField = {
         let updateUsernameTextField = UITextField()
@@ -55,7 +55,7 @@ class UserSettingsView: UIView {
         updateUsernameTextField.borderStyle = .roundedRect
         return updateUsernameTextField
     }()
-
+    
     // Text field to update user`s password
     private(set) lazy var updatePasswordTextField: UITextField = {
         let updatePasswordTextField = UITextField()
@@ -66,7 +66,7 @@ class UserSettingsView: UIView {
         updatePasswordTextField.borderStyle = .roundedRect
         return updatePasswordTextField
     }()
-
+    
     //    Button to save user changed on the third screen
     private(set) lazy var saveUserDataButton: UIButton = {
         let saveUserDataButton = UIButton(type: .system)
@@ -79,7 +79,7 @@ class UserSettingsView: UIView {
         saveUserDataButton.isEnabled = false
         return saveUserDataButton
     }()
-
+    
     //    MARK: UISwitch for dark mode
     private(set) lazy var backGroundColorSwitcher: UISwitch = {
         let backGroundColorSwitcher = UISwitch()
@@ -87,8 +87,8 @@ class UserSettingsView: UIView {
         backGroundColorSwitcher.setOn(false, animated: true)
         return backGroundColorSwitcher
     }()
-
-
+    
+    
     //    MARK: DARK MODE LABEL
     private lazy var darkModeUiLabel: UILabel = {
         let darkModeUiLabel = UILabel()
@@ -98,14 +98,12 @@ class UserSettingsView: UIView {
         darkModeUiLabel.textColor = .white
         return darkModeUiLabel
     }()
-    
-    
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         elementsOfThirdScreenUIStack()
     }
-
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         elementsOfThirdScreenUIStack()
@@ -128,7 +126,7 @@ class UserSettingsView: UIView {
         changeUserDataLabel.snp.makeConstraints {
             $0.height.equalTo(50)
         }
-
+        
         NSLayoutConstraint.activate([
             darkModeUIStackView.topAnchor.constraint(equalTo: contentStackView.bottomAnchor, constant: 10),
             darkModeUIStackView.centerXAnchor.constraint(equalTo: contentStackView.safeAreaLayoutGuide.centerXAnchor),

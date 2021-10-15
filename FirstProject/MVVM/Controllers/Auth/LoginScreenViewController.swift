@@ -29,6 +29,7 @@ class LoginScreenViewController: UIViewController, Coordinating {
         shareLoginScreenView.loginButton.addTarget(self, action: #selector(loginButtonPressed), for: .touchUpInside)
         
         setDelegatesOfUITextFields()
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -49,9 +50,11 @@ class LoginScreenViewController: UIViewController, Coordinating {
                 // Navigation to HomeScreenViewController
                 coordinator?.eventOccurred(with: .loginButtonTapped)
                 // Success Alert
-                afterBlock(seconds: 1, queue: .main) {
-                    AppAlerts.showIncompleteSuccessUIAlert(on: self)
-                    print(Thread.current)
+                afterBlock(seconds: 1) {
+                    DispatchQueue.main.async {
+                        AppAlerts.showIncompleteSuccessUIAlert(on: self)
+                        print(Thread.current)
+                    }
                 }
                 // Phone Vibrations
                 HapticsManager.shared.vibrateForType(for: .success)

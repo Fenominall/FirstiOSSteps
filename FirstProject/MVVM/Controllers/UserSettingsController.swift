@@ -33,7 +33,7 @@ class UserSettingsController: UIViewController, Coordinating {
         userSettingsView.updateUsernameTextField.addTarget(self, action: #selector(textFieldEditingChanged(_:)), for: .editingChanged)
         userSettingsView.updatePasswordTextField.addTarget(self, action: #selector(textFieldEditingChanged(_:)), for: .editingChanged)
         userSettingsView.saveUserDataButton.addTarget(self, action: #selector(updateDataButton), for: .touchUpInside)
-        userSettingsView.backGroundColorSwitcher.addTarget(self, action: #selector(switchChanged), for: .valueChanged)
+//        userSettingsView.backGroundColorSwitcher.addTarget(self, action: #selector(switchChanged), for: .valueChanged)
         
         userSettingsView.updatePasswordTextField.delegate = self
         userSettingsView.updatePasswordTextField.delegate = self

@@ -1,57 +1,86 @@
-////////
-////////  LoginScreenView.swift
-////////  FirstProject
-////////
-////////  Created by Fenominall on 07.08.2021.
-////////
-//////
+//
+//  LoginScreenView.swift
+//  FirstProject
+//
+//  Created by Fenominall on 07.08.2021.
+//
+
 import UIKit
 import SnapKit
 
 class LoginScreenView: UIView {
-
-    // MARK: UI Elements:
-    // - containerView
-    // - contentStackView
-    // - Background Image
-    // - Login Screen "Welcome!" Label
-    // - Username UITextField
-    // - Password UITextField
     
-    private lazy var containerUIView: UIView = {
-        let containerView = UIView()
-        containerView.translatesAutoresizingMaskIntoConstraints = false
-        return containerView
-    }()
+    // MARK: - UIViews
+    private func containerUIView() -> UIView {
+        let containerUIView = UIView(frame: .zero)
+        containerUIView.translatesAutoresizingMaskIntoConstraints = false
+        return containerUIView
+    }
     
-    private lazy var topContainerUIView: UIView = {
-        let topContainerUIView = UIView()
-        topContainerUIView.translatesAutoresizingMaskIntoConstraints = false
-        return topContainerUIView
-    }()
+    private lazy var screenContainerUIView = containerUIView()
+    private lazy var topContainerUIView = containerUIView()
+    private lazy var bottomContainerUIView = containerUIView()
     
-    private lazy var bottomContainerUIView: UIView = {
-        let bottomContainerUIView = UIView()
-        bottomContainerUIView.translatesAutoresizingMaskIntoConstraints = false
-        return bottomContainerUIView
-    }()
-
-    private lazy var loginImageView: UIImageView = {
-        let loginImage = UIImageView()
-        loginImage.image = UIImage(named: "loginImage")
-        loginImage.contentMode = .scaleAspectFit
-        loginImage.translatesAutoresizingMaskIntoConstraints = false
-        return loginImage
-    }()
+    // MARK: - UIImageViews
     
-    private(set) lazy var appIconImageView: UIImageView = {
-        let appIconImageView = UIImageView()
-        appIconImageView.image = UIImage(named: "appIconF")
-        appIconImageView.contentMode = .scaleAspectFit
-        appIconImageView.translatesAutoresizingMaskIntoConstraints = false
-        return appIconImageView
-    }()
-
+    private func imageView(image: String) -> UIImageView {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.image = UIImage(named: image)
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }
+    
+    private lazy var loginImageView = imageView(image: "loginImage")
+    private lazy var appIconImageView = imageView(image: "appIconF")
+    
+    // MARK: - UILables
+    
+    private func newUIlabel(text: String, fontSize: Int, fontWeight: UIFont.Weight, textAlignment: NSTextAlignment, textColor: UIColor) -> UILabel {
+        let newUIlabel = UILabel()
+        newUIlabel.translatesAutoresizingMaskIntoConstraints = false
+        newUIlabel.text = text
+        newUIlabel.textAlignment = textAlignment
+        newUIlabel.textColor = textColor
+        newUIlabel.font = UIFont.systemFont(ofSize: CGFloat(fontSize), weight: fontWeight)
+        return newUIlabel
+    }
+    
+    private lazy var loginScreenLabel = newUIlabel(text: "Login", fontSize: 45, fontWeight: .semibold, textAlignment: .center, textColor: .white)
+    private lazy var usernameLabel = newUIlabel(text: "Username", fontSize: 24, fontWeight: .regular, textAlignment: .natural, textColor: lightGrayLogin ?? .white)
+    private lazy var passwordLabel = newUIlabel(text: "Password", fontSize: 24, fontWeight: .regular, textAlignment: .natural, textColor: lightGrayLogin ?? .white)
+    
+    // MARK: - UITextFields
+    private func customTextField() -> CustomTextField {
+        let customTextField = CustomTextField()
+        customTextField.translatesAutoresizingMaskIntoConstraints = false
+        customTextField.textColor = .white
+        customTextField.clearButtonMode = .always
+        customTextField.clearButtonMode = .whileEditing
+        return customTextField
+    }
+    
+    
+    private(set) lazy var usernameTxtField = customTextField()
+    private(set) lazy var passwordTxtField = customTextField()
+    
+    
+    // MARK: - UIButtons
+    
+    private func customButton(title: String, fontSize: Int, fontWeight: UIFont.Weight, tintColor: UIColor) -> UIButton {
+        let customButton = UIButton(type:.system)
+        customButton.translatesAutoresizingMaskIntoConstraints = false
+        customButton.setTitle(title, for: .normal)
+        customButton.titleLabel?.font = UIFont.systemFont(ofSize: CGFloat(fontSize), weight: fontWeight)
+        customButton.tintColor = tintColor
+        return customButton
+    }
+    
+    private(set) lazy var loginButton = customButton(title: "LOGIN", fontSize: 40, fontWeight: .regular, tintColor: .white)
+    
+    
+    // MARK: - UIStackViews
+    
     private lazy var usernameStackView: UIStackView = {
         let usernameStackView = UIStackView(arrangedSubviews: [usernameLabel ,usernameTxtField])
         usernameStackView.translatesAutoresizingMaskIntoConstraints = false
@@ -68,82 +97,27 @@ class LoginScreenView: UIView {
         return passwordStackView
     }()
     
-    private(set) lazy var loginScreenLabel: UILabel = {
-        let loginScreenLabel = UILabel()
-        loginScreenLabel.translatesAutoresizingMaskIntoConstraints = false
-        loginScreenLabel.text = "Login"
-        loginScreenLabel.font = UIFont.systemFont(ofSize: 45, weight: .semibold)
-        loginScreenLabel.textAlignment = .center
-        loginScreenLabel.textColor = .white
-        return loginScreenLabel
-    }()
-
-    private lazy var usernameLabel: UILabel = {
-        let usernameLabel = UILabel()
-        usernameLabel.translatesAutoresizingMaskIntoConstraints = false
-        usernameLabel.text = "Username"
-        usernameLabel.textColor = lightGrayLogin
-        usernameLabel.font = UIFont.systemFont(ofSize: 24, weight: .regular)
-        return usernameLabel
-    }()
-    
-    private lazy var passwordLabel: UILabel = {
-        let passwordLabel = UILabel()
-        passwordLabel.translatesAutoresizingMaskIntoConstraints = false
-        passwordLabel.text = "Password"
-        passwordLabel.textColor = lightGrayLogin
-        passwordLabel.font = UIFont.systemFont(ofSize: 24, weight: .regular)
-        
-        return passwordLabel
-    }()
-
-    private(set) lazy var usernameTxtField: CustomTextField = {
-        let userTxtField = CustomTextField()
-        userTxtField.translatesAutoresizingMaskIntoConstraints = false
-        userTxtField.textColor = .white
-        userTxtField.clearButtonMode = .always
-        userTxtField.clearButtonMode = .whileEditing
-        return userTxtField
-   }()
-    
-    private(set) lazy var passwordTxtField: CustomTextField = {
-        let passwordTxtField = CustomTextField()
-        passwordTxtField.translatesAutoresizingMaskIntoConstraints = false
-        passwordTxtField.textColor = .white
-        passwordTxtField.isSecureTextEntry = true
-        passwordTxtField.enablePasswordToggle()
-        return passwordTxtField
-    }()
-
-    private(set) lazy var loginButton: UIButton = {
-        let btnLogin = UIButton(type:.system)
-        btnLogin.translatesAutoresizingMaskIntoConstraints = false
-        btnLogin.setTitle("LOGIN", for: .normal)
-        btnLogin.titleLabel?.font = UIFont.systemFont(ofSize: 40, weight: .regular)
-        btnLogin.tintColor = .white
-        return btnLogin
-    }()
-    
+    // MARK: UIView initialization
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
-
+        
     }
-
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         configure()
-
+        
     }
-
-    // MARK: Configure UIElements     
+    
+    // MARK: Configure auto-layout of UIElements
     func configure() {
-        addSubview(containerUIView)
-
-        containerUIView.addSubview(loginImageView)
-        containerUIView.addSubview(topContainerUIView)
-        containerUIView.addSubview(bottomContainerUIView)
-
+        addSubview(screenContainerUIView)
+        
+        screenContainerUIView.addSubview(loginImageView)
+        screenContainerUIView.addSubview(topContainerUIView)
+        screenContainerUIView.addSubview(bottomContainerUIView)
+        
         topContainerUIView.addSubview(usernameStackView)
         topContainerUIView.addSubview(appIconImageView)
         topContainerUIView.addSubview(loginScreenLabel)
@@ -152,31 +126,31 @@ class LoginScreenView: UIView {
         bottomContainerUIView.addSubview(passwordStackView)
         bottomContainerUIView.addSubview(loginButton)
         
-        containerUIView.snp.makeConstraints {
+        screenContainerUIView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
-
+        
         loginImageView.snp.makeConstraints {
-            $0.edges.equalTo(containerUIView)
+            $0.edges.equalTo(screenContainerUIView)
         }
-
+        
         topContainerUIView.snp.makeConstraints {
-            $0.edges.equalTo(containerUIView)
-            $0.height.equalTo(containerUIView).multipliedBy(0.5)
+            $0.edges.equalTo(screenContainerUIView)
+            $0.height.equalTo(screenContainerUIView).multipliedBy(0.5)
         }
-
+        
         usernameStackView.snp.makeConstraints {
             $0.bottom.equalTo(topContainerUIView.safeAreaLayoutGuide.snp.bottom).inset(25)
             $0.leading.trailing.equalTo(topContainerUIView.safeAreaLayoutGuide).inset(20)
             $0.centerX.equalTo(topContainerUIView)
         }
-
+        
         bottomContainerUIView.snp.makeConstraints {
             $0.top.equalTo(topContainerUIView.safeAreaLayoutGuide.snp.bottom)
-            $0.leading.trailing.bottom.equalTo(containerUIView.safeAreaLayoutGuide)
-            $0.height.equalTo(containerUIView).multipliedBy(0.5)
+            $0.leading.trailing.bottom.equalTo(screenContainerUIView.safeAreaLayoutGuide)
+            $0.height.equalTo(screenContainerUIView).multipliedBy(0.5)
         }
-
+        
         passwordStackView.snp.makeConstraints {
             $0.top.equalTo(bottomContainerUIView.snp.top)
             $0.leading.trailing.equalTo(bottomContainerUIView.safeAreaLayoutGuide).inset(20)

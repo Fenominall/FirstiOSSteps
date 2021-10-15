@@ -24,11 +24,12 @@ class HomeScreenViewController: UIViewController, Coordinating {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        homeSharedView.updateUserDataButton.addTarget(self, action: #selector(UpdateButtonPressed), for: .touchUpInside)
+        homeSharedView.editProfileButton.addTarget(self, action: #selector(UpdateButtonPressed), for: .touchUpInside)
         homeSharedView.sourceCodeButton.addTarget(self, action: #selector(didTapSourceCodeButton), for: .touchUpInside)
         homeSharedView.logOutUserButton.addTarget(self, action: #selector(LogOutButtonPressed), for: .touchUpInside)
         
         loadUserPhotoWithDispatch()
+
     }
     
     // Navigation to UserSettingsViewController
@@ -63,22 +64,22 @@ extension HomeScreenViewController {
 extension HomeScreenViewController {
     
     func loadUserPhotoWithDispatch() {
-        
+
         var data: Data?
-        
-        guard let testUserImageURL = URL(string: "https://instagram.fdnk3-2.fna.fbcdn.net/v/t51.2885-19/s150x150/233692174_1222350424870711_9119269687752441282_n.jpg?_nc_ht=instagram.fdnk3-2.fna.fbcdn.net&_nc_ohc=EOR8RIu6bpwAX-9DVjM&edm=ABfd0MgBAAAA&ccb=7-4&oh=2c1d889fd527b95eb3cce66ba69cb560&oe=615837AF&_nc_sid=7bff83.jpg") else {
+
+        guard let testUserImageURL = URL(string: "https://brkng.news/wp-content/uploads/2020/07/pantera1-640x640.jpg") else {
             return
         }
-        
+
         let queue = DispatchQueue.global(qos: .utility)
         
         let userImageWorkItem = DispatchWorkItem(qos: .userInitiated) {
             data = try? Data(contentsOf: testUserImageURL)
             print("Image is here")
         }
-        
+
         queue.async(execute: userImageWorkItem)
-        
+
         userImageWorkItem.notify(queue: DispatchQueue.main) {
             if let imageData = data {
                 self.homeSharedView.userUImageView.image = UIImage(data: imageData)

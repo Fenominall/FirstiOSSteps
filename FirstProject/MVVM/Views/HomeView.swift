@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class HomeScreenView: UIView {
+class HomeView: UIView {
     
     
     private(set) lazy var circleBackGroundForUserImage: UIImageView = {

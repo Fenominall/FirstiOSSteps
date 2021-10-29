@@ -14,15 +14,15 @@
 		4F2EA04526F7054300EF6884 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2EA04426F7054300EF6884 /* CustomTextField.swift */; };
 		4F4FDFBC268D862000736440 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4FDFBB268D862000736440 /* LoginViewModel.swift */; };
 		4F5273DD26F911B700D07065 /* CustomUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5273DC26F911B700D07065 /* CustomUIButton.swift */; };
-		4F695E902662B6C200606D03 /* LoginScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F695E8F2662B6C200606D03 /* LoginScreenViewController.swift */; };
-		4F7D97B226D0391A00A9D253 /* HomeScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7D97B126D0391A00A9D253 /* HomeScreenView.swift */; };
+		4F695E902662B6C200606D03 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F695E8F2662B6C200606D03 /* LoginViewController.swift */; };
+		4F7D97B226D0391A00A9D253 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7D97B126D0391A00A9D253 /* HomeView.swift */; };
 		4F92895626A6B06600624B6E /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F92895526A6B06600624B6E /* Alerts.swift */; };
 		4F92895826A6BB0500624B6E /* ExtensionForUserSettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F92895726A6BB0500624B6E /* ExtensionForUserSettingsController.swift */; };
 		4FA5BB1826CEDB5F001C486D /* UserSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA5BB1726CEDB5F001C486D /* UserSettingsView.swift */; };
 		4FAF3A7A26C6ED04009C803E /* GitHubWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FAF3A7926C6ED04009C803E /* GitHubWebViewController.swift */; };
 		4FBBE319268B97E400D518B8 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBBE318268B97E400D518B8 /* UserModel.swift */; };
-		4FD2745C2683317300C8FA32 /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD2745B2683317300C8FA32 /* HomeScreenViewController.swift */; };
-		4FD2745E268332F700C8FA32 /* UserSettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD2745D268332F700C8FA32 /* UserSettingsController.swift */; };
+		4FD2745C2683317300C8FA32 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD2745B2683317300C8FA32 /* HomeViewController.swift */; };
+		4FD2745E268332F700C8FA32 /* UserSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD2745D268332F700C8FA32 /* UserSettingsViewController.swift */; };
 		4FD4D58E26833C8D0078633E /* AppDataValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD4D58D26833C8D0078633E /* AppDataValidator.swift */; };
 		4FDB688E26E1455A0006F8E3 /* CustomUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDB688D26E1455A0006F8E3 /* CustomUserDefaults.swift */; };
 		4FDB689026E146390006F8E3 /* UIColorHexExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDB688F26E146390006F8E3 /* UIColorHexExtension.swift */; };
@@ -32,7 +32,7 @@
 		4FF9064526543BEF001387C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF9064426543BEF001387C9 /* AppDelegate.swift */; };
 		4FF9064726543BEF001387C9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF9064626543BEF001387C9 /* SceneDelegate.swift */; };
 		4FF9064E26543BF1001387C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FF9064D26543BF1001387C9 /* Assets.xcassets */; };
-		4FFCD45B26BEC87000770D33 /* LoginScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFCD45A26BEC87000770D33 /* LoginScreenView.swift */; };
+		4FFCD45B26BEC87000770D33 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFCD45A26BEC87000770D33 /* LoginView.swift */; };
 		4FFF2A1626BD27560064E610 /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFF2A1526BD27560064E610 /* HapticsManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -45,15 +45,15 @@
 		4F2EA04426F7054300EF6884 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		4F4FDFBB268D862000736440 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		4F5273DC26F911B700D07065 /* CustomUIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIButton.swift; sourceTree = "<group>"; };
-		4F695E8F2662B6C200606D03 /* LoginScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenViewController.swift; sourceTree = "<group>"; };
-		4F7D97B126D0391A00A9D253 /* HomeScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenView.swift; sourceTree = "<group>"; };
+		4F695E8F2662B6C200606D03 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		4F7D97B126D0391A00A9D253 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		4F92895526A6B06600624B6E /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
 		4F92895726A6BB0500624B6E /* ExtensionForUserSettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionForUserSettingsController.swift; sourceTree = "<group>"; };
 		4FA5BB1726CEDB5F001C486D /* UserSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsView.swift; sourceTree = "<group>"; };
 		4FAF3A7926C6ED04009C803E /* GitHubWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubWebViewController.swift; sourceTree = "<group>"; };
 		4FBBE318268B97E400D518B8 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
-		4FD2745B2683317300C8FA32 /* HomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewController.swift; sourceTree = "<group>"; };
-		4FD2745D268332F700C8FA32 /* UserSettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsController.swift; sourceTree = "<group>"; };
+		4FD2745B2683317300C8FA32 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		4FD2745D268332F700C8FA32 /* UserSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsViewController.swift; sourceTree = "<group>"; };
 		4FD4D58D26833C8D0078633E /* AppDataValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDataValidator.swift; sourceTree = "<group>"; };
 		4FDB688D26E1455A0006F8E3 /* CustomUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUserDefaults.swift; sourceTree = "<group>"; };
 		4FDB688F26E146390006F8E3 /* UIColorHexExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorHexExtension.swift; sourceTree = "<group>"; };
@@ -65,7 +65,7 @@
 		4FF9064626543BEF001387C9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		4FF9064D26543BF1001387C9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4FF9065226543BF1001387C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4FFCD45A26BEC87000770D33 /* LoginScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenView.swift; sourceTree = "<group>"; };
+		4FFCD45A26BEC87000770D33 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		4FFF2A1526BD27560064E610 /* HapticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsManager.swift; sourceTree = "<group>"; };
 		68F12D2ACF30F7D7A9A93834 /* Pods-FirstProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirstProject.debug.xcconfig"; path = "Target Support Files/Pods-FirstProject/Pods-FirstProject.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -81,20 +81,12 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4F046E1D26B9BF9B00CC4CBB /* Vibrations */ = {
+		4F046E1D26B9BF9B00CC4CBB /* HapticsManager */ = {
 			isa = PBXGroup;
 			children = (
 				4FFF2A1526BD27560064E610 /* HapticsManager.swift */,
 			);
-			path = Vibrations;
-			sourceTree = "<group>";
-		};
-		4F046E1E26B9BFC400CC4CBB /* UIButtonAnimations */ = {
-			isa = PBXGroup;
-			children = (
-				4F05462E26B9810B006C5A04 /* UIButtonAnimationsExtension.swift */,
-			);
-			path = UIButtonAnimations;
+			path = HapticsManager;
 			sourceTree = "<group>";
 		};
 		4F083EE726D8061A00B63DD7 /* Coordinator */ = {
@@ -109,7 +101,7 @@
 		4F1F59F526D962E800F08424 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
-				4F695E8F2662B6C200606D03 /* LoginScreenViewController.swift */,
+				4F695E8F2662B6C200606D03 /* LoginViewController.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -117,7 +109,7 @@
 		4F1F59F626D962FE00F08424 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
-				4FFCD45A26BEC87000770D33 /* LoginScreenView.swift */,
+				4FFCD45A26BEC87000770D33 /* LoginView.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -179,20 +171,20 @@
 			isa = PBXGroup;
 			children = (
 				4F1F59F526D962E800F08424 /* Auth */,
-				4FD2745B2683317300C8FA32 /* HomeScreenViewController.swift */,
-				4FD2745D268332F700C8FA32 /* UserSettingsController.swift */,
+				4FD2745B2683317300C8FA32 /* HomeViewController.swift */,
+				4FD2745D268332F700C8FA32 /* UserSettingsViewController.swift */,
 				4FAF3A7B26C6ED08009C803E /* WebViewController */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
 		};
-		4FBBE316268B97BB00D518B8 /* Application */ = {
+		4FBBE316268B97BB00D518B8 /* AppDelegate */ = {
 			isa = PBXGroup;
 			children = (
 				4FF9064426543BEF001387C9 /* AppDelegate.swift */,
 				4FF9064626543BEF001387C9 /* SceneDelegate.swift */,
 			);
-			path = Application;
+			path = AppDelegate;
 			sourceTree = "<group>";
 		};
 		4FBBE317268B97D000D518B8 /* Models */ = {
@@ -202,6 +194,31 @@
 				4FBBE318268B97E400D518B8 /* UserModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		4FCE23C927243D7C0068002F /* UIButton */ = {
+			isa = PBXGroup;
+			children = (
+				4F05462E26B9810B006C5A04 /* UIButtonAnimationsExtension.swift */,
+				4F5273DC26F911B700D07065 /* CustomUIButton.swift */,
+			);
+			path = UIButton;
+			sourceTree = "<group>";
+		};
+		4FCE23CA27243DAD0068002F /* UITextField */ = {
+			isa = PBXGroup;
+			children = (
+				4F2EA04426F7054300EF6884 /* CustomTextField.swift */,
+			);
+			path = UITextField;
+			sourceTree = "<group>";
+		};
+		4FCE23CB27243DCD0068002F /* UIColor */ = {
+			isa = PBXGroup;
+			children = (
+				4FDB688F26E146390006F8E3 /* UIColorHexExtension.swift */,
+			);
+			path = UIColor;
 			sourceTree = "<group>";
 		};
 		4FDB688C26E145400006F8E3 /* CustomUserDefaults */ = {
@@ -215,12 +232,11 @@
 		4FE55FCF26A33520003874B1 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				4FE55FD026A33535003874B1 /* ExtensionsForLoginScreenViewController.swift */,
+				4FCE23CB27243DCD0068002F /* UIColor */,
+				4FCE23CA27243DAD0068002F /* UITextField */,
+				4FCE23C927243D7C0068002F /* UIButton */,
 				4F92895726A6BB0500624B6E /* ExtensionForUserSettingsController.swift */,
-				4F046E1E26B9BFC400CC4CBB /* UIButtonAnimations */,
-				4FDB688F26E146390006F8E3 /* UIColorHexExtension.swift */,
-				4F2EA04426F7054300EF6884 /* CustomTextField.swift */,
-				4F5273DC26F911B700D07065 /* CustomUIButton.swift */,
+				4FE55FD026A33535003874B1 /* ExtensionsForLoginScreenViewController.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -245,8 +261,9 @@
 		4FF9064326543BEF001387C9 /* FirstProject */ = {
 			isa = PBXGroup;
 			children = (
-				4FBBE316268B97BB00D518B8 /* Application */,
+				4FBBE316268B97BB00D518B8 /* AppDelegate */,
 				4FFF2A1426BD26C40064E610 /* Core */,
+				4F083EE726D8061A00B63DD7 /* Coordinator */,
 				4F7D97B326D03C4000A9D253 /* MVVM */,
 				4FFF2A1326BD26730064E610 /* Resources */,
 			);
@@ -257,7 +274,7 @@
 			isa = PBXGroup;
 			children = (
 				4F1F59F626D962FE00F08424 /* Auth */,
-				4F7D97B126D0391A00A9D253 /* HomeScreenView.swift */,
+				4F7D97B126D0391A00A9D253 /* HomeView.swift */,
 				4FA5BB1726CEDB5F001C486D /* UserSettingsView.swift */,
 			);
 			path = Views;
@@ -276,11 +293,10 @@
 			isa = PBXGroup;
 			children = (
 				4FDB688C26E145400006F8E3 /* CustomUserDefaults */,
-				4F083EE726D8061A00B63DD7 /* Coordinator */,
 				4F92895426A6B04F00624B6E /* Alerts */,
 				4F92895326A6AFBF00624B6E /* Validators */,
 				4FE55FCF26A33520003874B1 /* Extensions */,
-				4F046E1D26B9BF9B00CC4CBB /* Vibrations */,
+				4F046E1D26B9BF9B00CC4CBB /* HapticsManager */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -407,8 +423,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				4FE69EC926A2B80E00F23965 /* UserSettingsViewModel.swift in Sources */,
-				4FD2745C2683317300C8FA32 /* HomeScreenViewController.swift in Sources */,
-				4FFCD45B26BEC87000770D33 /* LoginScreenView.swift in Sources */,
+				4FD2745C2683317300C8FA32 /* HomeViewController.swift in Sources */,
+				4FFCD45B26BEC87000770D33 /* LoginView.swift in Sources */,
 				4FDB689026E146390006F8E3 /* UIColorHexExtension.swift in Sources */,
 				4FE55FD126A33535003874B1 /* ExtensionsForLoginScreenViewController.swift in Sources */,
 				4FBBE319268B97E400D518B8 /* UserModel.swift in Sources */,
@@ -416,8 +432,8 @@
 				4F92895826A6BB0500624B6E /* ExtensionForUserSettingsController.swift in Sources */,
 				4F083EEB26D806B400B63DD7 /* MainCoordinator.swift in Sources */,
 				4F2EA04526F7054300EF6884 /* CustomTextField.swift in Sources */,
-				4F7D97B226D0391A00A9D253 /* HomeScreenView.swift in Sources */,
-				4FD2745E268332F700C8FA32 /* UserSettingsController.swift in Sources */,
+				4F7D97B226D0391A00A9D253 /* HomeView.swift in Sources */,
+				4FD2745E268332F700C8FA32 /* UserSettingsViewController.swift in Sources */,
 				4FFF2A1626BD27560064E610 /* HapticsManager.swift in Sources */,
 				4F2A17B726C7050600205E03 /* Box.swift in Sources */,
 				4FF9064526543BEF001387C9 /* AppDelegate.swift in Sources */,
@@ -426,7 +442,7 @@
 				4F4FDFBC268D862000736440 /* LoginViewModel.swift in Sources */,
 				4F5273DD26F911B700D07065 /* CustomUIButton.swift in Sources */,
 				4FF9064726543BEF001387C9 /* SceneDelegate.swift in Sources */,
-				4F695E902662B6C200606D03 /* LoginScreenViewController.swift in Sources */,
+				4F695E902662B6C200606D03 /* LoginViewController.swift in Sources */,
 				4F05462F26B9810B006C5A04 /* UIButtonAnimationsExtension.swift in Sources */,
 				4FD4D58E26833C8D0078633E /* AppDataValidator.swift in Sources */,
 				4FA5BB1826CEDB5F001C486D /* UserSettingsView.swift in Sources */,

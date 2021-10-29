@@ -14,7 +14,8 @@ enum UserValidationState {
 }
 
 class LoginViewModel {
-    // Model instance     
+    
+    // MARK: - Properties
     private var user = User() {
         didSet {
             username.value = user.username
@@ -24,8 +25,10 @@ class LoginViewModel {
     
     var username: Box<String> = Box("")
     var password: Box<String> = Box("")
-
     
+    
+
+    // MARK: - Object Lifecycle
     init(user: User = User()) {
         self.user = user
     }
@@ -44,19 +47,12 @@ extension LoginViewModel {
     func validateUser() -> UserValidationState {
         
         if user.username.isEmpty || user.password.isEmpty {
-            
             return .Empty
-
         } else if !AppDataValidator.validateUserName(username.value) || !AppDataValidator.validatePassword(password.value) {
             return .Invalid
         }
-
         return .Valid
     }
-    
-    func login() {
-        print("You are logged in with \(user.username) username and \(user.password) password.")
-    }
-
 }
+
 

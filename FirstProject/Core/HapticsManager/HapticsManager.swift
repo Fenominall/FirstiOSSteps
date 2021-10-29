@@ -14,9 +14,7 @@ final class HapticsManager {
     
     static let shared = HapticsManager()
     
-    private init() {
-        
-    }
+    private init() {}
     
     private func selectionVibrate() {
         DispatchQueue.main.async {
@@ -34,6 +32,6 @@ final class HapticsManager {
             notificationGenerator.prepare()
             notificationGenerator.notificationOccurred(type)
         }
-
+        
     }
 }

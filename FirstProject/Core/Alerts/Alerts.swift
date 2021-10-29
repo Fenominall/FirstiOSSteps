@@ -19,9 +19,17 @@ struct AppAlerts: Coordinating {
     ///   - title: Dismiss
     ///   - message: let passwordRequirmentsAlertMessage
     ///   - preferedStyle: .alert
-    private static func errorUIAlert(on viewController: UIViewController, with title: String, message: String, preferedStyle: UIAlertController.Style) {
-        let errorAlertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        errorAlertController.addAction(UIAlertAction(title: "Ok", style: .destructive, handler: nil))
+    private static func errorUIAlert(on viewController: UIViewController,
+                                     with title: String,
+                                     message: String,
+                                     preferedStyle: UIAlertController.Style) {
+        
+        let errorAlertController = UIAlertController(title: title,
+                                                     message: message,
+                                                     preferredStyle: .alert)
+        errorAlertController.addAction(UIAlertAction(title: "Ok",
+                                                     style: .destructive,
+                                                     handler: nil))
         viewController.present(errorAlertController, animated: true)
     }
     
@@ -47,38 +55,24 @@ struct AppAlerts: Coordinating {
     ///   - title: Ok
     ///   - message: let emptyFieldsAlertMessage
     ///   - preferedStyle: .alert
-    private static func successUIAlert(on viewController: UIViewController, title: String, message: String, preferedStyle: UIAlertController.Style) {
-        let successAlertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        successAlertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+    private static func successUIAlert(on viewController:
+                                       UIViewController,
+                                       title: String,
+                                       message: String,
+                                       preferedStyle: UIAlertController.Style) {
+        
+        let successAlertController = UIAlertController(title: title,
+                                                       message: message,
+                                                       preferredStyle: .alert)
+        
+        successAlertController.addAction(UIAlertAction(title: "Ok",
+                                                       style: .default,
+                                                       handler: nil))
         viewController.present(successAlertController, animated: true)
     }
-
-    static func showIncompleteSuccessUIAlert(on vc: UIViewController) {
+    
+    static func showCompleteSuccessUIAlert(on vc: UIViewController) {
         successUIAlert(on: vc, title: "Success", message: successAlertMessage, preferedStyle: .alert)
-    }
-    
-    /// Alert after user credentials were updated
-    /// - Parameters:
-    ///   - title: Ok
-    ///   - message: let successUpdatedDataMessage
-    ///   - preferedStyle: .alert
-    private static func updatedDataUIAler(on viewController: UIViewController, title: String, message: String, preferedStyle: UIAlertController.Style) {
-        let successUpdatedDataUIAlert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let updateAction = UIAlertAction(title: "OK", style: .default) { (_) -> () in
-            
-            let secondVC = HomeScreenViewController()
-            let navController = UINavigationController(rootViewController: secondVC)
-            navController.modalPresentationStyle = .fullScreen
-            navController.popViewController(animated: true)
-            viewController.present(navController, animated: true)
-        }
-
-        successUpdatedDataUIAlert.addAction(updateAction)
-        viewController.present(successUpdatedDataUIAlert, animated: true, completion: nil)
-    }
-    
-    static func showIncompleteUpdatedDataAlert(on vc: UIViewController) {
-        updatedDataUIAler(on: vc, title: "Success", message: successUpdatedDataMessage, preferedStyle: .alert)
     }
 }
 

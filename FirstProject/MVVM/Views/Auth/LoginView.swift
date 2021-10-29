@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class LoginScreenView: UIView {
+class LoginView: UIView {
     
     // MARK: - UIViews
     private func containerUIView() -> UIView {
@@ -51,19 +51,23 @@ class LoginScreenView: UIView {
     private lazy var passwordLabel = newUIlabel(text: "Password", fontSize: 24, fontWeight: .regular, textAlignment: .natural, textColor: lightGrayLogin ?? .white)
     
     // MARK: - UITextFields
-    private func customTextField() -> CustomTextField {
+    private(set) lazy var usernameTxtField: CustomTextField = {
         let customTextField = CustomTextField()
         customTextField.translatesAutoresizingMaskIntoConstraints = false
         customTextField.textColor = .white
         customTextField.clearButtonMode = .always
         customTextField.clearButtonMode = .whileEditing
         return customTextField
-    }
+    }()
     
-    
-    private(set) lazy var usernameTxtField = customTextField()
-    private(set) lazy var passwordTxtField = customTextField()
-    
+    private(set) lazy var passwordTxtField: CustomTextField = {
+        let customTextField = CustomTextField()
+        customTextField.translatesAutoresizingMaskIntoConstraints = false
+        customTextField.textColor = .white
+        customTextField.isSecureTextEntry = true
+        customTextField.enablePasswordToggle()
+        return customTextField
+    }()
     
     // MARK: - UIButtons
     
@@ -101,17 +105,22 @@ class LoginScreenView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
-        
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         configure()
-        
     }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+    }
+
+    
     
     // MARK: Configure auto-layout of UIElements
     func configure() {
+        
         addSubview(screenContainerUIView)
         
         screenContainerUIView.addSubview(loginImageView)

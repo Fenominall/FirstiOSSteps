@@ -16,19 +16,3 @@ class UserSettingsViewModel {
     }
     
 }
-
-// class UserSettingsViewModel {
-    
-//     // Data binding     
-//     var usernameTitle = Box(nil)
-    
-//     var user: User? {
-//         didSet {
-//             guard let user = user else {
-//             title.value - nil
-//             return
-//             }
-//             title.value = "\(user.username)"
-//         }
-//     }
-// }

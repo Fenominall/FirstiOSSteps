@@ -10,16 +10,14 @@ import Foundation
 // MARK: UserModel
 
 struct User: Codable {
-    internal init(username: String = "", password: String = "") {
-        self.username = username
-        self.password = password
-    }
-    
 
     var username: String = ""
     var password: String = ""
-   
     
+//    internal init(username: String = "", password: String = "") {
+//        self.username = username
+//        self.password = password
+//    }
 }
 
 

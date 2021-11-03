@@ -19,7 +19,7 @@ class UserSettingsView: UIView {
     private lazy var backgroundImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage(named: "waves")
+        imageView.image = AppImages.waves
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()

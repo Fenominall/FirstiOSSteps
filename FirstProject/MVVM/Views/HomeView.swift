@@ -13,14 +13,14 @@ class HomeView: UIView {
     
     private(set) lazy var circleBackGroundForUserImage: UIImageView = {
         let circleImage = UIImageView()
-        circleImage.image = UIImage(named: "lightCircle")
+        circleImage.image = AppImages.lightCircle
         circleImage.translatesAutoresizingMaskIntoConstraints = false
         return circleImage
     }()
     
     private(set) lazy var userUImageView: UIImageView = {
         let userImage = UIImageView()
-        userImage.image = UIImage(named: "user")
+        userImage.image = AppImages.userImage
         userImage.translatesAutoresizingMaskIntoConstraints = false
         userImage.contentMode = .scaleAspectFit
         userImage.layer.masksToBounds = false
@@ -32,7 +32,7 @@ class HomeView: UIView {
     
     private(set) lazy var homeScreenBackgroundImage: UIImageView = {
         let userImage = UIImageView()
-        userImage.image = UIImage(named: "blob-scene")
+        userImage.image = AppImages.homeBackgroundImage
         userImage.translatesAutoresizingMaskIntoConstraints = false
         userImage.contentMode = .scaleAspectFit
         return userImage

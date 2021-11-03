@@ -25,8 +25,6 @@ class LoginViewModel {
     
     var username: Box<String> = Box("")
     var password: Box<String> = Box("")
-    
-    
 
     // MARK: - Object Lifecycle
     init(user: User = User()) {

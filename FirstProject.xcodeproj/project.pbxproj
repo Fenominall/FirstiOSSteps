@@ -13,6 +13,7 @@
 		4F2A17B726C7050600205E03 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2A17B626C7050600205E03 /* Box.swift */; };
 		4F2EA04526F7054300EF6884 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2EA04426F7054300EF6884 /* CustomTextField.swift */; };
 		4F4FDFBC268D862000736440 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4FDFBB268D862000736440 /* LoginViewModel.swift */; };
+		4F522AA8272DB7CF0099C5E8 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F522AA7272DB7CF0099C5E8 /* Images.swift */; };
 		4F5273DD26F911B700D07065 /* CustomUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5273DC26F911B700D07065 /* CustomUIButton.swift */; };
 		4F695E902662B6C200606D03 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F695E8F2662B6C200606D03 /* LoginViewController.swift */; };
 		4F7D97B226D0391A00A9D253 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7D97B126D0391A00A9D253 /* HomeView.swift */; };
@@ -21,6 +22,7 @@
 		4FA5BB1826CEDB5F001C486D /* UserSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA5BB1726CEDB5F001C486D /* UserSettingsView.swift */; };
 		4FAF3A7A26C6ED04009C803E /* GitHubWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FAF3A7926C6ED04009C803E /* GitHubWebViewController.swift */; };
 		4FBBE319268B97E400D518B8 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBBE318268B97E400D518B8 /* UserModel.swift */; };
+		4FCDEBA9272FEC51002C3B06 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FCDEBA8272FEC51002C3B06 /* HomeViewModel.swift */; };
 		4FD2745C2683317300C8FA32 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD2745B2683317300C8FA32 /* HomeViewController.swift */; };
 		4FD2745E268332F700C8FA32 /* UserSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD2745D268332F700C8FA32 /* UserSettingsViewController.swift */; };
 		4FD4D58E26833C8D0078633E /* AppDataValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD4D58D26833C8D0078633E /* AppDataValidator.swift */; };
@@ -44,6 +46,7 @@
 		4F2A17B626C7050600205E03 /* Box.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
 		4F2EA04426F7054300EF6884 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		4F4FDFBB268D862000736440 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		4F522AA7272DB7CF0099C5E8 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		4F5273DC26F911B700D07065 /* CustomUIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIButton.swift; sourceTree = "<group>"; };
 		4F695E8F2662B6C200606D03 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		4F7D97B126D0391A00A9D253 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -52,6 +55,7 @@
 		4FA5BB1726CEDB5F001C486D /* UserSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsView.swift; sourceTree = "<group>"; };
 		4FAF3A7926C6ED04009C803E /* GitHubWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubWebViewController.swift; sourceTree = "<group>"; };
 		4FBBE318268B97E400D518B8 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		4FCDEBA8272FEC51002C3B06 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		4FD2745B2683317300C8FA32 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		4FD2745D268332F700C8FA32 /* UserSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsViewController.swift; sourceTree = "<group>"; };
 		4FD4D58D26833C8D0078633E /* AppDataValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDataValidator.swift; sourceTree = "<group>"; };
@@ -118,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				4F4FDFBB268D862000736440 /* LoginViewModel.swift */,
+				4FCDEBA8272FEC51002C3B06 /* HomeViewModel.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -129,6 +134,14 @@
 				4FE69EC826A2B80E00F23965 /* UserSettingsViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		4F522AA6272DB7BA0099C5E8 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				4F522AA7272DB7CF0099C5E8 /* Images.swift */,
+			);
+			path = Constants;
 			sourceTree = "<group>";
 		};
 		4F7D97B326D03C4000A9D253 /* MVVM */ = {
@@ -232,6 +245,7 @@
 		4FE55FCF26A33520003874B1 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				4F522AA6272DB7BA0099C5E8 /* Constants */,
 				4FCE23CB27243DCD0068002F /* UIColor */,
 				4FCE23CA27243DAD0068002F /* UITextField */,
 				4FCE23C927243D7C0068002F /* UIButton */,
@@ -426,6 +440,7 @@
 				4FD2745C2683317300C8FA32 /* HomeViewController.swift in Sources */,
 				4FFCD45B26BEC87000770D33 /* LoginView.swift in Sources */,
 				4FDB689026E146390006F8E3 /* UIColorHexExtension.swift in Sources */,
+				4F522AA8272DB7CF0099C5E8 /* Images.swift in Sources */,
 				4FE55FD126A33535003874B1 /* ExtensionsForLoginScreenViewController.swift in Sources */,
 				4FBBE319268B97E400D518B8 /* UserModel.swift in Sources */,
 				4F083EE926D8063200B63DD7 /* Coordinator.swift in Sources */,
@@ -444,6 +459,7 @@
 				4FF9064726543BEF001387C9 /* SceneDelegate.swift in Sources */,
 				4F695E902662B6C200606D03 /* LoginViewController.swift in Sources */,
 				4F05462F26B9810B006C5A04 /* UIButtonAnimationsExtension.swift in Sources */,
+				4FCDEBA9272FEC51002C3B06 /* HomeViewModel.swift in Sources */,
 				4FD4D58E26833C8D0078633E /* AppDataValidator.swift in Sources */,
 				4FA5BB1826CEDB5F001C486D /* UserSettingsView.swift in Sources */,
 				4FDB688E26E1455A0006F8E3 /* CustomUserDefaults.swift in Sources */,

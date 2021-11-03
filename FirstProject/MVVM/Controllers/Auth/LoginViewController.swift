@@ -37,9 +37,9 @@ class LoginViewController: UIViewController, Coordinating {
     }
     
     func showData() {
-        loginViewModel.username.bind {
-            print("Value Changed \($0)")
-        }
+//        loginViewModel.username.bind {
+//            print("Value Changed \($0)")
+//        }
     }
     
     /// Function for loginButton: Check validation, pushes the user to the SecondViewController if requirements suitable

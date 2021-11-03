@@ -14,6 +14,7 @@ class HomeViewController: UIViewController, Coordinating {
     var coordinator: Coordinator?
     
     private var homeSharedView = HomeView()
+    private var homeViewModel = HomeViewModel()
     
     override func loadView() {
         super.loadView()
@@ -25,6 +26,11 @@ class HomeViewController: UIViewController, Coordinating {
         super.viewDidLoad()
         setupTargetsForButtons()
         loadUserPhotoWithDispatch()
+        
+        homeViewModel.username.bind { [weak self] in
+            self?.homeSharedView.usernameLabel.text = self?.homeViewModel.username.value
+            print($0)
+        }
     }
 }
 

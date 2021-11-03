@@ -23,16 +23,16 @@ class LoginView: UIView {
     
     // MARK: - UIImageViews
     
-    private func imageView(image: String) -> UIImageView {
+    private func imageView(image: UIImage) -> UIImageView {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage(named: image)
+        imageView.image = image
         imageView.contentMode = .scaleAspectFit
         return imageView
     }
     
-    private lazy var loginImageView = imageView(image: "loginImage")
-    private lazy var appIconImageView = imageView(image: "appIconF")
+    private lazy var loginImageView = imageView(image: AppImages.loginBackgroundImage)
+    private lazy var appIconImageView = imageView(image: AppImages.appIcon)
     
     // MARK: - UILables
     

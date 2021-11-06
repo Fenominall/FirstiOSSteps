@@ -11,26 +11,23 @@ import UIKit
 
 class HomeViewController: UIViewController, Coordinating {
     
+    // MARK: - Properties
     var coordinator: Coordinator?
     
     private var homeSharedView = HomeView()
     private var homeViewModel = HomeViewModel()
     
+    
+    // MARK: - ViewController Lifecycle
     override func loadView() {
         super.loadView()
         view = homeSharedView
     }
     
-    // Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTargetsForButtons()
         loadUserPhotoWithDispatch()
-        
-        homeViewModel.username.bind { [weak self] in
-            self?.homeSharedView.usernameLabel.text = self?.homeViewModel.username.value
-            print($0)
-        }
     }
 }
 

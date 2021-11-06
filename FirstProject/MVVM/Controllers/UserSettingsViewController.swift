@@ -25,21 +25,15 @@ class UserSettingsViewController: UIViewController, Coordinating {
         
         //  Keyboard toggling
         observerKeyboardNotifications()
-        
-        userSettingsView.updateUsernameTextField.addTarget(self, action: #selector(textFieldEditingChanged(_:)), for: .editingChanged)
-        userSettingsView.updatePasswordTextField.addTarget(self, action: #selector(textFieldEditingChanged(_:)), for: .editingChanged)
-        userSettingsView.saveUserDataButton.addTarget(self, action: #selector(updateDataButton), for: .touchUpInside)
-        
-        userSettingsView.updateUsernameTextField.delegate = self
-        userSettingsView.updatePasswordTextField.delegate = self
+        textFieldsDelegates()
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+        super.viewDidAppear(true)
         userSettingsView.updateUsernameTextField.addBottomBorder()
         userSettingsView.updatePasswordTextField.addBottomBorder()
     }
-    
+
     //    Check editing in UITextFields
     @objc private func textFieldEditingChanged(_ sender: Any) {
         
@@ -91,8 +85,21 @@ class UserSettingsViewController: UIViewController, Coordinating {
 
 
 extension UserSettingsViewController {
+    func textFieldsDelegates() {
+        userSettingsView.updateUsernameTextField.addTarget(self, action: #selector(textFieldEditingChanged(_:)), for: .editingChanged)
+        userSettingsView.updatePasswordTextField.addTarget(self, action: #selector(textFieldEditingChanged(_:)), for: .editingChanged)
+        userSettingsView.saveUserDataButton.addTarget(self, action: #selector(updateDataButton), for: .touchUpInside)
+        
+        userSettingsView.updateUsernameTextField.delegate = self
+        userSettingsView.updatePasswordTextField.delegate = self
+    }
+}
+
+
+extension UserSettingsViewController {
     //    # Function to return false if the input in UITextFiled is " " or "    ".
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         (string == " " || string == "    ") ? false : true
     }
 }
+

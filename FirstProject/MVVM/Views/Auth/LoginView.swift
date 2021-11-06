@@ -56,12 +56,12 @@ class LoginView: UIView {
         customTextField.translatesAutoresizingMaskIntoConstraints = false
         customTextField.textColor = .white
         customTextField.clearButtonMode = .always
-        customTextField.clearButtonMode = .whileEditing
         return customTextField
     }()
     
     private(set) lazy var passwordTxtField: CustomTextField = {
         let customTextField = CustomTextField()
+        let bottomLine = CALayer()
         customTextField.translatesAutoresizingMaskIntoConstraints = false
         customTextField.textColor = .white
         customTextField.isSecureTextEntry = true

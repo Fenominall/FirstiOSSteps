@@ -60,14 +60,6 @@ extension UITextField {
         borderStyle = .none
         layer.addSublayer(bottomLine)
     }
-    
-    /// Dismiss/Hide the KeyBoard.
-    /// - Parameter textField: UITextField
-    /// - Returns: resignFirstResponder()
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        return textField.resignFirstResponder()
-    }
-
 }
 
 

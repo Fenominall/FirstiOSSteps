@@ -50,6 +50,7 @@ class UserSettingsView: UIView {
         updateUsernameTextField.translatesAutoresizingMaskIntoConstraints = false
         updateUsernameTextField.textColor = .white
         updateUsernameTextField.clearButtonMode = .always
+        updateUsernameTextField.addBottomBorder()
         return updateUsernameTextField
     }()
     
@@ -60,6 +61,7 @@ class UserSettingsView: UIView {
         updatePasswordTextField.textColor = .white
         updatePasswordTextField.isSecureTextEntry = true
         updatePasswordTextField.enablePasswordToggle()
+        updatePasswordTextField.addBottomBorder()
         return updatePasswordTextField
     }()
 

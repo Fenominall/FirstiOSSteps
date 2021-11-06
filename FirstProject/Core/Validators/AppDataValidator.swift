@@ -68,7 +68,7 @@ struct AppDataValidator {
         //            #"(?=.*\d)"# +
         
         // At least one special character
-        #"(?=.*[ !$%&?._-@])"#
+        #"(?=.*[ !@$%&?._-])"#
         
         let result = password.range(
             of: passwordPattern,

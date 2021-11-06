@@ -18,6 +18,13 @@ extension UserSettingsViewController: UITextFieldDelegate {
     }
 
     
+    /// Dismiss/Hide the KeyBoard.
+    /// - Parameter textField: UITextField
+    /// - Returns: resignFirstResponder()
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        return textField.resignFirstResponder()
+    }
+
 }
 
 

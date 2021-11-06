@@ -16,6 +16,15 @@ extension LoginViewController: UITextFieldDelegate {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
+    
+    
+    /// Dismiss/Hide the KeyBoard.
+    /// - Parameter textField: UITextField
+    /// - Returns: resignFirstResponder()
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        return textField.resignFirstResponder()
+    }
+
 }
 
 //MARK: Extension to move the content up when the keyboard is called

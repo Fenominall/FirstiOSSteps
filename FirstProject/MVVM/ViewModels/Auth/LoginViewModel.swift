@@ -25,7 +25,7 @@ class LoginViewModel {
     
     var username: Box<String> = Box("")
     var password: Box<String> = Box("")
-
+    
     // MARK: - Object Lifecycle
     init(user: User = User()) {
         self.user = user
@@ -33,7 +33,7 @@ class LoginViewModel {
 }
 
 extension LoginViewModel {
-
+    
     func updateUsername(username: String) {
         user.username = username
     }
@@ -54,3 +54,9 @@ extension LoginViewModel {
 }
 
 
+extension LoginViewModel {
+    func login() {
+        user.save()
+        print(user.load())
+    }
+}

@@ -22,12 +22,19 @@ class HomeView: UIView {
         let userImage = UIImageView()
         userImage.image = AppImages.userImage
         userImage.translatesAutoresizingMaskIntoConstraints = false
-        userImage.contentMode = .scaleAspectFit
+        userImage.contentMode = .scaleAspectFill
         userImage.layer.masksToBounds = false
         userImage.frame = CGRect(x: 0, y: 0, width: 150, height: 150)
         userImage.layer.cornerRadius = userImage.frame.size.width / 2
         userImage.clipsToBounds = true
         return userImage
+    }()
+    
+    private lazy var plusIcon: UIImageView = {
+        let plusIcon = UIImageView()
+        plusIcon.translatesAutoresizingMaskIntoConstraints = false
+        plusIcon.image = AppImages.plusIcon
+        return plusIcon
     }()
     
     private(set) lazy var homeScreenBackgroundImage: UIImageView = {
@@ -51,6 +58,17 @@ class HomeView: UIView {
     
     
     // MARK: - UIButtons
+    
+    private(set) lazy var uploadImageButton: UIButton = {
+        let uploadImageButton = UIButton(type: .system)
+        uploadImageButton.translatesAutoresizingMaskIntoConstraints = false
+        uploadImageButton.layer.masksToBounds = false
+        uploadImageButton.frame = CGRect(x: 0, y: 0, width: 150, height: 150)
+        uploadImageButton.layer.cornerRadius = uploadImageButton.frame.size.width / 2
+        uploadImageButton.clipsToBounds = true
+        return uploadImageButton
+    }()
+    
     private func customUIButton(title: String, backgroundColor: UIColor, tintColor: UIColor, cornerRadius: Int) -> UIButton {
         let customUIButton = UIButton(type: .system)
         customUIButton.translatesAutoresizingMaskIntoConstraints = false
@@ -140,6 +158,19 @@ class HomeView: UIView {
         userUImageView.snp.makeConstraints {
             $0.centerX.centerY.equalTo(circleBackGroundForUserImage)
             $0.width.height.equalTo(150)
+        }
+        
+        addSubview(uploadImageButton)
+        uploadImageButton.snp.makeConstraints {
+            $0.centerX.centerY.equalTo(userUImageView)
+            $0.width.height.equalTo(150)
+        }
+        
+        addSubview(plusIcon)
+        plusIcon.snp.makeConstraints {
+            $0.top.equalTo(uploadImageButton.snp_bottomMargin).inset(12)
+            $0.trailing.equalTo(uploadImageButton.snp_trailingMargin).inset(12)
+            
         }
     }
 }

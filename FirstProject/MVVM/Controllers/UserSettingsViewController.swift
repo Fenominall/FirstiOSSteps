@@ -13,6 +13,7 @@ class UserSettingsViewController: UIViewController, Coordinating {
     // MARK: - Instance Properties
     var coordinator: Coordinator?
     var userSettingsView = UserSettingsView()
+    var userSettingsViewModel = UserSettingsViewModel()
     
     override func loadView() {
         super.loadView()
@@ -26,56 +27,51 @@ class UserSettingsViewController: UIViewController, Coordinating {
         //  Keyboard toggling
         observerKeyboardNotifications()
         textFieldsDelegates()
+        
+        title = "Settings"
+        navigationItem.backButtonTitle = "Back"
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
-
+    
+    
     override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
+        super.viewDidAppear(animated)
         userSettingsView.updateUsernameTextField.addBottomBorder()
         userSettingsView.updatePasswordTextField.addBottomBorder()
     }
-
+    
+    
     //    Check editing in UITextFields
     @objc private func textFieldEditingChanged(_ sender: Any) {
-        
-        guard let updatedUsername =
-                userSettingsView.updateUsernameTextField.text,
-              let updatedPassword =
-                userSettingsView.updatePasswordTextField.text else { return }
-        
-        let isUpdatedUsername = AppDataValidator.validateUserName(updatedUsername)
-        let isUpdatedPassword = AppDataValidator.validatePassword(updatedPassword)
-        
-        if isUpdatedUsername && isUpdatedPassword {
-            userSettingsView.saveUserDataButton.isEnabled = true
-        } else {
-            userSettingsView.saveUserDataButton.isEnabled = false
-        }
+        userSettingsView.saveUserDataButton.isEnabled = true
     }
     
     //    Button to update UserDefaults and return back to the SecondViewController
-    @objc private func updateDataButton() {
-        guard let updatedUsername =
-                userSettingsView.updateUsernameTextField.text,
-              let updatedPassword =
-                userSettingsView.updatePasswordTextField.text else { return }
-        
-        let isUpdatedUsernameValid = AppDataValidator.validateUserName(updatedUsername)
-        let isUpdatedPasswordValid = AppDataValidator.validatePassword(updatedPassword)
-        
-        if isUpdatedUsernameValid && isUpdatedPasswordValid {
-            // # Vibration for success
-            HapticsManager.shared.vibrateForType(for: .success)
-            // # Success Alert
+    @objc private func updateUserDataButton(_ sender: UIButton) {
+        switch userSettingsViewModel.validateUser() {
+        case .Valid:
+            // Navigation to HomeScreenViewController
             let successMessage = "Your data was successfully updated"
-            let successUpdatedDataUIAlert = UIAlertController(title: "Success", message: successMessage, preferredStyle: .alert)
-            successUpdatedDataUIAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak self] (_) -> () in
+            let successUpdatedDataUIAlert = UIAlertController(title: "Success",
+                                                              message: successMessage,
+                                                              preferredStyle: .alert)
+            successUpdatedDataUIAlert.addAction(UIAlertAction(title: "OK",
+                                                              style: .default,
+                                                              handler: { [weak self] (_) -> () in
                 self?.coordinator?.eventOccurred(with: .updateUserDataButtonTapped)
             }))
-            self.present(successUpdatedDataUIAlert, animated: true, completion: nil)
-        } else {
-            // # Vibration for the Error
-            HapticsManager.shared.vibrateForType(for: .error)
-            // # Error Alert
+            self.present(successUpdatedDataUIAlert, animated: true)
+            // Success Alert
+            AppAlerts.showCompleteSuccessUIAlert(on: self)
+        case .Empty:
+            // Button Shake
+            sender.shake()
+            // Empty fields Error Alert
+            AppAlerts.emptyFieldsErrorAlert(on: self)
+        case .Invalid:
+            // Button Shake
+            sender.shake()
+            // Improper credentials Alert
             AppAlerts.showIncompleteErrorUIAlert(on: self)
         }
         
@@ -88,7 +84,7 @@ extension UserSettingsViewController {
     func textFieldsDelegates() {
         userSettingsView.updateUsernameTextField.addTarget(self, action: #selector(textFieldEditingChanged(_:)), for: .editingChanged)
         userSettingsView.updatePasswordTextField.addTarget(self, action: #selector(textFieldEditingChanged(_:)), for: .editingChanged)
-        userSettingsView.saveUserDataButton.addTarget(self, action: #selector(updateDataButton), for: .touchUpInside)
+        userSettingsView.saveUserDataButton.addTarget(self, action: #selector(updateUserDataButton), for: .touchUpInside)
         
         userSettingsView.updateUsernameTextField.delegate = self
         userSettingsView.updatePasswordTextField.delegate = self
@@ -99,7 +95,20 @@ extension UserSettingsViewController {
 extension UserSettingsViewController {
     //    # Function to return false if the input in UITextFiled is " " or "    ".
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        (string == " " || string == "    ") ? false : true
+        let newString = (textField.text! as NSString).replacingCharacters(in: range, with: string)
+        
+        if textField == userSettingsView.updateUsernameTextField {
+            userSettingsViewModel.updateUsername(username: newString.trimmingCharacters(in: .whitespaces))
+        } else if textField == userSettingsView.updatePasswordTextField {
+            userSettingsViewModel.updatePassword(password: newString.trimmingCharacters(in: .whitespaces))
+        }
+        
+        if (string == " " || string == "    ") {
+            return false
+        }
+        
+        return true
     }
+    
 }
 

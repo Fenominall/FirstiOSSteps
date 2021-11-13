@@ -4,7 +4,8 @@
 //
 //  Created by Fenominall on 23.06.2021.
 //
-
+import Photos
+import PhotosUI
 import SnapKit
 import UIKit
 
@@ -16,6 +17,7 @@ class HomeViewController: UIViewController, Coordinating {
     
     private var homeSharedView = HomeView()
     private var homeViewModel = HomeViewModel()
+    private var imageStorage = ImageStorage()
     
     
     // MARK: - ViewController Lifecycle
@@ -27,7 +29,13 @@ class HomeViewController: UIViewController, Coordinating {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTargetsForButtons()
-        loadUserPhotoWithDispatch()
+        retrieveUploadedUserImage()
+        
+        // Navigation settings
+        self.navigationItem.title = "Home"
+        navigationItem.backButtonTitle = "Back"
+        navigationItem.setHidesBackButton(true, animated: false)
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
 }
 
@@ -35,13 +43,44 @@ class HomeViewController: UIViewController, Coordinating {
 extension HomeViewController {
     
     private func setupTargetsForButtons() {
-        homeSharedView.editProfileButton.addTarget(self, action: #selector(UpdateButtonPressed), for: .touchUpInside)
+        homeSharedView.editProfileButton.addTarget(self, action: #selector(didTapUpdateButton), for: .touchUpInside)
         homeSharedView.sourceCodeButton.addTarget(self, action: #selector(didTapSourceCodeButton), for: .touchUpInside)
-        homeSharedView.logOutUserButton.addTarget(self, action: #selector(LogOutButtonPressed), for: .touchUpInside)
+        homeSharedView.logOutUserButton.addTarget(self, action: #selector(didTapLogOutButton), for: .touchUpInside)
+        homeSharedView.uploadImageButton.addTarget(self, action: #selector(didTapUploadImageButton), for: .touchUpInside)
+    }
+    
+    @objc private func didTapUploadImageButton() {
+        let actionSheet = UIAlertController(title: nil,
+                                            message: "Change profile photo",
+                                            preferredStyle: .actionSheet)
+        
+        actionSheet.addAction(UIAlertAction(title: "Cancel",
+                                            style: .cancel,
+                                            handler: nil))
+        
+        actionSheet.addAction(UIAlertAction(title: "Choose from library",
+                                            style: .default,
+                                            handler: { [weak self] _ in
+            var configurations = PHPickerConfiguration(photoLibrary: .shared())
+            configurations.selectionLimit = 1
+            configurations.filter = .images
+            let photoPickerViewController = PHPickerViewController(configuration: configurations)
+            photoPickerViewController.delegate = self
+            self?.present(photoPickerViewController, animated: true)
+        }))
+        
+        actionSheet.addAction(UIAlertAction(title: "Remove current photo",
+                                            style: .destructive,
+                                            handler: { [weak self] _ in
+            self?.imageStorage.removeImage(forKey: "userImage", inStorageType: .fileSystem)
+            self?.homeSharedView.userUImageView.image = AppImages.userImage
+        }))
+        
+        present(actionSheet, animated: true)
     }
     
     // Navigation to UserSettingsViewController
-    @objc private func UpdateButtonPressed() {
+    @objc private func didTapUpdateButton() {
         coordinator?.eventOccurred(with: .userSettingsTapped)
     }
     
@@ -51,47 +90,47 @@ extension HomeViewController {
     }
     
     //    Navigation Button to FirstViewController
-    @objc private func LogOutButtonPressed() {
+    @objc private func didTapLogOutButton() {
         coordinator?.eventOccurred(with: .logOutButtonTapped)
     }
 }
 
-// MARK: - Extension to disable NavigationBar
-extension HomeViewController {
+// MARK: - PHPicker Delegate for uploading, storing and displaying user image
+/// used for adding an image from a photo library to "userImage" on HomePage
+extension HomeViewController: PHPickerViewControllerDelegate {
     
-    override func viewWillAppear(_ animated: Bool) {
-        navigationController?.isNavigationBarHidden = true
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        navigationController?.isNavigationBarHidden = false
-    }
-}
+    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
 
-// MARK: - Fetching user image from the internet by using GCD with workItem
-extension HomeViewController {
+        if let itemProvider = results.first?.itemProvider, itemProvider.canLoadObject(ofClass: UIImage.self) {
+
+            itemProvider.loadObject(ofClass: UIImage.self)
+            { [weak self] image, error in
+                guard let urlImage = image as? UIImage else { return }
+                DispatchQueue.global(qos: .userInteractive).async {
+                    self?.imageStorage.storeImage(image: urlImage,
+                                                  forKey: "userImage",
+                                                  withStorageType: .fileSystem)
+                    DispatchQueue.main.async {
+                        guard let self = self else { return }
+                        // Display chosen image
+                        self.homeSharedView.userUImageView.image = urlImage
+                    }
+                }
+            }
+        }
+        picker.dismiss(animated: true, completion: nil)
+    }
     
-    func loadUserPhotoWithDispatch() {
-        
-        var data: Data?
-        
-        guard let testUserImageURL = URL(string: "https://brkng.news/wp-content/uploads/2020/07/pantera1-640x640.jpg") else {
-            return
-        }
-        
-        let queue = DispatchQueue.global(qos: .utility)
-        
-        let userImageWorkItem = DispatchWorkItem(qos: .userInitiated) {
-            data = try? Data(contentsOf: testUserImageURL)
-            print("Image is here")
-        }
-        
-        queue.async(execute: userImageWorkItem)
-        
-        userImageWorkItem.notify(queue: DispatchQueue.main) { [weak self] in
-            if let imageData = data {
-                self?.homeSharedView.userUImageView.image = UIImage(data: imageData)
+    // Retrieve uploaded user image when app is restarted
+    private func retrieveUploadedUserImage() {
+        DispatchQueue.global(qos: .userInteractive).async {
+            if let savedImage = self.imageStorage.retrieveImage(forKey: "userImage",
+                                                                inStorageType: .fileSystem) {
+                DispatchQueue.main.async {
+                    self.homeSharedView.userUImageView.image = savedImage
+                }
             }
         }
     }
+    
 }

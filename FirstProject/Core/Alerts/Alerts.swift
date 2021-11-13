@@ -10,9 +10,7 @@ import UIKit
 
 
 //    MARK: UIAlerts for UITextField validations dependent on user interactions
-struct AppAlerts: Coordinating {
-    
-    var coordinator: Coordinator?
+struct AppAlerts {
     
     /// Alert for validation to inform the user about the "Incorrect input"
     /// - Parameters:
@@ -73,6 +71,22 @@ struct AppAlerts: Coordinating {
     
     static func showCompleteSuccessUIAlert(on vc: UIViewController) {
         successUIAlert(on: vc, title: "Success", message: successAlertMessage, preferedStyle: .alert)
+    }
+    
+    
+    // MARK: - Image Picker Alert
+    private static func imageActions(on viewController: UIViewController,
+                                     with title: String,
+                                     message: String,
+                                     preferedStyle: UIAlertController.Style) {
+        
+        let errorAlertController = UIAlertController(title: title,
+                                                     message: message,
+                                                     preferredStyle: .actionSheet)
+        errorAlertController.addAction(UIAlertAction(title: "Cancel",
+                                                     style: .cancel,
+                                                     handler: nil))
+        viewController.present(errorAlertController, animated: true)
     }
 }
 

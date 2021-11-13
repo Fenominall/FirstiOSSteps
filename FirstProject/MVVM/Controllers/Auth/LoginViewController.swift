@@ -10,7 +10,6 @@ import UIKit
 
 class LoginViewController: UIViewController, Coordinating {
     
-    
     // MARK: - Properties
     var coordinator: Coordinator?
     
@@ -27,20 +26,23 @@ class LoginViewController: UIViewController, Coordinating {
         super.viewDidLoad()
         // MARK: Notifications for showing and hiding keyboard
         observeKeyboardNotifications()
-        setDelegatesOfUIElements()
+        initializeData()
+        
+        navigationItem.setHidesBackButton(true, animated: false)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         loginView.usernameTxtField.addBottomBorder()
         loginView.passwordTxtField.addBottomBorder()
+        showData()
     }
     
-    //    func showData() {
-    //        loginViewModel.username.bind {
-    //            print("Value Changed \($0)")
-    //        }
-    //    }
+        func showData() {
+            loginViewModel.username.bind {
+                print("Value Changed \($0)")
+            }
+        }
     
     /// Function for loginButton: Check validation, pushes the user to the SecondViewController if requirements suitable
     /// - Parameter sender: Any
@@ -51,24 +53,13 @@ class LoginViewController: UIViewController, Coordinating {
             // Navigation to HomeScreenViewController
             coordinator?.eventOccurred(with: .loginButtonTapped)
             // Success Alert
-            afterBlock(seconds: 1) {
-                DispatchQueue.main.async {
-                    AppAlerts.showCompleteSuccessUIAlert(on: self)
-                    print(Thread.current)
-                }
-            }
-            // Phone Vibrations
-            HapticsManager.shared.vibrateForType(for: .success)
+            AppAlerts.showCompleteSuccessUIAlert(on: self)
         case .Empty:
-            // Phone Vibration
-            HapticsManager.shared.vibrateForType(for: .error)
             // Button Shake
             sender.shake()
             // Empty fields Error Alert
             AppAlerts.emptyFieldsErrorAlert(on: self)
         case .Invalid:
-            // Phone Vibration
-            HapticsManager.shared.vibrateForType(for: .warning)
             // Button Shake
             sender.shake()
             // Improper credentials Alert
@@ -80,7 +71,7 @@ class LoginViewController: UIViewController, Coordinating {
 // MARK: - Configuring
 extension LoginViewController {
     
-    func setDelegatesOfUIElements() {
+    func initializeData() {
         loginView.loginButton.addTarget(self, action: #selector(loginButtonPressed), for: .touchUpInside)
         loginView.usernameTxtField.delegate = self
         loginView.passwordTxtField.delegate = self
@@ -89,7 +80,6 @@ extension LoginViewController {
 
 
 extension LoginViewController {
-    
     //    # Function to return false if the input in UITextFiled is " " or "    ".
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let newString = (textField.text! as NSString).replacingCharacters(in: range, with: string)
@@ -105,28 +95,5 @@ extension LoginViewController {
         }
         
         return true
-    }
-    
-}
-
-//  MARK: Handling navigation controller to disable it
-extension LoginViewController {
-    
-    override func viewWillAppear(_ animated: Bool) {
-        navigationController?.isNavigationBarHidden = true
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        navigationController?.isNavigationBarHidden = false
-    }
-}
-
-
-// Function to to do something in some time
-extension LoginViewController {
-    func afterBlock(seconds: Int, queue: DispatchQueue = DispatchQueue.global(), completion: @escaping () -> ()) {
-        queue.asyncAfter(deadline: .now() + .seconds(seconds)) {
-            completion()
-        }
     }
 }

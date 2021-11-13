@@ -15,4 +15,5 @@ struct AppImages {
     static let userImage = UIImage(named: "user")!
     static let homeBackgroundImage = UIImage(named: "blob-scene")!
     static let waves = UIImage(named: "waves")!
+    static let plusIcon = UIImage(named: "plusIcon")!
 }

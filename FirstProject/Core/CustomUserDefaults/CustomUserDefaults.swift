@@ -4,6 +4,7 @@
 //  Created by Fenominall on 03.07.2021.
 //
 import Foundation
+import UIKit
 
 class CustomUserDefaults {
     // defined needed keys
@@ -49,7 +50,7 @@ extension UserDefaults {
     private enum Keys {
         static let myKey = "myKey"
     }
-
+    
     func setCodable<T: Codable>(_ value: T, forKey key: String) {
         guard let data = try? JSONEncoder().encode(value) else {
             fatalError("Cannot create a json representation of \(value)")

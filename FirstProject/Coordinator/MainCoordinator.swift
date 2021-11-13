@@ -7,6 +7,8 @@
 
 import Foundation
 import UIKit
+import Photos
+import PhotosUI
 
 class MainCoordinator: Coordinator {
     
@@ -43,7 +45,7 @@ class MainCoordinator: Coordinator {
         case .finishedViewingSourceCode:
             navigationController?.popViewController(animated: true)
             
-       
+            
         case .updateUserDataButtonTapped:
             navigationController?.popViewController(animated: true)
         }

@@ -13,9 +13,14 @@ enum UserValidationState {
     case Empty
 }
 
+protocol UpdateUserData {
+    func updateUsername(username: String)
+    func updatePassword(password: String)
+    func validateUser() -> UserValidationState
+}
+
 class LoginViewModel {
     
-    // MARK: - Properties
     private var user = User() {
         didSet {
             username.value = user.username
@@ -32,7 +37,7 @@ class LoginViewModel {
     }
 }
 
-extension LoginViewModel {
+extension LoginViewModel: UpdateUserData {
     
     func updateUsername(username: String) {
         user.username = username
@@ -43,20 +48,17 @@ extension LoginViewModel {
     }
     
     func validateUser() -> UserValidationState {
-        
         if user.username.isEmpty || user.password.isEmpty {
+            // Phone Vibration
+            HapticsManager.shared.vibrateForType(for: .warning)
             return .Empty
-        } else if !AppDataValidator.validateUserName(username.value) || !AppDataValidator.validatePassword(password.value) {
+        } else if !AppDataValidator.validateUserName(user.username) || !AppDataValidator.validatePassword(user.password) {
+            // Phone Vibration
+            HapticsManager.shared.vibrateForType(for: .warning)
             return .Invalid
         }
+        // Phone Vibrations
+        HapticsManager.shared.vibrateForType(for: .success)
         return .Valid
-    }
-}
-
-
-extension LoginViewModel {
-    func login() {
-        user.save()
-        print(user.load())
     }
 }

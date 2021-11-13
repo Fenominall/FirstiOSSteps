@@ -9,7 +9,7 @@ import Foundation
 
 // MARK: UserModel
 
-struct User: Codable {
+public struct User: Codable {
     
     var username: String = ""
     var password: String = ""
@@ -22,7 +22,7 @@ struct User: Codable {
 
 
 extension User: Equatable {
-    static func == (lhs: User, rhs: User) -> Bool {
+    public static func == (lhs: User, rhs: User) -> Bool {
         return lhs.username == rhs.username
         && lhs.password == rhs.password
     }

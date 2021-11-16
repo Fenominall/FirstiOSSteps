@@ -94,3 +94,17 @@ extension UITextField {
     }
 }
 
+//extension CustomTextField: UITextViewDelegate {
+    /// Dismiss keyboard when touching in any part of the view.
+//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        self.endEditing(true)
+//    }
+
+    
+    /// Dismiss/Hide the KeyBoard.
+    /// - Parameter textField: UITextField
+    /// - Returns: resignFirstResponder()
+//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//        return textField.resignFirstResponder()
+//    }
+//}

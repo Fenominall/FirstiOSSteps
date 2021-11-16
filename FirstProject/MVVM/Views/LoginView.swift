@@ -22,7 +22,6 @@ class LoginView: UIView {
     private lazy var bottomContainerUIView = containerUIView()
     
     // MARK: - UIImageViews
-    
     private func imageView(image: UIImage) -> UIImageView {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -35,8 +34,11 @@ class LoginView: UIView {
     private lazy var appIconImageView = imageView(image: AppImages.appIcon)
     
     // MARK: - UILables
-    
-    private func newUIlabel(text: String, fontSize: Int, fontWeight: UIFont.Weight, textAlignment: NSTextAlignment, textColor: UIColor) -> UILabel {
+    private func newUIlabel(text: String,
+                            fontSize: Int,
+                            fontWeight: UIFont.Weight,
+                            textAlignment: NSTextAlignment,
+                            textColor: UIColor) -> UILabel {
         let newUIlabel = UILabel()
         newUIlabel.translatesAutoresizingMaskIntoConstraints = false
         newUIlabel.text = text
@@ -46,9 +48,21 @@ class LoginView: UIView {
         return newUIlabel
     }
     
-    private lazy var loginScreenLabel = newUIlabel(text: "Login", fontSize: 45, fontWeight: .semibold, textAlignment: .center, textColor: .white)
-    private lazy var usernameLabel = newUIlabel(text: "Username", fontSize: 24, fontWeight: .regular, textAlignment: .natural, textColor: lightGrayLogin ?? .white)
-    private lazy var passwordLabel = newUIlabel(text: "Password", fontSize: 24, fontWeight: .regular, textAlignment: .natural, textColor: lightGrayLogin ?? .white)
+    private lazy var loginScreenLabel = newUIlabel(text: "Login",
+                                                   fontSize: 45,
+                                                   fontWeight: .semibold,
+                                                   textAlignment: .center,
+                                                   textColor: .white)
+    private lazy var usernameLabel = newUIlabel(text: "Username",
+                                                fontSize: 24,
+                                                fontWeight: .regular,
+                                                textAlignment: .natural,
+                                                textColor: lightGrayLogin ?? .white)
+    private lazy var passwordLabel = newUIlabel(text: "Password",
+                                                fontSize: 24,
+                                                fontWeight: .regular,
+                                                textAlignment: .natural,
+                                                textColor: lightGrayLogin ?? .white)
     
     // MARK: - UITextFields
     private(set) lazy var usernameTxtField: CustomTextField = {
@@ -70,8 +84,10 @@ class LoginView: UIView {
     }()
     
     // MARK: - UIButtons
-    
-    private func customButton(title: String, fontSize: Int, fontWeight: UIFont.Weight, tintColor: UIColor) -> UIButton {
+    private func customButton(title: String,
+                              fontSize: Int,
+                              fontWeight: UIFont.Weight,
+                              tintColor: UIColor) -> UIButton {
         let customButton = UIButton(type:.system)
         customButton.translatesAutoresizingMaskIntoConstraints = false
         customButton.setTitle(title, for: .normal)
@@ -80,13 +96,16 @@ class LoginView: UIView {
         return customButton
     }
     
-    private(set) lazy var loginButton = customButton(title: "LOGIN", fontSize: 40, fontWeight: .regular, tintColor: .white)
+    private(set) lazy var loginButton = customButton(title: "LOGIN",
+                                                     fontSize: 40,
+                                                     fontWeight: .regular,
+                                                     tintColor: .white)
     
     
     // MARK: - UIStackViews
-    
     private lazy var usernameStackView: UIStackView = {
-        let usernameStackView = UIStackView(arrangedSubviews: [usernameLabel ,usernameTxtField])
+        let usernameStackView = UIStackView(arrangedSubviews: [usernameLabel,
+                                                               usernameTxtField])
         usernameStackView.translatesAutoresizingMaskIntoConstraints = false
         usernameStackView.axis = .vertical
         usernameStackView.spacing = 10
@@ -94,14 +113,15 @@ class LoginView: UIView {
     }()
     
     private lazy var passwordStackView: UIStackView = {
-        let passwordStackView = UIStackView(arrangedSubviews: [passwordLabel, passwordTxtField])
+        let passwordStackView = UIStackView(arrangedSubviews: [passwordLabel,
+                                                               passwordTxtField])
         passwordStackView.translatesAutoresizingMaskIntoConstraints = false
         passwordStackView.axis = .vertical
         passwordStackView.spacing = 10
         return passwordStackView
     }()
     
-    // MARK: UIView initialization
+    // MARK: - UIView initialization
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()

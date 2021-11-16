@@ -7,20 +7,30 @@
 
 import Foundation
 
-class HomeViewModel {
+struct HomeViewModel {
+    
+//    var fistName: String
+//
+//
+//    init(user: User) {
+//        self.fistName = user.username
+//    }
+    
+    
+//    var usernameV: Box<String> = Box("") {
+//        didSet {
+//            usernameV.value = "Vlados"
+//        }
+//    }
+    
+    
 
-    private var user = User() {
-        didSet {
-            username.value = user.username
-            password.value = user.password
-        }
+    func showData() {
+//        guard let userValue =
+//                UserDefaults.standard.loadCodable(forKey: "user",
+//                                                  castTo: User.self) else
+//                                                  { return }
+//        usernameV.value = userValue.username
+//        print(usernameV.value)
     }
-
-    var username: Box<String> = Box("")
-    var password: Box<String> = Box("")
-
-    init(user: User = User()) {
-        self.user = user
-    }
-
 }

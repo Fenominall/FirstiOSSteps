@@ -16,7 +16,7 @@ class MainCoordinator: Coordinator {
     var children: [Coordinator]? = nil
     
     
-    func eventOccurred(with type: Event) {
+    func eventOccurred(with type: CoordinatorEvents) {
         
         switch type {
             
@@ -48,12 +48,26 @@ class MainCoordinator: Coordinator {
             
         case .updateUserDataButtonTapped:
             navigationController?.popViewController(animated: true)
+            
+        case .goToScheduleListController:
+            var scheduleListController: UIViewController & Coordinating = ScheduleListController()
+            scheduleListController.coordinator = self
+            navigationController?.pushViewController(scheduleListController, animated: true)
+        case .createEventButtonTapped:
+            var createEventController: UIViewController & Coordinating = CreateEventController()
+            createEventController.coordinator = self
+            navigationController?.present(createEventController, animated: true, completion: nil)
         }
+        
     }
     
     func start() {
         var loginViewController: UIViewController & Coordinating = LoginViewController()
         loginViewController.coordinator = self
         navigationController?.setViewControllers([loginViewController], animated: false)
+        
+        //        var loginViewController: UIViewController & Coordinating = LoginViewController()
+        //        loginViewController.coordinator = self
+        //        navigationController?.setViewControllers([loginViewController], animated: false)
     }
 }

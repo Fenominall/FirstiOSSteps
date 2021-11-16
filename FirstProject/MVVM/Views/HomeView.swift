@@ -10,7 +10,26 @@ import SnapKit
 
 class HomeView: UIView {
     
+    // MARK: - UIView Containers
+    private lazy var containerView: UIView = {
+        let containerView = UIView(frame: .zero)
+        containerView.translatesAutoresizingMaskIntoConstraints = false
+        return containerView
+    }()
     
+    private lazy var topContainerView: UIView = {
+        let containerView = UIView(frame: .zero)
+        containerView.translatesAutoresizingMaskIntoConstraints = false
+        return containerView
+    }()
+    
+    private lazy var bottomContainerView: UIView = {
+        let containerView = UIView(frame: .zero)
+        containerView.translatesAutoresizingMaskIntoConstraints = false
+        return containerView
+    }()
+    
+    // MARK: - UIImageViews
     private(set) lazy var circleBackGroundForUserImage: UIImageView = {
         let circleImage = UIImageView()
         circleImage.image = AppImages.lightCircle
@@ -45,6 +64,7 @@ class HomeView: UIView {
         return userImage
     }()
     
+    // MARK: - UILabels
     private(set) lazy var usernameLabel: UILabel = {
         let greetMessage = UILabel()
         greetMessage.translatesAutoresizingMaskIntoConstraints = false
@@ -69,6 +89,18 @@ class HomeView: UIView {
         return uploadImageButton
     }()
     
+    private(set) lazy var sourceCodeButton: UIButton = {
+        let sourceCodeButton = UIButton(type: .system)
+        sourceCodeButton.translatesAutoresizingMaskIntoConstraints = false
+        sourceCodeButton.layer.masksToBounds = false
+        sourceCodeButton.clipsToBounds = true
+//        sourceCodeButton.setImage(AppImages.git, for: .normal)
+        sourceCodeButton.setTitle("GitHub", for: .normal)
+        sourceCodeButton.tintColor = lightGrayLogin
+        return sourceCodeButton
+    }()
+    
+    
     private func customUIButton(title: String, backgroundColor: UIColor, tintColor: UIColor, cornerRadius: Int) -> UIButton {
         let customUIButton = UIButton(type: .system)
         customUIButton.translatesAutoresizingMaskIntoConstraints = false
@@ -84,21 +116,22 @@ class HomeView: UIView {
     }
     
     private(set) lazy var editProfileButton = customUIButton(title: "Edit Profile", backgroundColor: lightGrayLogin ?? .lightGray, tintColor: .white, cornerRadius: 5)
-    private(set) lazy var sourceCodeButton = customUIButton(title: "App Source Code", backgroundColor: lightGrayLogin ?? .lightGray, tintColor: .white, cornerRadius: 5)
+//    private(set) lazy var sourceCodeButton = customUIButton(title: "App Source Code", backgroundColor: lightGrayLogin ?? .lightGray, tintColor: .white, cornerRadius: 5)
     private(set) lazy var logOutUserButton = customUIButton(title: "Log Out", backgroundColor: lightGrayLogin ?? .lightGray, tintColor: .white, cornerRadius: 5)
+    private(set) lazy var scheduleEventListButton = customUIButton(title: "Scheduler", backgroundColor: lightGrayLogin ?? .lightGray, tintColor: .white, cornerRadius: 5)
     
     // MARK: - UIStackVies
     private lazy var labelAndUserImageStack: UIStackView = {
         let labelAndUserImageStack = UIStackView(arrangedSubviews: [usernameLabel, circleBackGroundForUserImage])
         labelAndUserImageStack.translatesAutoresizingMaskIntoConstraints = false
         labelAndUserImageStack.axis = .vertical
-        //        labelAndUserImageStack.distribution = .fillEqually
+//        labelAndUserImageStack.distribution = .fillEqually
         labelAndUserImageStack.spacing = 10
         return labelAndUserImageStack
     }()
     
     private lazy var buttonsStackView: UIStackView = {
-        let buttonsStackView = UIStackView(arrangedSubviews: [editProfileButton, sourceCodeButton, logOutUserButton])
+        let buttonsStackView = UIStackView(arrangedSubviews: [editProfileButton, scheduleEventListButton, logOutUserButton])
         buttonsStackView.translatesAutoresizingMaskIntoConstraints = false
         buttonsStackView.axis = .vertical
         buttonsStackView.spacing = 15
@@ -119,37 +152,57 @@ class HomeView: UIView {
     
     // MARK: Configure auto-layout of UIElements
     func initialize() {
-        addSubview(homeScreenBackgroundImage)
-        homeScreenBackgroundImage.snp.makeConstraints {
+        
+        addSubview(containerView)
+        containerView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
         
-        addSubview(labelAndUserImageStack)
+        containerView.addSubview(homeScreenBackgroundImage)
+        homeScreenBackgroundImage.snp.makeConstraints {
+            $0.edges.equalTo(containerView)
+        }
+        
+        containerView.addSubview(topContainerView)
+        topContainerView.snp.makeConstraints {
+            $0.top.leading.trailing.equalTo(containerView)
+            $0.height.equalTo(containerView).multipliedBy(0.5)
+        }
+        
+        containerView.addSubview(bottomContainerView)
+        bottomContainerView.snp.makeConstraints {
+            $0.top.equalTo(topContainerView.snp.bottom)
+            $0.leading.trailing.equalTo(topContainerView)
+            $0.height.equalTo(containerView).multipliedBy(0.5)
+        }
+
+        topContainerView.addSubview(labelAndUserImageStack)
         labelAndUserImageStack.snp.makeConstraints {
-            $0.topMargin.centerXWithinMargins.equalToSuperview().inset(70)
+            $0.topMargin.equalTo(topContainerView.snp_topMargin)
+            $0.centerWithinMargins.equalTo(topContainerView)
         }
         
         addSubview(editProfileButton)
         editProfileButton.snp.makeConstraints {
-            $0.height.equalTo(50)
+            $0.height.equalTo(48)
         }
         
-        addSubview(sourceCodeButton)
-        sourceCodeButton.snp.makeConstraints {
-            $0.height.equalTo(50)
+        addSubview(scheduleEventListButton)
+        scheduleEventListButton.snp.makeConstraints {
+            $0.height.equalTo(48)
         }
         
         addSubview(logOutUserButton)
         logOutUserButton.snp.makeConstraints {
-            $0.height.equalTo(50)
+            $0.height.equalTo(48)
         }
         
-        addSubview(buttonsStackView)
+        bottomContainerView.addSubview(buttonsStackView)
         buttonsStackView.snp.makeConstraints {
-            $0.top.equalTo(labelAndUserImageStack).inset(300)
-            $0.left.right.equalToSuperview().inset(30)
-        }
-        
+            $0.topMargin.equalTo(bottomContainerView.snp_topMargin).inset(25)
+            $0.leading.trailing.equalTo(bottomContainerView).inset(30)
+          }
+
         circleBackGroundForUserImage.snp.makeConstraints {
             $0.width.height.equalTo(200)
         }
@@ -172,6 +225,15 @@ class HomeView: UIView {
             $0.trailing.equalTo(uploadImageButton.snp_trailingMargin).inset(12)
             
         }
+        
+        bottomContainerView.addSubview(sourceCodeButton)
+        sourceCodeButton.snp.makeConstraints {
+            $0.bottom.equalTo(bottomContainerView.snp_bottomMargin)
+            $0.centerX.equalTo(bottomContainerView.snp.centerX)
+//            $0.leading.trailing.equalTo(bottomContainerView)
+//            $0.height.equalTo(48)
+        }
+        
     }
 }
 

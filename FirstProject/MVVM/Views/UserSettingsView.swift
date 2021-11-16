@@ -10,12 +10,14 @@ import SnapKit
 
 class UserSettingsView: UIView {
     
+    // MARK: UIView Container
     private lazy var containerUIView: UIView = {
         let containerView = UIView()
         containerView.translatesAutoresizingMaskIntoConstraints = false
         return containerView
     }()
     
+    // MARK: - UIImageViews
     private lazy var backgroundImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -23,17 +25,8 @@ class UserSettingsView: UIView {
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
-    
-    private lazy var contentStackView: UIStackView = {
-        let contentStackView = UIStackView(arrangedSubviews: [changeUserDataLabel, updateUsernameTextField, updatePasswordTextField, saveUserDataButton])
-        contentStackView.translatesAutoresizingMaskIntoConstraints = false
-        contentStackView.axis = .vertical
-        contentStackView.distribution = .fillEqually
-        contentStackView.spacing = 40
-        return contentStackView
-    }()
 
-    //    Message for the USER to change the data
+    // MARK: - UILabels
     private lazy var changeUserDataLabel: UILabel = {
         let changeUserDataLabel = UILabel()
         changeUserDataLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -44,7 +37,7 @@ class UserSettingsView: UIView {
         return changeUserDataLabel
     }()
     
-    // Text field to update user`s name
+    // MARK: - UITextFields
     private(set) lazy var updateUsernameTextField: CustomTextField = {
         let updateUsernameTextField = CustomTextField()
         updateUsernameTextField.translatesAutoresizingMaskIntoConstraints = false
@@ -55,7 +48,6 @@ class UserSettingsView: UIView {
         return updateUsernameTextField
     }()
     
-    // Text field to update user`s password
     private(set) lazy var updatePasswordTextField: CustomTextField = {
         let updatePasswordTextField = CustomTextField()
         updatePasswordTextField.translatesAutoresizingMaskIntoConstraints = false
@@ -66,8 +58,8 @@ class UserSettingsView: UIView {
         updatePasswordTextField.addBottomBorder()
         return updatePasswordTextField
     }()
-
-    //    Button to save user changed on the third screen
+    
+    // MARK: - UIButtons
     private(set) lazy var saveUserDataButton: UIButton = {
         let saveUserDataButton = UIButton(type: .system)
         saveUserDataButton.translatesAutoresizingMaskIntoConstraints = false
@@ -81,7 +73,21 @@ class UserSettingsView: UIView {
         saveUserDataButton.layer.shadowOpacity = 0.5
         return saveUserDataButton
     }()
-
+    
+    // MARK: - UIstackViews
+    private lazy var contentStackView: UIStackView = {
+        let contentStackView = UIStackView(arrangedSubviews: [changeUserDataLabel,
+                                                              updateUsernameTextField,
+                                                              updatePasswordTextField,
+                                                              saveUserDataButton])
+        contentStackView.translatesAutoresizingMaskIntoConstraints = false
+        contentStackView.axis = .vertical
+        contentStackView.distribution = .fillEqually
+        contentStackView.spacing = 40
+        return contentStackView
+    }()
+    
+    // MARK: - UIView initialization
     override init(frame: CGRect) {
         super.init(frame: frame)
         elementsOfThirdScreenUIStack()
@@ -92,6 +98,7 @@ class UserSettingsView: UIView {
         elementsOfThirdScreenUIStack()
     }
     
+    // MARK: Configure auto-layout of UIElements
     func elementsOfThirdScreenUIStack() {
         
         addSubview(containerUIView)

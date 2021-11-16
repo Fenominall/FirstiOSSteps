@@ -34,8 +34,11 @@ class HomeViewController: UIViewController, Coordinating {
         // Navigation settings
         self.navigationItem.title = "Home"
         navigationItem.backButtonTitle = "Back"
+        navigationItem.leftBarButtonItem?.tintColor = .white
         navigationItem.setHidesBackButton(true, animated: false)
         navigationController?.navigationBar.prefersLargeTitles = true
+        
+        homeViewModel.showData()
     }
 }
 
@@ -47,6 +50,7 @@ extension HomeViewController {
         homeSharedView.sourceCodeButton.addTarget(self, action: #selector(didTapSourceCodeButton), for: .touchUpInside)
         homeSharedView.logOutUserButton.addTarget(self, action: #selector(didTapLogOutButton), for: .touchUpInside)
         homeSharedView.uploadImageButton.addTarget(self, action: #selector(didTapUploadImageButton), for: .touchUpInside)
+        homeSharedView.scheduleEventListButton.addTarget(self, action: #selector(didTapScheduleEventButton), for: .touchUpInside)
     }
     
     @objc private func didTapUploadImageButton() {
@@ -92,6 +96,10 @@ extension HomeViewController {
     //    Navigation Button to FirstViewController
     @objc private func didTapLogOutButton() {
         coordinator?.eventOccurred(with: .logOutButtonTapped)
+    }
+    
+    @objc private func didTapScheduleEventButton() {
+        coordinator?.eventOccurred(with: .goToScheduleListController)
     }
 }
 

@@ -19,6 +19,10 @@ protocol UpdateUserData {
     func validateUser() -> UserValidationState
 }
 
+protocol ShareData {
+    
+}
+
 class LoginViewModel {
     
     private var user = User() {
@@ -59,6 +63,11 @@ extension LoginViewModel: UpdateUserData {
         }
         // Phone Vibrations
         HapticsManager.shared.vibrateForType(for: .success)
+        saveUser()
         return .Valid
+    }
+    
+    func saveUser() {
+        UserDefaults.standard.setCodable(user, forKey: UserKey.storageKey)
     }
 }

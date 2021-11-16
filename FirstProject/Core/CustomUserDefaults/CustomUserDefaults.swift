@@ -58,7 +58,7 @@ extension UserDefaults {
         self.set(data, forKey: key)
     }
     
-    func loadCodable<T: Codable>(forKey key: String) -> T? {
+    func loadCodable<T: Codable>(forKey key: String, castTo type: T.Type) -> T? {
         guard let data = self.data(forKey: key) else {
             return nil
         }

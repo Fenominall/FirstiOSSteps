@@ -13,6 +13,12 @@
 		4F234D392735118C00D1C00B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F234D382735118C00D1C00B /* LaunchScreen.storyboard */; };
 		4F257CFD2739B1AE007CB391 /* DiskCaretaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F257CFC2739B1AE007CB391 /* DiskCaretaker.swift */; };
 		4F257CFF2739B423007CB391 /* UserCaretaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F257CFE2739B423007CB391 /* UserCaretaker.swift */; };
+		4F28BA74274271A1001308E1 /* UserKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F28BA73274271A1001308E1 /* UserKey.swift */; };
+		4F28BA762742889C001308E1 /* ScheduleListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F28BA752742889C001308E1 /* ScheduleListController.swift */; };
+		4F28BA78274295EC001308E1 /* CreateEventController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F28BA77274295EC001308E1 /* CreateEventController.swift */; };
+		4F28BA7A27429692001308E1 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F28BA7927429692001308E1 /* Event.swift */; };
+		4F28BA7C2742989E001308E1 /* CreateEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F28BA7B2742989E001308E1 /* CreateEventView.swift */; };
+		4F28BA7E27429B57001308E1 /* ScheduleListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F28BA7D27429B57001308E1 /* ScheduleListViewCell.swift */; };
 		4F2A17B726C7050600205E03 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2A17B626C7050600205E03 /* Box.swift */; };
 		4F2EA04526F7054300EF6884 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2EA04426F7054300EF6884 /* CustomTextField.swift */; };
 		4F4FDFBC268D862000736440 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4FDFBB268D862000736440 /* LoginViewModel.swift */; };
@@ -50,6 +56,12 @@
 		4F234D382735118C00D1C00B /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4F257CFC2739B1AE007CB391 /* DiskCaretaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskCaretaker.swift; sourceTree = "<group>"; };
 		4F257CFE2739B423007CB391 /* UserCaretaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCaretaker.swift; sourceTree = "<group>"; };
+		4F28BA73274271A1001308E1 /* UserKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserKey.swift; sourceTree = "<group>"; };
+		4F28BA752742889C001308E1 /* ScheduleListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListController.swift; sourceTree = "<group>"; };
+		4F28BA77274295EC001308E1 /* CreateEventController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEventController.swift; sourceTree = "<group>"; };
+		4F28BA7927429692001308E1 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		4F28BA7B2742989E001308E1 /* CreateEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEventView.swift; sourceTree = "<group>"; };
+		4F28BA7D27429B57001308E1 /* ScheduleListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListViewCell.swift; sourceTree = "<group>"; };
 		4F2A17B626C7050600205E03 /* Box.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
 		4F2EA04426F7054300EF6884 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		4F4FDFBB268D862000736440 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
@@ -110,30 +122,6 @@
 			path = Coordinator;
 			sourceTree = "<group>";
 		};
-		4F1F59F526D962E800F08424 /* Auth */ = {
-			isa = PBXGroup;
-			children = (
-				4F695E8F2662B6C200606D03 /* LoginViewController.swift */,
-			);
-			path = Auth;
-			sourceTree = "<group>";
-		};
-		4F1F59F626D962FE00F08424 /* Auth */ = {
-			isa = PBXGroup;
-			children = (
-				4FFCD45A26BEC87000770D33 /* LoginView.swift */,
-			);
-			path = Auth;
-			sourceTree = "<group>";
-		};
-		4F1F59F726D9630600F08424 /* Auth */ = {
-			isa = PBXGroup;
-			children = (
-				4F4FDFBB268D862000736440 /* LoginViewModel.swift */,
-			);
-			path = Auth;
-			sourceTree = "<group>";
-		};
 		4F257CFB2739B104007CB391 /* Memento */ = {
 			isa = PBXGroup;
 			children = (
@@ -146,7 +134,7 @@
 		4F4FDFBA268D860700736440 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				4F1F59F726D9630600F08424 /* Auth */,
+				4F4FDFBB268D862000736440 /* LoginViewModel.swift */,
 				4FE69EC826A2B80E00F23965 /* UserSettingsViewModel.swift */,
 				4FCDEBA8272FEC51002C3B06 /* HomeViewModel.swift */,
 			);
@@ -157,6 +145,7 @@
 			isa = PBXGroup;
 			children = (
 				4F522AA7272DB7CF0099C5E8 /* Images.swift */,
+				4F28BA73274271A1001308E1 /* UserKey.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -208,9 +197,11 @@
 		4FBBE315268B97B000D518B8 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				4F1F59F526D962E800F08424 /* Auth */,
+				4F695E8F2662B6C200606D03 /* LoginViewController.swift */,
 				4FD2745B2683317300C8FA32 /* HomeViewController.swift */,
 				4FD2745D268332F700C8FA32 /* UserSettingsViewController.swift */,
+				4F28BA752742889C001308E1 /* ScheduleListController.swift */,
+				4F28BA77274295EC001308E1 /* CreateEventController.swift */,
 				4FAF3A7B26C6ED08009C803E /* WebViewController */,
 			);
 			path = Controllers;
@@ -230,6 +221,7 @@
 			children = (
 				4F2A17B626C7050600205E03 /* Box.swift */,
 				4FBBE318268B97E400D518B8 /* UserModel.swift */,
+				4F28BA7927429692001308E1 /* Event.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -312,10 +304,11 @@
 		4FFCD45926BEC84900770D33 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				4F1F59F626D962FE00F08424 /* Auth */,
+				4FFCD45A26BEC87000770D33 /* LoginView.swift */,
 				4F7D97B126D0391A00A9D253 /* HomeView.swift */,
 				4FA5BB1726CEDB5F001C486D /* UserSettingsView.swift */,
-				4F234D382735118C00D1C00B /* LaunchScreen.storyboard */,
+				4F28BA7D27429B57001308E1 /* ScheduleListViewCell.swift */,
+				4F28BA7B2742989E001308E1 /* CreateEventView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -323,6 +316,7 @@
 		4FFF2A1326BD26730064E610 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4F234D382735118C00D1C00B /* LaunchScreen.storyboard */,
 				4FF9064D26543BF1001387C9 /* Assets.xcassets */,
 				4FF9065226543BF1001387C9 /* Info.plist */,
 			);
@@ -468,6 +462,7 @@
 				4FE69EC926A2B80E00F23965 /* UserSettingsViewModel.swift in Sources */,
 				4FD2745C2683317300C8FA32 /* HomeViewController.swift in Sources */,
 				4FFCD45B26BEC87000770D33 /* LoginView.swift in Sources */,
+				4F28BA7E27429B57001308E1 /* ScheduleListViewCell.swift in Sources */,
 				4FDB689026E146390006F8E3 /* UIColorHexExtension.swift in Sources */,
 				4F522AA8272DB7CF0099C5E8 /* Images.swift in Sources */,
 				4F87A91B273EA34800D34B02 /* ImageStorage.swift in Sources */,
@@ -481,7 +476,10 @@
 				4FD2745E268332F700C8FA32 /* UserSettingsViewController.swift in Sources */,
 				4FFF2A1626BD27560064E610 /* HapticsManager.swift in Sources */,
 				4F2A17B726C7050600205E03 /* Box.swift in Sources */,
+				4F28BA74274271A1001308E1 /* UserKey.swift in Sources */,
+				4F28BA762742889C001308E1 /* ScheduleListController.swift in Sources */,
 				4FF9064526543BEF001387C9 /* AppDelegate.swift in Sources */,
+				4F28BA7A27429692001308E1 /* Event.swift in Sources */,
 				4FAF3A7A26C6ED04009C803E /* GitHubWebViewController.swift in Sources */,
 				4F92895626A6B06600624B6E /* Alerts.swift in Sources */,
 				4F4FDFBC268D862000736440 /* LoginViewModel.swift in Sources */,
@@ -489,11 +487,13 @@
 				4FF9064726543BEF001387C9 /* SceneDelegate.swift in Sources */,
 				4F695E902662B6C200606D03 /* LoginViewController.swift in Sources */,
 				4F05462F26B9810B006C5A04 /* UIButtonAnimationsExtension.swift in Sources */,
+				4F28BA78274295EC001308E1 /* CreateEventController.swift in Sources */,
 				4FCDEBA9272FEC51002C3B06 /* HomeViewModel.swift in Sources */,
 				4FD4D58E26833C8D0078633E /* AppDataValidator.swift in Sources */,
 				4FA5BB1826CEDB5F001C486D /* UserSettingsView.swift in Sources */,
 				4FDB688E26E1455A0006F8E3 /* CustomUserDefaults.swift in Sources */,
 				4F257CFF2739B423007CB391 /* UserCaretaker.swift in Sources */,
+				4F28BA7C2742989E001308E1 /* CreateEventView.swift in Sources */,
 				4F257CFD2739B1AE007CB391 /* DiskCaretaker.swift in Sources */,
 				4FEF699D26BAC0190022CAFD /* SourceCodeWebUIViewController.swift in Sources */,
 			);

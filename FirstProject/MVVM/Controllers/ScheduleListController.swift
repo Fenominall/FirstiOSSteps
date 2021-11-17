@@ -61,7 +61,7 @@ class ScheduleListController: UIViewController, Coordinating {
 //        editingEventButton()
         
         title = "Scheduler"
-//        navigationItem.leftBarButtonItem?.tintColor = .white
+        navigationItem.leftBarButtonItem?.tintColor = .white
         navigationController?.navigationBar.prefersLargeTitles = true
         
     }
@@ -86,26 +86,21 @@ class ScheduleListController: UIViewController, Coordinating {
 //    @objc private func handleEventEditing() {
 //        isEditingTableView.toggle() // changes a boolean value
 //    }
-    
-    
-    
-    
 }
 
 extension ScheduleListController {
     
     private func setupTableView() {
         view.backgroundColor = .darkGray
-        
         view.addSubview(eventsTableView)
         eventsTableView.snp.makeConstraints {
-//            $0.top.leadingMargin.trailingMargin.equalToSuperview()
             $0.edges.margins.equalToSuperview()
             $0.bottomMargin.equalToSuperview()
         }
     }
 }
 
+// MARK: - UITableViewDelegate
 extension ScheduleListController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
@@ -113,17 +108,23 @@ extension ScheduleListController: UITableViewDelegate {
     
 }
 
+//MARK: - UITableViewDataSource
 extension ScheduleListController: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return events.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // dequeueReusableCell:
+        // recycles a cell if it exists
+        // if the cell does not exists a new cell is created
         var cell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath)
         cell = UITableViewCell(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: "eventCell")
         cell.contentView.backgroundColor = .clear
         cell.textLabel?.textColor
         = .black
+        // get an object at the current indexPath from a flatArray
         let event = events[indexPath.row]
         cell.detailTextLabel?.textColor = .black
         cell.textLabel?.text = event.name
@@ -132,7 +133,7 @@ extension ScheduleListController: UITableViewDataSource {
     }
     
     
-    // MARK: - deleting rows in a table view
+    // MARK:- deleting rows in a table view
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         switch editingStyle {
         case .insert:
@@ -149,7 +150,7 @@ extension ScheduleListController: UITableViewDataSource {
         }
     }
     
-    // MARK: - Reordering views in a tableView
+    // MARK:- Reordering views in a tableView
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         let eventToMove = events[sourceIndexPath.row] // saved an event being moved
         events.remove(at: sourceIndexPath.row)

@@ -27,19 +27,3 @@ extension User: Equatable {
         && lhs.password == rhs.password
     }
 }
-
-
-extension User {
-    
-    static let storageKey: String = "Users"
-    
-    func save() {
-        let users: [User] = [self]
-        UserDefaults.standard.setValue(users, forKey: User.storageKey)
-    }
-    
-    func load() {
-        UserDefaults.standard.object(forKey: User.storageKey)
-    }
-    
-}

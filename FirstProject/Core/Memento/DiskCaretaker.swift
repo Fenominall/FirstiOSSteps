@@ -7,6 +7,16 @@
 
 import Foundation
 
+enum DataPersistenceError: Error { // conforming to the Error protocol
+    case savingError(Error) // associative value
+    case fileDoesNotExist(String)
+    case notData
+    case decodingError(Error)
+    case deletingError(Error)
+}
+
+
+
 // MARK: - Caretaker for the Memento design pattern
 public final class DiskCaretaker {
     public static let decoder = JSONDecoder()
@@ -26,12 +36,11 @@ public final class DiskCaretaker {
             //    corrupted. It’s possible this operation may throw an error, so you must prefix it
             //    with try.
             try data.write(to: url, options: .atomic)
-        } catch (let error){
+        } catch {
             // 5: If you catch an error, you print the object and error to the console and then
             //    throw the error.
-            print("Save failed: Object: '\(object)', " +
-                  "Error: \(error)")
-            throw error
+            throw DataPersistenceError.savingError(error)
+            
         }
     }
     
@@ -61,6 +70,8 @@ public final class DiskCaretaker {
             throw error
         }
     }
+    
+    
     
     
     

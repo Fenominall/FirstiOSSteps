@@ -38,8 +38,7 @@ class ScheduleListController: UIViewController, Coordinating {
         formatter.timeZone = .current
         return formatter
     }()
-    
-    
+
     var isEditingTableView = false {
         didSet {
             eventsTableView.isEditing = isEditingTableView
@@ -58,18 +57,21 @@ class ScheduleListController: UIViewController, Coordinating {
         super.viewDidLoad()
         setupTableView()
         setupCreateEventButton()
-//        editingEventButton()
+        editingEventButton()
+        print(FileManager.getDocumentsDirectory())
         
         title = "Scheduler"
         navigationItem.leftBarButtonItem?.tintColor = .white
         navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.backgroundColor = UIColor.darkGray
+        
         
     }
     
     private func setupCreateEventButton() {
         let action = #selector(handleEventCreation)
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: action)
-        navigationItem.rightBarButtonItem?.tintColor = .black
+        navigationItem.rightBarButtonItem?.tintColor = .white
         
     }
     
@@ -77,15 +79,15 @@ class ScheduleListController: UIViewController, Coordinating {
         coordinator?.eventOccurred(with: .createEventButtonTapped)
     }
     
-//    private func editingEventButton() {
-//        let action = #selector(handleEventEditing)
-//        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: action)
-//        navigationItem.leftBarButtonItem?.tintColor = .black
-//    }
-//
-//    @objc private func handleEventEditing() {
-//        isEditingTableView.toggle() // changes a boolean value
-//    }
+    private func editingEventButton() {
+        let action = #selector(handleEventEditing)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: action)
+        navigationItem.leftBarButtonItem?.tintColor = .black
+    }
+
+    @objc private func handleEventEditing() {
+        isEditingTableView.toggle() // changes a boolean value
+    }
 }
 
 extension ScheduleListController {
@@ -93,10 +95,13 @@ extension ScheduleListController {
     private func setupTableView() {
         view.backgroundColor = .darkGray
         view.addSubview(eventsTableView)
+
         eventsTableView.snp.makeConstraints {
-            $0.edges.margins.equalToSuperview()
-            $0.bottomMargin.equalToSuperview()
+            $0.edges.equalToSuperview()
         }
+        
+        
+        
     }
 }
 
@@ -121,12 +126,12 @@ extension ScheduleListController: UITableViewDataSource {
         // if the cell does not exists a new cell is created
         var cell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath)
         cell = UITableViewCell(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: "eventCell")
-        cell.contentView.backgroundColor = .clear
+        cell.contentView.backgroundColor = .darkGray
         cell.textLabel?.textColor
-        = .black
+        = .white
         // get an object at the current indexPath from a flatArray
         let event = events[indexPath.row]
-        cell.detailTextLabel?.textColor = .black
+        cell.detailTextLabel?.textColor = .white
         cell.textLabel?.text = event.name
         cell.detailTextLabel?.text = dateFormatter.string(from: event.date)
         return cell

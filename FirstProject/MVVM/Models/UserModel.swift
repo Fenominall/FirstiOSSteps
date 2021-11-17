@@ -13,11 +13,6 @@ public struct User: Codable {
     
     var username: String = ""
     var password: String = ""
-    
-    //    internal init(username: String = "", password: String = "") {
-    //        self.username = username
-    //        self.password = password
-    //    }
 }
 
 

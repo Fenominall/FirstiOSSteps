@@ -23,7 +23,6 @@ class MainCoordinator: Coordinator {
         case .loginButtonTapped:
             var homeVC: UIViewController & Coordinating = HomeViewController()
             homeVC.coordinator = self
-            homeVC.modalPresentationStyle = .fullScreen
             navigationController?.pushViewController(homeVC, animated: true)
             
         case .userSettingsTapped:
@@ -62,7 +61,7 @@ class MainCoordinator: Coordinator {
     }
     
     func start() {
-        var loginViewController: UIViewController & Coordinating = LoginViewController()
+        var loginViewController: UIViewController & Coordinating = ScheduleListController()
         loginViewController.coordinator = self
         navigationController?.setViewControllers([loginViewController], animated: false)
         

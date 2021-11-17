@@ -20,7 +20,6 @@ class CreateEventView: UIView {
     // MARK: - UITextFields
     private(set) lazy var createEventTextField: UITextField = {
         let createEventTextField = UITextField()
-        createEventTextField.translatesAutoresizingMaskIntoConstraints = false
         createEventTextField.placeholder = "create event"
         createEventTextField.textAlignment = .center
         createEventTextField.borderStyle = .roundedRect
@@ -42,7 +41,6 @@ class CreateEventView: UIView {
     // MARK: - UIButton
     private(set) lazy var createEventButton: UIButton = {
         let createEventButton = UIButton(type: .system)
-        createEventButton.translatesAutoresizingMaskIntoConstraints = false
         createEventButton.setTitle("Create Event", for: .normal)
         return createEventButton
     }()
@@ -50,7 +48,6 @@ class CreateEventView: UIView {
     // MARK: - UIStackView
     private lazy var contentStackView: UIStackView = {
        let contentStackView = UIStackView(arrangedSubviews: [createEventTextField,
-                                                            eventDatePicker,
                                                             createEventButton])
         contentStackView.translatesAutoresizingMaskIntoConstraints = false
         contentStackView.distribution = .fillProportionally
@@ -78,23 +75,26 @@ extension CreateEventView {
         backgroundColor = .white
         
         addSubview(containerUIView)
-        containerUIView.addSubview(contentStackView)
+        containerUIView.addSubview(eventDatePicker)
+        containerUIView.addSubview(createEventTextField)
+        containerUIView.addSubview(createEventButton)
         
         containerUIView.snp.makeConstraints {
-            $0.edges.margins.equalToSuperview()
+            $0.edges.equalToSuperview()
         }
-        
-        contentStackView.snp.makeConstraints {
+        eventDatePicker.snp.makeConstraints {
             $0.centerX.centerY.equalTo(containerUIView)
         }
         
         createEventTextField.snp.makeConstraints {
-            $0.leadingMargin.trailingMargin.equalTo(containerUIView).inset(20)
+            $0.bottom.equalTo(eventDatePicker.snp_topMargin).inset(-25)
+            $0.leading.trailing.equalTo(containerUIView).inset(30)
+            $0.height.equalTo(48)
         }
         
-        eventDatePicker.snp.makeConstraints {
-            $0.leadingMargin.equalTo(containerUIView).inset(50)
+        createEventButton.snp.makeConstraints {
+            $0.top.equalTo(eventDatePicker.snp_bottomMargin).inset(-15)
+            $0.centerX.equalTo(containerUIView)
         }
-        
     }
 }

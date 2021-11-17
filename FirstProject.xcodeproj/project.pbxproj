@@ -20,6 +20,7 @@
 		4F28BA7C2742989E001308E1 /* CreateEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F28BA7B2742989E001308E1 /* CreateEventView.swift */; };
 		4F28BA7E27429B57001308E1 /* ScheduleListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F28BA7D27429B57001308E1 /* ScheduleListViewCell.swift */; };
 		4F2A17B726C7050600205E03 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2A17B626C7050600205E03 /* Box.swift */; };
+		4F2DEDF0274515B900C5F156 /* FileManager+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2DEDEF274515B900C5F156 /* FileManager+Extensions.swift */; };
 		4F2EA04526F7054300EF6884 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2EA04426F7054300EF6884 /* CustomTextField.swift */; };
 		4F4FDFBC268D862000736440 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4FDFBB268D862000736440 /* LoginViewModel.swift */; };
 		4F522AA8272DB7CF0099C5E8 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F522AA7272DB7CF0099C5E8 /* Images.swift */; };
@@ -63,6 +64,7 @@
 		4F28BA7B2742989E001308E1 /* CreateEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEventView.swift; sourceTree = "<group>"; };
 		4F28BA7D27429B57001308E1 /* ScheduleListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListViewCell.swift; sourceTree = "<group>"; };
 		4F2A17B626C7050600205E03 /* Box.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
+		4F2DEDEF274515B900C5F156 /* FileManager+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Extensions.swift"; sourceTree = "<group>"; };
 		4F2EA04426F7054300EF6884 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		4F4FDFBB268D862000736440 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		4F522AA7272DB7CF0099C5E8 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				4F87A91A273EA34800D34B02 /* ImageStorage.swift */,
+				4F2DEDEF274515B900C5F156 /* FileManager+Extensions.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -482,6 +485,7 @@
 				4F28BA7A27429692001308E1 /* Event.swift in Sources */,
 				4FAF3A7A26C6ED04009C803E /* GitHubWebViewController.swift in Sources */,
 				4F92895626A6B06600624B6E /* Alerts.swift in Sources */,
+				4F2DEDF0274515B900C5F156 /* FileManager+Extensions.swift in Sources */,
 				4F4FDFBC268D862000736440 /* LoginViewModel.swift in Sources */,
 				4F5273DD26F911B700D07065 /* CustomUIButton.swift in Sources */,
 				4FF9064726543BEF001387C9 /* SceneDelegate.swift in Sources */,

@@ -18,10 +18,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Tint color
         navigationBarAppearence.titleTextAttributes = [.foregroundColor: UIColor.white]
         navigationBarAppearence.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
-        
-        // MARK: - Settings the navigation
+        navigationBarAppearence.backgroundColor = UIColor.darkGray
         UINavigationBar.appearance().standardAppearance = navigationBarAppearence
         
+        // MARK: - Settings the navigation
         let navVC = UINavigationController()
         navVC.navigationBar.prefersLargeTitles = true
         let coordinator = MainCoordinator()

@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import SnapKit
+//import SnapKit
 
 public class ScheduleListViewCell: UITableViewCell {
     

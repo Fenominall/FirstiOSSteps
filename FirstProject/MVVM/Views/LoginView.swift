@@ -135,7 +135,7 @@ class LoginView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
     }
-
+    
     
     
     // MARK: Configure auto-layout of UIElements
@@ -164,7 +164,7 @@ class LoginView: UIView {
         }
         
         topContainerUIView.snp.makeConstraints {
-            $0.edges.equalTo(screenContainerUIView)
+            $0.top.leading.trailing.equalTo(screenContainerUIView)
             $0.height.equalTo(screenContainerUIView).multipliedBy(0.5)
         }
         
@@ -176,7 +176,7 @@ class LoginView: UIView {
         
         bottomContainerUIView.snp.makeConstraints {
             $0.top.equalTo(topContainerUIView.safeAreaLayoutGuide.snp.bottom)
-            $0.leading.trailing.bottom.equalTo(screenContainerUIView.safeAreaLayoutGuide)
+            $0.leading.trailing.equalTo(screenContainerUIView.safeAreaLayoutGuide)
             $0.height.equalTo(screenContainerUIView).multipliedBy(0.5)
         }
         

@@ -33,7 +33,7 @@ class HomeViewController: UIViewController, Coordinating {
         
         // Navigation settings
         self.navigationItem.title = "Home"
-        navigationItem.backButtonTitle = "Back"
+        navigationItem.backButtonTitle = ""
         navigationItem.leftBarButtonItem?.tintColor = .white
         navigationItem.setHidesBackButton(true, animated: false)
         navigationController?.navigationBar.prefersLargeTitles = true

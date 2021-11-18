@@ -77,7 +77,7 @@ public class ImageStorage {
                 }
             }
         case .userDefaults:
-            print("Test")
+            UserDefaults.standard.removeObject(forKey: key)
         }
     }
     

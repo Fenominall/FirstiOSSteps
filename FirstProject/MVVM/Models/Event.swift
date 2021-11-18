@@ -21,3 +21,10 @@ struct Event: Codable {
     return events
   }
 }
+
+extension Event: Equatable {
+    static func == (lhs: Event, rhs: Event) -> Bool {
+        return lhs.name == rhs.name
+        && lhs.date == rhs.date
+    }
+}

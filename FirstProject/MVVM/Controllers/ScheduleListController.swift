@@ -14,9 +14,7 @@ class ScheduleListController: UIViewController, Coordinating {
     // MARK: - Properties
     var coordinator: Coordinator?
     // data - an array of events
-    var events = Event.getTestData()
-    
-    
+    var events: [Event] = []
     
     private lazy var eventsTableView: UITableView = {
         let tableView = UITableView(frame: .zero)
@@ -38,15 +36,15 @@ class ScheduleListController: UIViewController, Coordinating {
         formatter.timeZone = .current
         return formatter
     }()
-
+    
     var isEditingTableView = false {
-        didSet {
+        didSet { // property observer
+            // toggle editing mode of tableview
             eventsTableView.isEditing = isEditingTableView
-            
+            // toggle bar button item`s title between "Edit" and "Done"
             navigationItem.leftBarButtonItem?.title = isEditingTableView ? "Done" : "Edit"
         }
     }
-    
     
     // MARK: - App LifeCycle
     override func loadView() {
@@ -55,53 +53,61 @@ class ScheduleListController: UIViewController, Coordinating {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadEvents()
         setupTableView()
-        setupCreateEventButton()
-        editingEventButton()
         print(FileManager.getDocumentsDirectory())
         
         title = "Scheduler"
         navigationItem.leftBarButtonItem?.tintColor = .white
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.backgroundColor = UIColor.darkGray
+        navigationController?.navigationBar.backgroundColor = .clear
         
-        
+        let editButton = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(handleEventEditing))
+        editButton.tintColor = .white
+        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(handleEventCreation))
+        addButton.tintColor = .white
+        navigationItem.rightBarButtonItems = [addButton, editButton]
     }
     
-    private func setupCreateEventButton() {
-        let action = #selector(handleEventCreation)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: action)
-        navigationItem.rightBarButtonItem?.tintColor = .white
-        
+    private func loadEvents() {
+        do {
+            events = try EventPersistenceHelper.loadEvents()
+        } catch {
+            print("error loading events: \(error)")
+        }
+    }
+    
+    private func deleteEvent(at indexPath: IndexPath) {
+        do {
+            try EventPersistenceHelper.delete(event: indexPath.row)
+        } catch {
+            print("error deleting event: \(error)")
+        }
     }
     
     @objc private func handleEventCreation() {
-        coordinator?.eventOccurred(with: .createEventButtonTapped)
+        // create an instance of CreateEventController
+        let createEventController = CreateEventController()
+        // adopting delegate as self
+        createEventController.addEventDelegate = self
+        navigationController?.present(createEventController, animated: true, completion: nil)
     }
     
-    private func editingEventButton() {
-        let action = #selector(handleEventEditing)
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: action)
-        navigationItem.leftBarButtonItem?.tintColor = .black
-    }
-
     @objc private func handleEventEditing() {
         isEditingTableView.toggle() // changes a boolean value
     }
 }
 
+// MARK: Configure auto-layout of UIElements
 extension ScheduleListController {
     
     private func setupTableView() {
         view.backgroundColor = .darkGray
         view.addSubview(eventsTableView)
-
+        
         eventsTableView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
-        
-        
-        
     }
 }
 
@@ -110,7 +116,6 @@ extension ScheduleListController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
-    
 }
 
 //MARK: - UITableViewDataSource
@@ -126,12 +131,12 @@ extension ScheduleListController: UITableViewDataSource {
         // if the cell does not exists a new cell is created
         var cell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath)
         cell = UITableViewCell(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: "eventCell")
+        // UISettings
         cell.contentView.backgroundColor = .darkGray
-        cell.textLabel?.textColor
-        = .white
+        cell.textLabel?.textColor = .white
+        cell.detailTextLabel?.textColor = .white
         // get an object at the current indexPath from a flatArray
         let event = events[indexPath.row]
-        cell.detailTextLabel?.textColor = .white
         cell.textLabel?.text = event.name
         cell.detailTextLabel?.text = dateFormatter.string(from: event.date)
         return cell
@@ -148,7 +153,10 @@ extension ScheduleListController: UITableViewDataSource {
             print("deleting..")
             // 1. remove item for the data model e.g events
             events.remove(at: indexPath.row) // remove event from events array
-        
+            
+            deleteEvent(at: indexPath)
+            
+            // 2. update the table view
             tableView.deleteRows(at: [indexPath], with: .automatic)
         default:
             print("...")
@@ -160,8 +168,38 @@ extension ScheduleListController: UITableViewDataSource {
         let eventToMove = events[sourceIndexPath.row] // saved an event being moved
         events.remove(at: sourceIndexPath.row)
         events.insert(eventToMove, at: destinationIndexPath.row)
+        
+        // re-save array in documents directory
+        EventPersistenceHelper.reorderingEvents(events: events)
+        do {
+            //        EventPersistenceHelper.loadEvents()
+            events = try EventPersistenceHelper.loadEvents()
+            eventsTableView.reloadData()
+        } catch {
+            print("error loading events: \(error)")
+        }
+        
     }
-    
-    
+}
+
+extension ScheduleListController: AddEventDelegate {
+    func eventCreated(didCreated event: Event) {
+        
+        self.dismiss(animated: true) {
+            do {
+                try EventPersistenceHelper.create(event: event)
+            } catch {
+                print("error saving event with error: \(error)")
+            }
+            // insert new event into our events array
+            self.events.append(event)
+            
+            // create an indexPath to be inserted into the tableview
+            let indexPath = IndexPath(row: self.events.count - 1, section: 0)
+            // use indexPath to insert into table view
+            self.eventsTableView.insertRows(at: [indexPath], with: .automatic)
+            self.eventsTableView.reloadData()
+        }
+    }
     
 }

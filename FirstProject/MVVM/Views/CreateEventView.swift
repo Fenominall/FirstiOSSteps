@@ -30,32 +30,22 @@ class CreateEventView: UIView {
     private(set) lazy var eventDatePicker: UIDatePicker = {
         let eventDatePicker = UIDatePicker()
         eventDatePicker.translatesAutoresizingMaskIntoConstraints = false
-        eventDatePicker.preferredDatePickerStyle = .automatic
+        eventDatePicker.preferredDatePickerStyle = .wheels
+        eventDatePicker.tintColor = .white
         eventDatePicker.contentMode = .scaleToFill
         eventDatePicker.datePickerMode = .dateAndTime
         eventDatePicker.minuteInterval = 1
         return eventDatePicker
-        
     }()
         
     // MARK: - UIButton
     private(set) lazy var createEventButton: UIButton = {
         let createEventButton = UIButton(type: .system)
         createEventButton.setTitle("Create Event", for: .normal)
+        createEventButton.tintColor = .white
         return createEventButton
     }()
-    
-    // MARK: - UIStackView
-    private lazy var contentStackView: UIStackView = {
-       let contentStackView = UIStackView(arrangedSubviews: [createEventTextField,
-                                                            createEventButton])
-        contentStackView.translatesAutoresizingMaskIntoConstraints = false
-        contentStackView.distribution = .fillProportionally
-        contentStackView.axis = .vertical
-        contentStackView.spacing = 10
-        return contentStackView
-    }()
-    
+
     // MARK: - UIView initialization
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -72,7 +62,7 @@ class CreateEventView: UIView {
 // MARK: Configure auto-layout of UIElements
 extension CreateEventView {
     func initializeUI() {
-        backgroundColor = .white
+        backgroundColor = .lightGray
         
         addSubview(containerUIView)
         containerUIView.addSubview(eventDatePicker)

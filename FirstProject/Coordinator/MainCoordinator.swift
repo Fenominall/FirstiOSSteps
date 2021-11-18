@@ -53,9 +53,10 @@ class MainCoordinator: Coordinator {
             scheduleListController.coordinator = self
             navigationController?.pushViewController(scheduleListController, animated: true)
         case .createEventButtonTapped:
-            var createEventController: UIViewController & Coordinating = CreateEventController()
-            createEventController.coordinator = self
-            navigationController?.present(createEventController, animated: true, completion: nil)
+            print("1")
+//            var createEventController: UIViewController & Coordinating = CreateEventController()
+//            createEventController.coordinator = self
+//            navigationController?.present(createEventController, animated: true, completion: nil)
         }
         
     }
@@ -64,9 +65,5 @@ class MainCoordinator: Coordinator {
         var loginViewController: UIViewController & Coordinating = ScheduleListController()
         loginViewController.coordinator = self
         navigationController?.setViewControllers([loginViewController], animated: false)
-        
-        //        var loginViewController: UIViewController & Coordinating = LoginViewController()
-        //        loginViewController.coordinator = self
-        //        navigationController?.setViewControllers([loginViewController], animated: false)
     }
 }

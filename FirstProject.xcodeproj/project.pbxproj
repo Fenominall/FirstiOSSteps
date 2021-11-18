@@ -22,6 +22,7 @@
 		4F2A17B726C7050600205E03 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2A17B626C7050600205E03 /* Box.swift */; };
 		4F2DEDF0274515B900C5F156 /* FileManager+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2DEDEF274515B900C5F156 /* FileManager+Extensions.swift */; };
 		4F2EA04526F7054300EF6884 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2EA04426F7054300EF6884 /* CustomTextField.swift */; };
+		4F4C9F612745890600D345DC /* EventPersistenceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4C9F602745890600D345DC /* EventPersistenceHelper.swift */; };
 		4F4FDFBC268D862000736440 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4FDFBB268D862000736440 /* LoginViewModel.swift */; };
 		4F522AA8272DB7CF0099C5E8 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F522AA7272DB7CF0099C5E8 /* Images.swift */; };
 		4F5273DD26F911B700D07065 /* CustomUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5273DC26F911B700D07065 /* CustomUIButton.swift */; };
@@ -66,6 +67,7 @@
 		4F2A17B626C7050600205E03 /* Box.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
 		4F2DEDEF274515B900C5F156 /* FileManager+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Extensions.swift"; sourceTree = "<group>"; };
 		4F2EA04426F7054300EF6884 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		4F4C9F602745890600D345DC /* EventPersistenceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventPersistenceHelper.swift; sourceTree = "<group>"; };
 		4F4FDFBB268D862000736440 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		4F522AA7272DB7CF0099C5E8 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		4F5273DC26F911B700D07065 /* CustomUIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIButton.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 			children = (
 				4F257CFC2739B1AE007CB391 /* DiskCaretaker.swift */,
 				4F257CFE2739B423007CB391 /* UserCaretaker.swift */,
+				4F4C9F602745890600D345DC /* EventPersistenceHelper.swift */,
 			);
 			path = Memento;
 			sourceTree = "<group>";
@@ -486,6 +489,7 @@
 				4FAF3A7A26C6ED04009C803E /* GitHubWebViewController.swift in Sources */,
 				4F92895626A6B06600624B6E /* Alerts.swift in Sources */,
 				4F2DEDF0274515B900C5F156 /* FileManager+Extensions.swift in Sources */,
+				4F4C9F612745890600D345DC /* EventPersistenceHelper.swift in Sources */,
 				4F4FDFBC268D862000736440 /* LoginViewModel.swift in Sources */,
 				4F5273DD26F911B700D07065 /* CustomUIButton.swift in Sources */,
 				4FF9064726543BEF001387C9 /* SceneDelegate.swift in Sources */,

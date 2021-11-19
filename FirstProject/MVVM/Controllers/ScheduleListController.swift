@@ -26,7 +26,7 @@ class ScheduleListController: UIViewController, Coordinating {
         tableView.tableFooterView = UIView()
         tableView.separatorStyle = .none
         tableView.backgroundColor = .clear
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "eventCell")
+        tableView.register(ScheduleListViewCell.self, forCellReuseIdentifier: ScheduleListViewCell.cellID)
         return tableView
     }()
     
@@ -56,17 +56,17 @@ class ScheduleListController: UIViewController, Coordinating {
         loadEvents()
         setupTableView()
         print(FileManager.getDocumentsDirectory())
-        
+        // navigation bar appearance
         title = "Scheduler"
         navigationItem.leftBarButtonItem?.tintColor = .white
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.backgroundColor = .clear
-        
-        let editButton = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(handleEventEditing))
-        editButton.tintColor = .white
-        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(handleEventCreation))
-        addButton.tintColor = .white
-        navigationItem.rightBarButtonItems = [addButton, editButton]
+        // navigation bar button items
+        let editEventBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(handleEventEditing))
+        editEventBarButtonItem.tintColor = .white
+        let addEventBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(handleEventCreation))
+        addEventBarButtonItem.tintColor = .white
+        navigationItem.rightBarButtonItems = [addEventBarButtonItem, editEventBarButtonItem]
     }
     
     private func loadEvents() {
@@ -129,16 +129,14 @@ extension ScheduleListController: UITableViewDataSource {
         // dequeueReusableCell:
         // recycles a cell if it exists
         // if the cell does not exists a new cell is created
-        var cell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath)
-        cell = UITableViewCell(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: "eventCell")
+        let cell = tableView.dequeueReusableCell(withIdentifier: ScheduleListViewCell.cellID,
+                                                 for: indexPath) as! ScheduleListViewCell
         // UISettings
-        cell.contentView.backgroundColor = .darkGray
-        cell.textLabel?.textColor = .white
-        cell.detailTextLabel?.textColor = .white
+        cell.configure()
         // get an object at the current indexPath from a flatArray
         let event = events[indexPath.row]
-        cell.textLabel?.text = event.name
-        cell.detailTextLabel?.text = dateFormatter.string(from: event.date)
+        cell.eventTitleLabel.text = event.name
+        cell.eventDetailTextLabel.text = dateFormatter.string(from: event.date)
         return cell
     }
     

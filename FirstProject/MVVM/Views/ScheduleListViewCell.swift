@@ -6,7 +6,7 @@
 //
 
 import UIKit
-//import SnapKit
+import SnapKit
 
 public class ScheduleListViewCell: UITableViewCell {
     
@@ -18,19 +18,28 @@ public class ScheduleListViewCell: UITableViewCell {
         return containerView
     }()
     
-    private(set) lazy var titleLabel: UILabel = {
+    private(set) lazy var eventTitleLabel: UILabel = {
         let titleLabel = UILabel()
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.numberOfLines = 0
-        titleLabel.textColor = .black
+        titleLabel.textColor = .white
         return titleLabel
     }()
     
-    lazy var dateFormatter:  DateFormatter = {
-      let formatter = DateFormatter()
-      formatter.dateFormat = "EEEE, MMM d, yyyy, hh:mm a"
-      formatter.timeZone = .current
-      return formatter
+    private(set) lazy var eventDetailTextLabel: UILabel = {
+        let titleLabel = UILabel()
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.numberOfLines = 0
+        titleLabel.textColor = .white
+        titleLabel.font = UIFont.systemFont(ofSize:12)
+        return titleLabel
+    }()
+    
+    private(set) lazy var progressImage: UIButton = {
+        let image = UIButton()
+        image.translatesAutoresizingMaskIntoConstraints = false
+        image.setImage(UIImage(systemName: "circle"), for: .normal)
+        return image
     }()
     
     
@@ -54,23 +63,30 @@ public class ScheduleListViewCell: UITableViewCell {
 
 extension ScheduleListViewCell {
     func configure() {
+        containerView.backgroundColor = .darkGray
+        
         addSubview(containerView)
-        containerView.addSubview(titleLabel)
+        containerView.addSubview(eventTitleLabel)
+        containerView.addSubview(eventDetailTextLabel)
+        containerView.addSubview(progressImage)
         
         containerView.snp.makeConstraints {
-            $0.edges.margins.equalToSuperview()
+            $0.edges.equalToSuperview()
         }
         
-        titleLabel.snp.makeConstraints {
-            $0.leadingMargin.topMargin.equalTo(containerView).inset(8)
+        eventTitleLabel.snp.makeConstraints {
+            $0.leadingMargin.topMargin.equalTo(containerView).inset(20)
         }
         
-//        containerView.addSubview(dateFormatter)
-//        dateFormatter.snp.makeConstraints {
-//            $0.topMargin.equalTo(titleLabel.snp_bottomMargin)
-//            $0.leadingMargin.equalTo(titleLabel.snp.leading)
-//        }
+        eventDetailTextLabel.snp.makeConstraints {
+            $0.top.equalTo(eventTitleLabel.snp.bottom)
+            $0.leading.equalTo(eventTitleLabel.snp.leading)
+        }
         
+        progressImage.snp.makeConstraints {
+            $0.trailingMargin.topMargin.equalTo(containerView).inset(25)
+//            $0.centerY.equalTo(containerView.snp.centerY)
+        }
         
     }
 }

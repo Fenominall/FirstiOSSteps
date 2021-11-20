@@ -22,9 +22,9 @@ class ScheduleListController: UIViewController, Coordinating {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 30
+        tableView.estimatedRowHeight = 44
         tableView.tableFooterView = UIView()
-        tableView.separatorStyle = .none
+//        tableView.separatorStyle = .none
         tableView.backgroundColor = .clear
         tableView.register(ScheduleListViewCell.self, forCellReuseIdentifier: ScheduleListViewCell.cellID)
         return tableView

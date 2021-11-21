@@ -62,7 +62,7 @@ class MainCoordinator: Coordinator {
     }
     
     func start() {
-        var loginViewController: UIViewController & Coordinating = ScheduleListController()
+        var loginViewController: UIViewController & Coordinating = LoginViewController()
         loginViewController.coordinator = self
         navigationController?.setViewControllers([loginViewController], animated: false)
     }

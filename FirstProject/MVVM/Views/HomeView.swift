@@ -117,7 +117,7 @@ class HomeView: UIView {
     
     private(set) lazy var editProfileButton = customUIButton(title: "Edit Profile", backgroundColor: lightGrayLogin ?? .lightGray, tintColor: .white, cornerRadius: 5)
 //    private(set) lazy var sourceCodeButton = customUIButton(title: "App Source Code", backgroundColor: lightGrayLogin ?? .lightGray, tintColor: .white, cornerRadius: 5)
-    private(set) lazy var logOutUserButton = customUIButton(title: "Log Out", backgroundColor: lightGrayLogin ?? .lightGray, tintColor: .white, cornerRadius: 5)
+//    private(set) lazy var logOutUserButton = customUIButton(title: "Log Out", backgroundColor: lightGrayLogin ?? .lightGray, tintColor: .white, cornerRadius: 5)
     private(set) lazy var scheduleEventListButton = customUIButton(title: "Scheduler", backgroundColor: lightGrayLogin ?? .lightGray, tintColor: .white, cornerRadius: 5)
     
     // MARK: - UIStackVies
@@ -131,7 +131,7 @@ class HomeView: UIView {
     }()
     
     private lazy var buttonsStackView: UIStackView = {
-        let buttonsStackView = UIStackView(arrangedSubviews: [editProfileButton, scheduleEventListButton, logOutUserButton])
+        let buttonsStackView = UIStackView(arrangedSubviews: [editProfileButton, scheduleEventListButton])
         buttonsStackView.translatesAutoresizingMaskIntoConstraints = false
         buttonsStackView.axis = .vertical
         buttonsStackView.spacing = 15
@@ -192,10 +192,10 @@ class HomeView: UIView {
             $0.height.equalTo(48)
         }
         
-        addSubview(logOutUserButton)
-        logOutUserButton.snp.makeConstraints {
-            $0.height.equalTo(48)
-        }
+//        addSubview(logOutUserButton)
+//        logOutUserButton.snp.makeConstraints {
+//            $0.height.equalTo(48)
+//        }
         
         bottomContainerView.addSubview(buttonsStackView)
         buttonsStackView.snp.makeConstraints {

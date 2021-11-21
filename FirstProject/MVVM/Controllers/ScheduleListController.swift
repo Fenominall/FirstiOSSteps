@@ -24,7 +24,6 @@ class ScheduleListController: UIViewController, Coordinating {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 44
         tableView.tableFooterView = UIView()
-//        tableView.separatorStyle = .none
         tableView.backgroundColor = .clear
         tableView.register(ScheduleListViewCell.self, forCellReuseIdentifier: ScheduleListViewCell.cellID)
         return tableView
@@ -47,16 +46,19 @@ class ScheduleListController: UIViewController, Coordinating {
     }
     
     // MARK: - App LifeCycle
-    override func loadView() {
-        super.loadView()
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         loadEvents()
         setupTableView()
+        setupNavigation(
+        )
         print(FileManager.getDocumentsDirectory())
-        // navigation bar appearance
+        
+    }
+    
+    // navigation bar appearance
+    
+    private func setupNavigation() {
         title = "Scheduler"
         navigationItem.leftBarButtonItem?.tintColor = .white
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -68,6 +70,7 @@ class ScheduleListController: UIViewController, Coordinating {
         addEventBarButtonItem.tintColor = .white
         navigationItem.rightBarButtonItems = [addEventBarButtonItem, editEventBarButtonItem]
     }
+    
     
     private func loadEvents() {
         do {

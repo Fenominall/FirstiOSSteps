@@ -17,6 +17,7 @@ class LoginViewController: UIViewController, Coordinating {
     var loginView = LoginView()
     
     
+    
     //MARK: - ViewController lifecycle
     override func loadView() {
         view = loginView
@@ -28,7 +29,6 @@ class LoginViewController: UIViewController, Coordinating {
         observeKeyboardNotifications()
         initializeData()
         
-        navigationItem.setHidesBackButton(true, animated: false)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -38,11 +38,12 @@ class LoginViewController: UIViewController, Coordinating {
         showData()
     }
     
-        func showData() {
-            loginViewModel.username.bind {
-                print("Value Changed \($0)")
-            }
+    func showData() {
+        loginViewModel.username.bind {
+            print("Value Changed \($0)")
         }
+    }
+    
     
     /// Function for loginButton: Check validation, pushes the user to the SecondViewController if requirements suitable
     /// - Parameter sender: Any
@@ -72,6 +73,8 @@ class LoginViewController: UIViewController, Coordinating {
 extension LoginViewController {
     
     func initializeData() {
+        navigationItem.setHidesBackButton(true, animated: false)
+        
         loginView.loginButton.addTarget(self, action: #selector(loginButtonPressed), for: .touchUpInside)
         loginView.usernameTxtField.delegate = self
         loginView.passwordTxtField.delegate = self

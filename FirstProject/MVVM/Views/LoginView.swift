@@ -101,6 +101,17 @@ class LoginView: UIView {
                                                      fontWeight: .regular,
                                                      tintColor: .white)
     
+    // MARK: - UIActivityIndicator
+    private(set) lazy var loginIndicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView()
+        indicator.translatesAutoresizingMaskIntoConstraints = false
+        indicator.tintColor = .white
+        indicator.style = .large
+        indicator.isHidden = true
+//        indicator.startAnimating()
+//        indicator.stopAnimating()
+        return indicator
+    }()
     
     // MARK: - UIStackViews
     private lazy var usernameStackView: UIStackView = {
@@ -154,6 +165,7 @@ class LoginView: UIView {
         
         bottomContainerUIView.addSubview(passwordStackView)
         bottomContainerUIView.addSubview(loginButton)
+        bottomContainerUIView.addSubview(loginIndicator)
         
         screenContainerUIView.snp.makeConstraints {
             $0.edges.equalToSuperview()
@@ -199,6 +211,11 @@ class LoginView: UIView {
         loginButton.snp.makeConstraints {
             $0.centerX.equalTo(bottomContainerUIView)
             $0.bottom.equalTo(bottomContainerUIView.safeAreaLayoutGuide.snp.bottom).offset(-70)
+        }
+        
+        loginIndicator.snp.makeConstraints {
+            $0.centerX.centerY.equalTo(bottomContainerUIView)
+//            $0.bottom.equalTo(loginButton.snp_topMargin).offset(5)
         }
     }
 }

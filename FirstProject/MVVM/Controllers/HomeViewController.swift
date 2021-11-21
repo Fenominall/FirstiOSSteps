@@ -30,14 +30,6 @@ class HomeViewController: UIViewController, Coordinating {
         super.viewDidLoad()
         setupTargetsForButtons()
         retrieveUploadedUserImage()
-        
-        // Navigation settings
-        self.navigationItem.title = "Home"
-        navigationItem.backButtonTitle = ""
-        navigationItem.leftBarButtonItem?.tintColor = .white
-        navigationItem.setHidesBackButton(true, animated: false)
-        navigationController?.navigationBar.prefersLargeTitles = true
-        
         homeViewModel.showData()
     }
 }
@@ -48,9 +40,18 @@ extension HomeViewController {
     private func setupTargetsForButtons() {
         homeSharedView.editProfileButton.addTarget(self, action: #selector(didTapUpdateButton), for: .touchUpInside)
         homeSharedView.sourceCodeButton.addTarget(self, action: #selector(didTapSourceCodeButton), for: .touchUpInside)
-        homeSharedView.logOutUserButton.addTarget(self, action: #selector(didTapLogOutButton), for: .touchUpInside)
+//        homeSharedView.logOutUserButton.addTarget(self, action: #selector(didTapLogOutButton), for: .touchUpInside)
         homeSharedView.uploadImageButton.addTarget(self, action: #selector(didTapUploadImageButton), for: .touchUpInside)
         homeSharedView.scheduleEventListButton.addTarget(self, action: #selector(didTapScheduleEventButton), for: .touchUpInside)
+        
+        // Navigation settings
+        self.navigationItem.title = "Home"
+        navigationItem.backButtonTitle = ""
+        navigationItem.leftBarButtonItem?.tintColor = .white
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log Out", style: .plain, target: self, action: #selector(didTapLogOutButton))
+        navigationItem.rightBarButtonItem?.tintColor = .white
+        navigationItem.setHidesBackButton(true, animated: false)
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     @objc private func didTapUploadImageButton() {

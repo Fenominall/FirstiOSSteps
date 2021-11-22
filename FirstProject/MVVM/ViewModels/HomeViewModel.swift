@@ -9,28 +9,22 @@ import Foundation
 
 struct HomeViewModel {
     
-//    var fistName: String
-//
-//
-//    init(user: User) {
-//        self.fistName = user.username
-//    }
-    
-    
-//    var usernameV: Box<String> = Box("") {
-//        didSet {
-//            usernameV.value = "Vlados"
-//        }
-//    }
-    
-    
-
-    func showData() {
-//        guard let userValue =
-//                UserDefaults.standard.loadCodable(forKey: "user",
-//                                                  castTo: User.self) else
-//                                                  { return }
-//        usernameV.value = userValue.username
-//        print(usernameV.value)
+    private var user: User = User() {
+        didSet {
+            do {
+                user = try UserCaretaker.loadUserData()
+                print(user.username)
+                userName.value = user.username
+            } catch {
+                print("error")
+            }
+        }
     }
+    
+    var userName: Dynamic<String> = Dynamic("")
+
+    init(user: User = User()) {
+        self.user = user
+    }
+    
 }

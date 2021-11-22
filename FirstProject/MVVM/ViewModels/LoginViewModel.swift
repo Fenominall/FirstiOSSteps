@@ -39,6 +39,9 @@ class LoginViewModel {
     init(user: User = User()) {
         self.user = user
     }
+    
+    
+    
 }
 
 extension LoginViewModel: UpdateUserData {
@@ -68,6 +71,12 @@ extension LoginViewModel: UpdateUserData {
     }
     
     func saveUser() {
-        UserDefaults.standard.setCodable(user, forKey: UserKey.storageKey)
+        do {
+            try UserCaretaker.createUser(user: user)
+            print("saved")
+        } catch {
+            print("Got error when saving a newUser: \(error)")
+        }
+//        UserDefaults.standard.setCodable(user, forKey: UserKey.storageKey)
     }
 }

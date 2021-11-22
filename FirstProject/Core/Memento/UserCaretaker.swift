@@ -10,29 +10,46 @@ import Foundation
 
 public final class UserCaretaker {
 
-    private let filename = "SavedUsersData"
-    public var userGroup: User = User()
+    private static let fileName = "SavedUsersData"
+    public static var newUser: User = User()
 
 
     public init() {
 
     }
 
-    public func loadUserData() {
-        if let userGroup = try? DiskCaretaker.retrieve(User.self, from: filename) {
-            self.userGroup = userGroup
-
+    public static func loadUserData() throws -> User{
+        if newUser == newUser {
+            do {
+                newUser = try DiskCaretaker.retrieve(User.self,
+                                                    from: fileName)
+            } catch {
+                throw DataPersistenceError.decodingError(error)
+            }
         } else {
-            let bundle = Bundle.main
-            let url = bundle.url(forResource: filename,
-                                 withExtension: "json")!
-            self.userGroup = try! DiskCaretaker.retrieve(User.self, from: url)
-            try! saveUserData()
+            do {
+                let url = DiskCaretaker.createDocumentURL(withFileName: fileName)
+                newUser = try DiskCaretaker.retrieve(User.self,
+                                                    from: url)
+                try? save()
+            } catch {
+                throw DataPersistenceError.fileDoesNotExist(fileName)
+            }
         }
+        return newUser
     }
-
-    public func saveUserData() throws {
-        try DiskCaretaker.save(userGroup, to: filename)
+    
+    private static func save() throws {
+        try DiskCaretaker.save(newUser, to: fileName)
+    }
+    
+    public static func createUser(user: User) throws {
+        newUser = user
+        do {
+            try save()
+        } catch {
+            throw DataPersistenceError.savingError(error)
+        }
     }
 
 }

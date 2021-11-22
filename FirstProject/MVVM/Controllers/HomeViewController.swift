@@ -16,7 +16,6 @@ class HomeViewController: UIViewController, Coordinating {
     var coordinator: Coordinator?
     
     private var homeSharedView = HomeView()
-    private var homeViewModel = HomeViewModel()
     private var imageStorage = ImageStorage()
     
     
@@ -30,7 +29,7 @@ class HomeViewController: UIViewController, Coordinating {
         super.viewDidLoad()
         setupTargetsForButtons()
         retrieveUploadedUserImage()
-        homeViewModel.showData()
+
     }
 }
 

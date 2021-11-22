@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Box<T> {
+class Dynamic<T> {
     typealias Listener = (T) -> Void
     var listener: Listener?
     

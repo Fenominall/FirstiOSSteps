@@ -57,12 +57,12 @@ class LoginView: UIView {
                                                 fontSize: 24,
                                                 fontWeight: .regular,
                                                 textAlignment: .natural,
-                                                textColor: lightGrayLogin ?? .white)
+                                                textColor: AppColors.lightGrayAccent ?? .white)
     private lazy var passwordLabel = newUIlabel(text: "Password",
                                                 fontSize: 24,
                                                 fontWeight: .regular,
                                                 textAlignment: .natural,
-                                                textColor: lightGrayLogin ?? .white)
+                                                textColor: AppColors.lightGrayAccent ?? .white)
     
     // MARK: - UITextFields
     private(set) lazy var usernameTxtField: CustomTextField = {

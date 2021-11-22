@@ -33,7 +33,7 @@ class UserSettingsView: UIView {
         changeUserDataLabel.text = "Change your data"
         changeUserDataLabel.font = changeUserDataLabel.font.withSize(40)
         changeUserDataLabel.textAlignment = .center
-        changeUserDataLabel.textColor = lightGrayLogin
+        changeUserDataLabel.textColor = AppColors.lightGrayAccent
         return changeUserDataLabel
     }()
     
@@ -44,7 +44,6 @@ class UserSettingsView: UIView {
         updateUsernameTextField.textColor = .white
         updateUsernameTextField.clearButtonMode = .always
         updateUsernameTextField.text = "Julia"
-        updateUsernameTextField.addBottomBorder()
         return updateUsernameTextField
     }()
     
@@ -55,7 +54,6 @@ class UserSettingsView: UIView {
         updatePasswordTextField.isSecureTextEntry = true
         updatePasswordTextField.text = "12345"
         updatePasswordTextField.enablePasswordToggle()
-        updatePasswordTextField.addBottomBorder()
         return updatePasswordTextField
     }()
     

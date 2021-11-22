@@ -94,38 +94,30 @@ class HomeView: UIView {
         sourceCodeButton.translatesAutoresizingMaskIntoConstraints = false
         sourceCodeButton.layer.masksToBounds = false
         sourceCodeButton.clipsToBounds = true
-//        sourceCodeButton.setImage(AppImages.git, for: .normal)
         sourceCodeButton.setTitle("GitHub", for: .normal)
-        sourceCodeButton.tintColor = lightGrayLogin
+        sourceCodeButton.tintColor = AppColors.lightGrayAccent
         return sourceCodeButton
     }()
-    
-    
-    private func customUIButton(title: String, backgroundColor: UIColor, tintColor: UIColor, cornerRadius: Int) -> UIButton {
+
+    private func customUIButton(title: String) -> UIButton {
         let customUIButton = UIButton(type: .system)
-        customUIButton.translatesAutoresizingMaskIntoConstraints = false
-        customUIButton.backgroundColor = backgroundColor
+        customUIButton.configuration = .lightGrayButton()
         customUIButton.setTitle(title, for: .normal)
-        customUIButton.tintColor = tintColor
-        customUIButton.layer.cornerRadius = CGFloat(cornerRadius)
         customUIButton.layer.shadowColor = UIColor.black.cgColor
         customUIButton.layer.shadowOffset = CGSize(width: 0.0, height: 5.5)
         customUIButton.layer.shadowRadius = 2.0
         customUIButton.layer.shadowOpacity = 0.5
         return customUIButton
     }
-    
-    private(set) lazy var editProfileButton = customUIButton(title: "Edit Profile", backgroundColor: lightGrayLogin ?? .lightGray, tintColor: .white, cornerRadius: 5)
-//    private(set) lazy var sourceCodeButton = customUIButton(title: "App Source Code", backgroundColor: lightGrayLogin ?? .lightGray, tintColor: .white, cornerRadius: 5)
-//    private(set) lazy var logOutUserButton = customUIButton(title: "Log Out", backgroundColor: lightGrayLogin ?? .lightGray, tintColor: .white, cornerRadius: 5)
-    private(set) lazy var scheduleEventListButton = customUIButton(title: "Scheduler", backgroundColor: lightGrayLogin ?? .lightGray, tintColor: .white, cornerRadius: 5)
-    
+
+    private(set) lazy var editProfileButton = customUIButton(title: "Edit Profile")
+    private(set) lazy var scheduleEventListButton = customUIButton(title: "Scheduler")
+   
     // MARK: - UIStackVies
     private lazy var labelAndUserImageStack: UIStackView = {
         let labelAndUserImageStack = UIStackView(arrangedSubviews: [usernameLabel, circleBackGroundForUserImage])
         labelAndUserImageStack.translatesAutoresizingMaskIntoConstraints = false
         labelAndUserImageStack.axis = .vertical
-//        labelAndUserImageStack.distribution = .fillEqually
         labelAndUserImageStack.spacing = 10
         return labelAndUserImageStack
     }()
@@ -191,12 +183,7 @@ class HomeView: UIView {
         scheduleEventListButton.snp.makeConstraints {
             $0.height.equalTo(48)
         }
-        
-//        addSubview(logOutUserButton)
-//        logOutUserButton.snp.makeConstraints {
-//            $0.height.equalTo(48)
-//        }
-        
+
         bottomContainerView.addSubview(buttonsStackView)
         buttonsStackView.snp.makeConstraints {
             $0.topMargin.equalTo(bottomContainerView.snp_topMargin).inset(25)
@@ -223,15 +210,12 @@ class HomeView: UIView {
         plusIcon.snp.makeConstraints {
             $0.top.equalTo(uploadImageButton.snp_bottomMargin).inset(12)
             $0.trailing.equalTo(uploadImageButton.snp_trailingMargin).inset(12)
-            
         }
         
         bottomContainerView.addSubview(sourceCodeButton)
         sourceCodeButton.snp.makeConstraints {
             $0.bottom.equalTo(bottomContainerView.snp_bottomMargin)
             $0.centerX.equalTo(bottomContainerView.snp.centerX)
-//            $0.leading.trailing.equalTo(bottomContainerView)
-//            $0.height.equalTo(48)
         }
         
     }

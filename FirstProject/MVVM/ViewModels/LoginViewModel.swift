@@ -32,8 +32,8 @@ class LoginViewModel {
         }
     }
     
-    var username: Box<String> = Box("")
-    var password: Box<String> = Box("")
+    var username: Dynamic<String> = Dynamic("")
+    var password: Dynamic<String> = Dynamic("")
     
     // MARK: - Object Lifecycle
     init(user: User = User()) {

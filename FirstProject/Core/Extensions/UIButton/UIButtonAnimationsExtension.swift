@@ -52,5 +52,9 @@ extension UIButton {
         shake.toValue = toValue
         layer.add(shake, forKey: nil)
     }
+    
+    static func shadowButton() {
+        
+    }
 }
 

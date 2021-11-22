@@ -17,12 +17,12 @@ class UserSettingsViewModel {
     }
     
     
-    var username: Box<String> = Box("")
-    var password: Box<String> = Box("")
+    var username: Dynamic<String> = Dynamic("")
+    var password: Dynamic<String> = Dynamic("")
     
     init(username: String, password: String) {
-        self.username = Box<String>(username)
-        self.password = Box<String>(password)
+        self.username = Dynamic<String>(username)
+        self.password = Dynamic<String>(password)
     }
 }
 

@@ -43,5 +43,3 @@ extension UIColor {
     }
 }
 
-// example
- let lightGrayLogin = UIColor(hex: "#595959")

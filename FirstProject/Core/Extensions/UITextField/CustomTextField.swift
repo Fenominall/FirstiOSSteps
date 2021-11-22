@@ -74,8 +74,7 @@ extension UITextField {
         toggleButton.setImage(UIImage(systemName: "eye.fill"), for: .selected)
         toggleButton.setImage(UIImage(systemName: "eye.slash"), for: .normal)
         toggleButton.sizeToFit()
-        toggleButton.tintColor = .white
-        toggleButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: -12, bottom: 0, right: 0)
+        toggleButton.configuration = .placeButtonInTextField()
         toggleButton.addTarget(self, action: #selector(togglePasswordView(_:)), for: .touchUpInside)
         rightView = toggleButton
         rightViewMode = .always
@@ -93,18 +92,3 @@ extension UITextField {
         }
     }
 }
-
-//extension CustomTextField: UITextViewDelegate {
-    /// Dismiss keyboard when touching in any part of the view.
-//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        self.endEditing(true)
-//    }
-
-    
-    /// Dismiss/Hide the KeyBoard.
-    /// - Parameter textField: UITextField
-    /// - Returns: resignFirstResponder()
-//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-//        return textField.resignFirstResponder()
-//    }
-//}

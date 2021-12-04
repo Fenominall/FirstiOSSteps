@@ -54,16 +54,12 @@ public class ScheduleListViewCell: UITableViewCell {
     
     public override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        containerView.backgroundColor = selected ? UIColor.black : UIColor.darkGray
-        
+        containerView.backgroundColor = selected ? UIColor.darkGray : UIColor.black
     }
-    
 }
-
 
 extension ScheduleListViewCell {
     func configure() {
-        containerView.backgroundColor = .black
         
         addSubview(containerView)
         containerView.addSubview(eventTitleLabel)
@@ -76,7 +72,7 @@ extension ScheduleListViewCell {
         
         eventTitleLabel.snp.makeConstraints {
             $0.topMargin.equalTo(containerView.snp_topMargin).inset(5)
-            $0.leadingMargin.equalTo(containerView.snp_leadingMargin).inset(20)
+            $0.leadingMargin.equalTo(containerView.snp_leadingMargin).inset(55)
         }
         
         eventDetailTextLabel.snp.makeConstraints {
@@ -85,7 +81,7 @@ extension ScheduleListViewCell {
         }
         
         progressImage.snp.makeConstraints {
-            $0.trailingMargin.equalTo(containerView.snp_trailingMargin).inset(15)
+            $0.trailingMargin.equalTo(containerView.snp_trailingMargin).inset(35)
             $0.top.equalTo(containerView.snp_topMargin).inset(5)
         }
         

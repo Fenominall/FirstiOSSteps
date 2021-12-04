@@ -73,6 +73,7 @@ class HomeView: UIView {
         greetMessage.textAlignment = .center
         greetMessage.textColor = .white
         greetMessage.contentMode = .scaleAspectFit
+        greetMessage.numberOfLines = 0
         return greetMessage
     }()
     
@@ -114,14 +115,6 @@ class HomeView: UIView {
     private(set) lazy var scheduleEventListButton = customUIButton(title: "Scheduler")
    
     // MARK: - UIStackVies
-    private lazy var labelAndUserImageStack: UIStackView = {
-        let labelAndUserImageStack = UIStackView(arrangedSubviews: [usernameLabel, circleBackGroundForUserImage])
-        labelAndUserImageStack.translatesAutoresizingMaskIntoConstraints = false
-        labelAndUserImageStack.axis = .vertical
-        labelAndUserImageStack.spacing = 10
-        return labelAndUserImageStack
-    }()
-    
     private lazy var buttonsStackView: UIStackView = {
         let buttonsStackView = UIStackView(arrangedSubviews: [editProfileButton, scheduleEventListButton])
         buttonsStackView.translatesAutoresizingMaskIntoConstraints = false
@@ -168,10 +161,16 @@ class HomeView: UIView {
             $0.height.equalTo(containerView).multipliedBy(0.5)
         }
 
-        topContainerView.addSubview(labelAndUserImageStack)
-        labelAndUserImageStack.snp.makeConstraints {
-            $0.topMargin.equalTo(topContainerView.snp_topMargin)
-            $0.centerWithinMargins.equalTo(topContainerView)
+        topContainerView.addSubview(circleBackGroundForUserImage)
+        circleBackGroundForUserImage.snp.makeConstraints {
+            $0.bottomMargin.equalTo(topContainerView.snp_bottomMargin)
+            $0.centerX.equalTo(topContainerView.snp_centerXWithinMargins)
+        }
+        
+        topContainerView.addSubview(usernameLabel)
+        usernameLabel.snp.makeConstraints {
+            $0.bottomMargin.equalTo(circleBackGroundForUserImage.snp_topMargin).inset(-30)
+            $0.centerX.equalTo(circleBackGroundForUserImage.snp_centerXWithinMargins)
         }
         
         addSubview(editProfileButton)

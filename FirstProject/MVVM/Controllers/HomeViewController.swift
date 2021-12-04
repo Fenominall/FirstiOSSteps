@@ -29,8 +29,21 @@ class HomeViewController: UIViewController, Coordinating {
         super.viewDidLoad()
         setupTargetsForButtons()
         retrieveUploadedUserImage()
-
+        loadUserName()
     }
+    
+    private func loadUserName() {
+        do {
+            let userUsername = try UserCaretaker.loadUserData()
+            print(userUsername.username + "Test")
+            homeSharedView.usernameLabel.text = userUsername.username
+        } catch {
+            print("error loading events: \(error)")
+        }
+     
+    }
+    
+    
 }
 
 // MARK: - Handling Navigation
@@ -39,7 +52,6 @@ extension HomeViewController {
     private func setupTargetsForButtons() {
         homeSharedView.editProfileButton.addTarget(self, action: #selector(didTapUpdateButton), for: .touchUpInside)
         homeSharedView.sourceCodeButton.addTarget(self, action: #selector(didTapSourceCodeButton), for: .touchUpInside)
-//        homeSharedView.logOutUserButton.addTarget(self, action: #selector(didTapLogOutButton), for: .touchUpInside)
         homeSharedView.uploadImageButton.addTarget(self, action: #selector(didTapUploadImageButton), for: .touchUpInside)
         homeSharedView.scheduleEventListButton.addTarget(self, action: #selector(didTapScheduleEventButton), for: .touchUpInside)
         
@@ -76,7 +88,7 @@ extension HomeViewController {
         actionSheet.addAction(UIAlertAction(title: "Remove current photo",
                                             style: .destructive,
                                             handler: { [weak self] _ in
-            self?.imageStorage.removeImage(forKey: "userImage", inStorageType: .fileSystem)
+            self?.imageStorage.removeImage(forKey: .userImage, inStorageType: .fileSystem)
             self?.homeSharedView.userUImageView.image = AppImages.userImage
         }))
         
@@ -116,7 +128,7 @@ extension HomeViewController: PHPickerViewControllerDelegate {
                 guard let urlImage = image as? UIImage else { return }
                 DispatchQueue.global(qos: .userInteractive).async {
                     self?.imageStorage.storeImage(image: urlImage,
-                                                  forKey: "userImage",
+                                                  forKey: .userImage,
                                                   withStorageType: .fileSystem)
                     DispatchQueue.main.async {
                         guard let self = self else { return }
@@ -132,7 +144,7 @@ extension HomeViewController: PHPickerViewControllerDelegate {
     // Retrieve uploaded user image when app is restarted
     private func retrieveUploadedUserImage() {
         DispatchQueue.global(qos: .userInteractive).async {
-            if let savedImage = self.imageStorage.retrieveImage(forKey: "userImage",
+            if let savedImage = self.imageStorage.retrieveImage(forKey: .userImage,
                                                                 inStorageType: .fileSystem) {
                 DispatchQueue.main.async {
                     self.homeSharedView.userUImageView.image = savedImage

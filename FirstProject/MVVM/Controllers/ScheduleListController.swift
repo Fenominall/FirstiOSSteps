@@ -105,7 +105,7 @@ class ScheduleListController: UIViewController, Coordinating {
 extension ScheduleListController {
     
     private func setupTableView() {
-        view.backgroundColor = .darkGray
+        view.backgroundColor = .black
         view.addSubview(eventsTableView)
         
         eventsTableView.snp.makeConstraints {

@@ -17,10 +17,14 @@ public class ImageStorage {
         case fileSystem
     }
     
+    public enum ImageStorageKeys: String {
+        case userImage
+    }
+    
     // MARK: - Storing Image
     // Store an image either in userDefaults or fileSystem
     public func storeImage(image: UIImage,
-                           forKey key: String,
+                           forKey key: ImageStorageKeys,
                            withStorageType storageType: ImageStorageType) {
         if let pngRepresentation = image.pngData() {
             switch storageType {
@@ -36,13 +40,13 @@ public class ImageStorage {
                 }
             case .userDefaults:
                 // Save Image to UserDefaults
-                UserDefaults.standard.set(pngRepresentation, forKey: key)
+                UserDefaults.standard.set(pngRepresentation, forKey: key.rawValue)
             }
         }
     }
     
     // MARK: - Retrieving Image
-    public func retrieveImage(forKey key: String,
+    public func retrieveImage(forKey key: ImageStorageKeys,
                               inStorageType storageType: ImageStorageType) -> UIImage? {
         switch storageType {
         case .fileSystem:
@@ -54,7 +58,7 @@ public class ImageStorage {
             }
         case .userDefaults:
             // Retrieve from UserDefaults
-            if let imageData = UserDefaults.standard.object(forKey: key) as? Data,
+            if let imageData = UserDefaults.standard.object(forKey: key.rawValue) as? Data,
                let image = UIImage(data: imageData) {
                 return image
             }
@@ -63,7 +67,7 @@ public class ImageStorage {
     }
     
     // MARK: - Deleting Image
-    public func removeImage(forKey key: String,
+    public func removeImage(forKey key: ImageStorageKeys,
                             inStorageType storageType: ImageStorageType) {
         switch storageType {
         case .fileSystem:
@@ -77,16 +81,16 @@ public class ImageStorage {
                 }
             }
         case .userDefaults:
-            UserDefaults.standard.removeObject(forKey: key)
+            UserDefaults.standard.removeObject(forKey: key.rawValue)
         }
     }
     
     // Creating file-path
-    public func filePath(forKey key: String) -> URL? {
+    public func filePath(forKey key: ImageStorageKeys) -> URL? {
         let fileManager = FileManager.default
         guard let documentURL = fileManager.urls(for: .documentDirectory,
                                                     in: FileManager.SearchPathDomainMask.userDomainMask).first else { return nil }
-        return documentURL.appendingPathComponent(key + ".png")
+        return documentURL.appendingPathComponent(key.rawValue + ".png")
     }
     
 }

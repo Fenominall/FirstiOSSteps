@@ -35,16 +35,8 @@ class LoginViewController: UIViewController, Coordinating {
         super.viewDidAppear(true)
         loginView.usernameTxtField.addBottomBorder()
         loginView.passwordTxtField.addBottomBorder()
-        showData()
     }
-    
-    func showData() {
-        loginViewModel.username.bind {
-            print("Value Changed \($0)")
-        }
-    }
-    
-    
+
     /// Function for loginButton: Check validation, pushes the user to the SecondViewController if requirements suitable
     /// - Parameter sender: Any
     @objc private func loginButtonPressed(_ sender: UIButton) {

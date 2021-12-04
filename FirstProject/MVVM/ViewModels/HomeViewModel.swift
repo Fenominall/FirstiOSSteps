@@ -7,17 +7,17 @@
 
 import Foundation
 
-struct HomeViewModel {
+class HomeViewModel {
     
     private var user: User = User() {
         didSet {
-            do {
-                user = try UserCaretaker.loadUserData()
-                print(user.username)
-                userName.value = user.username
-            } catch {
-                print("error")
-            }
+                do {
+                    user = try UserCaretaker.loadUserData()
+                    print(user.username)
+                    userName.value = user.username
+                } catch {
+                    print("error")
+                }
         }
     }
     

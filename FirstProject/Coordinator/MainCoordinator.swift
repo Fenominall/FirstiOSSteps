@@ -54,16 +54,25 @@ class MainCoordinator: Coordinator {
             navigationController?.pushViewController(scheduleListController, animated: true)
         case .createEventButtonTapped:
             print("1")
-//            var createEventController: UIViewController & Coordinating = CreateEventController()
-//            createEventController.coordinator = self
-//            navigationController?.present(createEventController, animated: true, completion: nil)
+            //            var createEventController: UIViewController & Coordinating = CreateEventController()
+            //            createEventController.coordinator = self
+            //            navigationController?.present(createEventController, animated: true, completion: nil)
         }
         
     }
     
     func start() {
-        var loginViewController: UIViewController & Coordinating = LoginViewController()
-        loginViewController.coordinator = self
-        navigationController?.setViewControllers([loginViewController], animated: false)
+        let userLoginStatus = UserDefaults.standard.bool(forKey: UserKey.isLoggedIn)
+        
+        if (userLoginStatus == false) {
+            var loginViewController: UIViewController & Coordinating = LoginViewController()
+            loginViewController.coordinator = self
+            navigationController?.setViewControllers([loginViewController], animated: false)
+        } else {
+            var homeViewController: UIViewController & Coordinating = HomeViewController()
+            homeViewController.coordinator = self
+            navigationController?.setViewControllers([homeViewController], animated: false)
+            
+        }
     }
 }

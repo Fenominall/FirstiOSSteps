@@ -96,7 +96,7 @@ class HomeView: UIView {
         sourceCodeButton.layer.masksToBounds = false
         sourceCodeButton.clipsToBounds = true
         sourceCodeButton.setTitle("GitHub", for: .normal)
-        sourceCodeButton.tintColor = AppColors.lightGrayAccent
+        sourceCodeButton.tintColor = .lightGrayAccent
         return sourceCodeButton
     }()
 

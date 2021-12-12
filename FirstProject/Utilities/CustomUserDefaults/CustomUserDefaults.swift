@@ -8,7 +8,7 @@ import UIKit
 
 class CustomUserDefaults {
     // defined needed keys
-    enum DefaultsKey: String, CaseIterable {
+    enum UserKeys: String, CaseIterable {
         case username
         case password
         case isUserLogin
@@ -19,23 +19,25 @@ class CustomUserDefaults {
     
     init() {}
     
+    
+    
     // to set value using pre-defined key
-    func set(_ value: Any?, key: DefaultsKey) {
+    func set(_ value: Any?, key: UserKeys) {
         defaults.setValue(value, forKey: key.rawValue)
     }
     // get value using pre-defined key
-    func get(key: DefaultsKey) -> Any? {
+    func get(key: UserKeys) -> Any? {
         return defaults.value(forKey: key.rawValue)
     }
     
     // check value if exist or nil
-    func hasValue(key: DefaultsKey) -> Bool {
+    func hasValue(key: UserKeys) -> Bool {
         return defaults.value(forKey: key.rawValue) != nil
     }
     
     // remove all stored values
     func removeAll() {
-        for key in DefaultsKey.allCases {
+        for key in UserKeys.allCases {
             defaults.removeObject(forKey: key.rawValue)
         }
     }
@@ -49,6 +51,7 @@ extension UserDefaults {
     
     private enum Keys {
         static let myKey = "myKey"
+        static let isUserLogin = "isLoggedIn"
     }
     
     func setCodable<T: Codable>(_ value: T, forKey key: String) {
@@ -68,5 +71,13 @@ extension UserDefaults {
     // Check if a key-value pair exists in the user's defaults database.
     func valueExists(forKey key: String) -> Bool {
         return object(forKey: key) != nil
+    }
+}
+
+
+extension UserDefaults {
+    
+    private enum UserKeys {
+        static let isLoggedIn = "isLoggedIn"
     }
 }

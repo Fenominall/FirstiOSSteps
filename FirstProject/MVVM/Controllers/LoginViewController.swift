@@ -66,7 +66,6 @@ extension LoginViewController {
     
     func initializeData() {
         navigationItem.setHidesBackButton(true, animated: false)
-        
         loginView.loginButton.addTarget(self, action: #selector(loginButtonPressed), for: .touchUpInside)
         loginView.usernameTxtField.delegate = self
         loginView.passwordTxtField.delegate = self

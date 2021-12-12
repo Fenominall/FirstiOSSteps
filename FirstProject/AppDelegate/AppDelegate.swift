@@ -23,7 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // MARK: - Settings the navigation
         let navVC = UINavigationController()
-        navVC.navigationBar.prefersLargeTitles = true
         let coordinator = MainCoordinator()
         coordinator.navigationController = navVC
         

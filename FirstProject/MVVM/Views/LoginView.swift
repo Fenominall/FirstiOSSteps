@@ -4,7 +4,6 @@
 //
 //  Created by Fenominall on 07.08.2021.
 //
-
 import UIKit
 import SnapKit
 
@@ -57,12 +56,12 @@ class LoginView: UIView {
                                                 fontSize: 24,
                                                 fontWeight: .regular,
                                                 textAlignment: .natural,
-                                                textColor: AppColors.lightGrayAccent ?? .white)
+                                                textColor: .lightGrayAccent ?? .white)
     private lazy var passwordLabel = newUIlabel(text: "Password",
                                                 fontSize: 24,
                                                 fontWeight: .regular,
                                                 textAlignment: .natural,
-                                                textColor: AppColors.lightGrayAccent ?? .white)
+                                                textColor: .lightGrayAccent ?? .white)
     
     // MARK: - UITextFields
     private(set) lazy var usernameTxtField: CustomTextField = {

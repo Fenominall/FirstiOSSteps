@@ -9,4 +9,5 @@ import Foundation
 
 struct UserKey {
     static let storageKey = "User"
+    static let isLoggedIn = "isLoggedIn"
 }

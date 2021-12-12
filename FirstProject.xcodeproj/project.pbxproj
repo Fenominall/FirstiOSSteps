@@ -32,6 +32,8 @@
 		4F87A91B273EA34800D34B02 /* ImageStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F87A91A273EA34800D34B02 /* ImageStorage.swift */; };
 		4F92895626A6B06600624B6E /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F92895526A6B06600624B6E /* Alerts.swift */; };
 		4F92895826A6BB0500624B6E /* ExtensionForUserSettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F92895726A6BB0500624B6E /* ExtensionForUserSettingsController.swift */; };
+		4F93710F2766752B007667F8 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F93710E2766752B007667F8 /* Utilities.swift */; };
+		4F9371122766759B007667F8 /* NSConstraintsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9371112766759B007667F8 /* NSConstraintsExtension.swift */; };
 		4FA5BB1826CEDB5F001C486D /* UserSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA5BB1726CEDB5F001C486D /* UserSettingsView.swift */; };
 		4FAF3A7A26C6ED04009C803E /* GitHubWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FAF3A7926C6ED04009C803E /* GitHubWebViewController.swift */; };
 		4FBBE319268B97E400D518B8 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBBE318268B97E400D518B8 /* UserModel.swift */; };
@@ -79,6 +81,8 @@
 		4F87A91A273EA34800D34B02 /* ImageStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageStorage.swift; sourceTree = "<group>"; };
 		4F92895526A6B06600624B6E /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
 		4F92895726A6BB0500624B6E /* ExtensionForUserSettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionForUserSettingsController.swift; sourceTree = "<group>"; };
+		4F93710E2766752B007667F8 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		4F9371112766759B007667F8 /* NSConstraintsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSConstraintsExtension.swift; sourceTree = "<group>"; };
 		4FA5BB1726CEDB5F001C486D /* UserSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsView.swift; sourceTree = "<group>"; };
 		4FAF3A7926C6ED04009C803E /* GitHubWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubWebViewController.swift; sourceTree = "<group>"; };
 		4FBBE318268B97E400D518B8 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
@@ -196,6 +200,35 @@
 			path = Alerts;
 			sourceTree = "<group>";
 		};
+		4F93710C276674DD007667F8 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				4F93710D27667514007667F8 /* ViewsUtilities */,
+				4FDB688C26E145400006F8E3 /* CustomUserDefaults */,
+				4F92895426A6B04F00624B6E /* Alerts */,
+				4F92895326A6AFBF00624B6E /* Validators */,
+				4FE55FCF26A33520003874B1 /* Extensions */,
+				4F046E1D26B9BF9B00CC4CBB /* HapticsManager */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		4F93710D27667514007667F8 /* ViewsUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				4F93710E2766752B007667F8 /* Utilities.swift */,
+			);
+			path = ViewsUtilities;
+			sourceTree = "<group>";
+		};
+		4F93711027667578007667F8 /* NSContraintsExtension */ = {
+			isa = PBXGroup;
+			children = (
+				4F9371112766759B007667F8 /* NSConstraintsExtension.swift */,
+			);
+			path = NSContraintsExtension;
+			sourceTree = "<group>";
+		};
 		4FAF3A7B26C6ED08009C803E /* WebViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -273,7 +306,7 @@
 		4FE55FCF26A33520003874B1 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				4F522AA6272DB7BA0099C5E8 /* Constants */,
+				4F93711027667578007667F8 /* NSContraintsExtension */,
 				4FCE23CB27243DCD0068002F /* UIColor */,
 				4FCE23CA27243DAD0068002F /* UITextField */,
 				4FCE23C927243D7C0068002F /* UIButton */,
@@ -303,6 +336,8 @@
 		4FF9064326543BEF001387C9 /* FirstProject */ = {
 			isa = PBXGroup;
 			children = (
+				4F522AA6272DB7BA0099C5E8 /* Constants */,
+				4F93710C276674DD007667F8 /* Utilities */,
 				4FFF9196274AB0A000DE2164 /* Services */,
 				4FBBE316268B97BB00D518B8 /* AppDelegate */,
 				4FFF2A1426BD26C40064E610 /* Core */,
@@ -340,11 +375,6 @@
 			children = (
 				4F87A919273EA33900D34B02 /* Storage */,
 				4F257CFB2739B104007CB391 /* Memento */,
-				4FDB688C26E145400006F8E3 /* CustomUserDefaults */,
-				4F92895426A6B04F00624B6E /* Alerts */,
-				4F92895326A6AFBF00624B6E /* Validators */,
-				4FE55FCF26A33520003874B1 /* Extensions */,
-				4F046E1D26B9BF9B00CC4CBB /* HapticsManager */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -509,10 +539,12 @@
 				4F4FDFBC268D862000736440 /* LoginViewModel.swift in Sources */,
 				4FF9064726543BEF001387C9 /* SceneDelegate.swift in Sources */,
 				4F695E902662B6C200606D03 /* LoginViewController.swift in Sources */,
+				4F93710F2766752B007667F8 /* Utilities.swift in Sources */,
 				4F05462F26B9810B006C5A04 /* UIButtonAnimationsExtension.swift in Sources */,
 				4F28BA78274295EC001308E1 /* CreateEventController.swift in Sources */,
 				4F055F1E274B836A00C70670 /* AppColors.swift in Sources */,
 				4FCDEBA9272FEC51002C3B06 /* HomeViewModel.swift in Sources */,
+				4F9371122766759B007667F8 /* NSConstraintsExtension.swift in Sources */,
 				4FD4D58E26833C8D0078633E /* AppDataValidator.swift in Sources */,
 				4FA5BB1826CEDB5F001C486D /* UserSettingsView.swift in Sources */,
 				4FDB688E26E1455A0006F8E3 /* CustomUserDefaults.swift in Sources */,

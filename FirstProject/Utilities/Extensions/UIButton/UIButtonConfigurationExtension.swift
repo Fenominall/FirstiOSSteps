@@ -12,11 +12,10 @@ extension UIButton.Configuration {
     
     static func lightGrayButton() -> UIButton.Configuration {
         var configuration: UIButton.Configuration = .filled()
-        configuration.baseBackgroundColor = AppColors.lightGrayAccent
+        configuration.baseBackgroundColor = .lightGrayAccent
         configuration.baseForegroundColor = .white
         configuration.cornerStyle = .small
         configuration.buttonSize = .large
-        configuration.baseForegroundColor = .white
         configuration.titleAlignment = .center
         return configuration
     }

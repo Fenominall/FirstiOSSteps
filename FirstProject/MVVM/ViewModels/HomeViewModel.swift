@@ -9,15 +9,9 @@ import Foundation
 
 class HomeViewModel {
     
-    private var user: User = User() {
+    private var user: User {
         didSet {
-                do {
-                    user = try UserCaretaker.loadUserData()
-                    print(user.username)
-                    userName.value = user.username
-                } catch {
-                    print("error")
-                }
+            userName.value = user.username
         }
     }
     

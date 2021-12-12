@@ -19,10 +19,6 @@ protocol UpdateUserData {
     func validateUser() -> UserValidationState
 }
 
-protocol ShareData {
-    
-}
-
 class LoginViewModel {
     
     private var user = User() {
@@ -68,6 +64,7 @@ extension LoginViewModel: UpdateUserData {
     }
     
     func saveUser() {
+        UserDefaults.standard.setValue(true, forKey: UserKey.isLoggedIn)
         do {
             try UserCaretaker.createUser(user: user)
             print("Saved: \(user.username)")

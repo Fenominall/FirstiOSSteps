@@ -33,7 +33,7 @@ class UserSettingsView: UIView {
         changeUserDataLabel.text = "Change your data"
         changeUserDataLabel.font = changeUserDataLabel.font.withSize(40)
         changeUserDataLabel.textAlignment = .center
-        changeUserDataLabel.textColor = AppColors.lightGrayAccent
+        changeUserDataLabel.textColor = .lightGrayAccent
         return changeUserDataLabel
     }()
     

@@ -17,6 +17,7 @@ class HomeViewController: UIViewController, Coordinating {
     
     private var homeSharedView = HomeView()
     private var imageStorage = ImageStorage()
+    private var homeViewModel = HomeViewModel()
     
     
     // MARK: - ViewController Lifecycle
@@ -29,19 +30,23 @@ class HomeViewController: UIViewController, Coordinating {
         super.viewDidLoad()
         setupTargetsForButtons()
         retrieveUploadedUserImage()
-        loadUserName()
+//        loadUserName()
+        
+        homeViewModel.userName.bind { [unowned self] in
+            self.homeSharedView.usernameLabel.text = $0
+        }
     }
     
-    private func loadUserName() {
-        do {
-            let userUsername = try UserCaretaker.loadUserData()
-            print(userUsername.username + "Test")
-            homeSharedView.usernameLabel.text = userUsername.username
-        } catch {
-            print("error loading events: \(error)")
-        }
-     
-    }
+//    private func loadUserName() {
+//        do {
+//            let userUsername = try UserCaretaker.loadUserData()
+//            print(userUsername.username + "Test")
+//            homeSharedView.usernameLabel.text = userUsername.username
+//        } catch {
+//            print("error loading events: \(error)")
+//        }
+//
+//    }
     
     
 }
@@ -80,8 +85,10 @@ extension HomeViewController {
             var configurations = PHPickerConfiguration(photoLibrary: .shared())
             configurations.selectionLimit = 1
             configurations.filter = .images
+            
             let photoPickerViewController = PHPickerViewController(configuration: configurations)
             photoPickerViewController.delegate = self
+            
             self?.present(photoPickerViewController, animated: true)
         }))
         
@@ -107,6 +114,7 @@ extension HomeViewController {
     
     //    Navigation Button to FirstViewController
     @objc private func didTapLogOutButton() {
+        UserDefaults.standard.setValue(false, forKey: UserKey.isLoggedIn)
         coordinator?.eventOccurred(with: .logOutButtonTapped)
     }
     

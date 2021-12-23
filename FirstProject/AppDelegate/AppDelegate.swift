@@ -14,18 +14,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // MARK: - Settings the appearence of UINavigationBar
-        let navigationBarAppearence = UINavigationBarAppearance()
+//        let navigationBarAppearence = UINavigationBarAppearance()
         // Tint color
-        navigationBarAppearence.titleTextAttributes = [.foregroundColor: UIColor.white]
-        navigationBarAppearence.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
-        navigationBarAppearence.backgroundColor = UIColor.darkGray
-        UINavigationBar.appearance().standardAppearance = navigationBarAppearence
-        
+//        navigationBarAppearence.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+//        UINavigationBar.appearance().standardAppearance = navigationBarAppearence
+
         // MARK: - Settings the navigation
         let navVC = UINavigationController()
         let coordinator = MainCoordinator()
+
         coordinator.navigationController = navVC
-        
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         window?.rootViewController = navVC

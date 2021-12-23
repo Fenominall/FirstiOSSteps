@@ -43,3 +43,8 @@ extension UIColor {
     }
 }
 
+
+extension UIColor {
+    static let lightGrayAccent = UIColor(hex: "#595959")
+}
+

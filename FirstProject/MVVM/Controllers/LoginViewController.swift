@@ -28,7 +28,6 @@ class LoginViewController: UIViewController, Coordinating {
         // MARK: Notifications for showing and hiding keyboard
         observeKeyboardNotifications()
         initializeData()
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -36,7 +35,6 @@ class LoginViewController: UIViewController, Coordinating {
         loginView.usernameTxtField.addBottomBorder()
         loginView.passwordTxtField.addBottomBorder()
     }
-
     /// Function for loginButton: Check validation, pushes the user to the SecondViewController if requirements suitable
     /// - Parameter sender: Any
     @objc private func loginButtonPressed(_ sender: UIButton) {
@@ -65,7 +63,9 @@ class LoginViewController: UIViewController, Coordinating {
 extension LoginViewController {
     
     func initializeData() {
+        navigationController?.navigationBar.barStyle = .black
         navigationItem.setHidesBackButton(true, animated: false)
+        
         loginView.loginButton.addTarget(self, action: #selector(loginButtonPressed), for: .touchUpInside)
         loginView.usernameTxtField.delegate = self
         loginView.passwordTxtField.delegate = self

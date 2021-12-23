@@ -8,7 +8,8 @@
 import UIKit
 import SnapKit
 
-class HomeView: UIView {
+class HomeView: UIView, Coordinating {
+    var coordinator: Coordinator?
     
     // MARK: - UIView Containers
     private lazy var containerView: UIView = {
@@ -100,6 +101,7 @@ class HomeView: UIView {
         return sourceCodeButton
     }()
 
+    
     private func customUIButton(title: String) -> UIButton {
         let customUIButton = UIButton(type: .system)
         customUIButton.configuration = .lightGrayButton()
@@ -126,17 +128,17 @@ class HomeView: UIView {
     // MARK: UIView initialization
     override init(frame: CGRect) {
         super.init(frame: frame)
-        initialize()
+        configureUI()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        initialize()
+        configureUI()
     }
     
     
     // MARK: Configure auto-layout of UIElements
-    func initialize() {
+    func configureUI() {
         
         addSubview(containerView)
         containerView.snp.makeConstraints {

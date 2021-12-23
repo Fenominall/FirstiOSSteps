@@ -33,6 +33,9 @@ class MainCoordinator: Coordinator {
         case .logOutButtonTapped:
             var loginsSreenViewController: UIViewController & Coordinating = LoginViewController()
             loginsSreenViewController.coordinator = self
+            // If UserKey.isLoggedIn ==  false, then LoginViewController will be shown,
+            // if (true) HomeViewController will be shown
+            UserDefaults.standard.set(false, forKey: UserKey.isLoggedIn)
             navigationController?.pushViewController(loginsSreenViewController, animated: true)
             
         case .sourceCodeButtonTapped:

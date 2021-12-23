@@ -150,7 +150,6 @@ class LoginView: UIView {
     
     // MARK: Configure auto-layout of UIElements
     func configure() {
-        
         addSubview(screenContainerUIView)
         
         screenContainerUIView.addSubview(loginImageView)

@@ -20,7 +20,7 @@ class HomeViewController: UIViewController, Coordinating {
     private var homeViewModel = HomeViewModel()
     
     
-    // MARK: - ViewController Lifecycle
+    // MARK: - Lifecycle
     override func loadView() {
         super.loadView()
         view = homeSharedView
@@ -30,11 +30,16 @@ class HomeViewController: UIViewController, Coordinating {
         super.viewDidLoad()
         setupTargetsForButtons()
         retrieveUploadedUserImage()
+        navigationController?.navigationBar.barStyle = .black
 //        loadUserName()
         
         homeViewModel.userName.bind { [unowned self] in
             self.homeSharedView.usernameLabel.text = $0
         }
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
     
 //    private func loadUserName() {
@@ -51,7 +56,31 @@ class HomeViewController: UIViewController, Coordinating {
     
 }
 
-// MARK: - Handling Navigation
+// MARK: - Selectors
+extension HomeViewController {
+    
+    // Navigation to UserSettingsViewController
+    @objc private func didTapUpdateButton() {
+        coordinator?.eventOccurred(with: .userSettingsTapped)
+    }
+    
+    // navigation controller for WebUIViewController
+    @objc private func didTapSourceCodeButton() {
+        coordinator?.eventOccurred(with: .sourceCodeButtonTapped)
+    }
+
+    //    Navigation Button to FirstViewController
+    @objc private func didTapLogOutButton() {
+        coordinator?.eventOccurred(with: .logOutButtonTapped)
+    }
+    
+    @objc private func didTapScheduleEventButton() {
+        coordinator?.eventOccurred(with: .goToScheduleListController)
+    }
+}
+
+
+// MARK: - Helpers
 extension HomeViewController {
     
     private func setupTargetsForButtons() {
@@ -59,9 +88,10 @@ extension HomeViewController {
         homeSharedView.sourceCodeButton.addTarget(self, action: #selector(didTapSourceCodeButton), for: .touchUpInside)
         homeSharedView.uploadImageButton.addTarget(self, action: #selector(didTapUploadImageButton), for: .touchUpInside)
         homeSharedView.scheduleEventListButton.addTarget(self, action: #selector(didTapScheduleEventButton), for: .touchUpInside)
+
         
         // Navigation settings
-        self.navigationItem.title = "Home"
+        navigationItem.title = "Home"
         navigationItem.backButtonTitle = ""
         navigationItem.leftBarButtonItem?.tintColor = .white
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log Out", style: .plain, target: self, action: #selector(didTapLogOutButton))
@@ -100,26 +130,6 @@ extension HomeViewController {
         }))
         
         present(actionSheet, animated: true)
-    }
-    
-    // Navigation to UserSettingsViewController
-    @objc private func didTapUpdateButton() {
-        coordinator?.eventOccurred(with: .userSettingsTapped)
-    }
-    
-    // navigation controller for WebUIViewController
-    @objc private func didTapSourceCodeButton() {
-        coordinator?.eventOccurred(with: .sourceCodeButtonTapped)
-    }
-    
-    //    Navigation Button to FirstViewController
-    @objc private func didTapLogOutButton() {
-        UserDefaults.standard.setValue(false, forKey: UserKey.isLoggedIn)
-        coordinator?.eventOccurred(with: .logOutButtonTapped)
-    }
-    
-    @objc private func didTapScheduleEventButton() {
-        coordinator?.eventOccurred(with: .goToScheduleListController)
     }
 }
 

@@ -63,6 +63,7 @@ extension LoginViewModel: UpdateUserData {
         return .Valid
     }
     
+    
     func saveUser() {
         UserDefaults.standard.setValue(true, forKey: UserKey.isLoggedIn)
         do {

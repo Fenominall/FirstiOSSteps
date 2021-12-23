@@ -42,6 +42,7 @@ class SourceCodeWebUIViewController: UIViewController, Coordinating {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureWebViewButtons()
+        navigationController?.navigationBar.barStyle = .default
     }
     
     

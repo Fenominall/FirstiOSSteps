@@ -50,19 +50,16 @@ extension CustomTextField {
     }
 }
 
-
 // MARK: Adding a single line border for UITextField
 extension UITextField {
     func addBottomBorder() {
         let bottomLine = CALayer()
         bottomLine.frame = CGRect(x: 0, y: self.frame.size.height - 1, width: self.frame.size.width, height: 1)
-        bottomLine.backgroundColor = UIColor(hex: "#595959")?.cgColor
+        bottomLine.backgroundColor = UIColor.lightGrayAccent?.cgColor
         borderStyle = .none
         layer.addSublayer(bottomLine)
     }
 }
-
-
 
 // MARK: Create toggling UIButton
 private let toggleButton = UIButton(type: .custom)
@@ -71,18 +68,15 @@ extension UITextField {
     
     func enablePasswordToggle() {
         
-        toggleButton.setImage(UIImage(systemName: "eye.fill"), for: .selected)
-        toggleButton.setImage(UIImage(systemName: "eye.slash"), for: .normal)
         toggleButton.sizeToFit()
         toggleButton.configuration = .placeButtonInTextField()
-        toggleButton.addTarget(self, action: #selector(togglePasswordView(_:)), for: .touchUpInside)
+        toggleButton.addTarget(self, action: #selector(togglePasswordView), for: .touchUpInside)
         rightView = toggleButton
         rightViewMode = .always
-        toggleButton.alpha = 0.4
+        toggleButton.alpha = 0.7
     }
     
-    @objc func togglePasswordView(_ sender: Any) {
-        
+    @objc func togglePasswordView() {
         if isSecureTextEntry {
             toggleButton.setImage(UIImage(systemName: "eye.fill"), for: .normal)
             isSecureTextEntry.toggle()

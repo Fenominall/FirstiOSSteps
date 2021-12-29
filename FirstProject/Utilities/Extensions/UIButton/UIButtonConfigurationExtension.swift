@@ -25,7 +25,7 @@ extension UIButton.Configuration {
         var configuration: UIButton.Configuration = .plain()
         configuration.imagePlacement = .trailing
         configuration.baseForegroundColor = .white
-        configuration.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: -12, bottom: 0, trailing: 0)
+        configuration.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: -30, bottom: 0, trailing: 0)
         return configuration
     }
 }

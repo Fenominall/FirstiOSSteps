@@ -137,7 +137,6 @@
 				4F257CFE2739B423007CB391 /* UserCaretaker.swift */,
 				4F4C9F602745890600D345DC /* EventPersistenceHelper.swift */,
 				4F2DEDEF274515B900C5F156 /* FileManager+Extensions.swift */,
-				4F7C71D6277CB5DF00ADB4E1 /* ImageStorage */,
 			);
 			path = Memento;
 			sourceTree = "<group>";
@@ -164,6 +163,7 @@
 		4F7C71D5277CB5BB00ADB4E1 /* Storage */ = {
 			isa = PBXGroup;
 			children = (
+				4F7C71D6277CB5DF00ADB4E1 /* ImageStorage */,
 				4F257CFB2739B104007CB391 /* Memento */,
 			);
 			path = Storage;
@@ -340,13 +340,13 @@
 		4FF9064326543BEF001387C9 /* FirstProject */ = {
 			isa = PBXGroup;
 			children = (
-				4F522AA6272DB7BA0099C5E8 /* Constants */,
-				4F93710C276674DD007667F8 /* Utilities */,
 				4FBBE316268B97BB00D518B8 /* AppDelegate */,
-				4F7C71D5277CB5BB00ADB4E1 /* Storage */,
+				4F522AA6272DB7BA0099C5E8 /* Constants */,
 				4F083EE726D8061A00B63DD7 /* Coordinator */,
 				4F7D97B326D03C4000A9D253 /* MVVM */,
 				4FFF2A1326BD26730064E610 /* Resources */,
+				4F7C71D5277CB5BB00ADB4E1 /* Storage */,
+				4F93710C276674DD007667F8 /* Utilities */,
 			);
 			path = FirstProject;
 			sourceTree = "<group>";

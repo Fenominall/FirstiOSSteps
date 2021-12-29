@@ -17,4 +17,6 @@ struct AppImages {
     static let waves = UIImage(named: "waves")!
     static let plusIcon = UIImage(named: "plusIcon")!
     static let git = UIImage(named: "git")!
+    static let eyeFill = UIImage(named: "eye.fill")
+    static let eyeSlash = UIImage(named: "eye.slash")
 }

@@ -74,7 +74,6 @@ class LoginView: UIView {
     
     private(set) lazy var passwordTxtField: CustomTextField = {
         let customTextField = CustomTextField()
-        let bottomLine = CALayer()
         customTextField.translatesAutoresizingMaskIntoConstraints = false
         customTextField.textColor = .white
         customTextField.isSecureTextEntry = true

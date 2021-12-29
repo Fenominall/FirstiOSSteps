@@ -12,6 +12,7 @@ import UIKit
 // MARK: - ImageStorage for storing User`s image
 public class ImageStorage {
     
+    // MARK: - Properties
     public enum ImageStorageType {
         case userDefaults
         case fileSystem

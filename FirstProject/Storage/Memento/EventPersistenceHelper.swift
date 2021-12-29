@@ -19,8 +19,8 @@ final class EventPersistenceHelper {
     // array of events
     private static var events: [Event] = []
     
-    // MARK: - Object lifecycle
-    //    private init() {}
+    // MARK: - lifecycle
+    private init() {}
     
     static func loadEvents() throws -> [Event]{
         if events.isEmpty {
@@ -42,30 +42,6 @@ final class EventPersistenceHelper {
         }
         return events
     }
-    
-//     read - load (retrieve) items from documents directory
-//        static func loadEvents() throws -> [Event] {
-//          // we need access to the filename URL that we are reading from
-//            let url = DiskCaretaker.createDocumentURL(withFileName: fileName)
-//
-//          // check if file exist
-//          // to convert URL to String we use .path on the URL
-//          if FileManager.default.fileExists(atPath: url.path) {
-//            if let data = FileManager.default.contents(atPath: url.path) {
-//              do {
-//                events = try JSONDecoder().decode([Event].self, from: data)
-//              } catch {
-//                throw DataPersistenceError.decodingError(error)
-//              }
-//            } else {
-//                throw DataPersistenceError.notData
-//            }
-//          }
-//          else {
-//            throw DataPersistenceError.fileDoesNotExist(fileName)
-//          }
-//          return events
-//        }
     
     // MARK: - Instance Methods
     // 5

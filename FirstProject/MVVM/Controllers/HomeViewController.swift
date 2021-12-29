@@ -33,9 +33,9 @@ class HomeViewController: UIViewController, Coordinating {
         navigationController?.navigationBar.barStyle = .black
 //        loadUserName()
         
-        homeViewModel.userName.bind { [unowned self] in
-            self.homeSharedView.usernameLabel.text = $0
-        }
+//        homeViewModel.userName.bind { [unowned self] in
+//            self.homeSharedView.usernameLabel.text = $0
+//        }
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -77,28 +77,6 @@ extension HomeViewController {
     @objc private func didTapScheduleEventButton() {
         coordinator?.eventOccurred(with: .goToScheduleListController)
     }
-}
-
-
-// MARK: - Helpers
-extension HomeViewController {
-    
-    private func setupTargetsForButtons() {
-        homeSharedView.editProfileButton.addTarget(self, action: #selector(didTapUpdateButton), for: .touchUpInside)
-        homeSharedView.sourceCodeButton.addTarget(self, action: #selector(didTapSourceCodeButton), for: .touchUpInside)
-        homeSharedView.uploadImageButton.addTarget(self, action: #selector(didTapUploadImageButton), for: .touchUpInside)
-        homeSharedView.scheduleEventListButton.addTarget(self, action: #selector(didTapScheduleEventButton), for: .touchUpInside)
-
-        
-        // Navigation settings
-        navigationItem.title = "Home"
-        navigationItem.backButtonTitle = ""
-        navigationItem.leftBarButtonItem?.tintColor = .white
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log Out", style: .plain, target: self, action: #selector(didTapLogOutButton))
-        navigationItem.rightBarButtonItem?.tintColor = .white
-        navigationItem.setHidesBackButton(true, animated: false)
-        navigationController?.navigationBar.prefersLargeTitles = true
-    }
     
     @objc private func didTapUploadImageButton() {
         let actionSheet = UIAlertController(title: nil,
@@ -133,6 +111,30 @@ extension HomeViewController {
     }
 }
 
+
+// MARK: - Helpers
+extension HomeViewController {
+    
+    private func setupTargetsForButtons() {
+        homeSharedView.editProfileButton.addTarget(self, action: #selector(didTapUpdateButton), for: .touchUpInside)
+        homeSharedView.sourceCodeButton.addTarget(self, action: #selector(didTapSourceCodeButton), for: .touchUpInside)
+        homeSharedView.uploadImageButton.addTarget(self, action: #selector(didTapUploadImageButton), for: .touchUpInside)
+        homeSharedView.scheduleEventListButton.addTarget(self, action: #selector(didTapScheduleEventButton), for: .touchUpInside)
+
+        
+        // Navigation settings
+        navigationItem.title = "Home"
+        navigationItem.backButtonTitle = ""
+        navigationItem.leftBarButtonItem?.tintColor = .white
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log Out", style: .plain, target: self, action: #selector(didTapLogOutButton))
+        navigationItem.rightBarButtonItem?.tintColor = .white
+        navigationItem.setHidesBackButton(true, animated: false)
+        navigationController?.navigationBar.prefersLargeTitles = true
+    }
+    
+   
+}
+
 // MARK: - PHPicker Delegate for uploading, storing and displaying user image
 /// used for adding an image from a photo library to "userImage" on HomePage
 extension HomeViewController: PHPickerViewControllerDelegate {
@@ -141,8 +143,7 @@ extension HomeViewController: PHPickerViewControllerDelegate {
 
         if let itemProvider = results.first?.itemProvider, itemProvider.canLoadObject(ofClass: UIImage.self) {
 
-            itemProvider.loadObject(ofClass: UIImage.self)
-            { [weak self] image, error in
+            itemProvider.loadObject(ofClass: UIImage.self) { [weak self] image, error in
                 guard let urlImage = image as? UIImage else { return }
                 DispatchQueue.global(qos: .userInteractive).async {
                     self?.imageStorage.storeImage(image: urlImage,

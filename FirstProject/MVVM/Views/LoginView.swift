@@ -213,7 +213,6 @@ class LoginView: UIView {
         
         loginIndicator.snp.makeConstraints {
             $0.centerX.centerY.equalTo(bottomContainerUIView)
-//            $0.bottom.equalTo(loginButton.snp_topMargin).offset(5)
         }
     }
 }

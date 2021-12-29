@@ -50,7 +50,6 @@
 		4FF9064E26543BF1001387C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FF9064D26543BF1001387C9 /* Assets.xcassets */; };
 		4FFCD45B26BEC87000770D33 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFCD45A26BEC87000770D33 /* LoginView.swift */; };
 		4FFF2A1626BD27560064E610 /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFF2A1526BD27560064E610 /* HapticsManager.swift */; };
-		4FFF9198274AB0B200DE2164 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFF9197274AB0B200DE2164 /* APIService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -100,7 +99,6 @@
 		4FF9065226543BF1001387C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4FFCD45A26BEC87000770D33 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		4FFF2A1526BD27560064E610 /* HapticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsManager.swift; sourceTree = "<group>"; };
-		4FFF9197274AB0B200DE2164 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		68F12D2ACF30F7D7A9A93834 /* Pods-FirstProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirstProject.debug.xcconfig"; path = "Target Support Files/Pods-FirstProject/Pods-FirstProject.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -138,6 +136,8 @@
 				4F257CFC2739B1AE007CB391 /* DiskCaretaker.swift */,
 				4F257CFE2739B423007CB391 /* UserCaretaker.swift */,
 				4F4C9F602745890600D345DC /* EventPersistenceHelper.swift */,
+				4F2DEDEF274515B900C5F156 /* FileManager+Extensions.swift */,
+				4F7C71D6277CB5DF00ADB4E1 /* ImageStorage */,
 			);
 			path = Memento;
 			sourceTree = "<group>";
@@ -161,6 +161,22 @@
 			path = Constants;
 			sourceTree = "<group>";
 		};
+		4F7C71D5277CB5BB00ADB4E1 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				4F257CFB2739B104007CB391 /* Memento */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
+		4F7C71D6277CB5DF00ADB4E1 /* ImageStorage */ = {
+			isa = PBXGroup;
+			children = (
+				4F87A91A273EA34800D34B02 /* ImageStorage.swift */,
+			);
+			path = ImageStorage;
+			sourceTree = "<group>";
+		};
 		4F7D97B326D03C4000A9D253 /* MVVM */ = {
 			isa = PBXGroup;
 			children = (
@@ -170,15 +186,6 @@
 				4FBBE315268B97B000D518B8 /* Controllers */,
 			);
 			path = MVVM;
-			sourceTree = "<group>";
-		};
-		4F87A919273EA33900D34B02 /* Storage */ = {
-			isa = PBXGroup;
-			children = (
-				4F87A91A273EA34800D34B02 /* ImageStorage.swift */,
-				4F2DEDEF274515B900C5F156 /* FileManager+Extensions.swift */,
-			);
-			path = Storage;
 			sourceTree = "<group>";
 		};
 		4F92895326A6AFBF00624B6E /* Validators */ = {
@@ -335,9 +342,8 @@
 			children = (
 				4F522AA6272DB7BA0099C5E8 /* Constants */,
 				4F93710C276674DD007667F8 /* Utilities */,
-				4FFF9196274AB0A000DE2164 /* Services */,
 				4FBBE316268B97BB00D518B8 /* AppDelegate */,
-				4FFF2A1426BD26C40064E610 /* Core */,
+				4F7C71D5277CB5BB00ADB4E1 /* Storage */,
 				4F083EE726D8061A00B63DD7 /* Coordinator */,
 				4F7D97B326D03C4000A9D253 /* MVVM */,
 				4FFF2A1326BD26730064E610 /* Resources */,
@@ -365,23 +371,6 @@
 				4FF9065226543BF1001387C9 /* Info.plist */,
 			);
 			path = Resources;
-			sourceTree = "<group>";
-		};
-		4FFF2A1426BD26C40064E610 /* Core */ = {
-			isa = PBXGroup;
-			children = (
-				4F87A919273EA33900D34B02 /* Storage */,
-				4F257CFB2739B104007CB391 /* Memento */,
-			);
-			path = Core;
-			sourceTree = "<group>";
-		};
-		4FFF9196274AB0A000DE2164 /* Services */ = {
-			isa = PBXGroup;
-			children = (
-				4FFF9197274AB0B200DE2164 /* APIService.swift */,
-			);
-			path = Services;
 			sourceTree = "<group>";
 		};
 		98AEE7FE9DF2CAF348CE0878 /* Pods */ = {
@@ -512,7 +501,6 @@
 				4F28BA7E27429B57001308E1 /* ScheduleListViewCell.swift in Sources */,
 				4FDB689026E146390006F8E3 /* UIColorHexExtension.swift in Sources */,
 				4F522AA8272DB7CF0099C5E8 /* Images.swift in Sources */,
-				4FFF9198274AB0B200DE2164 /* APIService.swift in Sources */,
 				4F87A91B273EA34800D34B02 /* ImageStorage.swift in Sources */,
 				4FE55FD126A33535003874B1 /* ExtensionsForLoginScreenViewController.swift in Sources */,
 				4FBBE319268B97E400D518B8 /* UserModel.swift in Sources */,

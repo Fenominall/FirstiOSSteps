@@ -19,9 +19,12 @@ enum DataPersistenceError: Error { // conforming to the Error protocol
 
 // MARK: - Caretaker for the Memento design pattern
 public final class DiskCaretaker {
+    
+    // MARK: - Properties
     public static let decoder = JSONDecoder()
     public static let encoder = JSONEncoder()
     
+	// MARK: - Actions
     // 1: You first declare a generic method that takes any object that conforms to Codable.
     public static func save<T: Codable>(_ object: T, to fileName: String) throws {
         do {

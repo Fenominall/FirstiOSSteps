@@ -52,7 +52,6 @@ class ScheduleListController: UIViewController, Coordinating {
         setupTableView()
         setupNavigation(
         )
-        print(FileManager.getDocumentsDirectory())
         
     }
     

@@ -37,7 +37,8 @@ class ScheduleListController: UIViewController, Coordinating {
     }()
     
     var isEditingTableView = false {
-        didSet { // property observer
+        didSet {
+            // property observer
             // toggle editing mode of tableview
             eventsTableView.isEditing = isEditingTableView
             // toggle bar button item`s title between "Edit" and "Done"
@@ -55,8 +56,23 @@ class ScheduleListController: UIViewController, Coordinating {
         
     }
     
-    // navigation bar appearance
+    // MARK: - Selectors
     
+    @objc private func handleEventCreation() {
+        // create an instance of CreateEventController
+        let createEventController = CreateEventController()
+        // adopting delegate as self
+        createEventController.addEventDelegate = self
+        navigationController?.present(createEventController, animated: true, completion: nil)
+    }
+    
+    @objc private func handleEventEditing() {
+        isEditingTableView.toggle() // changes a boolean value
+    }
+    
+    
+    // MARK: - Helpers
+    // navigation bar appearance
     private func setupNavigation() {
         title = "Scheduler"
         navigationItem.leftBarButtonItem?.tintColor = .white
@@ -86,18 +102,7 @@ class ScheduleListController: UIViewController, Coordinating {
             print("error deleting event: \(error)")
         }
     }
-    
-    @objc private func handleEventCreation() {
-        // create an instance of CreateEventController
-        let createEventController = CreateEventController()
-        // adopting delegate as self
-        createEventController.addEventDelegate = self
-        navigationController?.present(createEventController, animated: true, completion: nil)
-    }
-    
-    @objc private func handleEventEditing() {
-        isEditingTableView.toggle() // changes a boolean value
-    }
+
 }
 
 // MARK: Configure auto-layout of UIElements

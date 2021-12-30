@@ -21,6 +21,7 @@ protocol UpdateUserData {
 
 class LoginViewModel {
     
+    // MARK: - Properties
     private var user = User() {
         didSet {
             username.value = user.username
@@ -37,6 +38,7 @@ class LoginViewModel {
     }
 }
 
+// MARK: - Helpers
 extension LoginViewModel: UpdateUserData {
     
     func updateUsername(username: String) {

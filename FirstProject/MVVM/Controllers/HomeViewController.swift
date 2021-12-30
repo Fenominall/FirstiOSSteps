@@ -28,14 +28,9 @@ class HomeViewController: UIViewController, Coordinating {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupTargetsForButtons()
+        configureUI()
         retrieveUploadedUserImage()
-        navigationController?.navigationBar.barStyle = .black
-//        loadUserName()
-        
-//        homeViewModel.userName.bind { [unowned self] in
-//            self.homeSharedView.usernameLabel.text = $0
-//        }
+
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -115,14 +110,16 @@ extension HomeViewController {
 // MARK: - Helpers
 extension HomeViewController {
     
-    private func setupTargetsForButtons() {
+    private func configureUI() {
+
+        
         homeSharedView.editProfileButton.addTarget(self, action: #selector(didTapUpdateButton), for: .touchUpInside)
         homeSharedView.sourceCodeButton.addTarget(self, action: #selector(didTapSourceCodeButton), for: .touchUpInside)
         homeSharedView.uploadImageButton.addTarget(self, action: #selector(didTapUploadImageButton), for: .touchUpInside)
         homeSharedView.scheduleEventListButton.addTarget(self, action: #selector(didTapScheduleEventButton), for: .touchUpInside)
 
         
-        // Navigation settings
+        // NavigationBar settings
         navigationItem.title = "Home"
         navigationItem.backButtonTitle = ""
         navigationItem.leftBarButtonItem?.tintColor = .white
@@ -130,6 +127,7 @@ extension HomeViewController {
         navigationItem.rightBarButtonItem?.tintColor = .white
         navigationItem.setHidesBackButton(true, animated: false)
         navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.barStyle = .black
     }
     
    

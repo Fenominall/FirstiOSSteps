@@ -9,13 +9,16 @@ import UIKit
 
 
 
-/// Manager class for phones vibrations
+// MARK: - Manager class for phones vibrations
 final class HapticsManager {
     
+    // MARK: - Properties
     static let shared = HapticsManager()
     
+    // MARK: - Lifecycle
     private init() {}
     
+    // MARK: - Helpers
     private func selectionVibrate() {
         DispatchQueue.main.async {
             
@@ -32,6 +35,5 @@ final class HapticsManager {
             notificationGenerator.prepare()
             notificationGenerator.notificationOccurred(type)
         }
-        
     }
 }

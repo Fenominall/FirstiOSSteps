@@ -9,6 +9,8 @@ import UIKit
 import WebKit
 
 class SourceCodeWebUIViewController: UIViewController, Coordinating {
+    
+    // MARK: - Properties
     var coordinator: Coordinator?
 
     private lazy var webView: WKWebView = {
@@ -17,11 +19,13 @@ class SourceCodeWebUIViewController: UIViewController, Coordinating {
         let configuration = WKWebViewConfiguration()
         configuration.defaultWebpagePreferences = preferences
         let webView = WKWebView(frame: .zero, configuration: configuration)
+        webView.backgroundColor = .darkWeb
         return webView
     }()
     
     private let url: URL
     
+    // MARK: - Lifecycle
     init(url: URL, title: String) {
         self.url = url
         super.init(nibName: nil, bundle: nil)
@@ -41,8 +45,8 @@ class SourceCodeWebUIViewController: UIViewController, Coordinating {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureWebViewButtons()
-        navigationController?.navigationBar.barStyle = .default
+        configureActions()
+        navigationController?.navigationBar.barStyle = .black
     }
     
     
@@ -51,13 +55,9 @@ class SourceCodeWebUIViewController: UIViewController, Coordinating {
         webView.frame = view.bounds
     }
     
-    private func webViewSetUp() {
-        view.backgroundColor = .systemBackground
-        view.addSubview(webView)
-        webView.load(URLRequest(url: url))
-    }
+    // MARK: - Selectors
     
-    private func configureWebViewButtons() {
+    private func configureActions() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(didTapDoneButton))
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(didTapRefreshButton))
     }
@@ -71,5 +71,12 @@ class SourceCodeWebUIViewController: UIViewController, Coordinating {
     }
     
     
+    // MARK: - Helpers
+    private func webViewSetUp() {
+        view.backgroundColor = .darkWeb
+        view.addSubview(webView)
+        webView.load(URLRequest(url: url))
+    }
+
 
 }

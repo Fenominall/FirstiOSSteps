@@ -29,12 +29,8 @@ class CreateEventController: UIViewController {
         super.viewDidLoad()
         setTargets()
     }
-    
-    private func setTargets() {
-        eventView.createEventTextField.delegate = self
-        eventView.createEventButton.addTarget(self, action: #selector(didTapCreateButton(_:)), for: .touchUpInside)
-    }
-    
+
+    // MARK: - Selectors
     @objc private func didTapCreateButton(_ sender: Any) {
         let selectedDate = eventView.eventDatePicker.date
         let eventName = eventView.createEventTextField.text ?? "No name..."
@@ -42,12 +38,22 @@ class CreateEventController: UIViewController {
         let event = Event(date: selectedDate, name: eventName)
         addEventDelegate?.eventCreated(didCreated: event)
     }
+    
+    // MARK: - Helpers
+    private func setTargets() {
+        eventView.createEventTextField.delegate = self
+        eventView.createEventButton.addTarget(self, action: #selector(didTapCreateButton(_:)), for: .touchUpInside)
+    }
 }
 
 extension CreateEventController: UITextFieldDelegate {
+    
+    //handle Dismiss/Hide The KeyBoard
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        // dismiss the keyabord
-        textField.resignFirstResponder()
-        return true
+        return textField.resignFirstResponder()
     }
 }

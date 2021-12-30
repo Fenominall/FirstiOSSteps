@@ -18,16 +18,16 @@ class LoginViewController: UIViewController, Coordinating {
     
     
     
-    //MARK: - ViewController lifecycle
+    //MARK: - lifecycle
     override func loadView() {
         view = loginView
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // MARK: Notifications for showing and hiding keyboard
+        // Notifications for showing and hiding keyboard
         observeKeyboardNotifications()
-        initializeData()
+        configureData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -35,6 +35,8 @@ class LoginViewController: UIViewController, Coordinating {
         loginView.usernameTxtField.addBottomBorder()
         loginView.passwordTxtField.addBottomBorder()
     }
+    
+    // MARK: - Selectors
     /// Function for loginButton: Check validation, pushes the user to the SecondViewController if requirements suitable
     /// - Parameter sender: Any
     @objc private func loginButtonPressed(_ sender: UIButton) {
@@ -57,12 +59,9 @@ class LoginViewController: UIViewController, Coordinating {
             AppAlerts.showIncompleteErrorUIAlert(on: self)
         }
     }
-}
-
-// MARK: - Configuring
-extension LoginViewController {
     
-    func initializeData() {
+    // MARK: - Helpers
+    func configureData() {
         navigationController?.navigationBar.barStyle = .black
         navigationItem.setHidesBackButton(true, animated: false)
         
@@ -73,7 +72,7 @@ extension LoginViewController {
 }
 
 
-extension LoginViewController {
+extension LoginViewController: UITextFieldDelegate {
     //    # Function to return false if the input in UITextFiled is " " or "    ".
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let newString = (textField.text! as NSString).replacingCharacters(in: range, with: string)
@@ -89,5 +88,17 @@ extension LoginViewController {
         }
         
         return true
+    }
+    
+    /// Dismiss keyboard when touching in any part of the view.
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    /// Dismiss/Hide the KeyBoard.
+    /// - Parameter textField: UITextField
+    /// - Returns: resignFirstResponder()
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        return textField.resignFirstResponder()
     }
 }

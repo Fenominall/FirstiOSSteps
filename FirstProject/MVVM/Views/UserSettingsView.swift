@@ -43,7 +43,6 @@ class UserSettingsView: UIView {
         updateUsernameTextField.translatesAutoresizingMaskIntoConstraints = false
         updateUsernameTextField.textColor = .white
         updateUsernameTextField.clearButtonMode = .always
-        updateUsernameTextField.text = "Julia"
         return updateUsernameTextField
     }()
     
@@ -52,7 +51,6 @@ class UserSettingsView: UIView {
         updatePasswordTextField.translatesAutoresizingMaskIntoConstraints = false
         updatePasswordTextField.textColor = .white
         updatePasswordTextField.isSecureTextEntry = true
-        updatePasswordTextField.text = "12345"
         updatePasswordTextField.enablePasswordToggle()
         return updatePasswordTextField
     }()

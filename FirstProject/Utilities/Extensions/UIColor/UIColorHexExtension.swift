@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+// MARK: - Extension to use UIColor as hex #
 extension UIColor {
     convenience init?(hex: String) {
         var hexSanitized = hex.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -46,5 +47,6 @@ extension UIColor {
 
 extension UIColor {
     static let lightGrayAccent = UIColor(hex: "#595959")
+    static let darkWeb = UIColor(hex: "#141414")
 }
 

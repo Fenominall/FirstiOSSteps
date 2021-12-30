@@ -20,17 +20,13 @@ class UserSettingsViewController: UIViewController, Coordinating {
         view = userSettingsView
     }
     
-    // MARK: - View Lifecycle
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //  Keyboard toggling
         observerKeyboardNotifications()
         textFieldsDelegates()
-        
-        title = "Settings"
-        navigationItem.backButtonTitle = "Back"
-        navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     
@@ -40,7 +36,7 @@ class UserSettingsViewController: UIViewController, Coordinating {
         userSettingsView.updatePasswordTextField.addBottomBorder()
     }
     
-    
+    // MARK: - Selectors
     //    Check editing in UITextFields
     @objc private func textFieldEditingChanged(_ sender: Any) {
         userSettingsView.saveUserDataButton.isEnabled = true
@@ -51,18 +47,9 @@ class UserSettingsViewController: UIViewController, Coordinating {
         switch userSettingsViewModel.validateUser() {
         case .Valid:
             // Navigation to HomeScreenViewController
-            let successMessage = "Your data was successfully updated"
-            let successUpdatedDataUIAlert = UIAlertController(title: "Success",
-                                                              message: successMessage,
-                                                              preferredStyle: .alert)
-            successUpdatedDataUIAlert.addAction(UIAlertAction(title: "OK",
-                                                              style: .default,
-                                                              handler: { [weak self] (_) -> () in
+            AppAlerts.updatedDataAlertTest(on: self) { [weak self] _ in
                 self?.coordinator?.eventOccurred(with: .updateUserDataButtonTapped)
-            }))
-            self.present(successUpdatedDataUIAlert, animated: true)
-            // Success Alert
-            AppAlerts.showCompleteSuccessUIAlert(on: self)
+            }
         case .Empty:
             // Button Shake
             sender.shake()
@@ -77,22 +64,24 @@ class UserSettingsViewController: UIViewController, Coordinating {
         
     }
     
-}
-
-
-extension UserSettingsViewController {
+    // MARK: - Helpers
     func textFieldsDelegates() {
-        userSettingsView.updateUsernameTextField.addTarget(self, action: #selector(textFieldEditingChanged(_:)), for: .editingChanged)
-        userSettingsView.updatePasswordTextField.addTarget(self, action: #selector(textFieldEditingChanged(_:)), for: .editingChanged)
-        userSettingsView.saveUserDataButton.addTarget(self, action: #selector(updateUserDataButton), for: .touchUpInside)
+        title = "Settings"
+        navigationItem.backButtonTitle = "Back"
+        navigationController?.navigationBar.prefersLargeTitles = true
         
         userSettingsView.updateUsernameTextField.delegate = self
         userSettingsView.updatePasswordTextField.delegate = self
+        
+        userSettingsView.updateUsernameTextField.addTarget(self, action: #selector(textFieldEditingChanged(_:)), for: .editingChanged)
+        userSettingsView.updatePasswordTextField.addTarget(self, action: #selector(textFieldEditingChanged(_:)), for: .editingChanged)
+        userSettingsView.saveUserDataButton.addTarget(self, action: #selector(updateUserDataButton), for: .touchUpInside)
+   
     }
+    
 }
 
-
-extension UserSettingsViewController {
+extension UserSettingsViewController: UITextFieldDelegate {
     //    # Function to return false if the input in UITextFiled is " " or "    ".
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let newString = (textField.text! as NSString).replacingCharacters(in: range, with: string)
@@ -108,6 +97,15 @@ extension UserSettingsViewController {
         }
         
         return true
+    }
+    
+    //handle Dismiss/Hide The KeyBoard
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        return textField.resignFirstResponder()
     }
     
 }

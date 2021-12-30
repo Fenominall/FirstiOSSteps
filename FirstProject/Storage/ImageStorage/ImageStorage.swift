@@ -86,7 +86,7 @@ public class ImageStorage {
         }
     }
     
-    // Creating file-path
+    // MARK: - Creating file-path
     public func filePath(forKey key: ImageStorageKeys) -> URL? {
         let fileManager = FileManager.default
         guard let documentURL = fileManager.urls(for: .documentDirectory,

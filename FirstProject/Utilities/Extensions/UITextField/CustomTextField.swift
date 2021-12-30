@@ -64,7 +64,7 @@ extension UITextField {
 // MARK: Create toggling UIButton
 private let toggleButton = UIButton(type: .custom)
 
-extension UITextField {
+extension CustomTextField {
     
     func enablePasswordToggle() {
         

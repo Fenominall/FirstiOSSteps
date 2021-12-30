@@ -34,7 +34,6 @@
 		4F93710F2766752B007667F8 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F93710E2766752B007667F8 /* Utilities.swift */; };
 		4F9371122766759B007667F8 /* NSConstraintsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9371112766759B007667F8 /* NSConstraintsExtension.swift */; };
 		4FA5BB1826CEDB5F001C486D /* UserSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA5BB1726CEDB5F001C486D /* UserSettingsView.swift */; };
-		4FAF3A7A26C6ED04009C803E /* GitHubWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FAF3A7926C6ED04009C803E /* GitHubWebViewController.swift */; };
 		4FBBE319268B97E400D518B8 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBBE318268B97E400D518B8 /* UserModel.swift */; };
 		4FCDEBA9272FEC51002C3B06 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FCDEBA8272FEC51002C3B06 /* HomeViewModel.swift */; };
 		4FD2745C2683317300C8FA32 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD2745B2683317300C8FA32 /* HomeViewController.swift */; };
@@ -81,7 +80,6 @@
 		4F93710E2766752B007667F8 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		4F9371112766759B007667F8 /* NSConstraintsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSConstraintsExtension.swift; sourceTree = "<group>"; };
 		4FA5BB1726CEDB5F001C486D /* UserSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsView.swift; sourceTree = "<group>"; };
-		4FAF3A7926C6ED04009C803E /* GitHubWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubWebViewController.swift; sourceTree = "<group>"; };
 		4FBBE318268B97E400D518B8 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		4FCDEBA8272FEC51002C3B06 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		4FD2745B2683317300C8FA32 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -233,15 +231,6 @@
 			path = NSContraintsExtension;
 			sourceTree = "<group>";
 		};
-		4FAF3A7B26C6ED08009C803E /* WebViewController */ = {
-			isa = PBXGroup;
-			children = (
-				4FEF699C26BAC0190022CAFD /* SourceCodeWebUIViewController.swift */,
-				4FAF3A7926C6ED04009C803E /* GitHubWebViewController.swift */,
-			);
-			path = WebViewController;
-			sourceTree = "<group>";
-		};
 		4FBBE315268B97B000D518B8 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -250,7 +239,7 @@
 				4FD2745D268332F700C8FA32 /* UserSettingsViewController.swift */,
 				4F28BA752742889C001308E1 /* ScheduleListController.swift */,
 				4F28BA77274295EC001308E1 /* CreateEventController.swift */,
-				4FAF3A7B26C6ED08009C803E /* WebViewController */,
+				4FEF699C26BAC0190022CAFD /* SourceCodeWebUIViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -517,7 +506,6 @@
 				4F28BA762742889C001308E1 /* ScheduleListController.swift in Sources */,
 				4FF9064526543BEF001387C9 /* AppDelegate.swift in Sources */,
 				4F28BA7A27429692001308E1 /* Event.swift in Sources */,
-				4FAF3A7A26C6ED04009C803E /* GitHubWebViewController.swift in Sources */,
 				4F92895626A6B06600624B6E /* Alerts.swift in Sources */,
 				4F2DEDF0274515B900C5F156 /* FileManager+Extensions.swift in Sources */,
 				4F4C9F612745890600D345DC /* EventPersistenceHelper.swift in Sources */,

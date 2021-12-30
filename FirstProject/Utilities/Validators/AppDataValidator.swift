@@ -97,7 +97,4 @@ struct AppDataValidator {
         
         return (result != nil)
     }
-    
 }
-
-

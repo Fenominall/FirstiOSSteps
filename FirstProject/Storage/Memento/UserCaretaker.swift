@@ -17,7 +17,6 @@ public final class UserCaretaker {
     // MARK: - Lifecycle
     public init() {}
     
-    
     // MARK: - Helpers
     public static func loadUserData() throws -> User{
         if newUser == newUser {

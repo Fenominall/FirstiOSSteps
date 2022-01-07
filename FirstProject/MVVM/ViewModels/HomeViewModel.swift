@@ -7,7 +7,7 @@
 
 import Foundation
 
-class HomeViewModel {
+struct HomeViewModel {
     
     private let user: User
     

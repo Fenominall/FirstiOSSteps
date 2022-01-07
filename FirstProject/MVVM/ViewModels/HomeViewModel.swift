@@ -9,16 +9,15 @@ import Foundation
 
 class HomeViewModel {
     
-    private var user: User {
-        didSet {
-            userName.value = user.username
-        }
-    }
+    private let user: User
     
-    var userName: Dynamic<String> = Dynamic("")
-
-    init(user: User = User()) {
+    init(user: User) {
         self.user = user
     }
-    
+}
+
+extension HomeViewModel {
+    var username: String {
+        return user.username
+    }
 }

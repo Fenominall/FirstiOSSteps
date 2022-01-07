@@ -17,7 +17,16 @@ class HomeViewController: UIViewController, Coordinating {
     
     private var homeSharedView = HomeView()
     private var imageStorage = ImageStorage()
-    private var homeViewModel = HomeViewModel()
+//    private let homeViewModel: HomeViewModel
+//    
+//    init(homeViewModel: HomeViewModel) {
+//        self.homeViewModel = homeViewModel
+//        super.init(nibName: nil, bundle: nil)
+//    }
+    
+//    required init?(coder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
     
     
     // MARK: - Lifecycle
@@ -37,7 +46,8 @@ class HomeViewController: UIViewController, Coordinating {
         return .lightContent
     }
     
-//    private func loadUserName() {
+    private func loadUserName() {
+//        homeSharedView.usernameLabel.text = homeViewModel.username
 //        do {
 //            let userUsername = try UserCaretaker.loadUserData()
 //            print(userUsername.username + "Test")
@@ -45,8 +55,8 @@ class HomeViewController: UIViewController, Coordinating {
 //        } catch {
 //            print("error loading events: \(error)")
 //        }
-//
-//    }
+
+    }
     
     
 }

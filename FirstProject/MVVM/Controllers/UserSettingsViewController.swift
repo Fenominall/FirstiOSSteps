@@ -13,7 +13,8 @@ class UserSettingsViewController: UIViewController, Coordinating {
     // MARK: - Instance Properties
     var coordinator: Coordinator?
     var userSettingsView = UserSettingsView()
-    var userSettingsViewModel = UserSettingsViewModel()
+//    var userSettingsViewModel = UserSettingsViewModel()
+    private var loginViewModel = LoginViewModel()
     
     override func loadView() {
         super.loadView()
@@ -27,6 +28,7 @@ class UserSettingsViewController: UIViewController, Coordinating {
         //  Keyboard toggling
         observerKeyboardNotifications()
         textFieldsDelegates()
+        userSettingsView.updateUsernameTextField.text = loginViewModel.newUsername
     }
     
     
@@ -44,7 +46,7 @@ class UserSettingsViewController: UIViewController, Coordinating {
     
     //    Button to update UserDefaults and return back to the SecondViewController
     @objc private func updateUserDataButton(_ sender: UIButton) {
-        switch userSettingsViewModel.validateUser() {
+        switch loginViewModel.validateUser() {
         case .Valid:
             // Navigation to HomeScreenViewController
             AppAlerts.updatedDataAlertTest(on: self) { [weak self] _ in
@@ -87,9 +89,9 @@ extension UserSettingsViewController: UITextFieldDelegate {
         let newString = (textField.text! as NSString).replacingCharacters(in: range, with: string)
         
         if textField == userSettingsView.updateUsernameTextField {
-            userSettingsViewModel.updateUsername(username: newString.trimmingCharacters(in: .whitespaces))
+            loginViewModel.updateUsername(username: newString.trimmingCharacters(in: .whitespaces))
         } else if textField == userSettingsView.updatePasswordTextField {
-            userSettingsViewModel.updatePassword(password: newString.trimmingCharacters(in: .whitespaces))
+            loginViewModel.updatePassword(password: newString.trimmingCharacters(in: .whitespaces))
         }
         
         if (string == " " || string == "    ") {

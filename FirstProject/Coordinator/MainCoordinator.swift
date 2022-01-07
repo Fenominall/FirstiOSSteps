@@ -15,6 +15,9 @@ class MainCoordinator: Coordinator {
     var navigationController: UINavigationController?
     var children: [Coordinator]? = nil
     
+    init(navigationController: UINavigationController) {
+        self.navigationController = navigationController
+    }
     
     func eventOccurred(with type: CoordinatorEvents) {
         
@@ -22,6 +25,7 @@ class MainCoordinator: Coordinator {
             
         case .loginButtonTapped:
             var homeVC: UIViewController & Coordinating = HomeViewController()
+            
             homeVC.coordinator = self
             navigationController?.pushViewController(homeVC, animated: true)
             
@@ -67,7 +71,9 @@ class MainCoordinator: Coordinator {
     func start() {
         let userLoginStatus = UserDefaults.standard.bool(forKey: UserKey.isLoggedIn)
         
+        
         if (userLoginStatus == false) {
+            
             var loginViewController: UIViewController & Coordinating = LoginViewController()
             loginViewController.coordinator = self
             navigationController?.setViewControllers([loginViewController], animated: false)

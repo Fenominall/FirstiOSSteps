@@ -32,6 +32,11 @@ class LoginViewModel {
     var username: Dynamic<String> = Dynamic("")
     var password: Dynamic<String> = Dynamic("")
     
+    
+    var newUsername: String {
+        return user.username
+    }
+    
     // MARK: - Object Lifecycle
     init(user: User = User()) {
         self.user = user

@@ -16,9 +16,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // MARK: - Settings the navigation
         let navVC = UINavigationController()
-        let coordinator = MainCoordinator()
+        let coordinator = MainCoordinator(navigationController: navVC)
 
-        coordinator.navigationController = navVC
+//        coordinator.navigationController = navVC
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         window?.rootViewController = navVC

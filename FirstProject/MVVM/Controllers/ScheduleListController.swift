@@ -16,6 +16,20 @@ class ScheduleListController: UIViewController, Coordinating {
     // data - an array of events
     var events: [Event] = []
     
+    private var filteredEvents: [Event] = [] {
+        didSet { eventsTableView.reloadData() }
+    }
+    
+    // if search mode is activated,
+    // users array will be switched to a new filtered users array
+    private var  inSearchMode: Bool {
+        return searchController.isActive &&
+        !searchController.searchBar.text!.isEmpty
+    }
+    
+    private let searchController = UISearchController(searchResultsController: nil)
+    
+    
     private lazy var eventsTableView: UITableView = {
         let tableView = UITableView(frame: .zero)
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -24,7 +38,8 @@ class ScheduleListController: UIViewController, Coordinating {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 44
         tableView.tableFooterView = UIView()
-        tableView.backgroundColor = .clear
+        tableView.separatorStyle = .none
+        tableView.backgroundColor = .darkGray
         tableView.register(ScheduleListViewCell.self, forCellReuseIdentifier: ScheduleListViewCell.cellID)
         return tableView
     }()
@@ -47,13 +62,18 @@ class ScheduleListController: UIViewController, Coordinating {
     }
     
     // MARK: - App LifeCycle
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = false
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         loadEvents()
         setupTableView()
-        setupNavigation(
-        )
-        
+        setupNavigation()
+        configureSearchController()
     }
     
     // MARK: - Selectors
@@ -67,7 +87,8 @@ class ScheduleListController: UIViewController, Coordinating {
     }
     
     @objc private func handleEventEditing() {
-        isEditingTableView.toggle() // changes a boolean value
+        // changes a boolean value
+        isEditingTableView.toggle()
     }
     
     
@@ -84,6 +105,14 @@ class ScheduleListController: UIViewController, Coordinating {
         let addEventBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(handleEventCreation))
         addEventBarButtonItem.tintColor = .white
         navigationItem.rightBarButtonItems = [addEventBarButtonItem, editEventBarButtonItem]
+    }
+    
+    private func configureSearchController() {
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search for an event"
+        navigationItem.searchController = searchController
+        definesPresentationContext = false
     }
     
     
@@ -109,7 +138,6 @@ class ScheduleListController: UIViewController, Coordinating {
 extension ScheduleListController {
     
     private func setupTableView() {
-        view.backgroundColor = .black
         view.addSubview(eventsTableView)
         
         eventsTableView.snp.makeConstraints {
@@ -129,7 +157,7 @@ extension ScheduleListController: UITableViewDelegate {
 extension ScheduleListController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return events.count
+        return inSearchMode ? filteredEvents.count : events.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -141,7 +169,7 @@ extension ScheduleListController: UITableViewDataSource {
         // UISettings
         cell.configure()
         // get an object at the current indexPath from a flatArray
-        let event = events[indexPath.row]
+        let event = inSearchMode ? filteredEvents[indexPath.row] : events[indexPath.row]
         cell.eventTitleLabel.text = event.name
         cell.eventDetailTextLabel.text = dateFormatter.string(from: event.date)
         return cell
@@ -206,5 +234,17 @@ extension ScheduleListController: AddEventDelegate {
             self.eventsTableView.reloadData()
         }
     }
+    
+}
+
+extension ScheduleListController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        // uppercasing inputed text into searchBar placeholder
+        guard let searchText = searchController.searchBar.text?.uppercased() else { return }
+        // filtering events by entered searchText to show all the matching results
+        filteredEvents = events.filter( {$0.name.contains(searchText)} )
+        eventsTableView.reloadData()
+    }
+    
     
 }

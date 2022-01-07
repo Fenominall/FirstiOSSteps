@@ -9,15 +9,15 @@ import Foundation
 
 struct HomeViewModel {
     
-    private let user: User
-    
-    init(user: User) {
-        self.user = user
-    }
+//    private let user: User
+//    
+//    init(user: User) {
+//        self.user = user
+//    }
 }
 
-extension HomeViewModel {
-    var username: String {
-        return user.username
-    }
-}
+//extension HomeViewModel {
+//    var username: String {
+//        return user.username
+//    }
+//}

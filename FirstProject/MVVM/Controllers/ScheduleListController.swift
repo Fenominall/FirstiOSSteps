@@ -120,7 +120,7 @@ class ScheduleListController: UIViewController, Coordinating {
         do {
             events = try EventPersistenceHelper.loadEvents()
         } catch {
-            print("error loading events: \(error)")
+            print("DEBUG: Error loading events: \(error)")
         }
     }
     
@@ -128,7 +128,7 @@ class ScheduleListController: UIViewController, Coordinating {
         do {
             try EventPersistenceHelper.delete(event: indexPath.row)
         } catch {
-            print("error deleting event: \(error)")
+            print("DEBUG: Error deleting event: \(error)")
         }
     }
 

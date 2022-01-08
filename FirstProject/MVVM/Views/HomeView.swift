@@ -69,7 +69,7 @@ class HomeView: UIView, Coordinating {
     private(set) lazy var usernameLabel: UILabel = {
         let greetMessage = UILabel()
         greetMessage.translatesAutoresizingMaskIntoConstraints = false
-        greetMessage.text = "Hey!"
+//        greetMessage.text = "Hey!"
         greetMessage.font = UIFont.systemFont(ofSize: 40, weight: .bold)
         greetMessage.textAlignment = .center
         greetMessage.textColor = .white

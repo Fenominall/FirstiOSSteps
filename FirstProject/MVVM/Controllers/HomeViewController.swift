@@ -17,17 +17,7 @@ class HomeViewController: UIViewController, Coordinating {
     
     private var homeSharedView = HomeView()
     private var imageStorage = ImageStorage()
-//    private let homeViewModel: HomeViewModel
-//    
-//    init(homeViewModel: HomeViewModel) {
-//        self.homeViewModel = homeViewModel
-//        super.init(nibName: nil, bundle: nil)
-//    }
-    
-//    required init?(coder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
-    
+    private var homeViewModel = HomeViewModel()
     
     // MARK: - Lifecycle
     override func loadView() {
@@ -39,26 +29,17 @@ class HomeViewController: UIViewController, Coordinating {
         super.viewDidLoad()
         configureUI()
         retrieveUploadedUserImage()
-
+        loadUserName()
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
     
+    /// Retrieving User data to load "username" and assign it to usernameLabel
     private func loadUserName() {
-//        homeSharedView.usernameLabel.text = homeViewModel.username
-//        do {
-//            let userUsername = try UserCaretaker.loadUserData()
-//            print(userUsername.username + "Test")
-//            homeSharedView.usernameLabel.text = userUsername.username
-//        } catch {
-//            print("error loading events: \(error)")
-//        }
-
+        homeSharedView.usernameLabel.text = homeViewModel.username
     }
-    
-    
 }
 
 // MARK: - Selectors

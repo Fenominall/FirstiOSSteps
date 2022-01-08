@@ -9,15 +9,17 @@ import Foundation
 
 struct HomeViewModel {
     
-//    private let user: User
-//    
-//    init(user: User) {
-//        self.user = user
-//    }
+    /// Variable which stores User username
+    var username: String?
+
+    // Initializer that helps to retrieve UserData with the help of UserCaretaker class
+    init() {
+        do {
+            let user = try UserCaretaker.loadUserData()
+            self.username = user.username
+        } catch (let error) {
+            print("DEBUG: Error loading user data \(error)")
+        }
+    }
 }
 
-//extension HomeViewModel {
-//    var username: String {
-//        return user.username
-//    }
-//}

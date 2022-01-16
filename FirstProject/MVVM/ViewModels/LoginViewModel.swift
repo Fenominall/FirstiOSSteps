@@ -22,24 +22,23 @@ protocol UpdateUserData {
 class LoginViewModel {
     
     // MARK: - Properties
-    private var user = User() {
-        didSet {
-            username.value = user.username
-            password.value = user.password
-        }
-    }
+    private var user = User()
     
-    var username: Dynamic<String> = Dynamic("")
-    var password: Dynamic<String> = Dynamic("")
+    var username: String?
+    var password: String?
     
-    
-    var newUsername: String {
-        return user.username
-    }
     
     // MARK: - Object Lifecycle
     init(user: User = User()) {
         self.user = user
+        // loading created user
+        do {
+            let user = try UserCaretaker.loadUserData()
+            self.username = user.username
+            self.password = user.password
+        } catch {
+            print("Got error when loading a user: \(error)")
+        }
     }
 }
 
@@ -59,7 +58,8 @@ extension LoginViewModel: UpdateUserData {
             // Phone Vibration
             HapticsManager.shared.vibrateForType(for: .warning)
             return .Empty
-        } else if !AppDataValidator.validateUserName(user.username) || !AppDataValidator.validatePassword(user.password) {
+        } else if !AppDataValidator.validateUserName(user.username) ||
+                    !AppDataValidator.validatePassword(user.password) {
             // Phone Vibration
             HapticsManager.shared.vibrateForType(for: .warning)
             return .Invalid
@@ -72,10 +72,11 @@ extension LoginViewModel: UpdateUserData {
     
     
     func saveUser() {
+        // saving user state as logged it if login successful
         UserDefaults.standard.setValue(true, forKey: UserKey.isLoggedIn)
+        // Saving user data to disk with File-manager
         do {
             try UserCaretaker.createUser(user: user)
-            print("Saved: \(user.username)")
         } catch {
             print("Got error when saving a newUser: \(error)")
         }

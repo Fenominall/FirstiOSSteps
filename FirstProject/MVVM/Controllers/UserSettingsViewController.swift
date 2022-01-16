@@ -8,13 +8,18 @@
 import Foundation
 import UIKit
 
+protocol UserSettingsViewControllerDelegate: AnyObject {
+    func updateUsername(username: String)
+}
+
 class UserSettingsViewController: UIViewController, Coordinating {
     
     // MARK: - Instance Properties
     var coordinator: Coordinator?
     var userSettingsView = UserSettingsView()
-//    var userSettingsViewModel = UserSettingsViewModel()
     private var loginViewModel = LoginViewModel()
+    
+    weak var delegate: UserSettingsViewControllerDelegate?
     
     override func loadView() {
         super.loadView()
@@ -28,7 +33,10 @@ class UserSettingsViewController: UIViewController, Coordinating {
         //  Keyboard toggling
         observerKeyboardNotifications()
         textFieldsDelegates()
-        userSettingsView.updateUsernameTextField.text = loginViewModel.newUsername
+  
+        userSettingsView.updateUsernameTextField.text = loginViewModel.username
+        userSettingsView.updatePasswordTextField.text = loginViewModel.password
+        
     }
     
     
@@ -50,6 +58,10 @@ class UserSettingsViewController: UIViewController, Coordinating {
         case .Valid:
             // Navigation to HomeScreenViewController
             AppAlerts.updatedDataAlertTest(on: self) { [weak self] _ in
+                
+                guard let updatedUsername = self?.userSettingsView.updateUsernameTextField.text else { return }
+                // delegating username to HomeViewController
+                self?.delegate?.updateUsername(username: updatedUsername)
                 self?.coordinator?.eventOccurred(with: .updateUserDataButtonTapped)
             }
         case .Empty:

@@ -42,7 +42,6 @@
 		4FDB688E26E1455A0006F8E3 /* CustomUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDB688D26E1455A0006F8E3 /* CustomUserDefaults.swift */; };
 		4FDB689026E146390006F8E3 /* UIColorHexExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDB688F26E146390006F8E3 /* UIColorHexExtension.swift */; };
 		4FE55FD126A33535003874B1 /* ExtensionsForLoginScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE55FD026A33535003874B1 /* ExtensionsForLoginScreenViewController.swift */; };
-		4FE69EC926A2B80E00F23965 /* UserSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE69EC826A2B80E00F23965 /* UserSettingsViewModel.swift */; };
 		4FEF699D26BAC0190022CAFD /* SourceCodeWebUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEF699C26BAC0190022CAFD /* SourceCodeWebUIViewController.swift */; };
 		4FF9064526543BEF001387C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF9064426543BEF001387C9 /* AppDelegate.swift */; };
 		4FF9064726543BEF001387C9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF9064626543BEF001387C9 /* SceneDelegate.swift */; };
@@ -88,7 +87,6 @@
 		4FDB688D26E1455A0006F8E3 /* CustomUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUserDefaults.swift; sourceTree = "<group>"; };
 		4FDB688F26E146390006F8E3 /* UIColorHexExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorHexExtension.swift; sourceTree = "<group>"; };
 		4FE55FD026A33535003874B1 /* ExtensionsForLoginScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionsForLoginScreenViewController.swift; sourceTree = "<group>"; };
-		4FE69EC826A2B80E00F23965 /* UserSettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsViewModel.swift; sourceTree = "<group>"; };
 		4FEF699C26BAC0190022CAFD /* SourceCodeWebUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceCodeWebUIViewController.swift; sourceTree = "<group>"; };
 		4FF9064126543BEF001387C9 /* FirstProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FirstProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FF9064426543BEF001387C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -143,7 +141,6 @@
 			isa = PBXGroup;
 			children = (
 				4F4FDFBB268D862000736440 /* LoginViewModel.swift */,
-				4FE69EC826A2B80E00F23965 /* UserSettingsViewModel.swift */,
 				4FCDEBA8272FEC51002C3B06 /* HomeViewModel.swift */,
 			);
 			path = ViewModels;
@@ -484,7 +481,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4FE69EC926A2B80E00F23965 /* UserSettingsViewModel.swift in Sources */,
 				4FD2745C2683317300C8FA32 /* HomeViewController.swift in Sources */,
 				4FFCD45B26BEC87000770D33 /* LoginView.swift in Sources */,
 				4F28BA7E27429B57001308E1 /* ScheduleListViewCell.swift in Sources */,

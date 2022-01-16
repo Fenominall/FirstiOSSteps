@@ -71,6 +71,7 @@ extension CustomTextField {
         toggleButton.sizeToFit()
         toggleButton.configuration = .placeButtonInTextField()
         toggleButton.addTarget(self, action: #selector(togglePasswordView), for: .touchUpInside)
+        toggleButton.isHidden = false
         rightView = toggleButton
         rightViewMode = .always
         toggleButton.alpha = 0.7

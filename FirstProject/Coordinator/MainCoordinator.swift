@@ -25,7 +25,6 @@ class MainCoordinator: Coordinator {
             
         case .loginButtonTapped:
             var homeVC: UIViewController & Coordinating = HomeViewController()
-            
             homeVC.coordinator = self
             navigationController?.pushViewController(homeVC, animated: true)
             
@@ -50,11 +49,8 @@ class MainCoordinator: Coordinator {
             
         case .finishedViewingSourceCode:
             navigationController?.popViewController(animated: true)
-            
-            
         case .updateUserDataButtonTapped:
             navigationController?.popViewController(animated: true)
-            
         case .goToScheduleListController:
             var scheduleListController: UIViewController & Coordinating = ScheduleListController()
             scheduleListController.coordinator = self

@@ -37,7 +37,7 @@ class HomeViewController: UIViewController, Coordinating {
     }
     
     /// Retrieving User data to load "username" and assign it to usernameLabel
-    private func loadUserName() {
+    func loadUserName() {
         homeSharedView.usernameLabel.text = homeViewModel.username
     }
 }
@@ -47,14 +47,17 @@ extension HomeViewController {
     
     // Navigation to UserSettingsViewController
     @objc private func didTapUpdateButton() {
-        coordinator?.eventOccurred(with: .userSettingsTapped)
+//        coordinator?.eventOccurred(with: .userSettingsTapped)
+        let userSettingsVC = UserSettingsViewController()
+        userSettingsVC.delegate = self
+        navigationController?.pushViewController(userSettingsVC, animated: true)
     }
     
     // navigation controller for WebUIViewController
     @objc private func didTapSourceCodeButton() {
         coordinator?.eventOccurred(with: .sourceCodeButtonTapped)
     }
-
+    
     //    Navigation Button to FirstViewController
     @objc private func didTapLogOutButton() {
         coordinator?.eventOccurred(with: .logOutButtonTapped)
@@ -102,13 +105,10 @@ extension HomeViewController {
 extension HomeViewController {
     
     private func configureUI() {
-
-        
         homeSharedView.editProfileButton.addTarget(self, action: #selector(didTapUpdateButton), for: .touchUpInside)
         homeSharedView.sourceCodeButton.addTarget(self, action: #selector(didTapSourceCodeButton), for: .touchUpInside)
         homeSharedView.uploadImageButton.addTarget(self, action: #selector(didTapUploadImageButton), for: .touchUpInside)
         homeSharedView.scheduleEventListButton.addTarget(self, action: #selector(didTapScheduleEventButton), for: .touchUpInside)
-
         
         // NavigationBar settings
         navigationItem.title = "Home"
@@ -120,8 +120,6 @@ extension HomeViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.barStyle = .black
     }
-    
-   
 }
 
 // MARK: - PHPicker Delegate for uploading, storing and displaying user image
@@ -129,9 +127,9 @@ extension HomeViewController {
 extension HomeViewController: PHPickerViewControllerDelegate {
     
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
-
+        
         if let itemProvider = results.first?.itemProvider, itemProvider.canLoadObject(ofClass: UIImage.self) {
-
+            
             itemProvider.loadObject(ofClass: UIImage.self) { [weak self] image, error in
                 guard let urlImage = image as? UIImage else { return }
                 DispatchQueue.global(qos: .userInteractive).async {
@@ -160,13 +158,11 @@ extension HomeViewController: PHPickerViewControllerDelegate {
             }
         }
     }
-    
 }
 
-// MARK: - UserSettingsViewControllerDelegate
-extension HomeViewController: UserSettingsViewControllerDelegate {
+extension HomeViewController: UserSettingsDelegate {
     func updateUsername(username: String) {
-        self.homeSharedView.usernameLabel.text = username
+        homeSharedView.usernameLabel.text = username
     }
     
     

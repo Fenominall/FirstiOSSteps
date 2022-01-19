@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct HomeViewModel {
+final class HomeViewModel {
     
     /// Variable which stores User username
     var username: String?
-
+    
     // Initializer that helps to retrieve UserData with the help of UserCaretaker class
     init() {
         do {

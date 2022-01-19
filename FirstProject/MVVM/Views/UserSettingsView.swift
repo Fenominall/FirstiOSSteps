@@ -91,7 +91,6 @@ class UserSettingsView: UIView {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        elementsOfThirdScreenUIStack()
     }
     
     // MARK: Configure auto-layout of UIElements

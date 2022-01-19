@@ -8,18 +8,18 @@
 import Foundation
 import UIKit
 
-protocol UserSettingsViewControllerDelegate: AnyObject {
+protocol UserSettingsDelegate: AnyObject {
     func updateUsername(username: String)
 }
 
 class UserSettingsViewController: UIViewController, Coordinating {
     
     // MARK: - Instance Properties
+    
+    weak var delegate: UserSettingsDelegate?
     var coordinator: Coordinator?
     var userSettingsView = UserSettingsView()
     private var loginViewModel = LoginViewModel()
-    
-    weak var delegate: UserSettingsViewControllerDelegate?
     
     override func loadView() {
         super.loadView()
@@ -32,13 +32,8 @@ class UserSettingsViewController: UIViewController, Coordinating {
         
         //  Keyboard toggling
         observerKeyboardNotifications()
-        textFieldsDelegates()
-  
-        userSettingsView.updateUsernameTextField.text = loginViewModel.username
-        userSettingsView.updatePasswordTextField.text = loginViewModel.password
-        
+        configureActions()
     }
-    
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -52,17 +47,17 @@ class UserSettingsViewController: UIViewController, Coordinating {
         userSettingsView.saveUserDataButton.isEnabled = true
     }
     
+    
     //    Button to update UserDefaults and return back to the SecondViewController
     @objc private func updateUserDataButton(_ sender: UIButton) {
         switch loginViewModel.validateUser() {
         case .Valid:
             // Navigation to HomeScreenViewController
-            AppAlerts.updatedDataAlertTest(on: self) { [weak self] _ in
-                
-                guard let updatedUsername = self?.userSettingsView.updateUsernameTextField.text else { return }
-                // delegating username to HomeViewController
-                self?.delegate?.updateUsername(username: updatedUsername)
-                self?.coordinator?.eventOccurred(with: .updateUserDataButtonTapped)
+            AppAlerts.updatedDataAlertTest(on: self) { [weak self]_ in
+                guard let username = self?.userSettingsView.updateUsernameTextField.text else { return }
+                // updating usernameLabel with received input in 
+                self?.delegate?.updateUsername(username: username)
+                self?.navigationController?.popViewController(animated: true)
             }
         case .Empty:
             // Button Shake
@@ -75,11 +70,10 @@ class UserSettingsViewController: UIViewController, Coordinating {
             // Improper credentials Alert
             AppAlerts.showIncompleteErrorUIAlert(on: self)
         }
-        
     }
     
     // MARK: - Helpers
-    func textFieldsDelegates() {
+    func configureActions() {
         title = "Settings"
         navigationItem.backButtonTitle = "Back"
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -90,11 +84,16 @@ class UserSettingsViewController: UIViewController, Coordinating {
         userSettingsView.updateUsernameTextField.addTarget(self, action: #selector(textFieldEditingChanged(_:)), for: .editingChanged)
         userSettingsView.updatePasswordTextField.addTarget(self, action: #selector(textFieldEditingChanged(_:)), for: .editingChanged)
         userSettingsView.saveUserDataButton.addTarget(self, action: #selector(updateUserDataButton), for: .touchUpInside)
-   
+        
+        // Assigning user data to textField in UserSettingsViewController
+        userSettingsView.updateUsernameTextField.text = loginViewModel.username
+        userSettingsView.updatePasswordTextField.text = loginViewModel.password
+        
     }
     
 }
 
+// MARK: - UITextFieldDeledate
 extension UserSettingsViewController: UITextFieldDelegate {
     //    # Function to return false if the input in UITextFiled is " " or "    ".
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {

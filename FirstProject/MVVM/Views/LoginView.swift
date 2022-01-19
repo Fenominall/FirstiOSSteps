@@ -30,7 +30,6 @@ class LoginView: UIView {
     }
     
     private lazy var loginImageView = imageView(image: AppImages.loginBackgroundImage)
-    private lazy var appIconImageView = imageView(image: AppImages.appIcon)
     
     // MARK: - UILables
     private func newUIlabel(text: String,
@@ -156,9 +155,7 @@ class LoginView: UIView {
         screenContainerUIView.addSubview(bottomContainerUIView)
         
         topContainerUIView.addSubview(usernameStackView)
-        topContainerUIView.addSubview(appIconImageView)
         topContainerUIView.addSubview(loginScreenLabel)
-        topContainerUIView.addSubview(appIconImageView)
         
         bottomContainerUIView.addSubview(passwordStackView)
         bottomContainerUIView.addSubview(loginButton)
@@ -198,11 +195,6 @@ class LoginView: UIView {
         loginScreenLabel.snp.makeConstraints {
             $0.centerY.equalTo(topContainerUIView).offset(-20)
             $0.leading.equalTo(topContainerUIView.snp.leading).inset(20)
-        }
-        
-        appIconImageView.snp.makeConstraints {
-            $0.top.equalTo(topContainerUIView.safeAreaLayoutGuide.snp.top).inset(25)
-            $0.trailing.equalTo(topContainerUIView.safeAreaLayoutGuide.snp.trailing).inset(30)
         }
         
         loginButton.snp.makeConstraints {

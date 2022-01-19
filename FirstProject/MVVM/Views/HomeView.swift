@@ -11,7 +11,7 @@ import SnapKit
 class HomeView: UIView, Coordinating {
     var coordinator: Coordinator?
     
-    // MARK: - UIView Containers
+    // MARK: - Properties
     private lazy var containerView: UIView = {
         let containerView = UIView(frame: .zero)
         containerView.translatesAutoresizingMaskIntoConstraints = false
@@ -69,7 +69,6 @@ class HomeView: UIView, Coordinating {
     private(set) lazy var usernameLabel: UILabel = {
         let greetMessage = UILabel()
         greetMessage.translatesAutoresizingMaskIntoConstraints = false
-//        greetMessage.text = "Hey!"
         greetMessage.font = UIFont.systemFont(ofSize: 40, weight: .bold)
         greetMessage.textAlignment = .center
         greetMessage.textColor = .white
@@ -77,7 +76,6 @@ class HomeView: UIView, Coordinating {
         greetMessage.numberOfLines = 0
         return greetMessage
     }()
-    
     
     // MARK: - UIButtons
     
@@ -101,7 +99,6 @@ class HomeView: UIView, Coordinating {
         return sourceCodeButton
     }()
 
-    
     private func customUIButton(title: String) -> UIButton {
         let customUIButton = UIButton(type: .system)
         customUIButton.configuration = .lightGrayButton()

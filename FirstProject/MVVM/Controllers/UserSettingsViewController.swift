@@ -85,10 +85,17 @@ class UserSettingsViewController: UIViewController, Coordinating {
         userSettingsView.updatePasswordTextField.addTarget(self, action: #selector(textFieldEditingChanged(_:)), for: .editingChanged)
         userSettingsView.saveUserDataButton.addTarget(self, action: #selector(updateUserDataButton), for: .touchUpInside)
         
+        // Binding TextFields to send data to the LoginViewModel in order to update a User model
+        userSettingsView.updateUsernameTextField.bind {
+            self.loginViewModel.updateUsername(username: $0.trimmingCharacters(in: .whitespaces))
+        }
+        userSettingsView.updatePasswordTextField.bind {
+            self.loginViewModel.updatePassword(password: $0.trimmingCharacters(in: .whitespaces))
+        }
+        
         // Assigning user data to textField in UserSettingsViewController
         userSettingsView.updateUsernameTextField.text = loginViewModel.username
         userSettingsView.updatePasswordTextField.text = loginViewModel.password
-        
     }
     
 }
@@ -97,18 +104,11 @@ class UserSettingsViewController: UIViewController, Coordinating {
 extension UserSettingsViewController: UITextFieldDelegate {
     //    # Function to return false if the input in UITextFiled is " " or "    ".
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let newString = (textField.text! as NSString).replacingCharacters(in: range, with: string)
-        
-        if textField == userSettingsView.updateUsernameTextField {
-            loginViewModel.updateUsername(username: newString.trimmingCharacters(in: .whitespaces))
-        } else if textField == userSettingsView.updatePasswordTextField {
-            loginViewModel.updatePassword(password: newString.trimmingCharacters(in: .whitespaces))
-        }
         
         if (string == " " || string == "    ") {
             return false
         }
-        
+
         return true
     }
     

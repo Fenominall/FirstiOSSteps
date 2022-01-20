@@ -17,7 +17,6 @@ enum CoordinatorEvents {
     case finishedViewingSourceCode
     case updateUserDataButtonTapped
     case goToScheduleListController
-    case createEventButtonTapped
 }
 
 protocol Coordinator {

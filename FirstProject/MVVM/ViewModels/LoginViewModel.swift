@@ -13,12 +13,6 @@ enum UserValidationState {
     case Empty
 }
 
-protocol UpdateUserData {
-    func updateUsername(username: String)
-    func updatePassword(password: String)
-    func validateUser() -> UserValidationState
-}
-
 class LoginViewModel {
     
     // MARK: - Properties
@@ -43,7 +37,7 @@ class LoginViewModel {
 }
 
 // MARK: - Helpers
-extension LoginViewModel: UpdateUserData {
+extension LoginViewModel {
     
     func updateUsername(username: String) {
         user.username = username
@@ -69,7 +63,6 @@ extension LoginViewModel: UpdateUserData {
         saveUser()
         return .Valid
     }
-    
     
     func saveUser() {
         // saving user state as logged it if login successful

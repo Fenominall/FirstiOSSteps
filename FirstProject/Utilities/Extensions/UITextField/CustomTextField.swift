@@ -10,6 +10,22 @@ import UIKit
 // MARK: Setting paddings for UITextField
 class CustomTextField: UITextField {
     
+    // Bindings for the textField
+    var textChanged :(String) -> () = { _ in }
+    
+    
+    func bind(callback :@escaping (String) -> ()) {
+       
+        self.textChanged = callback
+        self.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+    }
+    
+    @objc func textFieldDidChange(_ textField :UITextField) {
+        
+        self.textChanged(textField.text!)
+    }
+    
+    // Setting up the padding for UITextField
     var textPadding = UIEdgeInsets(
         top: 10,
         left: 45,
@@ -51,7 +67,7 @@ extension CustomTextField {
 }
 
 // MARK: Adding a single line border for UITextField
-extension UITextField {
+extension CustomTextField {
     func addBottomBorder() {
         let bottomLine = CALayer()
         bottomLine.frame = CGRect(x: 0, y: self.frame.size.height - 1, width: self.frame.size.width, height: 1)
@@ -76,7 +92,7 @@ extension CustomTextField {
         rightViewMode = .always
         toggleButton.alpha = 0.7
     }
-    
+   
     @objc func togglePasswordView() {
         if isSecureTextEntry {
             toggleButton.setImage(UIImage(systemName: "eye.fill"), for: .normal)

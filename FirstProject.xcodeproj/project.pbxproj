@@ -43,6 +43,8 @@
 		4FDB689026E146390006F8E3 /* UIColorHexExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDB688F26E146390006F8E3 /* UIColorHexExtension.swift */; };
 		4FE55FD126A33535003874B1 /* ExtensionsForLoginScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE55FD026A33535003874B1 /* ExtensionsForLoginScreenViewController.swift */; };
 		4FEF699D26BAC0190022CAFD /* SourceCodeWebUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEF699C26BAC0190022CAFD /* SourceCodeWebUIViewController.swift */; };
+		4FF15B43279B197E003E4542 /* AlertFactoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF15B42279B197D003E4542 /* AlertFactoryService.swift */; };
+		4FF15B45279B1B30003E4542 /* AlertViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF15B44279B1B30003E4542 /* AlertViewData.swift */; };
 		4FF9064526543BEF001387C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF9064426543BEF001387C9 /* AppDelegate.swift */; };
 		4FF9064726543BEF001387C9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF9064626543BEF001387C9 /* SceneDelegate.swift */; };
 		4FF9064E26543BF1001387C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FF9064D26543BF1001387C9 /* Assets.xcassets */; };
@@ -88,6 +90,8 @@
 		4FDB688F26E146390006F8E3 /* UIColorHexExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorHexExtension.swift; sourceTree = "<group>"; };
 		4FE55FD026A33535003874B1 /* ExtensionsForLoginScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionsForLoginScreenViewController.swift; sourceTree = "<group>"; };
 		4FEF699C26BAC0190022CAFD /* SourceCodeWebUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceCodeWebUIViewController.swift; sourceTree = "<group>"; };
+		4FF15B42279B197D003E4542 /* AlertFactoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertFactoryService.swift; sourceTree = "<group>"; };
+		4FF15B44279B1B30003E4542 /* AlertViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewData.swift; sourceTree = "<group>"; };
 		4FF9064126543BEF001387C9 /* FirstProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FirstProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FF9064426543BEF001387C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4FF9064626543BEF001387C9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -195,6 +199,8 @@
 			isa = PBXGroup;
 			children = (
 				4F92895526A6B06600624B6E /* Alerts.swift */,
+				4FF15B42279B197D003E4542 /* AlertFactoryService.swift */,
+				4FF15B44279B1B30003E4542 /* AlertViewData.swift */,
 			);
 			path = Alerts;
 			sourceTree = "<group>";
@@ -502,6 +508,7 @@
 				4F28BA762742889C001308E1 /* ScheduleListController.swift in Sources */,
 				4FF9064526543BEF001387C9 /* AppDelegate.swift in Sources */,
 				4F28BA7A27429692001308E1 /* Event.swift in Sources */,
+				4FF15B45279B1B30003E4542 /* AlertViewData.swift in Sources */,
 				4F92895626A6B06600624B6E /* Alerts.swift in Sources */,
 				4F2DEDF0274515B900C5F156 /* FileManager+Extensions.swift in Sources */,
 				4F4C9F612745890600D345DC /* EventPersistenceHelper.swift in Sources */,
@@ -518,6 +525,7 @@
 				4FDB688E26E1455A0006F8E3 /* CustomUserDefaults.swift in Sources */,
 				4F257CFF2739B423007CB391 /* UserCaretaker.swift in Sources */,
 				4F28BA7C2742989E001308E1 /* CreateEventView.swift in Sources */,
+				4FF15B43279B197E003E4542 /* AlertFactoryService.swift in Sources */,
 				4F257CFD2739B1AE007CB391 /* DiskCaretaker.swift in Sources */,
 				4FEF699D26BAC0190022CAFD /* SourceCodeWebUIViewController.swift in Sources */,
 			);

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		4F05462F26B9810B006C5A04 /* UIButtonAnimationsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F05462E26B9810B006C5A04 /* UIButtonAnimationsExtension.swift */; };
 		4F055F1C274B82A900C70670 /* UIButtonConfigurationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F055F1B274B82A900C70670 /* UIButtonConfigurationExtension.swift */; };
+		4F05B2CB27A3203800AFEEC6 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F05B2CA27A3203800AFEEC6 /* RegistrationView.swift */; };
+		4F05B2CD27A3216A00AFEEC6 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F05B2CC27A3216A00AFEEC6 /* RegistrationViewController.swift */; };
 		4F083EE926D8063200B63DD7 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F083EE826D8063200B63DD7 /* Coordinator.swift */; };
 		4F083EEB26D806B400B63DD7 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F083EEA26D806B400B63DD7 /* MainCoordinator.swift */; };
 		4F234D392735118C00D1C00B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F234D382735118C00D1C00B /* LaunchScreen.storyboard */; };
@@ -56,6 +58,8 @@
 		1913A254B428B7B74E687733 /* Pods-FirstProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirstProject.release.xcconfig"; path = "Target Support Files/Pods-FirstProject/Pods-FirstProject.release.xcconfig"; sourceTree = "<group>"; };
 		4F05462E26B9810B006C5A04 /* UIButtonAnimationsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonAnimationsExtension.swift; sourceTree = "<group>"; };
 		4F055F1B274B82A900C70670 /* UIButtonConfigurationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonConfigurationExtension.swift; sourceTree = "<group>"; };
+		4F05B2CA27A3203800AFEEC6 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
+		4F05B2CC27A3216A00AFEEC6 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		4F083EE826D8063200B63DD7 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		4F083EEA26D806B400B63DD7 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		4F234D382735118C00D1C00B /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -119,6 +123,24 @@
 				4FFF2A1526BD27560064E610 /* HapticsManager.swift */,
 			);
 			path = HapticsManager;
+			sourceTree = "<group>";
+		};
+		4F05B2C827A31FB200AFEEC6 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				4F695E8F2662B6C200606D03 /* LoginViewController.swift */,
+				4F05B2CC27A3216A00AFEEC6 /* RegistrationViewController.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		4F05B2C927A31FC300AFEEC6 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				4FFCD45A26BEC87000770D33 /* LoginView.swift */,
+				4F05B2CA27A3203800AFEEC6 /* RegistrationView.swift */,
+			);
+			path = Authentication;
 			sourceTree = "<group>";
 		};
 		4F083EE726D8061A00B63DD7 /* Coordinator */ = {
@@ -237,7 +259,7 @@
 		4FBBE315268B97B000D518B8 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				4F695E8F2662B6C200606D03 /* LoginViewController.swift */,
+				4F05B2C827A31FB200AFEEC6 /* Authentication */,
 				4FD2745B2683317300C8FA32 /* HomeViewController.swift */,
 				4FD2745D268332F700C8FA32 /* UserSettingsViewController.swift */,
 				4F28BA752742889C001308E1 /* ScheduleListController.swift */,
@@ -346,7 +368,7 @@
 		4FFCD45926BEC84900770D33 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				4FFCD45A26BEC87000770D33 /* LoginView.swift */,
+				4F05B2C927A31FC300AFEEC6 /* Authentication */,
 				4F7D97B126D0391A00A9D253 /* HomeView.swift */,
 				4FA5BB1726CEDB5F001C486D /* UserSettingsView.swift */,
 				4F28BA7D27429B57001308E1 /* ScheduleListViewCell.swift */,
@@ -490,6 +512,7 @@
 				4FD2745C2683317300C8FA32 /* HomeViewController.swift in Sources */,
 				4FFCD45B26BEC87000770D33 /* LoginView.swift in Sources */,
 				4F28BA7E27429B57001308E1 /* ScheduleListViewCell.swift in Sources */,
+				4F05B2CB27A3203800AFEEC6 /* RegistrationView.swift in Sources */,
 				4FDB689026E146390006F8E3 /* UIColorHexExtension.swift in Sources */,
 				4F522AA8272DB7CF0099C5E8 /* Images.swift in Sources */,
 				4F87A91B273EA34800D34B02 /* ImageStorage.swift in Sources */,
@@ -508,6 +531,7 @@
 				4F28BA762742889C001308E1 /* ScheduleListController.swift in Sources */,
 				4FF9064526543BEF001387C9 /* AppDelegate.swift in Sources */,
 				4F28BA7A27429692001308E1 /* Event.swift in Sources */,
+				4F05B2CD27A3216A00AFEEC6 /* RegistrationViewController.swift in Sources */,
 				4FF15B45279B1B30003E4542 /* AlertViewData.swift in Sources */,
 				4F92895626A6B06600624B6E /* Alerts.swift in Sources */,
 				4F2DEDF0274515B900C5F156 /* FileManager+Extensions.swift in Sources */,

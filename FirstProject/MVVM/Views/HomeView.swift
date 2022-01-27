@@ -12,60 +12,18 @@ class HomeView: UIView, Coordinating {
     var coordinator: Coordinator?
     
     // MARK: - Properties
-    private lazy var containerView: UIView = {
-        let containerView = UIView(frame: .zero)
-        containerView.translatesAutoresizingMaskIntoConstraints = false
-        return containerView
-    }()
     
-    private lazy var topContainerView: UIView = {
-        let containerView = UIView(frame: .zero)
-        containerView.translatesAutoresizingMaskIntoConstraints = false
-        return containerView
-    }()
+    // UIViews
+    private lazy var containerView = createUIView()
+    private lazy var topContainerView = createUIView()
+    private lazy var bottomContainerView = createUIView()
     
-    private lazy var bottomContainerView: UIView = {
-        let containerView = UIView(frame: .zero)
-        containerView.translatesAutoresizingMaskIntoConstraints = false
-        return containerView
-    }()
-    
-    // MARK: - UIImageViews
-    private(set) lazy var circleBackGroundForUserImage: UIImageView = {
-        let circleImage = UIImageView()
-        circleImage.image = AppImages.lightCircle
-        circleImage.translatesAutoresizingMaskIntoConstraints = false
-        return circleImage
-    }()
-    
-    private(set) lazy var userUImageView: UIImageView = {
-        let userImage = UIImageView()
-        userImage.image = AppImages.userImage
-        userImage.translatesAutoresizingMaskIntoConstraints = false
-        userImage.contentMode = .scaleAspectFill
-        userImage.layer.masksToBounds = false
-        userImage.frame = CGRect(x: 0, y: 0, width: 150, height: 150)
-        userImage.layer.cornerRadius = userImage.frame.size.width / 2
-        userImage.clipsToBounds = true
-        return userImage
-    }()
-    
-    private lazy var plusIcon: UIImageView = {
-        let plusIcon = UIImageView()
-        plusIcon.translatesAutoresizingMaskIntoConstraints = false
-        plusIcon.image = AppImages.plusIcon
-        return plusIcon
-    }()
-    
-    private(set) lazy var homeScreenBackgroundImage: UIImageView = {
-        let userImage = UIImageView()
-        userImage.image = AppImages.homeBackgroundImage
-        userImage.translatesAutoresizingMaskIntoConstraints = false
-        userImage.contentMode = .scaleAspectFit
-        return userImage
-    }()
-    
-    // MARK: - UILabels
+    // UIImageViews
+    private lazy var circleBackGroundForUserImage = createUIImageView(withImage: AppImages.lightCircle)
+    private lazy var plusIcon = createUIImageView(withImage: AppImages.plusIcon)
+    private lazy var homeScreenBackgroundImage = createUIImageView(withImage: AppImages.homeBackgroundImage)
+
+    // UILabels
     private(set) lazy var usernameLabel: UILabel = {
         let greetMessage = UILabel()
         greetMessage.translatesAutoresizingMaskIntoConstraints = false
@@ -77,43 +35,43 @@ class HomeView: UIView, Coordinating {
         return greetMessage
     }()
     
-    // MARK: - UIButtons
-    
+    // UIButtons
     private(set) lazy var uploadImageButton: UIButton = {
-        let uploadImageButton = UIButton(type: .system)
-        uploadImageButton.translatesAutoresizingMaskIntoConstraints = false
-        uploadImageButton.layer.masksToBounds = false
-        uploadImageButton.frame = CGRect(x: 0, y: 0, width: 150, height: 150)
-        uploadImageButton.layer.cornerRadius = uploadImageButton.frame.size.width / 2
-        uploadImageButton.clipsToBounds = true
-        return uploadImageButton
+        let button = UIButton(type: .system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.layer.masksToBounds = false
+        button.layer.cornerRadius = 150 / 2
+        button.clipsToBounds = true
+        button.setImage(AppImages.userImage, for: .normal)
+        button.imageView?.contentMode = .scaleAspectFill
+        return button
     }()
     
     private(set) lazy var sourceCodeButton: UIButton = {
-        let sourceCodeButton = UIButton(type: .system)
-        sourceCodeButton.translatesAutoresizingMaskIntoConstraints = false
-        sourceCodeButton.layer.masksToBounds = false
-        sourceCodeButton.clipsToBounds = true
-        sourceCodeButton.setTitle("GitHub", for: .normal)
-        sourceCodeButton.tintColor = .lightGrayAccent
-        return sourceCodeButton
+        let button = UIButton(type: .system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.layer.masksToBounds = false
+        button.clipsToBounds = true
+        button.setTitle("GitHub", for: .normal)
+        button.tintColor = .lightGrayAccent
+        return button
     }()
 
     private func customUIButton(title: String) -> UIButton {
-        let customUIButton = UIButton(type: .system)
-        customUIButton.configuration = .lightGrayButton()
-        customUIButton.setTitle(title, for: .normal)
-        customUIButton.layer.shadowColor = UIColor.black.cgColor
-        customUIButton.layer.shadowOffset = CGSize(width: 0.0, height: 5.5)
-        customUIButton.layer.shadowRadius = 2.0
-        customUIButton.layer.shadowOpacity = 0.5
-        return customUIButton
+        let button = UIButton(type: .system)
+        button.configuration = .lightGrayButton()
+        button.setTitle(title, for: .normal)
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowOffset = CGSize(width: 0.0, height: 5.5)
+        button.layer.shadowRadius = 2.0
+        button.layer.shadowOpacity = 0.5
+        return button
     }
 
     private(set) lazy var editProfileButton = customUIButton(title: "Edit Profile")
     private(set) lazy var scheduleEventListButton = customUIButton(title: "Scheduler")
    
-    // MARK: - UIStackVies
+    // UIStackVies
     private lazy var buttonsStackView: UIStackView = {
         let buttonsStackView = UIStackView(arrangedSubviews: [editProfileButton, scheduleEventListButton])
         buttonsStackView.translatesAutoresizingMaskIntoConstraints = false
@@ -122,7 +80,7 @@ class HomeView: UIView, Coordinating {
         return buttonsStackView
     }()
     
-    // MARK: UIView initialization
+    // MARK: - Lifecycle
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureUI()
@@ -134,7 +92,7 @@ class HomeView: UIView, Coordinating {
     }
     
     
-    // MARK: Configure auto-layout of UIElements
+    // MARK: - Helpers
     func configureUI() {
         
         addSubview(containerView)
@@ -191,16 +149,10 @@ class HomeView: UIView, Coordinating {
         circleBackGroundForUserImage.snp.makeConstraints {
             $0.width.height.equalTo(200)
         }
-        
-        circleBackGroundForUserImage.addSubview(userUImageView)
-        userUImageView.snp.makeConstraints {
-            $0.centerX.centerY.equalTo(circleBackGroundForUserImage)
-            $0.width.height.equalTo(150)
-        }
-        
+  
         addSubview(uploadImageButton)
         uploadImageButton.snp.makeConstraints {
-            $0.centerX.centerY.equalTo(userUImageView)
+            $0.centerX.centerY.equalTo(circleBackGroundForUserImage)
             $0.width.height.equalTo(150)
         }
         
@@ -215,7 +167,20 @@ class HomeView: UIView, Coordinating {
             $0.bottom.equalTo(bottomContainerView.snp_bottomMargin)
             $0.centerX.equalTo(bottomContainerView.snp.centerX)
         }
-        
+    }
+    
+    private func createUIView() -> UIView {
+        let view = UIView(frame: .zero)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }
+    
+    private func createUIImageView(withImage image: UIImage) -> UIImageView {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.image = image
+        imageView.contentMode = .scaleAspectFit
+        return imageView
     }
 }
 

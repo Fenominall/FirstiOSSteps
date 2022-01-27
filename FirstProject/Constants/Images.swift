@@ -12,7 +12,7 @@ struct AppImages {
     static let appIcon = UIImage(named: "appIconF")!
     static let loginBackgroundImage = UIImage(named: "loginImage")!
     static let lightCircle = UIImage(named: "lightCircle")!
-    static let userImage = UIImage(named: "user")!
+    static let userImage = UIImage(named: "user")?.withRenderingMode(.alwaysOriginal)
     static let homeBackgroundImage = UIImage(named: "blob-scene")!
     static let waves = UIImage(named: "waves")!
     static let plusIcon = UIImage(named: "plusIcon")!

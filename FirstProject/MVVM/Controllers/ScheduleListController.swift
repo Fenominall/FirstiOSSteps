@@ -29,7 +29,6 @@ class ScheduleListController: UIViewController, Coordinating {
     
     private let searchController = UISearchController(searchResultsController: nil)
     
-    
     private lazy var eventsTableView: UITableView = {
         let tableView = UITableView(frame: .zero)
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -39,7 +38,7 @@ class ScheduleListController: UIViewController, Coordinating {
         tableView.estimatedRowHeight = 44
         tableView.tableFooterView = UIView()
         tableView.separatorStyle = .none
-        tableView.backgroundColor = .darkGray
+        tableView.backgroundColor = .darkWeb
         tableView.register(ScheduleListViewCell.self, forCellReuseIdentifier: ScheduleListViewCell.cellID)
         return tableView
     }()
@@ -61,7 +60,7 @@ class ScheduleListController: UIViewController, Coordinating {
         }
     }
     
-    // MARK: - App LifeCycle
+    // MARK: - LifeCycle
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -77,7 +76,6 @@ class ScheduleListController: UIViewController, Coordinating {
     }
     
     // MARK: - Selectors
-    
     @objc private func handleEventCreation() {
         // create an instance of CreateEventController
         let createEventController = CreateEventController()
@@ -90,7 +88,6 @@ class ScheduleListController: UIViewController, Coordinating {
         // changes a boolean value
         isEditingTableView.toggle()
     }
-    
     
     // MARK: - Helpers
     // navigation bar appearance
@@ -245,6 +242,4 @@ extension ScheduleListController: UISearchResultsUpdating {
         filteredEvents = events.filter( {$0.name.contains(searchText)} )
         eventsTableView.reloadData()
     }
-    
-    
 }

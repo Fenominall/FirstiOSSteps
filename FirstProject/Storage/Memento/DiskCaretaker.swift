@@ -15,8 +15,6 @@ enum DataPersistenceError: Error { // conforming to the Error protocol
     case deletingError(Error)
 }
 
-
-
 // MARK: - Caretaker for the Memento design pattern
 public final class DiskCaretaker {
     
@@ -43,7 +41,6 @@ public final class DiskCaretaker {
             // 5: If you catch an error, you print the object and error to the console and then
             //    throw the error.
             throw DataPersistenceError.savingError(error)
-            
         }
     }
     

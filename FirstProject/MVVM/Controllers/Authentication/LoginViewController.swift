@@ -26,6 +26,7 @@ class LoginViewController: UIViewController, Coordinating {
         // Notifications for showing and hiding keyboard
         observeKeyboardNotifications()
         configureData()
+        configureUI()
         print(FileManager.getDocumentsDirectory())
     }
     
@@ -59,26 +60,36 @@ class LoginViewController: UIViewController, Coordinating {
         }
     }
     
+    @objc private func handleShowSignUp() {
+        let registerVC = RegistrationViewController()
+        navigationController?.pushViewController(registerVC, animated: true)
+    }
+    
     // MARK: - Helpers
-    func configureData() {
+    
+    func configureUI() {
         navigationController?.navigationBar.barStyle = .black
         navigationItem.setHidesBackButton(true, animated: false)
-        
+        navigationItem.backButtonTitle = ""
+    }
+    
+    func configureData() {
         loginView.usernameTxtField.delegate = self
         loginView.passwordTxtField.delegate = self
         loginView.loginButton.addTarget(self, action: #selector(loginButtonPressed), for: .touchUpInside)
+        loginView.dontHaveAccountButton.addTarget(self, action: #selector(handleShowSignUp), for: .touchUpInside)
         
         // Binding TextFields to send data to the LoginViewModel in order to update a User model
-        loginView.usernameTxtField.bind {
-            self.loginViewModel.updateUsername(username: $0.trimmingCharacters(in: .whitespaces))
+        loginView.usernameTxtField.bind { [weak self] in
+            self?.loginViewModel.updateUsername(username: $0.trimmingCharacters(in: .whitespaces))
         }
-        loginView.passwordTxtField.bind {
-            self.loginViewModel.updatePassword(password: $0.trimmingCharacters(in: .whitespaces))
+        loginView.passwordTxtField.bind { [weak self] in
+            self?.loginViewModel.updatePassword(password: $0.trimmingCharacters(in: .whitespaces))
         }
     }
 }
 
-
+// MARK: - UITextFieldDelegate
 extension LoginViewController: UITextFieldDelegate {
     //    # Function to return false if the input in UITextFiled is " " or "    ".
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {

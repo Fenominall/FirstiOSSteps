@@ -34,12 +34,9 @@ class MainCoordinator: Coordinator {
             navigationController?.pushViewController(userSettingsVC, animated: true)
             
         case .logOutButtonTapped:
-            var loginsSreenViewController: UIViewController & Coordinating = LoginViewController()
-            loginsSreenViewController.coordinator = self
-            // If UserKey.isLoggedIn ==  false, then LoginViewController will be shown,
-            // if (true) HomeViewController will be shown
+            // Setting the flag that a user logged out and next time when he launches an app, he will see LoginScreen
             UserDefaults.standard.set(false, forKey: UserKey.isLoggedIn)
-            navigationController?.pushViewController(loginsSreenViewController, animated: true)
+            navigationController?.popViewController(animated: true)
             
         case .sourceCodeButtonTapped:
             guard let url = URL(string: "https://github.com/Fenominall/FirstiOSSteps") else { return }

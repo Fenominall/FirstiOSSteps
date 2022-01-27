@@ -59,7 +59,7 @@ public class ScheduleListViewCell: UITableViewCell {
     // MARK: - Helpers
     func configure() {
         
-        backgroundColor = .darkGray
+        backgroundColor = .darkWeb
         
         addSubview(eventStack)
         eventStack.anchor(top: topAnchor,

@@ -38,17 +38,14 @@ class SourceCodeWebUIViewController: UIViewController, Coordinating {
     
     override func loadView() {
         super.loadView()
-        
         webViewSetUp()
     }
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
         configureActions()
         navigationController?.navigationBar.barStyle = .black
     }
-    
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -56,7 +53,6 @@ class SourceCodeWebUIViewController: UIViewController, Coordinating {
     }
     
     // MARK: - Selectors
-    
     private func configureActions() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(didTapDoneButton))
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(didTapRefreshButton))
@@ -77,6 +73,4 @@ class SourceCodeWebUIViewController: UIViewController, Coordinating {
         view.addSubview(webView)
         webView.load(URLRequest(url: url))
     }
-
-
 }

@@ -25,9 +25,11 @@ class CreateEventView: UIView {
         let eventDatePicker = UIDatePicker()
         eventDatePicker.preferredDatePickerStyle = .wheels
         eventDatePicker.tintColor = .white
+        eventDatePicker.layer.backgroundColor = .init(red: 255/2, green: 138/15, blue: 187/69, alpha: 1)
         eventDatePicker.contentMode = .scaleToFill
         eventDatePicker.datePickerMode = .dateAndTime
         eventDatePicker.minuteInterval = 1
+        eventDatePicker.layer.cornerRadius = 10
         return eventDatePicker
     }()
         
@@ -67,7 +69,7 @@ class CreateEventView: UIView {
 // MARK: Configure auto-layout of UIElements
 extension CreateEventView {
     func initializeUI() {
-        backgroundColor = .lightGray
+        backgroundColor = .darkWeb
         
         addSubview(createEventStack)
         createEventStack.snp.makeConstraints {

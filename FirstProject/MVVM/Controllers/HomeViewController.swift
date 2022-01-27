@@ -28,17 +28,11 @@ class HomeViewController: UIViewController, Coordinating {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
-        retrieveUploadedUserImage()
-        loadUserName()
+        configureActions()
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
-    }
-    
-    /// Retrieving User data to load "username" and assign it to usernameLabel
-    func loadUserName() {
-        homeSharedView.usernameLabel.text = homeViewModel.username
     }
 }
 
@@ -47,7 +41,6 @@ extension HomeViewController {
     
     // Navigation to UserSettingsViewController
     @objc private func didTapUpdateButton() {
-//        coordinator?.eventOccurred(with: .userSettingsTapped)
         let userSettingsVC = UserSettingsViewController()
         userSettingsVC.delegate = self
         navigationController?.pushViewController(userSettingsVC, animated: true)
@@ -93,9 +86,8 @@ extension HomeViewController {
                                             style: .destructive,
                                             handler: { [weak self] _ in
             self?.imageStorage.removeImage(forKey: .userImage, inStorageType: .fileSystem)
-            self?.homeSharedView.userUImageView.image = AppImages.userImage
+            self?.homeSharedView.uploadImageButton.setImage(AppImages.userImage, for: .normal)
         }))
-        
         present(actionSheet, animated: true)
     }
 }
@@ -105,11 +97,6 @@ extension HomeViewController {
 extension HomeViewController {
     
     private func configureUI() {
-        homeSharedView.editProfileButton.addTarget(self, action: #selector(didTapUpdateButton), for: .touchUpInside)
-        homeSharedView.sourceCodeButton.addTarget(self, action: #selector(didTapSourceCodeButton), for: .touchUpInside)
-        homeSharedView.uploadImageButton.addTarget(self, action: #selector(didTapUploadImageButton), for: .touchUpInside)
-        homeSharedView.scheduleEventListButton.addTarget(self, action: #selector(didTapScheduleEventButton), for: .touchUpInside)
-        
         // NavigationBar settings
         navigationItem.title = "Home"
         navigationItem.backButtonTitle = ""
@@ -120,6 +107,21 @@ extension HomeViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.barStyle = .black
     }
+    
+    func configureActions() {
+        homeSharedView.editProfileButton.addTarget(self, action: #selector(didTapUpdateButton), for: .touchUpInside)
+        homeSharedView.sourceCodeButton.addTarget(self, action: #selector(didTapSourceCodeButton), for: .touchUpInside)
+        homeSharedView.uploadImageButton.addTarget(self, action: #selector(didTapUploadImageButton), for: .touchUpInside)
+        homeSharedView.scheduleEventListButton.addTarget(self, action: #selector(didTapScheduleEventButton), for: .touchUpInside)
+        
+        retrieveUploadedUserImage()
+        loadUserName()
+    }
+    
+    /// Retrieving User data to load "username" and assign it to usernameLabel
+    func loadUserName() {
+        homeSharedView.usernameLabel.text = homeViewModel.username
+    }
 }
 
 // MARK: - PHPicker Delegate for uploading, storing and displaying user image
@@ -127,10 +129,10 @@ extension HomeViewController {
 extension HomeViewController: PHPickerViewControllerDelegate {
     
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
-        
         if let itemProvider = results.first?.itemProvider, itemProvider.canLoadObject(ofClass: UIImage.self) {
             
             itemProvider.loadObject(ofClass: UIImage.self) { [weak self] image, error in
+                
                 guard let urlImage = image as? UIImage else { return }
                 DispatchQueue.global(qos: .userInteractive).async {
                     self?.imageStorage.storeImage(image: urlImage,
@@ -139,7 +141,8 @@ extension HomeViewController: PHPickerViewControllerDelegate {
                     DispatchQueue.main.async {
                         guard let self = self else { return }
                         // Display chosen image
-                        self.homeSharedView.userUImageView.image = urlImage
+                        self.homeSharedView.uploadImageButton.setImage(urlImage.withRenderingMode(.alwaysOriginal),
+                                                                       for: .normal)
                     }
                 }
             }
@@ -153,17 +156,17 @@ extension HomeViewController: PHPickerViewControllerDelegate {
             if let savedImage = self.imageStorage.retrieveImage(forKey: .userImage,
                                                                 inStorageType: .fileSystem) {
                 DispatchQueue.main.async {
-                    self.homeSharedView.userUImageView.image = savedImage
+                    self.homeSharedView.uploadImageButton.setImage(savedImage.withRenderingMode(.alwaysOriginal),
+                                                                   for: .normal)
                 }
             }
         }
     }
 }
 
+// MARK: - UserSettingsDelegate
 extension HomeViewController: UserSettingsDelegate {
     func updateUsername(username: String) {
         homeSharedView.usernameLabel.text = username
     }
-    
-    
 }

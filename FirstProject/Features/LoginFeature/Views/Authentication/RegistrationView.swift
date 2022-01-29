@@ -85,6 +85,16 @@ class RegistrationView: UIView {
         let button = Utilities().attributedButton("Already have an account?", " Sign In")
         return button
     }()
+    
+    // UIActivityIndicator
+    private(set) lazy var signUpIndicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView()
+        indicator.translatesAutoresizingMaskIntoConstraints = false
+        indicator.tintColor = .white
+        indicator.style = .large
+        indicator.isHidden = true
+        return indicator
+    }()
 
     // UIStackViews
     private lazy var usernameStackView: UIStackView = {
@@ -135,6 +145,7 @@ class RegistrationView: UIView {
         bottomContainerUIView.addSubview(passwordStackView)
         bottomContainerUIView.addSubview(registerButton)
         bottomContainerUIView.addSubview(loginToAccountButton)
+        bottomContainerUIView.addSubview(signUpIndicator)
 
         screenContainerUIView.snp.makeConstraints {
             $0.edges.equalToSuperview()
@@ -181,6 +192,12 @@ class RegistrationView: UIView {
             $0.bottom.equalTo(bottomContainerUIView.safeAreaLayoutGuide.snp.bottom)
             $0.centerX.equalTo(bottomContainerUIView)
         }
+        
+        signUpIndicator.snp.makeConstraints {
+            $0.centerX.equalTo(bottomContainerUIView)
+            $0.bottom.equalTo(registerButton.snp.top).inset(-20)
+        }
+        
     }
 }
 

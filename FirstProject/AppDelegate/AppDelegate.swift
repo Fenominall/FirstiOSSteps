@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Parse
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -13,6 +14,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        // MARK: - Connect app to Parse
+        let configuration = ParseClientConfiguration {
+            $0.applicationId = "ZF6imvwXcp82jBIp9mCxRo77DYfEglYqCGnhFeyJ"
+            $0.clientKey = "Ob4Gxu81Livj82X3FQyx0dsDhzKung4HhKbklJYj"
+            $0.server = "https://parseapi.back4app.com"
+        }
+        Parse.initialize(with: configuration)
         
         // MARK: - Settings the navigation
         let navVC = UINavigationController()

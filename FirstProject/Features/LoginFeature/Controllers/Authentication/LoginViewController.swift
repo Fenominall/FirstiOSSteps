@@ -61,8 +61,7 @@ class LoginViewController: UIViewController, Coordinating {
     }
     
     @objc private func handleShowSignUp() {
-        let registerVC = RegistrationViewController()
-        navigationController?.pushViewController(registerVC, animated: true)
+        coordinator?.eventOccurred(with: .goToRegisterController)
     }
     
     // MARK: - Helpers
@@ -71,6 +70,8 @@ class LoginViewController: UIViewController, Coordinating {
         navigationController?.navigationBar.barStyle = .black
         navigationItem.setHidesBackButton(true, animated: false)
         navigationItem.backButtonTitle = ""
+        navigationItem.leftBarButtonItem?.tintColor = .white
+        
     }
     
     func configureData() {
@@ -103,11 +104,30 @@ extension LoginViewController: UITextFieldDelegate {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
-    
+
     /// Dismiss/Hide the KeyBoard.
     /// - Parameter textField: UITextField
     /// - Returns: resignFirstResponder()
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         return textField.resignFirstResponder()
+    }
+    
+    //# Function to move the Keyboard-up on the first page
+    func observeKeyboardNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+
+    @objc func keyboardWillHide() {
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+            self.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
+        }, completion: nil)
+
+    }
+
+    @objc func keyboardWillShow() {
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+            self.view.frame = CGRect(x: 0, y: -70, width: self.view.frame.width, height: self.view.frame.height)
+        }, completion: nil)
     }
 }

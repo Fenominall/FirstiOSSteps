@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Parse
 
 enum UserValidationState {
     case Valid
@@ -13,7 +14,9 @@ enum UserValidationState {
     case Empty
 }
 
-class LoginViewModel {
+class LoginViewModel: Coordinating {
+    
+    var coordinator: Coordinator?
     
     // MARK: - Properties
     private var user = User()
@@ -52,7 +55,8 @@ extension LoginViewModel {
             // Phone Vibration
             HapticsManager.shared.vibrateForType(for: .warning)
             return .Empty
-        } else if !AppDataValidator.validateUserName(user.username) ||
+        }
+        if !AppDataValidator.validateUserName(user.username) ||
                     !AppDataValidator.validatePassword(user.password) {
             // Phone Vibration
             HapticsManager.shared.vibrateForType(for: .warning)
@@ -60,18 +64,33 @@ extension LoginViewModel {
         }
         // Phone Vibrations
         HapticsManager.shared.vibrateForType(for: .success)
-        saveUser()
+        signUpUser()
+        // Saving user data to disk with File-manager
+        saveUserToDisk()
         return .Valid
     }
+
+    func signUpUser() {
+        let createPFUser = PFUser()
+        createPFUser.username = user.username
+        createPFUser.password = user.password
+        
+        createPFUser.signUpInBackground { (success: Bool, error: Error?) in
+            if success {
+                // saving user state as logged it if login successful
+                UserDefaults.standard.setValue(true, forKey: UserKey.isLoggedIn)
+            } else {
+                print("DEBUG: AN ERROR OCCURRED WHEN TRYING TO SIGN UP A USER \(String(describing: error?.localizedDescription)) ")
+            }
+        }
+    }
     
-    func saveUser() {
-        // saving user state as logged it if login successful
-        UserDefaults.standard.setValue(true, forKey: UserKey.isLoggedIn)
-        // Saving user data to disk with File-manager
+    fileprivate func saveUserToDisk() {
         do {
             try UserCaretaker.createUser(user: user)
         } catch {
-            print("Got error when saving a newUser: \(error)")
+            print("DEBUG: Got error when saving a newUser: \(error)")
         }
     }
+    
 }

@@ -15,11 +15,7 @@ class ScheduleListController: UIViewController, Coordinating {
     var coordinator: Coordinator?
     // data - an array of events
     var events: [Event] = []
-    
-    private var filteredEvents: [Event] = [] {
-        didSet { eventsTableView.reloadData() }
-    }
-    
+    var filteredEvents: [Event] = []
     // if search mode is activated,
     // users array will be switched to a new filtered users array
     private var  inSearchMode: Bool {
@@ -50,31 +46,22 @@ class ScheduleListController: UIViewController, Coordinating {
         return formatter
     }()
     
-    var isEditingTableView = false {
-        didSet {
-            // property observer
-            // toggle editing mode of tableview
-            eventsTableView.isEditing = isEditingTableView
-            // toggle bar button item`s title between "Edit" and "Done"
-            navigationItem.leftBarButtonItem?.title = isEditingTableView ? "Done" : "Edit"
-        }
-    }
-    
     // MARK: - LifeCycle
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.navigationBar.isHidden = false
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUpEditButton()
         loadEvents()
         setupTableView()
         setupNavigation()
         configureSearchController()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        loadEvents()
+        setUpEditButton()
+    }
     // MARK: - Selectors
     @objc private func handleEventCreation() {
         // create an instance of CreateEventController
@@ -83,25 +70,31 @@ class ScheduleListController: UIViewController, Coordinating {
         createEventController.addEventDelegate = self
         navigationController?.present(createEventController, animated: true, completion: nil)
     }
+
+    // MARK: - Helpers
     
-    @objc private func handleEventEditing() {
-        // changes a boolean value
-        isEditingTableView.toggle()
+    private func setUpEditButton() {
+        let addEventBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(handleEventCreation))
+        
+        if !events.isEmpty || !filteredEvents.isEmpty {
+            navigationItem.rightBarButtonItems = [addEventBarButtonItem, editButtonItem]
+        } else {
+            setEditing(false, animated: true)
+            navigationItem.rightBarButtonItems = [addEventBarButtonItem]
+        }
     }
     
-    // MARK: - Helpers
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        eventsTableView.isEditing = editing
+    }
+    
     // navigation bar appearance
     private func setupNavigation() {
         title = "Scheduler"
-        navigationItem.leftBarButtonItem?.tintColor = .white
+        navigationController?.navigationBar.tintColor = .white
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.backgroundColor = .clear
-        // navigation bar button items
-        let editEventBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(handleEventEditing))
-        editEventBarButtonItem.tintColor = .white
-        let addEventBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(handleEventCreation))
-        addEventBarButtonItem.tintColor = .white
-        navigationItem.rightBarButtonItems = [addEventBarButtonItem, editEventBarButtonItem]
     }
     
     private func configureSearchController() {
@@ -136,7 +129,6 @@ extension ScheduleListController {
     
     private func setupTableView() {
         view.addSubview(eventsTableView)
-        
         eventsTableView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
@@ -183,11 +175,12 @@ extension ScheduleListController: UITableViewDataSource {
             print("deleting..")
             // 1. remove item for the data model e.g events
             events.remove(at: indexPath.row) // remove event from events array
-            
             deleteEvent(at: indexPath)
-            
             // 2. update the table view
             tableView.deleteRows(at: [indexPath], with: .automatic)
+            DispatchQueue.main.async {
+                self.eventsTableView.reloadData()
+            }
         default:
             print("...")
         }
@@ -198,7 +191,6 @@ extension ScheduleListController: UITableViewDataSource {
         let eventToMove = events[sourceIndexPath.row] // saved an event being moved
         events.remove(at: sourceIndexPath.row)
         events.insert(eventToMove, at: destinationIndexPath.row)
-        
         // re-save array in documents directory
         EventPersistenceHelper.reorderingEvents(events: events)
         do {
@@ -228,7 +220,9 @@ extension ScheduleListController: AddEventDelegate {
             let indexPath = IndexPath(row: self.events.count - 1, section: 0)
             // use indexPath to insert into table view
             self.eventsTableView.insertRows(at: [indexPath], with: .automatic)
-            self.eventsTableView.reloadData()
+            DispatchQueue.main.async {
+                self.eventsTableView.reloadData()
+            }
         }
     }
     

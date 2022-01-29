@@ -28,6 +28,14 @@ class MainCoordinator: Coordinator {
             homeVC.coordinator = self
             navigationController?.pushViewController(homeVC, animated: true)
             
+        case .goToRegisterController:
+            var registerVC: UIViewController & Coordinating = RegistrationViewController()
+            registerVC.coordinator = self
+            navigationController?.pushViewController(registerVC, animated: true)
+            
+        case .goToLoginController:
+            navigationController?.popViewController(animated: true)
+            
         case .userSettingsTapped:
             var userSettingsVC: UIViewController & Coordinating = UserSettingsViewController()
             userSettingsVC.coordinator = self
@@ -36,7 +44,10 @@ class MainCoordinator: Coordinator {
         case .logOutButtonTapped:
             // Setting the flag that a user logged out and next time when he launches an app, he will see LoginScreen
             UserDefaults.standard.set(false, forKey: UserKey.isLoggedIn)
-            navigationController?.popViewController(animated: true)
+            var loginViewController: UIViewController & Coordinating = LoginViewController()
+            loginViewController.coordinator = self
+            navigationController?.pushViewController(loginViewController, animated: true)
+            
             
         case .sourceCodeButtonTapped:
             guard let url = URL(string: "https://github.com/Fenominall/FirstiOSSteps") else { return }

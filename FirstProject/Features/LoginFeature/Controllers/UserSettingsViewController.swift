@@ -31,8 +31,9 @@ class UserSettingsViewController: UIViewController, Coordinating {
         super.viewDidLoad()
         
         //  Keyboard toggling
-        observerKeyboardNotifications()
+        observeKeyboardNotifications()
         configureActions()
+        configureNavigationBarUI()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -75,7 +76,7 @@ class UserSettingsViewController: UIViewController, Coordinating {
     
     func configureNavigationBarUI() {
         title = "Settings"
-        navigationItem.backButtonTitle = "Back"
+        navigationItem.backButtonTitle = ""
         navigationController?.navigationBar.tintColor = .white
         navigationController?.navigationBar.prefersLargeTitles = true
     }
@@ -122,6 +123,24 @@ extension UserSettingsViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         return textField.resignFirstResponder()
+    }
+    //# Function to move the Keyboard-up on the first page
+    func observeKeyboardNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func keyboardWillHide() {
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+            self.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
+        }, completion: nil)
+        
+    }
+    
+    @objc func keyboardWillShow() {
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+            self.view.frame = CGRect(x: 0, y: -70, width: self.view.frame.width, height: self.view.frame.height)
+        }, completion: nil)
     }
     
 }

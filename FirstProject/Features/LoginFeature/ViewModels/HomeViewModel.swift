@@ -6,12 +6,15 @@
 //
 
 import Foundation
+import Parse
 
 final class HomeViewModel {
     
+    // MARK: - Properties
     /// Variable which stores User username
     var username: String?
     
+    // MARK: - Lifecycle
     // Initializer that helps to retrieve UserData with the help of UserCaretaker class
     init() {
         do {
@@ -20,6 +23,11 @@ final class HomeViewModel {
         } catch (let error) {
             print("DEBUG: Error loading user data \(error)")
         }
+    }
+    
+    // MARK: - Helpers
+    func logOutUser() {
+        PFUser.logOutInBackground()
     }
 }
 

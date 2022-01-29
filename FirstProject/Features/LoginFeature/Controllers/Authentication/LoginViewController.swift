@@ -57,6 +57,8 @@ class LoginViewController: UIViewController, Coordinating {
             sender.shake()
             // Improper credentials Alert
             AppAlerts.showIncompleteErrorUIAlert(on: self)
+        case .UsernameAlreadyTaken:
+            print("test")
         }
     }
     

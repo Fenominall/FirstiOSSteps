@@ -45,6 +45,9 @@ class RegistrationViewController: UIViewController, Coordinating {
     @objc func registerButtonPressed(_ sender: UIButton) {
         registerView.signUpIndicator.startAnimating()
         
+        guard let username = registerView.usernameTxtField.text else { return }
+        loginViewModel.checkIfUserAlreadyCreated(byUsername: username)
+        
         switch loginViewModel.validateUser() {
         case .Valid:
             registerView.signUpIndicator.stopAnimating()
@@ -62,6 +65,10 @@ class RegistrationViewController: UIViewController, Coordinating {
             sender.shake()
             // Improper credentials Alert
             AppAlerts.showIncompleteErrorUIAlert(on: self)
+        case .UsernameAlreadyTaken:
+            sender.shake()
+            registerView.signUpIndicator.stopAnimating()
+            AppAlerts.usernameIsAlreadyTakenAlert(on: self)
         }
     }
     

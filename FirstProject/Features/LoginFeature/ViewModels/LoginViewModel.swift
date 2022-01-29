@@ -12,18 +12,17 @@ enum UserValidationState {
     case Valid
     case Invalid
     case Empty
+    case UsernameAlreadyTaken
 }
 
-class LoginViewModel: Coordinating {
-    
-    var coordinator: Coordinator?
-    
+class LoginViewModel {
+
     // MARK: - Properties
     private var user = User()
     
     var username: String?
     var password: String?
-    
+    var usernameIsTaken = false
     
     // MARK: - Object Lifecycle
     init(user: User = User()) {
@@ -62,15 +61,33 @@ extension LoginViewModel {
             HapticsManager.shared.vibrateForType(for: .warning)
             return .Invalid
         }
-        // Phone Vibrations
-        HapticsManager.shared.vibrateForType(for: .success)
-        signUpUser()
-        // Saving user data to disk with File-manager
-        saveUserToDisk()
-        return .Valid
+        if !usernameIsTaken {
+            HapticsManager.shared.vibrateForType(for: .warning)
+            return .UsernameAlreadyTaken
+        } else {
+            HapticsManager.shared.vibrateForType(for: .success)
+            signUpNewUser()
+            // Saving user data to disk with File-manager
+            saveUserToDisk()
+            return .Valid
+        }
+    }
+    
+    func checkIfUserAlreadyCreated(byUsername username: String) {
+        let query = PFUser.query()
+        query?.whereKey("username", contains: username)
+        
+        query?.getFirstObjectInBackground { [weak self] (object: PFObject?, error: Error?) -> Void in
+            if object != nil {
+                self?.usernameIsTaken = true
+                print("DEBUG: The entered username is already taken")
+            } else {
+                self?.usernameIsTaken = false
+            }
+        }
     }
 
-    func signUpUser() {
+    func signUpNewUser() {
         let createPFUser = PFUser()
         createPFUser.username = user.username
         createPFUser.password = user.password

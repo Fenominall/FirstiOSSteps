@@ -69,6 +69,8 @@ class UserSettingsViewController: UIViewController, Coordinating {
             sender.shake()
             // Improper credentials Alert
             AppAlerts.showIncompleteErrorUIAlert(on: self)
+        case .UsernameAlreadyTaken:
+            print("Test")
         }
     }
     
@@ -76,7 +78,7 @@ class UserSettingsViewController: UIViewController, Coordinating {
     
     func configureNavigationBarUI() {
         title = "Settings"
-        navigationItem.backButtonTitle = ""
+        navigationItem.backButtonTitle = "Back"
         navigationController?.navigationBar.tintColor = .white
         navigationController?.navigationBar.prefersLargeTitles = true
     }

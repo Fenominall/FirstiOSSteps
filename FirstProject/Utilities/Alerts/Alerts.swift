@@ -45,13 +45,9 @@ struct AppAlerts {
     static func emptyFieldsErrorAlert(on vc: UIViewController) {
         errorUIAlert(on: vc, with: "Error", message: emptyFieldsAlertMessage, preferredStyle: .alert)
     }
-    /// Alert for validation error if username is empty.
-    static func emptyUsernameErrorAlert(on vc: UIViewController) {
-        errorUIAlert(on: vc, with: "Error", message: usernameEmptyMessage, preferredStyle: .alert)
-    }
-    /// Alert for validation error if  password is empty.
-    static func emptyPasswordErrorAlert(on vc: UIViewController) {
-        errorUIAlert(on: vc, with: "Error", message: passwordEmptyMessage, preferredStyle: .alert)
+    
+    static func usernameIsAlreadyTakenAlert(on vc: UIViewController) {
+        errorUIAlert(on: vc, with: "Error", message: usernamesISAlreadyTakenErrorMessage, preferredStyle: .alert)
     }
     
     // Alert for a successfully created account for a user.
@@ -101,8 +97,7 @@ struct AppAlerts {
 
 // MARK: # AlertsMessages
 fileprivate let emptyFieldsAlertMessage = "Password and username fields are required."
-fileprivate let usernameEmptyMessage = "Username field is empty."
-fileprivate let passwordEmptyMessage = "Password field is empty."
+fileprivate let usernamesISAlreadyTakenErrorMessage = "Username is already taken."
 fileprivate let successUpdatedDataMessage = "Your data was successfully updated"
 fileprivate let userAccountCreatedMessage = "Your account created your are logged in"
 fileprivate let passwordRequirementsAlertMessage = """

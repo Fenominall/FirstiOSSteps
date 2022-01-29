@@ -6,7 +6,6 @@
 //
 import Photos
 import PhotosUI
-import SnapKit
 import UIKit
 import Parse
 
@@ -18,7 +17,7 @@ class HomeViewController: UIViewController, Coordinating {
     
     private var homeSharedView = HomeView()
     private var imageStorage = ImageStorage()
-//    private var homeViewModel = HomeViewModel()
+    private var homeViewModel = HomeViewModel()
     
     // MARK: - Lifecycle
     override func loadView() {
@@ -30,14 +29,6 @@ class HomeViewController: UIViewController, Coordinating {
         super.viewDidLoad()
         configureUI()
         configureActions()
-        
-        DispatchQueue.main.async {
-            if let currentUser = PFUser.current() {
-                print(currentUser.username ?? "DEBUG NO USER")
-                self.homeSharedView.usernameLabel.text = currentUser.username
-                
-            }
-        }
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -51,7 +42,7 @@ extension HomeViewController {
     // Navigation to UserSettingsViewController
     @objc private func didTapUpdateButton() {
         let userSettingsVC = UserSettingsViewController()
-//        userSettingsVC.delegate = self
+        userSettingsVC.delegate = self
         navigationController?.pushViewController(userSettingsVC, animated: true)
     }
     
@@ -63,6 +54,7 @@ extension HomeViewController {
     //    Navigation Button to FirstViewController
     @objc private func didTapLogOutButton() {
         coordinator?.eventOccurred(with: .logOutButtonTapped)
+        homeViewModel.logOutUser()
     }
     
     @objc private func didTapScheduleEventButton() {
@@ -106,13 +98,13 @@ extension HomeViewController {
 extension HomeViewController {
     
     private func configureUI() {
-//         NavigationBar settings
+        // NavigationBar settings
         navigationItem.title = "Home"
-        navigationItem.backButtonTitle = ""
+        navigationItem.backButtonTitle = "Back"
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "line.3.horizontal"), style: .plain, target: self, action: #selector(didTapLogOutButton))
         navigationItem.leftBarButtonItem?.tintColor = .white
         navigationItem.rightBarButtonItem?.tintColor = .white
-
+        
         navigationItem.setHidesBackButton(true, animated: false)
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.barStyle = .black
@@ -130,8 +122,7 @@ extension HomeViewController {
     
     /// Retrieving User data to load "username" and assign it to usernameLabel
     func loadUserName() {
- 
-//        homeSharedView.usernameLabel.text = homeViewModel.username
+            homeSharedView.usernameLabel.text = homeViewModel.username
     }
 }
 

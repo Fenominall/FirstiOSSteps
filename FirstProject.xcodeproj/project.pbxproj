@@ -25,6 +25,7 @@
 		4F2A17B726C7050600205E03 /* Dynamic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2A17B626C7050600205E03 /* Dynamic.swift */; };
 		4F2DEDF0274515B900C5F156 /* FileManager+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2DEDEF274515B900C5F156 /* FileManager+Extensions.swift */; };
 		4F2EA04526F7054300EF6884 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2EA04426F7054300EF6884 /* CustomTextField.swift */; };
+		4F31B22B27A72F8A003935B4 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F31B22A27A72F8A003935B4 /* NetworkMonitor.swift */; };
 		4F4C9F612745890600D345DC /* EventPersistenceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4C9F602745890600D345DC /* EventPersistenceHelper.swift */; };
 		4F4FDFBC268D862000736440 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4FDFBB268D862000736440 /* AuthenticationViewModel.swift */; };
 		4F522AA8272DB7CF0099C5E8 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F522AA7272DB7CF0099C5E8 /* Images.swift */; };
@@ -73,6 +74,7 @@
 		4F2A17B626C7050600205E03 /* Dynamic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dynamic.swift; sourceTree = "<group>"; };
 		4F2DEDEF274515B900C5F156 /* FileManager+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Extensions.swift"; sourceTree = "<group>"; };
 		4F2EA04426F7054300EF6884 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		4F31B22A27A72F8A003935B4 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 		4F4C9F602745890600D345DC /* EventPersistenceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventPersistenceHelper.swift; sourceTree = "<group>"; };
 		4F4FDFBB268D862000736440 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		4F522AA7272DB7CF0099C5E8 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
@@ -232,6 +234,14 @@
 				4F3127ED27A553F600E69100 /* SchedulerFeature */,
 			);
 			path = Features;
+			sourceTree = "<group>";
+		};
+		4F31B22927A72F79003935B4 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				4F31B22A27A72F8A003935B4 /* NetworkMonitor.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		4F4FDFBA268D860700736440 /* ViewModels */ = {
@@ -410,6 +420,7 @@
 		4FF9064326543BEF001387C9 /* FirstProject */ = {
 			isa = PBXGroup;
 			children = (
+				4F31B22927A72F79003935B4 /* Services */,
 				4FBBE316268B97BB00D518B8 /* AppDelegate */,
 				4F522AA6272DB7BA0099C5E8 /* Constants */,
 				4F083EE726D8061A00B63DD7 /* Coordinator */,
@@ -584,6 +595,7 @@
 				4F2EA04526F7054300EF6884 /* CustomTextField.swift in Sources */,
 				4F055F1C274B82A900C70670 /* UIButtonConfigurationExtension.swift in Sources */,
 				4F7D97B226D0391A00A9D253 /* HomeView.swift in Sources */,
+				4F31B22B27A72F8A003935B4 /* NetworkMonitor.swift in Sources */,
 				4FD2745E268332F700C8FA32 /* UserSettingsViewController.swift in Sources */,
 				4FFF2A1626BD27560064E610 /* HapticsManager.swift in Sources */,
 				4F2A17B726C7050600205E03 /* Dynamic.swift in Sources */,

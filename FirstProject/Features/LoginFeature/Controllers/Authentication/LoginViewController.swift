@@ -72,7 +72,6 @@ class LoginViewController: UIViewController, Coordinating {
         navigationItem.setHidesBackButton(true, animated: false)
         navigationItem.backButtonTitle = ""
         navigationItem.leftBarButtonItem?.tintColor = .white
-        
     }
     
     func configureData() {

@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 import Photos
 import PhotosUI
+import Parse
 
 class MainCoordinator: Coordinator {
     

@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 protocol UserSettingsDelegate: AnyObject {
-    func updateUsername(username: String)
+    func didUpdatedUserUsername(withUsername: String)
 }
 
 class UserSettingsViewController: UIViewController, Coordinating {
@@ -17,7 +17,7 @@ class UserSettingsViewController: UIViewController, Coordinating {
     // MARK: - Instance Properties
     var coordinator: Coordinator?
     var userSettingsView = UserSettingsView()
-    private var loginViewModel = LoginViewModel()
+    private var loginViewModel = AuthenticationViewModel()
     
     weak var delegate: UserSettingsDelegate?
     
@@ -48,16 +48,19 @@ class UserSettingsViewController: UIViewController, Coordinating {
         userSettingsView.saveUserDataButton.isEnabled = true
     }
     
-    //    Button to update UserDefaults and return back to the SecondViewController
-    @objc private func updateUserDataButton(_ sender: UIButton) {
-        switch loginViewModel.validateUser() {
+    @objc private func updateUserDataButtonTapped(_ sender: UIButton) {
+        
+        guard let username = userSettingsView.updatePasswordTextField.text else { return }
+        loginViewModel.checkIfUserAlreadyCreated(byUsername: username)
+    
+        switch loginViewModel.validateUser(byUserAuthState: .update) {
         case .Valid:
             // Navigation to HomeScreenViewController
             AppAlerts.updatedDataAlertTest(on: self) { [weak self]_ in
                 guard let username = self?.userSettingsView.updateUsernameTextField.text else { return }
                 // updating usernameLabel with received input in 
                 self?.navigationController?.popViewController(animated: true)
-                self?.delegate?.updateUsername(username: username)
+                self?.delegate?.didUpdatedUserUsername(withUsername: username)
             }
         case .Empty:
             // Button Shake
@@ -65,12 +68,12 @@ class UserSettingsViewController: UIViewController, Coordinating {
             // Empty fields Error Alert
             AppAlerts.emptyFieldsErrorAlert(on: self)
         case .Invalid:
-            // Button Shake
             sender.shake()
             // Improper credentials Alert
             AppAlerts.showIncompleteErrorUIAlert(on: self)
         case .UsernameAlreadyTaken:
-            print("Test")
+            sender.shake()
+            AppAlerts.usernameIsAlreadyTakenAlert(on: self)
         }
     }
     
@@ -89,7 +92,7 @@ class UserSettingsViewController: UIViewController, Coordinating {
         
         userSettingsView.updateUsernameTextField.addTarget(self, action: #selector(textFieldEditingChanged(_:)), for: .editingChanged)
         userSettingsView.updatePasswordTextField.addTarget(self, action: #selector(textFieldEditingChanged(_:)), for: .editingChanged)
-        userSettingsView.saveUserDataButton.addTarget(self, action: #selector(updateUserDataButton), for: .touchUpInside)
+        userSettingsView.saveUserDataButton.addTarget(self, action: #selector(updateUserDataButtonTapped), for: .touchUpInside)
         
         // Binding TextFields to send data to the LoginViewModel in order to update a User model
         userSettingsView.updateUsernameTextField.bind { [weak self] in
@@ -105,9 +108,7 @@ class UserSettingsViewController: UIViewController, Coordinating {
     }
 }
 
-
-
-// MARK: - UITextFieldDeledate
+// MARK: - UITextFcurrentPFUserieldDeledate
 extension UserSettingsViewController: UITextFieldDelegate {
     //    # Function to return false if the input in UITextFiled is " " or "    ".
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -144,6 +145,5 @@ extension UserSettingsViewController: UITextFieldDelegate {
             self.view.frame = CGRect(x: 0, y: -70, width: self.view.frame.width, height: self.view.frame.height)
         }, completion: nil)
     }
-    
 }
 

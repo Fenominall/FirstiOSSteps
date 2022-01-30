@@ -168,7 +168,7 @@ extension HomeViewController: PHPickerViewControllerDelegate {
 
 // MARK: - UserSettingsDelegate
 extension HomeViewController: UserSettingsDelegate {
-    func updateUsername(username: String) {
-        homeSharedView.usernameLabel.text = username
+    func didUpdatedUserUsername(withUsername: String) {
+        homeSharedView.usernameLabel.text = withUsername
     }
 }

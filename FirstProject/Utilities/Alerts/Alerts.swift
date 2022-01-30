@@ -7,17 +7,6 @@
 
 import UIKit
 
-enum AlertsMessages {
-    case emptyFieldsAlertMessage
-    case usernameEmptyAlert
-    case passwordEmptyAlert
-    case successUpdatedDataMessage
-    case userAccountCreatedMessage
-    case passwordRequirementsAlertMessage
-}
-
-
-
 // MARK: UIAlerts for UITextField validations dependent on user interactions
 struct AppAlerts {
     
@@ -47,7 +36,12 @@ struct AppAlerts {
     }
     
     static func usernameIsAlreadyTakenAlert(on vc: UIViewController) {
-        errorUIAlert(on: vc, with: "Error", message: usernamesISAlreadyTakenErrorMessage, preferredStyle: .alert)
+        errorUIAlert(on: vc, with: "", message: usernamesISAlreadyTakenErrorMessage, preferredStyle: .alert)
+    }
+    
+    
+    static func incorrectCredentials(on vc: UIViewController) {
+        errorUIAlert(on: vc, with: "Incorrect Credentials", message: incorrectCredentialsMessage, preferredStyle: .alert)
     }
     
     // Alert for a successfully created account for a user.
@@ -60,7 +54,6 @@ struct AppAlerts {
         let alertController = UIAlertController(title: title,
                                                        message: message,
                                                        preferredStyle: .alert)
-        
         alertController.addAction(UIAlertAction(title: "Ok",
                                                        style: .default,
                                                        handler: nil))
@@ -97,9 +90,10 @@ struct AppAlerts {
 
 // MARK: # AlertsMessages
 fileprivate let emptyFieldsAlertMessage = "Password and username fields are required."
-fileprivate let usernamesISAlreadyTakenErrorMessage = "Username is already taken."
-fileprivate let successUpdatedDataMessage = "Your data was successfully updated"
-fileprivate let userAccountCreatedMessage = "Your account created your are logged in"
+fileprivate let usernamesISAlreadyTakenErrorMessage = "The username you entered is already taken."
+fileprivate let successUpdatedDataMessage = "Your data was successfully updated."
+fileprivate let userAccountCreatedMessage = "Your account created your are logged in."
+fileprivate let incorrectCredentialsMessage = "The credentials you entered don`t appear to belong to an account. Please check your credentials and try again."
 fileprivate let passwordRequirementsAlertMessage = """
                           Username should be at least (min-4, max-20) characters long.
                           Password can be only digits and at least 1 special character, should contain (min-8, max-20) characters long.

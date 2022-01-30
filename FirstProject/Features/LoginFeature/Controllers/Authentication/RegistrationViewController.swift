@@ -15,7 +15,7 @@ class RegistrationViewController: UIViewController, Coordinating {
     
     // MARK: - Properties
     let registerView = RegistrationView()
-    private var loginViewModel = LoginViewModel()
+    private var loginViewModel = AuthenticationViewModel()
     
     // MARK: - Lifecycle
     
@@ -44,11 +44,11 @@ class RegistrationViewController: UIViewController, Coordinating {
     
     @objc func registerButtonPressed(_ sender: UIButton) {
         registerView.signUpIndicator.startAnimating()
+        // Getting entered username to check if it already exists in the database or not
+//        guard let username = registerView.usernameTxtField.text else { return }
+//        loginViewModel.checkIfUserAlreadyCreated(byUsername: username)
         
-        guard let username = registerView.usernameTxtField.text else { return }
-        loginViewModel.checkIfUserAlreadyCreated(byUsername: username)
-        
-        switch loginViewModel.validateUser() {
+        switch loginViewModel.validateUser(byUserAuthState: .register) {
         case .Valid:
             registerView.signUpIndicator.stopAnimating()
             sender.shake()
@@ -58,11 +58,13 @@ class RegistrationViewController: UIViewController, Coordinating {
         case .Empty:
             // Button Shake
             sender.shake()
+            registerView.signUpIndicator.stopAnimating()
             // Empty fields Error Alert
             AppAlerts.emptyFieldsErrorAlert(on: self)
         case .Invalid:
             // Button Shake
             sender.shake()
+            registerView.signUpIndicator.stopAnimating()
             // Improper credentials Alert
             AppAlerts.showIncompleteErrorUIAlert(on: self)
         case .UsernameAlreadyTaken:
@@ -88,8 +90,7 @@ class RegistrationViewController: UIViewController, Coordinating {
         
         // Binding TextFields to send data to the LoginViewModel in order to update a User model
         registerView.usernameTxtField.bind { [weak self] in
-            print($0)
-            self?.loginViewModel.updateUsername(username: $0.trimmingCharacters(in: .whitespaces).lowercased())
+            self?.loginViewModel.updateUsername(username: $0.trimmingCharacters(in: .whitespaces))
         }
         registerView.passwordTxtField.bind { [weak self] in
             self?.loginViewModel.updatePassword(password: $0.trimmingCharacters(in: .whitespaces))

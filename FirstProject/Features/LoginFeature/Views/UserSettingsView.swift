@@ -12,8 +12,7 @@ class UserSettingsView: UIView {
     
     // MARK: UIView Container
     private lazy var containerUIView: UIView = {
-        let containerView = UIView()
-        containerView.translatesAutoresizingMaskIntoConstraints = false
+        let containerView = UIViewTemplates().containerUIView()
         return containerView
     }()
     

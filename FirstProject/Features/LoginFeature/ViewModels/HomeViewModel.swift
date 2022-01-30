@@ -26,6 +26,7 @@ final class HomeViewModel {
     }
     
     // MARK: - Helpers
+    // LogOut the current user from the session on Parse Server
     func logOutUser() {
         PFUser.logOutInBackground()
     }

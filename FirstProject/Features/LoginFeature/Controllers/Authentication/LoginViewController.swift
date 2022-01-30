@@ -13,7 +13,7 @@ class LoginViewController: UIViewController, Coordinating {
     // MARK: - Properties
     var coordinator: Coordinator?
     
-    private var loginViewModel = LoginViewModel()
+    private var loginViewModel = AuthenticationViewModel()
     var loginView = LoginView()
     
     //MARK: - lifecycle
@@ -41,12 +41,10 @@ class LoginViewController: UIViewController, Coordinating {
     /// - Parameter sender: Any
     @objc private func loginButtonPressed(_ sender: UIButton) {
         
-        switch loginViewModel.validateUser() {
+        switch loginViewModel.validateUser(byUserAuthState: .login) {
         case .Valid:
             // Navigation to HomeScreenViewController
             coordinator?.eventOccurred(with: .loginButtonTapped)
-            // Success Alert
-            AppAlerts.showCompleteSuccessUIAlert(on: self)
         case .Empty:
             // Button Shake
             sender.shake()
@@ -56,9 +54,10 @@ class LoginViewController: UIViewController, Coordinating {
             // Button Shake
             sender.shake()
             // Improper credentials Alert
-            AppAlerts.showIncompleteErrorUIAlert(on: self)
+            AppAlerts.incorrectCredentials(on: self)
         case .UsernameAlreadyTaken:
-            print("test")
+            sender.shake()
+            AppAlerts.incorrectCredentials(on: self)
         }
     }
     

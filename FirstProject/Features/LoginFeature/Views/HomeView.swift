@@ -14,24 +14,44 @@ class HomeView: UIView, Coordinating {
     // MARK: - Properties
     
     // UIViews
-    private lazy var containerView = createUIView()
-    private lazy var topContainerView = createUIView()
-    private lazy var bottomContainerView = createUIView()
-    
-    // UIImageViews
-    private lazy var circleBackGroundForUserImage = createUIImageView(withImage: AppImages.lightCircle)
-    private lazy var plusIcon = createUIImageView(withImage: AppImages.plusIcon)
-    private lazy var homeScreenBackgroundImage = createUIImageView(withImage: AppImages.homeBackgroundImage)
+    private lazy var screenContainerUIView: UIView = {
+        let view = UIViewTemplates().containerUIView()
+        return view
+    }()
+    private lazy var topContainerUIView: UIView = {
+        let view = UIViewTemplates().containerUIView()
+        return view
+    }()
+    private lazy var bottomContainerUIView: UIView = {
+        let view = UIViewTemplates().containerUIView()
+        return view
+    }()
 
+    // UIImageViews
+    private lazy var circleBackGroundForUserImage: UIImageView = {
+        let imageView = UIViewTemplates().imageView(image: AppImages.lightCircle)
+        return imageView
+    }()
+    
+    private lazy var plusIcon: UIImageView = {
+        let imageView = UIViewTemplates().imageView(image: AppImages.plusIcon)
+        return imageView
+    }()
+    
+    private lazy var homeScreenBackgroundImage: UIImageView = {
+        let imageView = UIViewTemplates().imageView(image: AppImages.homeBackgroundImage)
+        return imageView
+    }()
+    
     // UILabels
     private(set) lazy var usernameLabel: UILabel = {
-        let greetMessage = UILabel()
-        greetMessage.translatesAutoresizingMaskIntoConstraints = false
-        greetMessage.font = UIFont.systemFont(ofSize: 40, weight: .bold)
-        greetMessage.textAlignment = .center
-        greetMessage.textColor = .white
+        let greetMessage = UIViewTemplates().newUILabel(text: "",
+                                                        fontSize: 40,
+                                                        fontWeight: .bold,
+                                                        textAlignment: .center,
+                                                        textColor: .white)
         greetMessage.contentMode = .scaleAspectFit
-        greetMessage.numberOfLines = 0
+        greetMessage.numberOfLines = 1
         return greetMessage
     }()
     
@@ -95,36 +115,36 @@ class HomeView: UIView, Coordinating {
     // MARK: - Helpers
     func configureUI() {
         
-        addSubview(containerView)
-        containerView.snp.makeConstraints {
+        addSubview(screenContainerUIView)
+        screenContainerUIView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
         
-        containerView.addSubview(homeScreenBackgroundImage)
+        screenContainerUIView.addSubview(homeScreenBackgroundImage)
         homeScreenBackgroundImage.snp.makeConstraints {
-            $0.edges.equalTo(containerView)
+            $0.edges.equalTo(screenContainerUIView)
         }
         
-        containerView.addSubview(topContainerView)
-        topContainerView.snp.makeConstraints {
-            $0.top.leading.trailing.equalTo(containerView)
-            $0.height.equalTo(containerView).multipliedBy(0.5)
+        screenContainerUIView.addSubview(topContainerUIView)
+        topContainerUIView.snp.makeConstraints {
+            $0.top.leading.trailing.equalTo(screenContainerUIView)
+            $0.height.equalTo(screenContainerUIView).multipliedBy(0.5)
         }
         
-        containerView.addSubview(bottomContainerView)
-        bottomContainerView.snp.makeConstraints {
-            $0.top.equalTo(topContainerView.snp.bottom)
-            $0.leading.trailing.equalTo(topContainerView)
-            $0.height.equalTo(containerView).multipliedBy(0.5)
+        screenContainerUIView.addSubview(bottomContainerUIView)
+        bottomContainerUIView.snp.makeConstraints {
+            $0.top.equalTo(topContainerUIView.snp.bottom)
+            $0.leading.trailing.equalTo(topContainerUIView)
+            $0.height.equalTo(screenContainerUIView).multipliedBy(0.5)
         }
 
-        topContainerView.addSubview(circleBackGroundForUserImage)
+        topContainerUIView.addSubview(circleBackGroundForUserImage)
         circleBackGroundForUserImage.snp.makeConstraints {
-            $0.bottomMargin.equalTo(topContainerView.snp_bottomMargin)
-            $0.centerX.equalTo(topContainerView.snp_centerXWithinMargins)
+            $0.bottomMargin.equalTo(topContainerUIView.snp_bottomMargin)
+            $0.centerX.equalTo(topContainerUIView.snp_centerXWithinMargins)
         }
         
-        topContainerView.addSubview(usernameLabel)
+        topContainerUIView.addSubview(usernameLabel)
         usernameLabel.snp.makeConstraints {
             $0.bottomMargin.equalTo(circleBackGroundForUserImage.snp_topMargin).inset(-30)
             $0.centerX.equalTo(circleBackGroundForUserImage.snp_centerXWithinMargins)
@@ -140,10 +160,10 @@ class HomeView: UIView, Coordinating {
             $0.height.equalTo(48)
         }
 
-        bottomContainerView.addSubview(buttonsStackView)
+        bottomContainerUIView.addSubview(buttonsStackView)
         buttonsStackView.snp.makeConstraints {
-            $0.topMargin.equalTo(bottomContainerView.snp_topMargin).inset(25)
-            $0.leading.trailing.equalTo(bottomContainerView).inset(30)
+            $0.topMargin.equalTo(bottomContainerUIView.snp_topMargin).inset(25)
+            $0.leading.trailing.equalTo(bottomContainerUIView).inset(30)
           }
 
         circleBackGroundForUserImage.snp.makeConstraints {
@@ -162,25 +182,10 @@ class HomeView: UIView, Coordinating {
             $0.trailing.equalTo(uploadImageButton.snp_trailingMargin).inset(12)
         }
         
-        bottomContainerView.addSubview(sourceCodeButton)
+        bottomContainerUIView.addSubview(sourceCodeButton)
         sourceCodeButton.snp.makeConstraints {
-            $0.bottom.equalTo(bottomContainerView.snp_bottomMargin)
-            $0.centerX.equalTo(bottomContainerView.snp.centerX)
+            $0.bottom.equalTo(bottomContainerUIView.snp_bottomMargin)
+            $0.centerX.equalTo(bottomContainerUIView.snp.centerX)
         }
     }
-    
-    private func createUIView() -> UIView {
-        let view = UIView(frame: .zero)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }
-    
-    private func createUIImageView(withImage image: UIImage) -> UIImageView {
-        let imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = image
-        imageView.contentMode = .scaleAspectFit
-        return imageView
-    }
 }
-

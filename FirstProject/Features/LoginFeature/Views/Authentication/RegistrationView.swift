@@ -13,39 +13,53 @@ class RegistrationView: UIView {
     // MARK: - Properties
 
     // UIViews
-    private lazy var screenContainerUIView = containerUIView()
-    private lazy var topContainerUIView = containerUIView()
-    private lazy var bottomContainerUIView = containerUIView()
+    private lazy var screenContainerUIView: UIView = {
+        let view = UIViewTemplates().containerUIView()
+        return view
+    }()
+    private lazy var topContainerUIView: UIView = {
+        let view = UIViewTemplates().containerUIView()
+        return view
+    }()
+    private lazy var bottomContainerUIView: UIView = {
+        let view = UIViewTemplates().containerUIView()
+        return view
+    }()
 
     // UIImageViews
-    private func imageView(image: UIImage) -> UIImageView {
-        let imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = image
-        imageView.contentMode = .scaleAspectFit
+    private lazy var loginImageView: UIImageView = {
+        let imageView = UIViewTemplates().imageView(image: AppImages.loginBackgroundImage)
         return imageView
-    }
-
-    private lazy var loginImageView = imageView(image: AppImages.loginBackgroundImage)
-
+    }()
+    
     // UILables
-    private lazy var signUpLabel = newUIlabel(text: "Sign Up",
-                                              fontSize: 45,
-                                              fontWeight: .semibold,
-                                              textAlignment: .center,
-                                              textColor: .white)
-    private lazy var usernameLabel = newUIlabel(text: "Username",
-                                                fontSize: 24,
-                                                fontWeight: .regular,
-                                                textAlignment: .natural,
-                                                textColor: .lightGrayAccent ?? .white)
-    private lazy var passwordLabel = newUIlabel(text: "Password",
-                                                fontSize: 24,
-                                                fontWeight: .regular,
-                                                textAlignment: .natural,
-                                                textColor: .lightGrayAccent ?? .white)
-
-    // UITextFields
+    private lazy var signUpLabel: UILabel = {
+        let label = UIViewTemplates().newUILabel(text: "Sign Up",
+                                                 fontSize: 45,
+                                                 fontWeight: .semibold,
+                                                 textAlignment: .center,
+                                                 textColor: .white)
+        return label
+    }()
+    
+    private lazy var usernameLabel: UILabel = {
+        let label = UIViewTemplates().newUILabel(text: "Username",
+                                                 fontSize: 24,
+                                                 fontWeight: .regular,
+                                                 textAlignment: .natural,
+                                                 textColor: .lightGrayAccent ?? .white)
+        return label
+    }()
+    
+    private lazy var passwordLabel: UILabel = {
+        let label = UIViewTemplates().newUILabel(text: "Password",
+                                                 fontSize: 24,
+                                                 fontWeight: .regular,
+                                                 textAlignment: .natural,
+                                                 textColor: .lightGrayAccent ?? .white)
+        return label
+    }()
+        // UITextFields
     private(set) lazy var usernameTxtField: CustomTextField = {
         let customTextField = CustomTextField()
         customTextField.translatesAutoresizingMaskIntoConstraints = false
@@ -64,25 +78,16 @@ class RegistrationView: UIView {
     }()
 
     // UIButtons
-    private func customButton(title: String,
-                              fontSize: Int,
-                              fontWeight: UIFont.Weight,
-                              tintColor: UIColor) -> UIButton {
-        let customButton = UIButton(type:.system)
-        customButton.translatesAutoresizingMaskIntoConstraints = false
-        customButton.setTitle(title, for: .normal)
-        customButton.titleLabel?.font = UIFont.systemFont(ofSize: CGFloat(fontSize), weight: fontWeight)
-        customButton.tintColor = tintColor
-        return customButton
-    }
-
-    private(set) lazy var registerButton = customButton(title: "REGISTER",
-                                                        fontSize: 40,
-                                                        fontWeight: .regular,
-                                                        tintColor: .white)
-
+    private(set) lazy var registerButton: UIButton = {
+        let button = UIViewTemplates().customButton(title: "REGISTER",
+                                                    fontSize: 40,
+                                                    fontWeight: .regular,
+                                                    tintColor: .white)
+        return button
+    }()
+    
     private(set) lazy var loginToAccountButton: UIButton = {
-        let button = Utilities().attributedButton("Already have an account?", " Sign In")
+        let button = UIViewTemplates().attributedButton("Already have an account?", " Sign In")
         return button
     }()
     
@@ -197,29 +202,5 @@ class RegistrationView: UIView {
             $0.centerX.equalTo(bottomContainerUIView)
             $0.bottom.equalTo(registerButton.snp.top).inset(-20)
         }
-        
     }
 }
-
-extension RegistrationView {
-    private func containerUIView() -> UIView {
-        let containerUIView = UIView(frame: .zero)
-        containerUIView.translatesAutoresizingMaskIntoConstraints = false
-        return containerUIView
-    }
-
-    private func newUIlabel(text: String,
-                            fontSize: Int,
-                            fontWeight: UIFont.Weight,
-                            textAlignment: NSTextAlignment,
-                            textColor: UIColor) -> UILabel {
-        let newUIlabel = UILabel()
-        newUIlabel.translatesAutoresizingMaskIntoConstraints = false
-        newUIlabel.text = text
-        newUIlabel.textAlignment = textAlignment
-        newUIlabel.textColor = textColor
-        newUIlabel.font = UIFont.systemFont(ofSize: CGFloat(fontSize), weight: fontWeight)
-        return newUIlabel
-    }
-}
-

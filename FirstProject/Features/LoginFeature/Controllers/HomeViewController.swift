@@ -9,7 +9,6 @@ import PhotosUI
 import UIKit
 import Parse
 
-
 class HomeViewController: UIViewController, Coordinating {
     
     // MARK: - Properties
@@ -53,8 +52,9 @@ extension HomeViewController {
     
     //    Navigation Button to FirstViewController
     @objc private func didTapLogOutButton() {
-        coordinator?.eventOccurred(with: .logOutButtonTapped)
         homeViewModel.logOutUser()
+        removeUserImageWhenSignedOut()
+        coordinator?.eventOccurred(with: .logOutButtonTapped)
     }
     
     @objc private func didTapScheduleEventButton() {
@@ -122,7 +122,7 @@ extension HomeViewController {
     
     /// Retrieving User data to load "username" and assign it to usernameLabel
     func loadUserName() {
-            homeSharedView.usernameLabel.text = homeViewModel.username
+        homeSharedView.usernameLabel.text = homeViewModel.username
     }
 }
 
@@ -162,6 +162,14 @@ extension HomeViewController: PHPickerViewControllerDelegate {
                                                                    for: .normal)
                 }
             }
+        }
+    }
+    
+    // Remove the current user image from disk if user logs out
+    private func removeUserImageWhenSignedOut() {
+         DispatchQueue.global(qos: .background).async {
+            self.imageStorage.removeImage(forKey: .userImage,
+                                          inStorageType: .fileSystem)
         }
     }
 }

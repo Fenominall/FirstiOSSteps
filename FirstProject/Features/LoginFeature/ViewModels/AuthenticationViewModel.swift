@@ -13,6 +13,7 @@ enum UserValidationState {
     case Invalid
     case Empty
     case UsernameAlreadyTaken
+    case NoInternetConnection
 }
 
 enum UsersAuthenticationStates {
@@ -28,9 +29,9 @@ class AuthenticationViewModel {
     
     var username: String?
     var password: String?
-    // #### Need to fix the issue with the flags ### // 
-    var usernameIsTaken = true
-    var userCredentialsAreCorrect = true
+    // #### Need to fix the issue with the flags ### //
+    var usernameIsTaken = false
+    var userCredentialsAreCorrect = false
     
     // MARK: - Object Lifecycle
     init(user: User = User()) {
@@ -62,46 +63,59 @@ extension AuthenticationViewModel {
             HapticsManager.shared.vibrateForType(for: .warning)
             return .Empty
         }
+        
         if !AppDataValidator.validateUserName(user.username) ||
             !AppDataValidator.validatePassword(user.password) {
             HapticsManager.shared.vibrateForType(for: .warning)
             return .Invalid
         }
         
-        switch userStates {
-        case .login:
-            signInUser()
-            if userCredentialsAreCorrect {
-                HapticsManager.shared.vibrateForType(for: .success)
-                saveUserToDisk()
-                return .Valid
-            } else {
-                HapticsManager.shared.vibrateForType(for: .warning)
-                return .Invalid
+        // Start monitoring if the device has internet connection
+        NetworkMonitor.shared.startMonitoring()
+        // If the device is connected to the internet, provide the selected action
+        if NetworkMonitor.shared.isConnected {
+            print("DEBUG: The device has internet connection.")
+            switch userStates {
+            case .login:
+                signInUser()
+                if userCredentialsAreCorrect {
+                    HapticsManager.shared.vibrateForType(for: .success)
+                    saveUserToDisk()
+                    return .Valid
+                } else {
+                    HapticsManager.shared.vibrateForType(for: .warning)
+                    return .Invalid
+                }
+            case .register:
+                checkIfUserAlreadyCreated(byUsername: user.username)
+                if !usernameIsTaken {
+                    HapticsManager.shared.vibrateForType(for: .warning)
+                    return .UsernameAlreadyTaken
+                } else {
+                    HapticsManager.shared.vibrateForType(for: .success)
+                    // Creating new account on Parse for a user
+                    signUpNewUser()
+                    saveUserToDisk()
+                    return .Valid
+                }
+            case .update:
+                if usernameIsTaken {
+                    HapticsManager.shared.vibrateForType(for: .warning)
+                    return .UsernameAlreadyTaken
+                } else {
+                    HapticsManager.shared.vibrateForType(for: .success)
+                    // Creating new account on Parse for a user
+                    updateCurrentUser()
+                    saveUserToDisk()
+                    return .Valid
+                }
             }
-        case .register:
-            checkIfUserAlreadyCreated(byUsername: user.username)
-            if !usernameIsTaken {
-                HapticsManager.shared.vibrateForType(for: .warning)
-                return .UsernameAlreadyTaken
-            } else {
-                HapticsManager.shared.vibrateForType(for: .success)
-                // Creating new account on Parse for a user
-                signUpNewUser()
-                saveUserToDisk()
-                return .Valid
-            }
-        case .update:
-            if usernameIsTaken {
-                HapticsManager.shared.vibrateForType(for: .warning)
-                return .UsernameAlreadyTaken
-            } else {
-                HapticsManager.shared.vibrateForType(for: .success)
-                // Creating new account on Parse for a user
-                updateCurrentUser()
-                saveUserToDisk()
-                return .Valid
-            }
+        } else {
+            // Stop monitoring if the device has internet connection
+            NetworkMonitor.shared.stopMonitoring()
+            print("DEBUG: The device does not have internet connection.")
+            HapticsManager.shared.vibrateForType(for: .warning)
+            return .NoInternetConnection
         }
     }
     
@@ -112,11 +126,13 @@ extension AuthenticationViewModel {
         query?.whereKey("username", contains: username)
         // getting each object to check if username is unique or not
         query?.getFirstObjectInBackground { [weak self] (object: PFObject?, error: Error?) -> Void in
-            if object != nil {
-                self?.usernameIsTaken = true
-                print("DEBUG: The entered username is already taken")
-            } else {
-                self?.usernameIsTaken = false
+            DispatchQueue.main.async {
+                if object != nil {
+                    self?.usernameIsTaken = true
+                    print("DEBUG: The entered username is already taken")
+                } else {
+                    self?.usernameIsTaken = false
+                }
             }
         }
     }

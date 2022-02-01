@@ -54,7 +54,7 @@ struct AppAlerts {
         let alertController = UIAlertController(title: title,
                                                        message: message,
                                                        preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "Ok",
+        alertController.addAction(UIAlertAction(title: "OK",
                                                        style: .default,
                                                        handler: nil))
         viewController.present(alertController, animated: true)
@@ -65,6 +65,10 @@ struct AppAlerts {
         userAccountCreated(on: vc, title: "Success", message: userAccountCreatedMessage, preferredStyle: .alert)
     }
     
+    
+    static func noInternetConnectionAlert(on vc: UIViewController) {
+        userAccountCreated(on: vc, title: "Error", message: noInternetConnectionMessage, preferredStyle: .alert)
+    }
     
     // Alert with a completion handler that displaying a success messages when User data is updated.
     private static func dataUpdatedSuccessfully(on viewController: UIViewController,
@@ -98,6 +102,7 @@ fileprivate let passwordRequirementsAlertMessage = """
                           Username should be at least (min-4, max-20) characters long.
                           Password can be only digits and at least 1 special character, should contain (min-8, max-20) characters long.
                           """
+fileprivate let noInternetConnectionMessage = "Please check your internet connection and try again later."
 
 
 

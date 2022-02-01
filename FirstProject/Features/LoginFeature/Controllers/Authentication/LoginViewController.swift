@@ -58,6 +58,9 @@ class LoginViewController: UIViewController, Coordinating {
         case .UsernameAlreadyTaken:
             sender.shake()
             AppAlerts.incorrectCredentials(on: self)
+        case .NoInternetConnection:
+            sender.shake()
+            AppAlerts.noInternetConnectionAlert(on: self)
         }
     }
     

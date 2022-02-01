@@ -74,6 +74,9 @@ class UserSettingsViewController: UIViewController, Coordinating {
         case .UsernameAlreadyTaken:
             sender.shake()
             AppAlerts.usernameIsAlreadyTakenAlert(on: self)
+        case .NoInternetConnection:
+            sender.shake()
+            AppAlerts.noInternetConnectionAlert(on: self)
         }
     }
     

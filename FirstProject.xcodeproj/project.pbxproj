@@ -164,6 +164,14 @@
 			path = Memento;
 			sourceTree = "<group>";
 		};
+		4F2804C027A9A1D600254420 /* NetworkMonitor */ = {
+			isa = PBXGroup;
+			children = (
+				4F31B22A27A72F8A003935B4 /* NetworkMonitor.swift */,
+			);
+			path = NetworkMonitor;
+			sourceTree = "<group>";
+		};
 		4F3127EB27A553B500E69100 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -239,7 +247,7 @@
 		4F31B22927A72F79003935B4 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				4F31B22A27A72F8A003935B4 /* NetworkMonitor.swift */,
+				4F2804C027A9A1D600254420 /* NetworkMonitor */,
 			);
 			path = Services;
 			sourceTree = "<group>";

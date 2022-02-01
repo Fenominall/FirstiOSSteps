@@ -71,6 +71,10 @@ class RegistrationViewController: UIViewController, Coordinating {
             sender.shake()
             registerView.signUpIndicator.stopAnimating()
             AppAlerts.usernameIsAlreadyTakenAlert(on: self)
+        case .NoInternetConnection:
+            sender.shake()
+            registerView.signUpIndicator.stopAnimating()
+            AppAlerts.noInternetConnectionAlert(on: self)
         }
     }
     

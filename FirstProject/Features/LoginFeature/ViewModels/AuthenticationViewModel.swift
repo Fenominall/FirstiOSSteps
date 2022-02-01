@@ -87,6 +87,7 @@ extension AuthenticationViewModel {
                     return .Invalid
                 }
             case .register:
+                // Getting entered username to check if it already exists in the database or not
                 checkIfUserAlreadyCreated(byUsername: user.username)
                 if !usernameIsTaken {
                     HapticsManager.shared.vibrateForType(for: .warning)
@@ -121,18 +122,16 @@ extension AuthenticationViewModel {
     
     func checkIfUserAlreadyCreated(byUsername username: String) {
         // Creating new query of users on Parse Server
-        let query = PFUser.query()
+        let query = PFQuery(className: "User")
         // Checking all users by username key to find a match with inputed username by user
-        query?.whereKey("username", contains: username)
+        query.whereKey("username", contains: username)
         // getting each object to check if username is unique or not
-        query?.getFirstObjectInBackground { [weak self] (object: PFObject?, error: Error?) -> Void in
-            DispatchQueue.main.async {
-                if object != nil {
-                    self?.usernameIsTaken = true
-                    print("DEBUG: The entered username is already taken")
-                } else {
-                    self?.usernameIsTaken = false
-                }
+        query.getFirstObjectInBackground { (object: PFObject?, error: Error?) -> Void in
+            if object != nil {
+                self.usernameIsTaken = true
+                print("DEBUG: The entered username is already taken")
+            } else {
+                self.usernameIsTaken = false
             }
         }
     }

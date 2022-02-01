@@ -51,7 +51,7 @@ class UserSettingsViewController: UIViewController, Coordinating {
     @objc private func updateUserDataButtonTapped(_ sender: UIButton) {
         
         guard let username = userSettingsView.updatePasswordTextField.text else { return }
-        loginViewModel.checkIfUserAlreadyCreated(byUsername: username)
+//        loginViewModel.checkIfUserAlreadyCreated(byUsername: username, completion: () -> Void)
     
         switch loginViewModel.validateUser(byUserAuthState: .update) {
         case .Valid:

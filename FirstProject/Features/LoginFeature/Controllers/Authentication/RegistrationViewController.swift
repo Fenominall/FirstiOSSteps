@@ -43,10 +43,9 @@ class RegistrationViewController: UIViewController, Coordinating {
     }
     
     @objc func registerButtonPressed(_ sender: UIButton) {
+        NetworkMonitor.shared.startMonitoring()
+    
         registerView.signUpIndicator.startAnimating()
-        // Getting entered username to check if it already exists in the database or not
-//        guard let username = registerView.usernameTxtField.text else { return }
-//        loginViewModel.checkIfUserAlreadyCreated(byUsername: username)
         
         switch loginViewModel.validateUser(byUserAuthState: .register) {
         case .Valid:

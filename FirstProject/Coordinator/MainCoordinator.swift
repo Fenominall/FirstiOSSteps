@@ -25,9 +25,9 @@ class MainCoordinator: Coordinator {
         switch type {
             
         case .loginButtonTapped:
-            var homeVC: UIViewController & Coordinating = HomeViewController()
-            homeVC.coordinator = self
-            navigationController?.pushViewController(homeVC, animated: true)
+            var containerVC: UIViewController & Coordinating = HomeViewController()
+            containerVC.coordinator = self
+            navigationController?.pushViewController(containerVC, animated: true)
             
         case .goToRegisterController:
             var registerVC: UIViewController & Coordinating = RegistrationViewController()
@@ -48,7 +48,6 @@ class MainCoordinator: Coordinator {
             var loginViewController: UIViewController & Coordinating = LoginViewController()
             loginViewController.coordinator = self
             navigationController?.pushViewController(loginViewController, animated: true)
-            
             
         case .sourceCodeButtonTapped:
             guard let url = URL(string: "https://github.com/Fenominall/FirstiOSSteps") else { return }
@@ -75,9 +74,9 @@ class MainCoordinator: Coordinator {
             loginViewController.coordinator = self
             navigationController?.setViewControllers([loginViewController], animated: false)
         } else {
-            var homeViewController: UIViewController & Coordinating = HomeViewController()
-            homeViewController.coordinator = self
-            navigationController?.setViewControllers([homeViewController], animated: false)
+            var containerController: UIViewController & Coordinating = HomeViewController()
+            containerController.coordinator = self
+            navigationController?.setViewControllers([containerController], animated: false)
             
         }
     }

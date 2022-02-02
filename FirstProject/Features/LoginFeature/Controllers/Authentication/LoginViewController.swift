@@ -28,6 +28,8 @@ class LoginViewController: UIViewController, Coordinating {
         configureData()
         configureUI()
         print(FileManager.getDocumentsDirectory())
+        NetworkMonitor.shared.startMonitoring()
+
     }
     
     override func viewDidAppear(_ animated: Bool) {

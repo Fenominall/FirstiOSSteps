@@ -9,6 +9,10 @@ import PhotosUI
 import UIKit
 import Parse
 
+protocol HomeViewControllerDelegate: AnyObject {
+    func handleMenuToggle()
+}
+
 class HomeViewController: UIViewController, Coordinating {
     
     // MARK: - Properties
@@ -17,6 +21,8 @@ class HomeViewController: UIViewController, Coordinating {
     private var homeSharedView = HomeView()
     private var imageStorage = ImageStorage()
     private var homeViewModel = HomeViewModel()
+    
+    weak var delegate: HomeViewControllerDelegate?
     
     // MARK: - Lifecycle
     override func loadView() {
@@ -52,6 +58,13 @@ extension HomeViewController {
     
     //    Navigation Button to FirstViewController
     @objc private func didTapLogOutButton() {
+        delegate?.handleMenuToggle()
+        //        homeViewModel.logOutUser()
+        //        removeUserImageWhenSignedOut()
+        //        coordinator?.eventOccurred(with: .logOutButtonTapped)
+    }
+    
+    @objc private func logOutTest() {
         homeViewModel.logOutUser()
         removeUserImageWhenSignedOut()
         coordinator?.eventOccurred(with: .logOutButtonTapped)
@@ -101,13 +114,16 @@ extension HomeViewController {
         // NavigationBar settings
         navigationItem.title = "Home"
         navigationItem.backButtonTitle = "Back"
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "line.3.horizontal"), style: .plain, target: self, action: #selector(didTapLogOutButton))
-        navigationItem.leftBarButtonItem?.tintColor = .white
-        navigationItem.rightBarButtonItem?.tintColor = .white
-        
         navigationItem.setHidesBackButton(true, animated: false)
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.barStyle = .black
+
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "line.3.horizontal"), style: .plain, target: self, action: #selector(didTapLogOutButton))
+        navigationItem.leftBarButtonItem?.tintColor = .white
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(logOutTest))
+        navigationItem.rightBarButtonItem?.tintColor = .white
     }
     
     func configureActions() {
@@ -167,7 +183,7 @@ extension HomeViewController: PHPickerViewControllerDelegate {
     
     // Remove the current user image from disk if user logs out
     private func removeUserImageWhenSignedOut() {
-         DispatchQueue.global(qos: .background).async {
+        DispatchQueue.global(qos: .background).async {
             self.imageStorage.removeImage(forKey: .userImage,
                                           inStorageType: .fileSystem)
         }

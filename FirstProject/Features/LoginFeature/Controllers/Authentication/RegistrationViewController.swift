@@ -29,6 +29,8 @@ class RegistrationViewController: UIViewController, Coordinating {
         configureNavigationBar()
         configureActions()
         observeKeyboardNotifications()
+        NetworkMonitor.shared.startMonitoring()
+
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -43,7 +45,6 @@ class RegistrationViewController: UIViewController, Coordinating {
     }
     
     @objc func registerButtonPressed(_ sender: UIButton) {
-        NetworkMonitor.shared.startMonitoring()
     
         registerView.signUpIndicator.startAnimating()
         

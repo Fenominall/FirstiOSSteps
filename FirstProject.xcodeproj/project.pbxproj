@@ -49,6 +49,7 @@
 		4FF15B43279B197E003E4542 /* AlertFactoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF15B42279B197D003E4542 /* AlertFactoryService.swift */; };
 		4FF15B45279B1B30003E4542 /* AlertViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF15B44279B1B30003E4542 /* AlertViewData.swift */; };
 		4FF3238027B02401009DA656 /* ActionSheetLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF3237F27B02401009DA656 /* ActionSheetLauncher.swift */; };
+		4FF3238327B03A0C009DA656 /* UIApplicationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF3238227B03A0C009DA656 /* UIApplicationExtension.swift */; };
 		4FF9064526543BEF001387C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF9064426543BEF001387C9 /* AppDelegate.swift */; };
 		4FF9064726543BEF001387C9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF9064626543BEF001387C9 /* SceneDelegate.swift */; };
 		4FF9064E26543BF1001387C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FF9064D26543BF1001387C9 /* Assets.xcassets */; };
@@ -101,6 +102,7 @@
 		4FF15B42279B197D003E4542 /* AlertFactoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertFactoryService.swift; sourceTree = "<group>"; };
 		4FF15B44279B1B30003E4542 /* AlertViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewData.swift; sourceTree = "<group>"; };
 		4FF3237F27B02401009DA656 /* ActionSheetLauncher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionSheetLauncher.swift; sourceTree = "<group>"; };
+		4FF3238227B03A0C009DA656 /* UIApplicationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplicationExtension.swift; sourceTree = "<group>"; };
 		4FF9064126543BEF001387C9 /* FirstProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FirstProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FF9064426543BEF001387C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4FF9064626543BEF001387C9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -325,6 +327,7 @@
 		4F93710C276674DD007667F8 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				4FF3238127B039FE009DA656 /* UIApplication */,
 				4F3127F127A5548400E69100 /* DynamicObserver */,
 				4F93710D27667514007667F8 /* UIViewTemplates */,
 				4FDB688C26E145400006F8E3 /* CustomUserDefaults */,
@@ -422,6 +425,14 @@
 				4FCE23C927243D7C0068002F /* UIButton */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		4FF3238127B039FE009DA656 /* UIApplication */ = {
+			isa = PBXGroup;
+			children = (
+				4FF3238227B03A0C009DA656 /* UIApplicationExtension.swift */,
+			);
+			path = UIApplication;
 			sourceTree = "<group>";
 		};
 		4FF9063826543BEF001387C9 = {
@@ -609,6 +620,7 @@
 			files = (
 				4FD2745C2683317300C8FA32 /* HomeViewController.swift in Sources */,
 				4FFCD45B26BEC87000770D33 /* LoginView.swift in Sources */,
+				4FF3238327B03A0C009DA656 /* UIApplicationExtension.swift in Sources */,
 				4F28BA7E27429B57001308E1 /* ScheduleListViewCell.swift in Sources */,
 				4F05B2CB27A3203800AFEEC6 /* RegistrationView.swift in Sources */,
 				4FDB689026E146390006F8E3 /* UIColorHexExtension.swift in Sources */,

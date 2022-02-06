@@ -86,8 +86,42 @@ struct AppAlerts {
         viewController.present(alertController, animated: true)
     }
     /// Alert with a completion handler that displaying a success messages when User data is updated.
-    static func updatedDataAlertTest(on vc: UIViewController, completion: @escaping ((UIAlertAction) -> Void)) {
+    static func updatedDataAlert(on vc: UIViewController, completion: @escaping ((UIAlertAction) -> Void)) {
         dataUpdatedSuccessfully(on: vc, withTitle: "Success", message: successUpdatedDataMessage, preferredStyle: .alert, completion: completion)
+    }
+    
+    // Alert to manipulate with user profileImage image
+    // selecting an image for a user
+    // setting user image
+    // deleting user image
+    private static func handleUserImageAlertController(on viewController: UIViewController,
+                                        withTitle title: String,
+                                        preferredStyle: UIAlertController.Style,
+                                        completionOne: @escaping ((UIAlertAction) -> Void),
+                                        completionTwo: @escaping ((UIAlertAction) -> Void)) {
+        let alertController = UIAlertController(title: title,
+                                                message: nil,
+                                                preferredStyle: .actionSheet)
+        alertController.addAction(UIAlertAction(title: "Cancel",
+                                                style: .cancel,
+                                                handler: nil))
+        alertController.addAction(UIAlertAction(title: "Choose from library",
+                                                style: .default,
+                                                handler: completionOne))
+        alertController.addAction(UIAlertAction(title: "Remove current photo",
+                                                style: .destructive,
+                                                handler: completionTwo))
+        viewController.present(alertController, animated: true)
+    }
+    
+    static func handleUserImageAlert(on vc: UIViewController,
+                                     completionOne: @escaping ((UIAlertAction) -> Void),
+                                     completionTwo: @escaping ((UIAlertAction) -> Void)) {
+        handleUserImageAlertController(on: vc,
+                                       withTitle: "Change profile photo",
+                                       preferredStyle: .actionSheet,
+                                       completionOne: completionOne,
+                                       completionTwo: completionTwo)
     }
 }
 

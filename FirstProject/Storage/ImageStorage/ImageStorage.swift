@@ -74,7 +74,6 @@ public class ImageStorage {
         case .fileSystem:
             guard let filePath = filePath(forKey: key) else { return }
             if FileManager.default.fileExists(atPath: filePath.path) {
-                print("test")
                 do {
                     try FileManager.default.removeItem(at: filePath)
                 } catch let error {

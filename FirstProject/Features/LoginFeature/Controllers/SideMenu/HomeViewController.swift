@@ -75,17 +75,8 @@ extension HomeViewController {
     }
     
     @objc private func didTapUploadImageButton() {
-        let actionSheet = UIAlertController(title: nil,
-                                            message: "Change profile photo",
-                                            preferredStyle: .actionSheet)
-        
-        actionSheet.addAction(UIAlertAction(title: "Cancel",
-                                            style: .cancel,
-                                            handler: nil))
-        
-        actionSheet.addAction(UIAlertAction(title: "Choose from library",
-                                            style: .default,
-                                            handler: { [weak self] _ in
+        // Presenting PHPController with configurations to select and upload user image to the app
+        AppAlerts.handleUserImageAlert(on: self) { [weak self] _ in
             var configurations = PHPickerConfiguration(photoLibrary: .shared())
             configurations.selectionLimit = 1
             configurations.filter = .images
@@ -94,15 +85,12 @@ extension HomeViewController {
             photoPickerViewController.delegate = self
             
             self?.present(photoPickerViewController, animated: true)
-        }))
-        
-        actionSheet.addAction(UIAlertAction(title: "Remove current photo",
-                                            style: .destructive,
-                                            handler: { [weak self] _ in
+        } completionTwo: { [weak self] _ in
+            // Deleting uploaded image from FileManager
             self?.imageStorage.removeImage(forKey: .userImage, inStorageType: .fileSystem)
+            // Setting the default image as user image
             self?.homeSharedView.uploadImageButton.setImage(AppImages.userImage, for: .normal)
-        }))
-        present(actionSheet, animated: true)
+        }
     }
 }
 
@@ -117,7 +105,7 @@ extension HomeViewController {
         navigationItem.setHidesBackButton(true, animated: false)
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.barStyle = .black
-
+        
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "line.3.horizontal"), style: .plain, target: self, action: #selector(didTapLogOutButton))
         navigationItem.leftBarButtonItem?.tintColor = .white

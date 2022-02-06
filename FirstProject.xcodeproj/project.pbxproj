@@ -48,6 +48,7 @@
 		4FEF699D26BAC0190022CAFD /* SourceCodeWebUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEF699C26BAC0190022CAFD /* SourceCodeWebUIViewController.swift */; };
 		4FF15B43279B197E003E4542 /* AlertFactoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF15B42279B197D003E4542 /* AlertFactoryService.swift */; };
 		4FF15B45279B1B30003E4542 /* AlertViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF15B44279B1B30003E4542 /* AlertViewData.swift */; };
+		4FF3238027B02401009DA656 /* ActionSheetLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF3237F27B02401009DA656 /* ActionSheetLauncher.swift */; };
 		4FF9064526543BEF001387C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF9064426543BEF001387C9 /* AppDelegate.swift */; };
 		4FF9064726543BEF001387C9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF9064626543BEF001387C9 /* SceneDelegate.swift */; };
 		4FF9064E26543BF1001387C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FF9064D26543BF1001387C9 /* Assets.xcassets */; };
@@ -99,6 +100,7 @@
 		4FEF699C26BAC0190022CAFD /* SourceCodeWebUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceCodeWebUIViewController.swift; sourceTree = "<group>"; };
 		4FF15B42279B197D003E4542 /* AlertFactoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertFactoryService.swift; sourceTree = "<group>"; };
 		4FF15B44279B1B30003E4542 /* AlertViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewData.swift; sourceTree = "<group>"; };
+		4FF3237F27B02401009DA656 /* ActionSheetLauncher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionSheetLauncher.swift; sourceTree = "<group>"; };
 		4FF9064126543BEF001387C9 /* FirstProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FirstProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FF9064426543BEF001387C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4FF9064626543BEF001387C9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 				4FD2745B2683317300C8FA32 /* HomeViewController.swift */,
 				4F17B25827AB039D00FB2825 /* MenuController.swift */,
 				4F17B25627AB024D00FB2825 /* ContainerController.swift */,
+				4FF3237F27B02401009DA656 /* ActionSheetLauncher.swift */,
 			);
 			path = SideMenu;
 			sourceTree = "<group>";
@@ -633,6 +636,7 @@
 				4F4C9F612745890600D345DC /* EventPersistenceHelper.swift in Sources */,
 				4F4FDFBC268D862000736440 /* AuthenticationViewModel.swift in Sources */,
 				4FF9064726543BEF001387C9 /* SceneDelegate.swift in Sources */,
+				4FF3238027B02401009DA656 /* ActionSheetLauncher.swift in Sources */,
 				4F695E902662B6C200606D03 /* LoginViewController.swift in Sources */,
 				4F93710F2766752B007667F8 /* UIViewTemplates.swift in Sources */,
 				4F05462F26B9810B006C5A04 /* UIButtonAnimationsExtension.swift in Sources */,

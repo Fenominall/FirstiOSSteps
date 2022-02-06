@@ -51,12 +51,14 @@ class UserSettingsViewController: UIViewController, Coordinating {
     @objc private func updateUserDataButtonTapped(_ sender: UIButton) {
         
         guard let username = userSettingsView.updatePasswordTextField.text else { return }
-//        loginViewModel.checkIfUserAlreadyCreated(byUsername: username, completion: () -> Void)
+        loginViewModel.checkIfUserAlreadyCreated(byUsername: username
+        
+        )
     
         switch loginViewModel.validateUser(byUserAuthState: .update) {
         case .Valid:
             // Navigation to HomeScreenViewController
-            AppAlerts.updatedDataAlertTest(on: self) { [weak self]_ in
+            AppAlerts.updatedDataAlert(on: self) { [weak self]_ in
                 guard let username = self?.userSettingsView.updateUsernameTextField.text else { return }
                 // updating usernameLabel with received input in 
                 self?.navigationController?.popViewController(animated: true)

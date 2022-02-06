@@ -13,8 +13,6 @@
 		4F05B2CD27A3216A00AFEEC6 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F05B2CC27A3216A00AFEEC6 /* RegistrationViewController.swift */; };
 		4F083EE926D8063200B63DD7 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F083EE826D8063200B63DD7 /* Coordinator.swift */; };
 		4F083EEB26D806B400B63DD7 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F083EEA26D806B400B63DD7 /* MainCoordinator.swift */; };
-		4F17B25727AB024D00FB2825 /* ContainerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F17B25627AB024D00FB2825 /* ContainerController.swift */; };
-		4F17B25927AB039D00FB2825 /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F17B25827AB039D00FB2825 /* MenuController.swift */; };
 		4F234D392735118C00D1C00B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F234D382735118C00D1C00B /* LaunchScreen.storyboard */; };
 		4F257CFD2739B1AE007CB391 /* DiskCaretaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F257CFC2739B1AE007CB391 /* DiskCaretaker.swift */; };
 		4F257CFF2739B423007CB391 /* UserCaretaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F257CFE2739B423007CB391 /* UserCaretaker.swift */; };
@@ -48,7 +46,6 @@
 		4FEF699D26BAC0190022CAFD /* SourceCodeWebUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEF699C26BAC0190022CAFD /* SourceCodeWebUIViewController.swift */; };
 		4FF15B43279B197E003E4542 /* AlertFactoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF15B42279B197D003E4542 /* AlertFactoryService.swift */; };
 		4FF15B45279B1B30003E4542 /* AlertViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF15B44279B1B30003E4542 /* AlertViewData.swift */; };
-		4FF3238027B02401009DA656 /* ActionSheetLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF3237F27B02401009DA656 /* ActionSheetLauncher.swift */; };
 		4FF3238327B03A0C009DA656 /* UIApplicationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF3238227B03A0C009DA656 /* UIApplicationExtension.swift */; };
 		4FF9064526543BEF001387C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF9064426543BEF001387C9 /* AppDelegate.swift */; };
 		4FF9064726543BEF001387C9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF9064626543BEF001387C9 /* SceneDelegate.swift */; };
@@ -66,8 +63,6 @@
 		4F05B2CC27A3216A00AFEEC6 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		4F083EE826D8063200B63DD7 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		4F083EEA26D806B400B63DD7 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
-		4F17B25627AB024D00FB2825 /* ContainerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerController.swift; sourceTree = "<group>"; };
-		4F17B25827AB039D00FB2825 /* MenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
 		4F234D382735118C00D1C00B /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4F257CFC2739B1AE007CB391 /* DiskCaretaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskCaretaker.swift; sourceTree = "<group>"; };
 		4F257CFE2739B423007CB391 /* UserCaretaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCaretaker.swift; sourceTree = "<group>"; };
@@ -101,7 +96,6 @@
 		4FEF699C26BAC0190022CAFD /* SourceCodeWebUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceCodeWebUIViewController.swift; sourceTree = "<group>"; };
 		4FF15B42279B197D003E4542 /* AlertFactoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertFactoryService.swift; sourceTree = "<group>"; };
 		4FF15B44279B1B30003E4542 /* AlertViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewData.swift; sourceTree = "<group>"; };
-		4FF3237F27B02401009DA656 /* ActionSheetLauncher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionSheetLauncher.swift; sourceTree = "<group>"; };
 		4FF3238227B03A0C009DA656 /* UIApplicationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplicationExtension.swift; sourceTree = "<group>"; };
 		4FF9064126543BEF001387C9 /* FirstProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FirstProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FF9064426543BEF001387C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -159,17 +153,6 @@
 				4F083EEA26D806B400B63DD7 /* MainCoordinator.swift */,
 			);
 			path = Coordinator;
-			sourceTree = "<group>";
-		};
-		4F17B25527AB022400FB2825 /* SideMenu */ = {
-			isa = PBXGroup;
-			children = (
-				4FD2745B2683317300C8FA32 /* HomeViewController.swift */,
-				4F17B25827AB039D00FB2825 /* MenuController.swift */,
-				4F17B25627AB024D00FB2825 /* ContainerController.swift */,
-				4FF3237F27B02401009DA656 /* ActionSheetLauncher.swift */,
-			);
-			path = SideMenu;
 			sourceTree = "<group>";
 		};
 		4F257CFB2739B104007CB391 /* Memento */ = {
@@ -359,8 +342,8 @@
 			isa = PBXGroup;
 			children = (
 				4F05B2C827A31FB200AFEEC6 /* Authentication */,
-				4F17B25527AB022400FB2825 /* SideMenu */,
 				4FD2745D268332F700C8FA32 /* UserSettingsViewController.swift */,
+				4FD2745B2683317300C8FA32 /* HomeViewController.swift */,
 				4FEF699C26BAC0190022CAFD /* SourceCodeWebUIViewController.swift */,
 			);
 			path = Controllers;
@@ -635,7 +618,6 @@
 				4F31B22B27A72F8A003935B4 /* NetworkMonitor.swift in Sources */,
 				4FD2745E268332F700C8FA32 /* UserSettingsViewController.swift in Sources */,
 				4FFF2A1626BD27560064E610 /* HapticsManager.swift in Sources */,
-				4F17B25927AB039D00FB2825 /* MenuController.swift in Sources */,
 				4F2A17B726C7050600205E03 /* Dynamic.swift in Sources */,
 				4F28BA74274271A1001308E1 /* UserKey.swift in Sources */,
 				4F28BA762742889C001308E1 /* ScheduleListController.swift in Sources */,
@@ -648,7 +630,6 @@
 				4F4C9F612745890600D345DC /* EventPersistenceHelper.swift in Sources */,
 				4F4FDFBC268D862000736440 /* AuthenticationViewModel.swift in Sources */,
 				4FF9064726543BEF001387C9 /* SceneDelegate.swift in Sources */,
-				4FF3238027B02401009DA656 /* ActionSheetLauncher.swift in Sources */,
 				4F695E902662B6C200606D03 /* LoginViewController.swift in Sources */,
 				4F93710F2766752B007667F8 /* UIViewTemplates.swift in Sources */,
 				4F05462F26B9810B006C5A04 /* UIButtonAnimationsExtension.swift in Sources */,
@@ -656,7 +637,6 @@
 				4FCDEBA9272FEC51002C3B06 /* HomeViewModel.swift in Sources */,
 				4F9371122766759B007667F8 /* NSConstraintsExtension.swift in Sources */,
 				4FD4D58E26833C8D0078633E /* AppDataValidator.swift in Sources */,
-				4F17B25727AB024D00FB2825 /* ContainerController.swift in Sources */,
 				4FA5BB1826CEDB5F001C486D /* UserSettingsView.swift in Sources */,
 				4FDB688E26E1455A0006F8E3 /* CustomUserDefaults.swift in Sources */,
 				4F257CFF2739B423007CB391 /* UserCaretaker.swift in Sources */,

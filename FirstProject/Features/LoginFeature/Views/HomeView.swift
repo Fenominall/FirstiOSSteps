@@ -8,16 +8,19 @@
 import UIKit
 import SnapKit
 
+
 class HomeView: UIView, Coordinating {
     var coordinator: Coordinator?
     
     // MARK: - Properties
+    
     
     // UIViews
     private lazy var screenContainerUIView: UIView = {
         let view = UIViewTemplates().containerUIView()
         return view
     }()
+    
     private lazy var topContainerUIView: UIView = {
         let view = UIViewTemplates().containerUIView()
         return view
@@ -26,7 +29,7 @@ class HomeView: UIView, Coordinating {
         let view = UIViewTemplates().containerUIView()
         return view
     }()
-
+    
     // UIImageViews
     private lazy var circleBackGroundForUserImage: UIImageView = {
         let imageView = UIViewTemplates().imageView(image: AppImages.lightCircle)

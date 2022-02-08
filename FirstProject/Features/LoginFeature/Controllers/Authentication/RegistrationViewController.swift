@@ -26,10 +26,12 @@ class RegistrationViewController: UIViewController, Coordinating {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        NetworkMonitor.shared.startMonitoring()
+
         configureNavigationBar()
         configureActions()
         observeKeyboardNotifications()
-        NetworkMonitor.shared.startMonitoring()
+        handleUserActionsWithViewModel()
 
     }
 
@@ -45,40 +47,50 @@ class RegistrationViewController: UIViewController, Coordinating {
     }
     
     @objc func registerButtonPressed(_ sender: UIButton) {
-    
         registerView.signUpIndicator.startAnimating()
-        
-        switch loginViewModel.validateUser(byUserAuthState: .register) {
-        case .Valid:
+        loginViewModel.signUpUser()
+    }
+    
+    // MARK: - Helpers
+    
+    func handleUserActionsWithViewModel() {
+        loginViewModel.onDidiFinishUserValidation = { [weak self] state in
+            self?.handleValidationState(state)
+        }
+    }
+    
+    func handleValidationState(_ state: UserValidationState) {
+        switch state {
+        case .valid:
             registerView.signUpIndicator.stopAnimating()
-            sender.shake()
+            registerView.registerButton.shake()
             coordinator?.eventOccurred(with: .loginButtonTapped)
             // Success Alert
             AppAlerts.showCompleteSuccessUIAlert(on: self)
-        case .Empty:
+        case .empty:
             // Button Shake
-            sender.shake()
+            registerView.registerButton.shake()
             registerView.signUpIndicator.stopAnimating()
             // Empty fields Error Alert
             AppAlerts.emptyFieldsErrorAlert(on: self)
-        case .Invalid:
+        case .invalid:
             // Button Shake
-            sender.shake()
+            registerView.registerButton.shake()
             registerView.signUpIndicator.stopAnimating()
             // Improper credentials Alert
             AppAlerts.showIncompleteErrorUIAlert(on: self)
-        case .UsernameAlreadyTaken:
-            sender.shake()
+        case .usernameAlreadyTaken:
+            registerView.registerButton.shake()
             registerView.signUpIndicator.stopAnimating()
             AppAlerts.usernameIsAlreadyTakenAlert(on: self)
-        case .NoInternetConnection:
-            sender.shake()
+        case .noInternetConnection:
+            registerView.registerButton.shake()
             registerView.signUpIndicator.stopAnimating()
             AppAlerts.noInternetConnectionAlert(on: self)
         }
     }
     
-    // MARK: - Helpers
+    
     func configureNavigationBar() {
         navigationItem.backButtonTitle = ""
         navigationController?.navigationBar.barStyle = .black

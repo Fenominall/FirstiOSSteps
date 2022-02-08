@@ -43,27 +43,27 @@ class LoginViewController: UIViewController, Coordinating {
     /// - Parameter sender: Any
     @objc private func loginButtonPressed(_ sender: UIButton) {
         
-        switch loginViewModel.validateUser(byUserAuthState: .login) {
-        case .Valid:
-            // Navigation to HomeScreenViewController
-            coordinator?.eventOccurred(with: .loginButtonTapped)
-        case .Empty:
-            // Button Shake
-            sender.shake()
-            // Empty fields Error Alert
-            AppAlerts.emptyFieldsErrorAlert(on: self)
-        case .Invalid:
-            // Button Shake
-            sender.shake()
-            // Improper credentials Alert
-            AppAlerts.incorrectCredentials(on: self)
-        case .UsernameAlreadyTaken:
-            sender.shake()
-            AppAlerts.incorrectCredentials(on: self)
-        case .NoInternetConnection:
-            sender.shake()
-            AppAlerts.noInternetConnectionAlert(on: self)
-        }
+//        switch loginViewModel.validateUser(byUserAuthState: .login) {
+//        case .valid:
+//            // Navigation to HomeScreenViewController
+//            coordinator?.eventOccurred(with: .loginButtonTapped)
+//        case .empty:
+//            // Button Shake
+//            sender.shake()
+//            // Empty fields Error Alert
+//            AppAlerts.emptyFieldsErrorAlert(on: self)
+//        case .invalid:
+//            // Button Shake
+//            sender.shake()
+//            // Improper credentials Alert
+//            AppAlerts.incorrectCredentials(on: self)
+//        case .usernameAlreadyTaken:
+//            sender.shake()
+//            AppAlerts.incorrectCredentials(on: self)
+//        case .noInternetConnection:
+//            sender.shake()
+//            AppAlerts.noInternetConnectionAlert(on: self)
+//        }
     }
     
     @objc private func handleShowSignUp() {

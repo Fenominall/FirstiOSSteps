@@ -50,36 +50,36 @@ class UserSettingsViewController: UIViewController, Coordinating {
     
     @objc private func updateUserDataButtonTapped(_ sender: UIButton) {
         
-        guard let username = userSettingsView.updatePasswordTextField.text else { return }
-        loginViewModel.checkIfUserAlreadyCreated(byUsername: username
-        
-        )
+//        guard let username = userSettingsView.updatePasswordTextField.text else { return }
+//        loginViewModel.checkIfUserAlreadyCreated(byUsername: username
+//        
+//        )
     
-        switch loginViewModel.validateUser(byUserAuthState: .update) {
-        case .Valid:
-            // Navigation to HomeScreenViewController
-            AppAlerts.updatedDataAlert(on: self) { [weak self]_ in
-                guard let username = self?.userSettingsView.updateUsernameTextField.text else { return }
-                // updating usernameLabel with received input in 
-                self?.navigationController?.popViewController(animated: true)
-                self?.delegate?.didUpdatedUserUsername(withUsername: username)
-            }
-        case .Empty:
-            // Button Shake
-            sender.shake()
-            // Empty fields Error Alert
-            AppAlerts.emptyFieldsErrorAlert(on: self)
-        case .Invalid:
-            sender.shake()
-            // Improper credentials Alert
-            AppAlerts.showIncompleteErrorUIAlert(on: self)
-        case .UsernameAlreadyTaken:
-            sender.shake()
-            AppAlerts.usernameIsAlreadyTakenAlert(on: self)
-        case .NoInternetConnection:
-            sender.shake()
-            AppAlerts.noInternetConnectionAlert(on: self)
-        }
+//        switch loginViewModel.validateUser(byUserAuthState: .update) {
+//        case .valid:
+//            // Navigation to HomeScreenViewController
+//            AppAlerts.updatedDataAlert(on: self) { [weak self]_ in
+//                guard let username = self?.userSettingsView.updateUsernameTextField.text else { return }
+//                // updating usernameLabel with received input in 
+//                self?.navigationController?.popViewController(animated: true)
+//                self?.delegate?.didUpdatedUserUsername(withUsername: username)
+//            }
+//        case .empty:
+//            // Button Shake
+//            sender.shake()
+//            // Empty fields Error Alert
+//            AppAlerts.emptyFieldsErrorAlert(on: self)
+//        case .invalid:
+//            sender.shake()
+//            // Improper credentials Alert
+//            AppAlerts.showIncompleteErrorUIAlert(on: self)
+//        case .usernameAlreadyTaken:
+//            sender.shake()
+//            AppAlerts.usernameIsAlreadyTakenAlert(on: self)
+//        case .noInternetConnection:
+//            sender.shake()
+//            AppAlerts.noInternetConnectionAlert(on: self)
+//        }
     }
     
     // MARK: - Helpers

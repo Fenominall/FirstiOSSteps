@@ -8,20 +8,6 @@
 import Foundation
 import Parse
 
-enum UserValidationState {
-    case Valid
-    case Invalid
-    case Empty
-    case UsernameAlreadyTaken
-    case NoInternetConnection
-}
-
-enum UsersAuthenticationStates {
-    case login
-    case register
-    case update
-}
-
 class AuthenticationViewModel {
     
     // MARK: - Properties
@@ -29,9 +15,9 @@ class AuthenticationViewModel {
     
     var username: String?
     var password: String?
-    // #### Need to fix the issue with the flags ### //
-    var usernameIsTaken = false
-    var userCredentialsAreCorrect = false
+
+    var onDidiFinishUserValidation: ((_ state: UserValidationState) -> Void)?
+    var onDidFailCreateUser: (() -> Void)?
     
     // MARK: - Object Lifecycle
     init(user: User = User()) {
@@ -57,70 +43,8 @@ extension AuthenticationViewModel {
     func updatePassword(password: String) {
         user.password = password
     }
-    
-    func validateUser(byUserAuthState userStates: UsersAuthenticationStates) -> UserValidationState {
-        if user.username.isEmpty || user.password.isEmpty {
-            HapticsManager.shared.vibrateForType(for: .warning)
-            return .Empty
-        }
-        
-        if !AppDataValidator.validateUserName(user.username) ||
-            !AppDataValidator.validatePassword(user.password) {
-            HapticsManager.shared.vibrateForType(for: .warning)
-            return .Invalid
-        }
-        
-        // Start monitoring if the device has internet connection
-        NetworkMonitor.shared.startMonitoring()
-        // If the device is connected to the internet, provide the selected action
-        if NetworkMonitor.shared.isConnected {
-            print("DEBUG: The device has internet connection.")
-            switch userStates {
-            case .login:
-                signInUser()
-                if userCredentialsAreCorrect {
-                    HapticsManager.shared.vibrateForType(for: .success)
-                    saveUserToDisk()
-                    return .Valid
-                } else {
-                    HapticsManager.shared.vibrateForType(for: .warning)
-                    return .Invalid
-                }
-            case .register:
-                // Getting entered username to check if it already exists in the database or not
-                checkIfUserAlreadyCreated(byUsername: user.username)
-                if !usernameIsTaken {
-                    HapticsManager.shared.vibrateForType(for: .warning)
-                    return .UsernameAlreadyTaken
-                } else {
-                    HapticsManager.shared.vibrateForType(for: .success)
-                    // Creating new account on Parse for a user
-                    signUpNewUser()
-                    saveUserToDisk()
-                    return .Valid
-                }
-            case .update:
-                if usernameIsTaken {
-                    HapticsManager.shared.vibrateForType(for: .warning)
-                    return .UsernameAlreadyTaken
-                } else {
-                    HapticsManager.shared.vibrateForType(for: .success)
-                    // Creating new account on Parse for a user
-                    updateCurrentUser()
-                    saveUserToDisk()
-                    return .Valid
-                }
-            }
-        } else {
-            // Stop monitoring if the device has internet connection
-            NetworkMonitor.shared.stopMonitoring()
-            print("DEBUG: The device does not have internet connection.")
-            HapticsManager.shared.vibrateForType(for: .warning)
-            return .NoInternetConnection
-        }
-    }
-    
-    func checkIfUserAlreadyCreated(byUsername username: String) {
+
+    func checkIfUserAlreadyCreated(byUsername username: String, completion: @escaping ((_ value: Bool) -> Void)) {
         // Creating new query of users on Parse Server
         let query = PFQuery(className: "User")
         // Checking all users by username key to find a match with inputed username by user
@@ -128,42 +52,43 @@ extension AuthenticationViewModel {
         // getting each object to check if username is unique or not
         query.getFirstObjectInBackground { (object: PFObject?, error: Error?) -> Void in
             if object != nil {
-                self.usernameIsTaken = true
+                completion(true)
                 print("DEBUG: The entered username is already taken")
             } else {
-                self.usernameIsTaken = false
+                completion(false)
             }
         }
     }
     
-    func signUpNewUser() {
+    func signUpUserProcess(with username: String, password: String) {
         // Creating new instance of a PF user on Parse Server
         let createPFUser = PFUser()
         // updating PFUser with the users input in registration field
-        createPFUser.username = user.username
-        createPFUser.password = user.password
+        createPFUser.username = username
+        createPFUser.password = password
         // creating new user asynchronously and saving the user data to disk
-        createPFUser.signUpInBackground { (success: Bool, error: Error?) in
+        createPFUser.signUpInBackground { [weak self] (success: Bool, error: Error?) in
             if success {
                 // saving user state as logged it if login successful
                 UserDefaults.standard.setValue(true, forKey: UserKey.isLoggedIn)
-                print("user logged in")
+                self?.onDidiFinishUserValidation?(.valid)
             } else {
+                self?.onDidiFinishUserValidation?(.usernameAlreadyTaken)
                 print("DEBUG: AN ERROR OCCURRED WHEN TRYING TO SIGN UP A USER \(String(describing: error?.localizedDescription)) ")
             }
         }
     }
     
-    func signInUser() {
+    func signInUser(completion: @escaping (_ value: Bool) -> Bool) {
         PFUser.logInWithUsername(inBackground: user.username,
-                                 password: user.password) {
+                                 password: user.password) { [weak self]
             (user: PFUser?, error: Error?) -> Void in
             if user != nil {
                 // saving user state as logged it if login successful
                 UserDefaults.standard.setValue(true, forKey: UserKey.isLoggedIn)
-                self.userCredentialsAreCorrect = true
+                self?.onDidiFinishUserValidation?(.valid)
             } else {
-                self.userCredentialsAreCorrect = false
+                self?.onDidiFinishUserValidation?(.invalid)
                 print("DEBUG: AN ERROR OCCURRED WWHEN TRYING TO LOG IN THE USER \(error?.localizedDescription ?? "") ")
             }
         }
@@ -184,6 +109,43 @@ extension AuthenticationViewModel {
             try UserCaretaker.createUser(user: user)
         } catch {
             print("DEBUG: Got error when saving a newUser: \(error)")
+        }
+    }
+    
+    // Sign Up New User
+    func signUpUser() {
+        let username = user.username
+        let password = user.password
+
+        AppDataValidator.checkIfInputIsEmpty(byUsername: username, password: password) {
+            [weak self] in
+            self?.onDidiFinishUserValidation?(.empty)
+            HapticsManager.shared.vibrateForType(for: .warning)
+        }
+        
+        AppDataValidator.validateUserInputCredentials(byUsername: username, password: password) { [weak self] in
+            self?.onDidiFinishUserValidation?(.invalid)
+            HapticsManager.shared.vibrateForType(for: .warning)
+        }
+        
+        // Start monitoring if the device has internet connection
+        if NetworkMonitor.shared.isConnected {
+            print("DEBUG: The device has internet connection.")
+            checkIfUserAlreadyCreated(byUsername: username) { [weak self] value in
+                switch value {
+                case true:
+                    self?.onDidiFinishUserValidation?(.usernameAlreadyTaken)
+                case false:
+                    self?.signUpUserProcess(with: username, password: password)
+                }
+            }
+        } else {
+            // Stop monitoring if the device has internet connection
+            print("DEBUG: The device does not have internet connection.")
+            HapticsManager.shared.vibrateForType(for: .warning)
+            self.onDidiFinishUserValidation?(.noInternetConnection)
+            NetworkMonitor.shared.stopMonitoring()
+            return
         }
     }
 }

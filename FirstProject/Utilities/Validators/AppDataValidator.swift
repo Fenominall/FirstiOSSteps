@@ -97,4 +97,21 @@ struct AppDataValidator {
         
         return (result != nil)
     }
+    
+    /// Input validation if it`s empty or not
+    static func checkIfInputIsEmpty(byUsername userName: String, password: String, completion: @escaping (() -> Void)) {
+        if userName.isEmpty || password.isEmpty {
+            completion()
+            return
+        }
+    }
+    
+    static func validateUserInputCredentials(byUsername username: String, password: String, completion: @escaping (() -> Void)) {
+        if !AppDataValidator.validateUserName(username) ||
+            !AppDataValidator.validatePassword(password) {
+            completion()
+            return
+        }
+    }
+    
 }

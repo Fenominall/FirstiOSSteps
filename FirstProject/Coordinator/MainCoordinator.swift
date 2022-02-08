@@ -27,6 +27,7 @@ class MainCoordinator: Coordinator {
         case .loginButtonTapped:
             var containerVC: UIViewController & Coordinating = HomeViewController()
             containerVC.coordinator = self
+            containerVC.modalPresentationStyle = .fullScreen
             navigationController?.pushViewController(containerVC, animated: true)
             
         case .goToRegisterController:

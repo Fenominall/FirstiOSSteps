@@ -50,6 +50,7 @@
 		4FF9064526543BEF001387C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF9064426543BEF001387C9 /* AppDelegate.swift */; };
 		4FF9064726543BEF001387C9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF9064626543BEF001387C9 /* SceneDelegate.swift */; };
 		4FF9064E26543BF1001387C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FF9064D26543BF1001387C9 /* Assets.xcassets */; };
+		4FFC3F3B27B2AE06003E61F6 /* UserValidationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFC3F3A27B2AE06003E61F6 /* UserValidationState.swift */; };
 		4FFCD45B26BEC87000770D33 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFCD45A26BEC87000770D33 /* LoginView.swift */; };
 		4FFF2A1626BD27560064E610 /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFF2A1526BD27560064E610 /* HapticsManager.swift */; };
 		6276344789E465E1AF17D88B /* Pods_FirstProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CD6B5B3B38598214E1A7244 /* Pods_FirstProject.framework */; };
@@ -102,6 +103,7 @@
 		4FF9064626543BEF001387C9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		4FF9064D26543BF1001387C9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4FF9065226543BF1001387C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4FFC3F3A27B2AE06003E61F6 /* UserValidationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserValidationState.swift; sourceTree = "<group>"; };
 		4FFCD45A26BEC87000770D33 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		4FFF2A1526BD27560064E610 /* HapticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsManager.swift; sourceTree = "<group>"; };
 		5CD6B5B3B38598214E1A7244 /* Pods_FirstProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FirstProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -186,6 +188,7 @@
 		4F3127EC27A553E900E69100 /* LoginFeature */ = {
 			isa = PBXGroup;
 			children = (
+				4FFC3F3827B2ADE1003E61F6 /* Helpers */,
 				4FBBE317268B97D000D518B8 /* Models */,
 				4F4FDFBA268D860700736440 /* ViewModels */,
 				4FFCD45926BEC84900770D33 /* Views */,
@@ -451,6 +454,14 @@
 			path = FirstProject;
 			sourceTree = "<group>";
 		};
+		4FFC3F3827B2ADE1003E61F6 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				4FFC3F3A27B2AE06003E61F6 /* UserValidationState.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		4FFCD45926BEC84900770D33 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -624,6 +635,7 @@
 				4FF9064526543BEF001387C9 /* AppDelegate.swift in Sources */,
 				4F28BA7A27429692001308E1 /* Event.swift in Sources */,
 				4F05B2CD27A3216A00AFEEC6 /* RegistrationViewController.swift in Sources */,
+				4FFC3F3B27B2AE06003E61F6 /* UserValidationState.swift in Sources */,
 				4FF15B45279B1B30003E4542 /* AlertViewData.swift in Sources */,
 				4F92895626A6B06600624B6E /* Alerts.swift in Sources */,
 				4F2DEDF0274515B900C5F156 /* FileManager+Extensions.swift in Sources */,

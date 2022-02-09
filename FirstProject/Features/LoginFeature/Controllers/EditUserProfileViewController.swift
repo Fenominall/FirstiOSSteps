@@ -8,18 +8,18 @@
 import Foundation
 import UIKit
 
-protocol UserSettingsDelegate: AnyObject {
+protocol EditUserProfileDelegate: AnyObject {
     func didUpdatedUserUsername(withUsername: String)
 }
 
-class UserSettingsViewController: UIViewController, Coordinating {
+class EditUserProfileViewController: UIViewController, Coordinating {
     
     // MARK: - Instance Properties
     var coordinator: Coordinator?
     var userSettingsView = UserSettingsView()
     private var loginViewModel = AuthenticationViewModel()
     
-    weak var delegate: UserSettingsDelegate?
+    weak var delegate: EditUserProfileDelegate?
     
     override func loadView() {
         super.loadView()
@@ -114,7 +114,7 @@ class UserSettingsViewController: UIViewController, Coordinating {
 }
 
 // MARK: - UITextFcurrentPFUserieldDeledate
-extension UserSettingsViewController: UITextFieldDelegate {
+extension EditUserProfileViewController: UITextFieldDelegate {
     //    # Function to return false if the input in UITextFiled is " " or "    ".
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
 

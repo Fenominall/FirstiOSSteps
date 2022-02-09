@@ -27,8 +27,9 @@ class RegistrationView: UIView {
     }()
 
     // UIImageViews
-    private lazy var loginImageView: UIImageView = {
-        let imageView = UIViewTemplates().imageView(image: AppImages.loginBackgroundImage)
+    private lazy var loginImageView: BaseImageView = {
+        let imageView = BaseImageView(with: .loginBackgroundImage)
+        imageView.contentMode = .scaleToFill
         return imageView
     }()
     

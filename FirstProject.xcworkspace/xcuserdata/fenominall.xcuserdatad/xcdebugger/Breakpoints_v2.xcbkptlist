@@ -8,7 +8,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "9231CE3B-C6C5-430E-BB8F-7A02BD1E49E3"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FirstProject/Features/LoginFeature/Controllers/Authentication/RegistrationViewController.swift"
@@ -24,7 +24,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "C627E0E7-0999-4F74-9A28-263CC6BDFCC9"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FirstProject/Features/LoginFeature/Controllers/Authentication/RegistrationViewController.swift"
@@ -56,7 +56,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "1AC0B0DE-A966-49BF-96B4-92250C21464E"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FirstProject/Features/LoginFeature/Controllers/Authentication/RegistrationViewController.swift"
@@ -72,7 +72,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "4F005A66-62A5-4D73-9F64-4528B7BF382C"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FirstProject/Features/LoginFeature/Controllers/Authentication/RegistrationViewController.swift"
@@ -88,7 +88,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "836F0A38-FC29-4883-AE62-96D9CD7A77F5"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FirstProject/Features/LoginFeature/Controllers/Authentication/RegistrationViewController.swift"
@@ -104,7 +104,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "AA59FF10-FF8C-4DEA-9EE5-AD5A3D5F9129"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FirstProject/Features/LoginFeature/Controllers/Authentication/RegistrationViewController.swift"
@@ -120,7 +120,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "CB55FF5D-CC5F-4A44-A0FD-C110B0B19823"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FirstProject/Features/LoginFeature/Controllers/Authentication/RegistrationViewController.swift"
@@ -136,7 +136,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "9D287FF0-93F2-4BCB-8EE6-16383FC07E7F"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FirstProject/Features/LoginFeature/Controllers/Authentication/RegistrationViewController.swift"
@@ -152,7 +152,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "45DA1559-ED87-4CD9-8CD4-BF4869A19735"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FirstProject/Features/LoginFeature/Controllers/Authentication/RegistrationViewController.swift"
@@ -168,7 +168,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "8C1870DA-09DF-42AD-90DB-1AB470F7F7CD"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FirstProject/Features/LoginFeature/ViewModels/AuthenticationViewModel.swift"
@@ -184,7 +184,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "6CF695A7-0C6E-435B-9E7F-3ED1366C82C8"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FirstProject/Features/LoginFeature/ViewModels/AuthenticationViewModel.swift"
@@ -200,7 +200,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "7E62A1B4-6E64-4DDF-A4C0-45B5A9E7921A"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FirstProject/Features/LoginFeature/ViewModels/AuthenticationViewModel.swift"
@@ -216,7 +216,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "0A30700C-7D1B-4869-9D45-5335692A311D"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FirstProject/Features/LoginFeature/ViewModels/AuthenticationViewModel.swift"
@@ -226,13 +226,45 @@
             endingLineNumber = "126"
             landmarkName = "signUpUser()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "0A30700C-7D1B-4869-9D45-5335692A311D - 8b213322989e223"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FirstProject.AuthenticationViewModel.signUpUser() -&gt; ()"
+                  moduleName = "FirstProject"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/fenominall/Documents/FirstiOSSteps/FirstProject/Features/LoginFeature/ViewModels/AuthenticationViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "126"
+                  endingLineNumber = "126"
+                  offsetFromSymbolStart = "671">
+               </Location>
+               <Location
+                  uuid = "0A30700C-7D1B-4869-9D45-5335692A311D - d1129e275be4f02e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 () -&gt; () in FirstProject.AuthenticationViewModel.signUpUser() -&gt; ()"
+                  moduleName = "FirstProject"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/fenominall/Documents/FirstiOSSteps/FirstProject/Features/LoginFeature/ViewModels/AuthenticationViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "126"
+                  endingLineNumber = "126"
+                  offsetFromSymbolStart = "38">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "64239E18-60C7-4A44-A15B-8C0AF825AEFC"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FirstProject/Features/LoginFeature/ViewModels/AuthenticationViewModel.swift"
@@ -242,13 +274,45 @@
             endingLineNumber = "134"
             landmarkName = "signUpUser()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "64239E18-60C7-4A44-A15B-8C0AF825AEFC - 8b213322989ed3b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FirstProject.AuthenticationViewModel.signUpUser() -&gt; ()"
+                  moduleName = "FirstProject"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/fenominall/Documents/FirstiOSSteps/FirstProject/Features/LoginFeature/ViewModels/AuthenticationViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "134"
+                  endingLineNumber = "134"
+                  offsetFromSymbolStart = "1624">
+               </Location>
+               <Location
+                  uuid = "64239E18-60C7-4A44-A15B-8C0AF825AEFC - c78f226f3cf7ebe4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #3 (Swift.Bool) -&gt; () in FirstProject.AuthenticationViewModel.signUpUser() -&gt; ()"
+                  moduleName = "FirstProject"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/fenominall/Documents/FirstiOSSteps/FirstProject/Features/LoginFeature/ViewModels/AuthenticationViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "134"
+                  endingLineNumber = "134"
+                  offsetFromSymbolStart = "72">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "5865E60B-2389-4B36-9916-A91E2031260F"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FirstProject/Features/LoginFeature/ViewModels/AuthenticationViewModel.swift"
@@ -264,7 +328,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "0564713C-195F-4A67-9824-620EA5F84B6B"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FirstProject/Features/LoginFeature/ViewModels/AuthenticationViewModel.swift"
@@ -296,7 +360,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "D68BE38A-6B72-4230-ABA6-D4242E70AAFD"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FirstProject/Features/LoginFeature/ViewModels/AuthenticationViewModel.swift"
@@ -312,7 +376,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "CB0F8E36-EF19-4D8F-9F83-F7999288F714"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FirstProject/Features/LoginFeature/ViewModels/AuthenticationViewModel.swift"
@@ -328,7 +392,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "F8F67B11-9B6A-49F1-88B9-F467924C348A"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FirstProject/Features/LoginFeature/ViewModels/AuthenticationViewModel.swift"

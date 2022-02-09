@@ -39,7 +39,7 @@ class MainCoordinator: Coordinator {
             navigationController?.popViewController(animated: true)
             
         case .userSettingsTapped:
-            var userSettingsVC: UIViewController & Coordinating = UserSettingsViewController()
+            var userSettingsVC: UIViewController & Coordinating = EditUserProfileViewController()
             userSettingsVC.coordinator = self
             navigationController?.pushViewController(userSettingsVC, animated: true)
             

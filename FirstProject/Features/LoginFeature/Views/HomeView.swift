@@ -31,18 +31,18 @@ class HomeView: UIView, Coordinating {
     }()
     
     // UIImageViews
-    private lazy var circleBackGroundForUserImage: UIImageView = {
-        let imageView = UIViewTemplates().imageView(image: AppImages.lightCircle)
+    private lazy var circleBackGroundForUserImage: BaseImageView = {
+        let imageView = BaseImageView(with: .lightCircle)
         return imageView
     }()
     
-    private lazy var plusIcon: UIImageView = {
-        let imageView = UIViewTemplates().imageView(image: AppImages.plusIcon)
+    private lazy var plusIcon: BaseImageView = {
+        let imageView = BaseImageView(with: .plusIcon)
         return imageView
     }()
     
-    private lazy var homeScreenBackgroundImage: UIImageView = {
-        let imageView = UIViewTemplates().imageView(image: AppImages.homeBackgroundImage)
+    private lazy var homeScreenBackgroundImage: BaseImageView = {
+        let imageView = BaseImageView(with: .homeBackgroundImage)
         return imageView
     }()
     

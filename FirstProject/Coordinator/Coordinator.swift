@@ -11,6 +11,7 @@ import UIKit
 
 enum CoordinatorEvents {
     case loginButtonTapped
+    case registerButtonTapped
     case goToRegisterController
     case goToLoginController
     case userSettingsTapped

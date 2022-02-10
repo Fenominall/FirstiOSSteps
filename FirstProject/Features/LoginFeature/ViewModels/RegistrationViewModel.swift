@@ -49,22 +49,6 @@ extension RegistrationViewModel {
         }
     }
     
-    func signInUserWith(username: String, password: String, completion: @escaping (_ value: Bool) -> Bool) {
-        PFUser.logInWithUsername(inBackground: username,
-                                 password: password) { [weak self]
-            (user: PFUser?, error: Error?) -> Void in
-            if user != nil {
-                // saving user state as logged it if login successful
-                UserDefaults.standard.setValue(true, forKey: UserKey.isLoggedIn)
-                self?.onDidiFinishUserValidation?(.valid)
-                
-            } else {
-                self?.onDidiFinishUserValidation?(.invalid)
-                print("DEBUG: AN ERROR OCCURRED WWHEN TRYING TO LOG IN THE USER \(error?.localizedDescription ?? "") ")
-            }
-        }
-    }
-    
     func updateCurrentUser(username: String, password: String) {
         // Getting the current logged in user on Parse Server
         let currentPFUser = PFUser.current()
@@ -104,18 +88,19 @@ extension RegistrationViewModel {
                     }
                     // saving user state as logged it if login successful
                     UserDefaults.standard.setValue(true, forKey: UserKey.isLoggedIn)
+                    HapticsManager.shared.vibrateForType(for: .success)
                     self?.onDidiFinishUserValidation?(.valid)
                 case false:
+                    HapticsManager.shared.vibrateForType(for: .error)
                     self?.onDidiFinishUserValidation?(.usernameAlreadyTaken)
                 }
             }
         } else {
             // Stop monitoring if the device has internet connection
             print("DEBUG: The device does not have internet connection.")
-            HapticsManager.shared.vibrateForType(for: .warning)
+            HapticsManager.shared.vibrateForType(for: .error)
             self.onDidiFinishUserValidation?(.noInternetConnection)
             NetworkMonitor.shared.stopMonitoring()
-            return
         }
     }
 }

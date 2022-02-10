@@ -23,11 +23,14 @@ class MainCoordinator: Coordinator {
     func eventOccurred(with type: CoordinatorEvents) {
         
         switch type {
-            
         case .loginButtonTapped:
             var containerVC: UIViewController & Coordinating = HomeViewController()
             containerVC.coordinator = self
-            containerVC.modalPresentationStyle = .fullScreen
+            navigationController?.pushViewController(containerVC, animated: true)
+            
+        case .registerButtonTapped:
+            var containerVC: UIViewController & Coordinating = HomeViewController()
+            containerVC.coordinator = self
             navigationController?.pushViewController(containerVC, animated: true)
             
         case .goToRegisterController:
@@ -44,8 +47,6 @@ class MainCoordinator: Coordinator {
             navigationController?.pushViewController(userSettingsVC, animated: true)
             
         case .logOutButtonTapped:
-            // Setting the flag that a user logged out and next time when he launches an app, he will see LoginScreen
-            UserDefaults.standard.set(false, forKey: UserKey.isLoggedIn)
             var loginViewController: UIViewController & Coordinating = LoginViewController()
             loginViewController.coordinator = self
             navigationController?.pushViewController(loginViewController, animated: true)
@@ -60,6 +61,7 @@ class MainCoordinator: Coordinator {
             navigationController?.popViewController(animated: true)
         case .updateUserDataButtonTapped:
             navigationController?.popViewController(animated: true)
+            
         case .goToScheduleListController:
             var scheduleListController: UIViewController & Coordinating = ScheduleListController()
             scheduleListController.coordinator = self
@@ -75,9 +77,9 @@ class MainCoordinator: Coordinator {
             loginViewController.coordinator = self
             navigationController?.setViewControllers([loginViewController], animated: false)
         } else {
-            var containerController: UIViewController & Coordinating = HomeViewController()
-            containerController.coordinator = self
-            navigationController?.setViewControllers([containerController], animated: false)
+            var homeViewController: UIViewController & Coordinating = HomeViewController()
+            homeViewController.coordinator = self
+            navigationController?.setViewControllers([homeViewController], animated: false)
             
         }
     }

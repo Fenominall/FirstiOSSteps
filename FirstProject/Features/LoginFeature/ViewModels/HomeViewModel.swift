@@ -30,9 +30,10 @@ final class HomeViewModel {
     // MARK: - Helpers
     // LogOut the current user from the session on Parse Server
     func logOutUser() {
-        DispatchQueue.main.async {
-            PFUser.logOutInBackground()
-        }
+        // Setting the flag that a user logged out and next time when he launches an app, he will see LoginScreen
+        UserDefaults.standard.set(false, forKey: UserKey.isLoggedIn)
+        PFUser.logOutInBackground()
+        
     }
 }
 

@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		4F05462F26B9810B006C5A04 /* UIButtonAnimationsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F05462E26B9810B006C5A04 /* UIButtonAnimationsExtension.swift */; };
 		4F055F1C274B82A900C70670 /* UIButtonConfigurationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F055F1B274B82A900C70670 /* UIButtonConfigurationExtension.swift */; };
-		4F05B2CB27A3203800AFEEC6 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F05B2CA27A3203800AFEEC6 /* RegistrationView.swift */; };
 		4F05B2CD27A3216A00AFEEC6 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F05B2CC27A3216A00AFEEC6 /* RegistrationViewController.swift */; };
 		4F083EE926D8063200B63DD7 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F083EE826D8063200B63DD7 /* Coordinator.swift */; };
 		4F083EEB26D806B400B63DD7 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F083EEA26D806B400B63DD7 /* MainCoordinator.swift */; };
@@ -31,12 +30,10 @@
 		4F4FDFBC268D862000736440 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4FDFBB268D862000736440 /* RegistrationViewModel.swift */; };
 		4F522AA8272DB7CF0099C5E8 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F522AA7272DB7CF0099C5E8 /* Images.swift */; };
 		4F695E902662B6C200606D03 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F695E8F2662B6C200606D03 /* LoginViewController.swift */; };
-		4F7D97B226D0391A00A9D253 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7D97B126D0391A00A9D253 /* HomeView.swift */; };
 		4F87A91B273EA34800D34B02 /* ImageStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F87A91A273EA34800D34B02 /* ImageStorage.swift */; };
 		4F92895626A6B06600624B6E /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F92895526A6B06600624B6E /* Alerts.swift */; };
 		4F93710F2766752B007667F8 /* UIViewTemplates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F93710E2766752B007667F8 /* UIViewTemplates.swift */; };
 		4F9371122766759B007667F8 /* NSConstraintsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9371112766759B007667F8 /* NSConstraintsExtension.swift */; };
-		4FA5BB1826CEDB5F001C486D /* EditUserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA5BB1726CEDB5F001C486D /* EditUserProfileView.swift */; };
 		4FBBE319268B97E400D518B8 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBBE318268B97E400D518B8 /* UserModel.swift */; };
 		4FCDEBA9272FEC51002C3B06 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FCDEBA8272FEC51002C3B06 /* HomeViewModel.swift */; };
 		4FD2745C2683317300C8FA32 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD2745B2683317300C8FA32 /* HomeViewController.swift */; };
@@ -60,7 +57,6 @@
 		1913A254B428B7B74E687733 /* Pods-FirstProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirstProject.release.xcconfig"; path = "Target Support Files/Pods-FirstProject/Pods-FirstProject.release.xcconfig"; sourceTree = "<group>"; };
 		4F05462E26B9810B006C5A04 /* UIButtonAnimationsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonAnimationsExtension.swift; sourceTree = "<group>"; };
 		4F055F1B274B82A900C70670 /* UIButtonConfigurationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonConfigurationExtension.swift; sourceTree = "<group>"; };
-		4F05B2CA27A3203800AFEEC6 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		4F05B2CC27A3216A00AFEEC6 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		4F083EE826D8063200B63DD7 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		4F083EEA26D806B400B63DD7 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
@@ -82,12 +78,10 @@
 		4F4FDFBB268D862000736440 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		4F522AA7272DB7CF0099C5E8 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		4F695E8F2662B6C200606D03 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		4F7D97B126D0391A00A9D253 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		4F87A91A273EA34800D34B02 /* ImageStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageStorage.swift; sourceTree = "<group>"; };
 		4F92895526A6B06600624B6E /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
 		4F93710E2766752B007667F8 /* UIViewTemplates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewTemplates.swift; sourceTree = "<group>"; };
 		4F9371112766759B007667F8 /* NSConstraintsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSConstraintsExtension.swift; sourceTree = "<group>"; };
-		4FA5BB1726CEDB5F001C486D /* EditUserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUserProfileView.swift; sourceTree = "<group>"; };
 		4FBBE318268B97E400D518B8 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		4FCDEBA8272FEC51002C3B06 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		4FD2745B2683317300C8FA32 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -139,14 +133,6 @@
 			path = Authentication;
 			sourceTree = "<group>";
 		};
-		4F05B2C927A31FC300AFEEC6 /* Authentication */ = {
-			isa = PBXGroup;
-			children = (
-				4F05B2CA27A3203800AFEEC6 /* RegistrationView.swift */,
-			);
-			path = Authentication;
-			sourceTree = "<group>";
-		};
 		4F083EE726D8061A00B63DD7 /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
@@ -190,7 +176,6 @@
 				4FFC3F3827B2ADE1003E61F6 /* Helpers */,
 				4FBBE317268B97D000D518B8 /* Models */,
 				4F4FDFBA268D860700736440 /* ViewModels */,
-				4FFCD45926BEC84900770D33 /* Views */,
 				4FBBE315268B97B000D518B8 /* Controllers */,
 			);
 			path = LoginFeature;
@@ -462,16 +447,6 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		4FFCD45926BEC84900770D33 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				4F05B2C927A31FC300AFEEC6 /* Authentication */,
-				4F7D97B126D0391A00A9D253 /* HomeView.swift */,
-				4FA5BB1726CEDB5F001C486D /* EditUserProfileView.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
 		4FFF2A1326BD26730064E610 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -615,7 +590,6 @@
 				4FD2745C2683317300C8FA32 /* HomeViewController.swift in Sources */,
 				4FF3238327B03A0C009DA656 /* UIApplicationExtension.swift in Sources */,
 				4F28BA7E27429B57001308E1 /* ScheduleListViewCell.swift in Sources */,
-				4F05B2CB27A3203800AFEEC6 /* RegistrationView.swift in Sources */,
 				4FDB689026E146390006F8E3 /* UIColorHexExtension.swift in Sources */,
 				4F522AA8272DB7CF0099C5E8 /* Images.swift in Sources */,
 				4F87A91B273EA34800D34B02 /* ImageStorage.swift in Sources */,
@@ -625,7 +599,6 @@
 				4F083EEB26D806B400B63DD7 /* MainCoordinator.swift in Sources */,
 				4F2EA04526F7054300EF6884 /* CustomTextField.swift in Sources */,
 				4F055F1C274B82A900C70670 /* UIButtonConfigurationExtension.swift in Sources */,
-				4F7D97B226D0391A00A9D253 /* HomeView.swift in Sources */,
 				4F31B22B27A72F8A003935B4 /* NetworkMonitor.swift in Sources */,
 				4FD2745E268332F700C8FA32 /* EditUserProfileViewController.swift in Sources */,
 				4FFF2A1626BD27560064E610 /* HapticsManager.swift in Sources */,
@@ -649,7 +622,6 @@
 				4FCDEBA9272FEC51002C3B06 /* HomeViewModel.swift in Sources */,
 				4F9371122766759B007667F8 /* NSConstraintsExtension.swift in Sources */,
 				4FD4D58E26833C8D0078633E /* AppDataValidator.swift in Sources */,
-				4FA5BB1826CEDB5F001C486D /* EditUserProfileView.swift in Sources */,
 				4FDB688E26E1455A0006F8E3 /* CustomUserDefaults.swift in Sources */,
 				4F257CFF2739B423007CB391 /* UserCaretaker.swift in Sources */,
 				4F28BA7C2742989E001308E1 /* CreateEventView.swift in Sources */,

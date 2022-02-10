@@ -16,36 +16,106 @@ class EditUserProfileViewController: UIViewController, Coordinating {
     
     // MARK: - Instance Properties
     var coordinator: Coordinator?
-    var userSettingsView = EditUserProfileView()
     private var loginViewModel = RegistrationViewModel()
     
     weak var delegate: EditUserProfileDelegate?
     
-    override func loadView() {
-        super.loadView()
-        view = userSettingsView
-    }
+    // MARK: - UI Properties
     
+    // MARK: UIView Container
+    private lazy var containerUIView: UIView = {
+        let containerView = UIViewTemplates().containerUIView()
+        return containerView
+    }()
+    
+    // MARK: - UIImageViews
+    private lazy var backgroundImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        let image = AppImages.editProfileBackgroundImage.image
+        imageView.image = image
+        imageView.contentMode = .scaleAspectFill
+        return imageView
+    }()
+
+    // MARK: - UILabels
+    private lazy var changeUserDataLabel: UILabel = {
+        let changeUserDataLabel = UILabel()
+        changeUserDataLabel.translatesAutoresizingMaskIntoConstraints = false
+        changeUserDataLabel.text = "Change your data"
+        changeUserDataLabel.font = changeUserDataLabel.font.withSize(40)
+        changeUserDataLabel.textAlignment = .center
+        changeUserDataLabel.textColor = .lightGrayAccent
+        return changeUserDataLabel
+    }()
+    
+    // MARK: - UITextFields
+    private(set) lazy var updateUsernameTextField: CustomTextField = {
+        let updateUsernameTextField = CustomTextField()
+        updateUsernameTextField.translatesAutoresizingMaskIntoConstraints = false
+        updateUsernameTextField.textColor = .white
+        updateUsernameTextField.clearButtonMode = .always
+        updateUsernameTextField.delegate = self
+        updateUsernameTextField.addTarget(self, action: #selector(textFieldEditingChanged(_:)), for: .editingChanged)
+        return updateUsernameTextField
+    }()
+    
+    private(set) lazy var updatePasswordTextField: CustomTextField = {
+        let updatePasswordTextField = CustomTextField()
+        updatePasswordTextField.translatesAutoresizingMaskIntoConstraints = false
+        updatePasswordTextField.textColor = .white
+        updatePasswordTextField.delegate = self
+        updatePasswordTextField.isSecureTextEntry = true
+        updatePasswordTextField.enablePasswordToggle()
+        updatePasswordTextField.addTarget(self, action: #selector(textFieldEditingChanged(_:)), for: .editingChanged)
+        return updatePasswordTextField
+    }()
+    
+    // MARK: - UIButtons
+    private(set) lazy var saveUserDataButton: UIButton = {
+        let saveUserDataButton = UIButton(type: .system)
+        saveUserDataButton.translatesAutoresizingMaskIntoConstraints = false
+        saveUserDataButton.setTitle("UPDATE", for: .normal)
+        saveUserDataButton.tintColor = .white
+        saveUserDataButton.isEnabled = false
+        saveUserDataButton.titleLabel?.font = UIFont.systemFont(ofSize: 40, weight: .regular)
+        saveUserDataButton.layer.shadowColor = UIColor.black.cgColor
+        saveUserDataButton.layer.shadowOffset = CGSize(width: 0.0, height: 5.5)
+        saveUserDataButton.layer.shadowRadius = 2.0
+        saveUserDataButton.layer.shadowOpacity = 0.5
+        saveUserDataButton.addTarget(self, action: #selector(updateUserDataButtonTapped), for: .touchUpInside)
+        return saveUserDataButton
+    }()
+    
+    // MARK: - UIstackViews
+    private lazy var contentStackView: UIStackView = {
+        let contentStackView = UIStackView(arrangedSubviews: [changeUserDataLabel,
+                                                              updateUsernameTextField,
+                                                              updatePasswordTextField,
+                                                              saveUserDataButton])
+        contentStackView.translatesAutoresizingMaskIntoConstraints = false
+        contentStackView.axis = .vertical
+        contentStackView.distribution = .fillEqually
+        contentStackView.spacing = 40
+        return contentStackView
+    }()
+
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //  Keyboard toggling
-        observeKeyboardNotifications()
-        configureActions()
-        configureNavigationBarUI()
+        configureEditProfileController()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        userSettingsView.updateUsernameTextField.addBottomBorder()
-        userSettingsView.updatePasswordTextField.addBottomBorder()
+        updateUsernameTextField.addBottomBorder()
+        updatePasswordTextField.addBottomBorder()
     }
     
     // MARK: - Selectors
     //    Check editing in UITextFields
     @objc private func textFieldEditingChanged(_ sender: Any) {
-        userSettingsView.saveUserDataButton.isEnabled = true
+        saveUserDataButton.isEnabled = true
     }
     
     @objc private func updateUserDataButtonTapped(_ sender: UIButton) {
@@ -84,7 +154,14 @@ class EditUserProfileViewController: UIViewController, Coordinating {
     
     // MARK: - Helpers
     
-    func configureNavigationBarUI() {
+    private func configureEditProfileController() {
+        observeKeyboardNotifications()
+        configureNavigationBar()
+        configureActions()
+        configureUI()
+    }
+    
+    func configureNavigationBar() {
         title = "Settings"
         navigationItem.backButtonTitle = "Back"
         navigationController?.navigationBar.tintColor = .white
@@ -92,16 +169,31 @@ class EditUserProfileViewController: UIViewController, Coordinating {
     }
     
     func configureActions() {
-        userSettingsView.updateUsernameTextField.delegate = self
-        userSettingsView.updatePasswordTextField.delegate = self
-        
-        userSettingsView.updateUsernameTextField.addTarget(self, action: #selector(textFieldEditingChanged(_:)), for: .editingChanged)
-        userSettingsView.updatePasswordTextField.addTarget(self, action: #selector(textFieldEditingChanged(_:)), for: .editingChanged)
-        userSettingsView.saveUserDataButton.addTarget(self, action: #selector(updateUserDataButtonTapped), for: .touchUpInside)
-        
         // Assigning user data to textField in UserSettingsViewController
-        userSettingsView.updateUsernameTextField.text = loginViewModel.username
-        userSettingsView.updatePasswordTextField.text = loginViewModel.password
+        updateUsernameTextField.text = loginViewModel.username
+        updatePasswordTextField.text = loginViewModel.password
+    }
+    
+    func configureUI() {
+        view.addSubview(containerUIView)
+        containerUIView.addSubview(backgroundImageView)
+        containerUIView.addSubview(contentStackView)
+        
+        containerUIView.snp.makeConstraints {
+            $0.top.bottom.leading.trailing.equalToSuperview()
+        }
+        
+        backgroundImageView.snp.makeConstraints {
+            $0.edges.equalTo(containerUIView)
+        }
+        
+        contentStackView.snp.makeConstraints {
+            $0.centerX.centerY.leading.trailing.equalToSuperview().inset(20)
+        }
+        
+        changeUserDataLabel.snp.makeConstraints {
+            $0.height.equalTo(50)
+        }
     }
 }
 

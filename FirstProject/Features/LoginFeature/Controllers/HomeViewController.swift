@@ -10,10 +10,6 @@ import UIKit
 import Parse
 import SnapKit
 
-protocol HomeViewControllerDelegate: AnyObject {
-    func handleMenuToggle()
-}
-
 class HomeViewController: UIViewController, Coordinating {
     
     // MARK: - Properties
@@ -21,9 +17,8 @@ class HomeViewController: UIViewController, Coordinating {
     
     private var imageStorage = ImageStorage()
     private var homeViewModel = HomeViewModel()
-    
-    weak var delegate: HomeViewControllerDelegate?
-    
+    var onDidLogOutHappened: (() -> Void)?
+        
     // MARK: UI Properties
     // UIViews
     private lazy var screenContainerUIView: UIView = {
@@ -76,14 +71,14 @@ class HomeViewController: UIViewController, Coordinating {
     
     // UILabels
     private(set) lazy var usernameLabel: UILabel = {
-        let greetMessage = UIViewTemplates().newUILabel(text: "",
-                                                        fontSize: 40,
-                                                        fontWeight: .bold,
-                                                        textAlignment: .center,
-                                                        textColor: .white)
-        greetMessage.contentMode = .scaleAspectFit
-        greetMessage.numberOfLines = 1
-        return greetMessage
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.boldSystemFont(ofSize: 40)
+        label.textAlignment = .center
+        label.textColor = .white
+        label.contentMode = .scaleAspectFit
+        label.numberOfLines = 1
+        return label
     }()
     
     // UIButtons
@@ -154,6 +149,7 @@ extension HomeViewController {
     
     // Navigation to UserSettingsViewController
     @objc private func didTapEditProfileButton() {
+        
         let userSettingsVC = EditUserProfileViewController()
         userSettingsVC.delegate = self
         navigationController?.pushViewController(userSettingsVC, animated: true)
@@ -166,9 +162,11 @@ extension HomeViewController {
     
     //    Navigation Button to FirstViewController
     @objc private func didTapLogOutButton() {
-        homeViewModel.logOutUser()
-        removeUserImageWhenSignedOut()
         coordinator?.eventOccurred(with: .logOutButtonTapped)
+        onDidLogOutHappened = { [weak self] in
+            self?.removeUserImageWhenSignedOut()
+            self?.homeViewModel.logOutUser()
+        }
     }
     
     @objc private func didTapScheduleEventButton() {

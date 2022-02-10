@@ -27,12 +27,12 @@ struct AppAlerts {
     
     /// Showing an error that does not meet user credentials validation politics.
     static func showIncompleteErrorUIAlert(on vc: UIViewController) {
-        errorUIAlert(on: vc, with: "Error", message: passwordRequirementsAlertMessage, preferredStyle: .alert)
+        errorUIAlert(on: vc, with: "", message: passwordRequirementsAlertMessage, preferredStyle: .alert)
     }
     
     /// Alert for validation error if username and password are empty.
     static func emptyFieldsErrorAlert(on vc: UIViewController) {
-        errorUIAlert(on: vc, with: "Error", message: emptyFieldsAlertMessage, preferredStyle: .alert)
+        errorUIAlert(on: vc, with: "", message: emptyFieldsAlertMessage, preferredStyle: .alert)
     }
     
     static func usernameIsAlreadyTakenAlert(on vc: UIViewController) {

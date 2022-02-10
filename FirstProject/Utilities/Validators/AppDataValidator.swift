@@ -107,8 +107,10 @@ struct AppDataValidator {
     }
     
     static func validateUserInputCredentials(byUsername username: String, password: String, completion: @escaping (() -> Void)) {
-        if !AppDataValidator.validateUserName(username) ||
-            !AppDataValidator.validatePassword(password) {
+        let username = AppDataValidator.validateUserName(username)
+        let password = AppDataValidator.validatePassword(password)
+        if !username ||
+            !password {
             completion()
             return
         }

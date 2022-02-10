@@ -14,7 +14,7 @@ class LoginViewController: UIViewController, Coordinating {
     // MARK: - Properties
     var coordinator: Coordinator?
     
-    private var loginViewModel = RegistrationViewModel()
+    private var loginViewModel = LoginViewModel()
     
     // MARK: - UIProperties
     
@@ -143,7 +143,8 @@ class LoginViewController: UIViewController, Coordinating {
         NetworkMonitor.shared.startMonitoring()
         // Notifications for showing and hiding keyboard
         configureLoginViewController()
-        
+        didReceiveUserValidationState()
+        didFailLogInUser()
         print(FileManager.getDocumentsDirectory())
     }
     
@@ -156,29 +157,10 @@ class LoginViewController: UIViewController, Coordinating {
     // MARK: - Selectors
     /// Function for loginButton: Check validation, pushes the user to the SecondViewController if requirements suitable
     /// - Parameter sender: Any
-    @objc private func loginButtonPressed(_ sender: UIButton) {
-        
-        //        switch loginViewModel.validateUser(byUserAuthState: .login) {
-        //        case .valid:
-        //            // Navigation to HomeScreenViewController
-        //            coordinator?.eventOccurred(with: .loginButtonTapped)
-        //        case .empty:
-        //            // Button Shake
-        //            sender.shake()
-        //            // Empty fields Error Alert
-        //            AppAlerts.emptyFieldsErrorAlert(on: self)
-        //        case .invalid:
-        //            // Button Shake
-        //            sender.shake()
-        //            // Improper credentials Alert
-        //            AppAlerts.incorrectCredentials(on: self)
-        //        case .usernameAlreadyTaken:
-        //            sender.shake()
-        //            AppAlerts.incorrectCredentials(on: self)
-        //        case .noInternetConnection:
-        //            sender.shake()
-        //            AppAlerts.noInternetConnectionAlert(on: self)
-        //        }
+    @objc private func loginButtonPressed() {
+        loginIndicator.startAnimating()
+        loginViewModel.loginUser(withUsername: usernameTxtField.text,
+                                 withPassword: passwordTxtField.text)
     }
     
     @objc private func handleShowSignUp() {
@@ -186,20 +168,55 @@ class LoginViewController: UIViewController, Coordinating {
     }
     
     // MARK: - Helpers
-    func configureLoginViewController() {
+    
+    func didFailLogInUser() {
+        loginViewModel.onDidFailLogInUser = { [weak self] in
+            guard let self = self else { return }
+            AppAlerts.incorrectCredentials(on: self)
+        }
+    }
+    
+    private func didReceiveUserValidationState() {
+        loginViewModel.onDidiFinishUserValidation = { [weak self] state in
+            self?.handleUserValidationState(state)
+        }
+    }
+    
+    private func handleUserValidationState(_ state: UserValidationState) {
+        switch state {
+        case .valid:
+            loginButton.shake()
+            coordinator?.eventOccurred(with: .loginButtonTapped)
+        case .empty:
+            loginButton.shake()
+            AppAlerts.emptyFieldsErrorAlert(on: self)
+        case .invalid:
+            loginButton.shake()
+            AppAlerts.showIncompleteErrorUIAlert(on: self)
+        case .usernameAlreadyTaken:
+            loginButton.shake()
+            AppAlerts.incorrectCredentials(on: self)
+        case .noInternetConnection:
+            loginButton.shake()
+            AppAlerts.noInternetConnectionAlert(on: self)
+        }
+        loginIndicator.stopAnimating()
+    }
+    
+    private func configureLoginViewController() {
         configureNavigationBar()
         configureUI()
         observeKeyboardNotifications()
     }
     
-    func configureNavigationBar() {
+    private func configureNavigationBar() {
         navigationController?.navigationBar.barStyle = .black
         navigationItem.setHidesBackButton(true, animated: false)
         navigationItem.backButtonTitle = ""
         navigationItem.leftBarButtonItem?.tintColor = .white
     }
     
-    func configureUI() {
+    private func configureUI() {
         view.addSubview(screenContainerUIView)
         
         screenContainerUIView.addSubview(loginImageView)
@@ -289,19 +306,19 @@ extension LoginViewController: UITextFieldDelegate {
     }
     
     //# Function to move the Keyboard-up on the first page
-    func observeKeyboardNotifications() {
+    private func observeKeyboardNotifications() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
-    @objc func keyboardWillHide() {
+    @objc private func keyboardWillHide() {
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
             self.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
         }, completion: nil)
         
     }
     
-    @objc func keyboardWillShow() {
+    @objc private func keyboardWillShow() {
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
             self.view.frame = CGRect(x: 0, y: -70, width: self.view.frame.width, height: self.view.frame.height)
         }, completion: nil)

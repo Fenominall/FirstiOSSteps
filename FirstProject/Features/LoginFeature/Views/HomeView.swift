@@ -65,7 +65,8 @@ class HomeView: UIView, Coordinating {
         button.layer.masksToBounds = false
         button.layer.cornerRadius = 150 / 2
         button.clipsToBounds = true
-        button.setImage(AppImages.userImage, for: .normal)
+        let userImage = AppImages.userDefaultImage.image
+        button.setImage(userImage, for: .normal)
         button.imageView?.contentMode = .scaleAspectFill
         return button
     }()

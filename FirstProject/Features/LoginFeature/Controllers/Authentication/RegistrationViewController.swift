@@ -15,7 +15,124 @@ class RegistrationViewController: UIViewController, Coordinating {
     
     // MARK: - Properties
     let registerView = RegistrationView()
-    private var loginViewModel = AuthenticationViewModel()
+    private var loginViewModel = RegistrationViewModel()
+    
+    // MARK: - UIProperties
+
+    // UIViews
+    private lazy var screenContainerUIView: UIView = {
+        let view = UIView(frame: .zero)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    private lazy var topContainerUIView: UIView = {
+        let view = UIView(frame: .zero)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    private lazy var bottomContainerUIView: UIView = {
+        let view = UIView(frame: .zero)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+
+    // UIImageViews
+    private lazy var loginImageView: BaseImageView = {
+        let imageView = BaseImageView(with: .loginBackgroundImage)
+        imageView.contentMode = .scaleToFill
+        return imageView
+    }()
+    
+    // UILables
+    private lazy var signUpLabel: UILabel = {
+        let label = UIViewTemplates().newUILabel(text: "Sign Up",
+                                                 fontSize: 45,
+                                                 fontWeight: .semibold,
+                                                 textAlignment: .center,
+                                                 textColor: .white)
+        return label
+    }()
+    
+    private lazy var usernameLabel: UILabel = {
+        let label = UIViewTemplates().newUILabel(text: "Username",
+                                                 fontSize: 24,
+                                                 fontWeight: .regular,
+                                                 textAlignment: .natural,
+                                                 textColor: .lightGrayAccent ?? .white)
+        return label
+    }()
+    
+    private lazy var passwordLabel: UILabel = {
+        let label = UIViewTemplates().newUILabel(text: "Password",
+                                                 fontSize: 24,
+                                                 fontWeight: .regular,
+                                                 textAlignment: .natural,
+                                                 textColor: .lightGrayAccent ?? .white)
+        return label
+    }()
+        // UITextFields
+    private(set) lazy var usernameTxtField: CustomTextField = {
+        let customTextField = CustomTextField()
+        customTextField.translatesAutoresizingMaskIntoConstraints = false
+        customTextField.textColor = .white
+        customTextField.clearButtonMode = .always
+        customTextField.delegate = self
+        return customTextField
+    }()
+
+    private(set) lazy var passwordTxtField: CustomTextField = {
+        let customTextField = CustomTextField()
+        customTextField.translatesAutoresizingMaskIntoConstraints = false
+        customTextField.textColor = .white
+        customTextField.delegate = self
+//        customTextField.isSecureTextEntry = true
+        return customTextField
+    }()
+
+    // UIButtons
+    private(set) lazy var registerButton: UIButton = {
+        let button = UIViewTemplates().customButton(title: "REGISTER",
+                                                    fontSize: 40,
+                                                    fontWeight: .regular,
+                                                    tintColor: .white)
+        button.addTarget(self, action: #selector(registerButtonPressed(_:)), for: .touchUpInside)
+        return button
+    }()
+    
+    private(set) lazy var loginToAccountButton: UIButton = {
+        let button = UIViewTemplates().attributedButton("Already have an account?", " Sign In")
+        button.addTarget(self, action: #selector(handleShowLogIn), for: .touchUpInside)
+        return button
+    }()
+    
+    // UIActivityIndicator
+    private(set) lazy var signUpIndicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView()
+        indicator.translatesAutoresizingMaskIntoConstraints = false
+        indicator.tintColor = .white
+        indicator.style = .large
+        indicator.isHidden = true
+        return indicator
+    }()
+
+    // UIStackViews
+    private lazy var usernameStackView: UIStackView = {
+        let usernameStackView = UIStackView(arrangedSubviews: [usernameLabel,
+                                                               usernameTxtField])
+        usernameStackView.translatesAutoresizingMaskIntoConstraints = false
+        usernameStackView.axis = .vertical
+        usernameStackView.spacing = 10
+        return usernameStackView
+    }()
+
+    private lazy var passwordStackView: UIStackView = {
+        let passwordStackView = UIStackView(arrangedSubviews: [passwordLabel,
+                                                            passwordTxtField])
+        passwordStackView.translatesAutoresizingMaskIntoConstraints = false
+        passwordStackView.axis = .vertical
+        passwordStackView.spacing = 10
+        return passwordStackView
+    }()
     
     // MARK: - Lifecycle
     
@@ -48,7 +165,8 @@ class RegistrationViewController: UIViewController, Coordinating {
     
     @objc func registerButtonPressed(_ sender: UIButton) {
         registerView.signUpIndicator.startAnimating()
-        loginViewModel.signUpUser()
+        loginViewModel.signUpUserWith(username: registerView.usernameTxtField.text,
+                                      password: registerView.passwordTxtField.text)
     }
     
     // MARK: - Helpers
@@ -90,6 +208,11 @@ class RegistrationViewController: UIViewController, Coordinating {
         }
     }
     
+    func configureRegistrationViewController() {
+        configureNavigationBar()
+        configureUI()
+        observeKeyboardNotifications()
+    }
     
     func configureNavigationBar() {
         navigationItem.backButtonTitle = ""
@@ -103,15 +226,74 @@ class RegistrationViewController: UIViewController, Coordinating {
         
         registerView.loginToAccountButton.addTarget(self, action: #selector(handleShowLogIn), for: .touchUpInside)
         registerView.registerButton.addTarget(self, action: #selector(registerButtonPressed(_:)), for: .touchUpInside)
-        
-        // Binding TextFields to send data to the LoginViewModel in order to update a User model
-        registerView.usernameTxtField.bind { [weak self] in
-            self?.loginViewModel.updateUsername(username: $0.trimmingCharacters(in: .whitespaces))
+    }
+    
+    func configureUI() {
+        view.addSubview(screenContainerUIView)
+
+        screenContainerUIView.addSubview(loginImageView)
+        screenContainerUIView.addSubview(topContainerUIView)
+        screenContainerUIView.addSubview(bottomContainerUIView)
+        topContainerUIView.addSubview(usernameStackView)
+        topContainerUIView.addSubview(signUpLabel)
+
+        bottomContainerUIView.addSubview(passwordStackView)
+        bottomContainerUIView.addSubview(registerButton)
+        bottomContainerUIView.addSubview(loginToAccountButton)
+        bottomContainerUIView.addSubview(signUpIndicator)
+
+        screenContainerUIView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
         }
-        registerView.passwordTxtField.bind { [weak self] in
-            self?.loginViewModel.updatePassword(password: $0.trimmingCharacters(in: .whitespaces))
+
+        loginImageView.snp.makeConstraints {
+            $0.edges.equalTo(screenContainerUIView)
+        }
+
+        topContainerUIView.snp.makeConstraints {
+            $0.top.leading.trailing.equalTo(screenContainerUIView)
+            $0.height.equalTo(screenContainerUIView).multipliedBy(0.5)
+        }
+
+        usernameStackView.snp.makeConstraints {
+            $0.bottom.equalTo(topContainerUIView.safeAreaLayoutGuide.snp.bottom).inset(25)
+            $0.leading.trailing.equalTo(topContainerUIView.safeAreaLayoutGuide).inset(20)
+            $0.centerX.equalTo(topContainerUIView)
+        }
+
+        bottomContainerUIView.snp.makeConstraints {
+            $0.top.equalTo(topContainerUIView.safeAreaLayoutGuide.snp.bottom)
+            $0.leading.trailing.equalTo(screenContainerUIView.safeAreaLayoutGuide)
+            $0.height.equalTo(screenContainerUIView).multipliedBy(0.5)
+        }
+
+        passwordStackView.snp.makeConstraints {
+            $0.top.equalTo(bottomContainerUIView.snp.top)
+            $0.leading.trailing.equalTo(bottomContainerUIView.safeAreaLayoutGuide).inset(20)
+            $0.centerX.equalTo(bottomContainerUIView)
+        }
+
+        signUpLabel.snp.makeConstraints {
+            $0.centerY.equalTo(topContainerUIView).offset(-20)
+            $0.leading.equalTo(topContainerUIView.snp.leading).inset(20)
+        }
+
+        registerButton.snp.makeConstraints {
+            $0.centerX.equalTo(bottomContainerUIView)
+            $0.bottom.equalTo(loginToAccountButton.snp.bottom).offset(-70)
+        }
+
+        loginToAccountButton.snp.makeConstraints {
+            $0.bottom.equalTo(bottomContainerUIView.safeAreaLayoutGuide.snp.bottom)
+            $0.centerX.equalTo(bottomContainerUIView)
+        }
+        
+        signUpIndicator.snp.makeConstraints {
+            $0.centerX.equalTo(bottomContainerUIView)
+            $0.bottom.equalTo(registerButton.snp.top).inset(-20)
         }
     }
+
 }
 
 extension RegistrationViewController: UITextFieldDelegate {

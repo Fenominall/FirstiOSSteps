@@ -7,15 +7,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "9231CE3B-C6C5-430E-BB8F-7A02BD1E49E3"
-            shouldBeEnabled = "No"
+            uuid = "C61EC071-8619-4025-92E0-FCCE36DF9506"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FirstProject/Features/LoginFeature/Controllers/Authentication/RegistrationViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
+            startingLineNumber = "146"
+            endingLineNumber = "146"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -23,15 +23,31 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "C627E0E7-0999-4F74-9A28-263CC6BDFCC9"
-            shouldBeEnabled = "No"
+            uuid = "1C35545A-2C34-410C-832D-1DA00D6B5DE8"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FirstProject/Features/LoginFeature/Controllers/Authentication/RegistrationViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "49"
-            endingLineNumber = "49"
+            startingLineNumber = "166"
+            endingLineNumber = "166"
+            landmarkName = "RegistrationViewController"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "72836886-D9DE-41DB-BF51-B9B872887858"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FirstProject/Features/LoginFeature/Controllers/Authentication/RegistrationViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "168"
+            endingLineNumber = "168"
             landmarkName = "registerButtonPressed(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -39,63 +55,31 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "6805C851-7C7E-4001-84ED-5815203F20A5"
-            shouldBeEnabled = "No"
+            uuid = "F59E45AD-5FDB-492A-9356-3693B863EA02"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FirstProject/Features/LoginFeature/Controllers/Authentication/RegistrationViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "50"
-            endingLineNumber = "50"
-            landmarkName = "registerButtonPressed(_:)"
-            landmarkType = "7">
+            startingLineNumber = "174"
+            endingLineNumber = "174"
+            landmarkName = "RegistrationViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "1AC0B0DE-A966-49BF-96B4-92250C21464E"
-            shouldBeEnabled = "No"
+            uuid = "E7217F5E-D61A-4A7E-A88F-685C15E0E9D9"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FirstProject/Features/LoginFeature/Controllers/Authentication/RegistrationViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
-            landmarkName = "registerButtonPressed(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "4F005A66-62A5-4D73-9F64-4528B7BF382C"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FirstProject/Features/LoginFeature/Controllers/Authentication/RegistrationViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
-            landmarkName = "registerButtonPressed(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "836F0A38-FC29-4883-AE62-96D9CD7A77F5"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FirstProject/Features/LoginFeature/Controllers/Authentication/RegistrationViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "56"
-            endingLineNumber = "56"
+            startingLineNumber = "176"
+            endingLineNumber = "176"
             landmarkName = "handleUserActionsWithViewModel()"
             landmarkType = "7">
          </BreakpointContent>
@@ -103,15 +87,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "AA59FF10-FF8C-4DEA-9EE5-AD5A3D5F9129"
-            shouldBeEnabled = "No"
+            uuid = "BDC3C226-4E3E-4398-97C6-71D994FBEC1C"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FirstProject/Features/LoginFeature/Controllers/Authentication/RegistrationViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
+            startingLineNumber = "175"
+            endingLineNumber = "175"
             landmarkName = "handleUserActionsWithViewModel()"
             landmarkType = "7">
          </BreakpointContent>
@@ -119,31 +103,31 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "CB55FF5D-CC5F-4A44-A0FD-C110B0B19823"
-            shouldBeEnabled = "No"
+            uuid = "70B0810E-0E87-4BE0-9CB2-1AC807B925E5"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FirstProject/Features/LoginFeature/Controllers/Authentication/RegistrationViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
-            landmarkName = "handleUserActionsWithViewModel()"
-            landmarkType = "7">
+            startingLineNumber = "180"
+            endingLineNumber = "180"
+            landmarkName = "RegistrationViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "9D287FF0-93F2-4BCB-8EE6-16383FC07E7F"
-            shouldBeEnabled = "No"
+            uuid = "A88C91DB-2C79-4F6F-981D-673F24717F4F"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FirstProject/Features/LoginFeature/Controllers/Authentication/RegistrationViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
+            startingLineNumber = "181"
+            endingLineNumber = "181"
             landmarkName = "handleValidationState(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -151,15 +135,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "45DA1559-ED87-4CD9-8CD4-BF4869A19735"
-            shouldBeEnabled = "No"
+            uuid = "B7CAA225-89F2-4440-A221-089833454AD6"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FirstProject/Features/LoginFeature/Controllers/Authentication/RegistrationViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "91"
-            endingLineNumber = "91"
+            startingLineNumber = "209"
+            endingLineNumber = "209"
             landmarkName = "handleValidationState(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -167,15 +151,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "8C1870DA-09DF-42AD-90DB-1AB470F7F7CD"
-            shouldBeEnabled = "No"
+            uuid = "8D3B7725-9C22-402C-B9D0-2C5DBF614FE9"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FirstProject/Features/LoginFeature/ViewModels/AuthenticationViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116"
+            startingLineNumber = "99"
+            endingLineNumber = "99"
             landmarkName = "signUpUser()"
             landmarkType = "7">
          </BreakpointContent>
@@ -183,15 +167,31 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "6CF695A7-0C6E-435B-9E7F-3ED1366C82C8"
-            shouldBeEnabled = "No"
+            uuid = "4970E84F-7375-47AA-B2C2-96E04B733836"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FirstProject/Features/LoginFeature/ViewModels/AuthenticationViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "132"
-            endingLineNumber = "132"
+            startingLineNumber = "137"
+            endingLineNumber = "137"
+            landmarkName = "RegistrationViewModel"
+            landmarkType = "21">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "89F7C566-3B06-44F5-9B65-59ED3EE1BB31"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FirstProject/Features/LoginFeature/ViewModels/AuthenticationViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
             landmarkName = "signUpUser()"
             landmarkType = "7">
          </BreakpointContent>
@@ -199,36 +199,20 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "7E62A1B4-6E64-4DDF-A4C0-45B5A9E7921A"
-            shouldBeEnabled = "No"
+            uuid = "4F9303C2-6A3E-4286-A5B2-D7FFC963100E"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FirstProject/Features/LoginFeature/ViewModels/AuthenticationViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "120"
-            endingLineNumber = "120"
-            landmarkName = "signUpUser()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "0A30700C-7D1B-4869-9D45-5335692A311D"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FirstProject/Features/LoginFeature/ViewModels/AuthenticationViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "126"
-            endingLineNumber = "126"
+            startingLineNumber = "117"
+            endingLineNumber = "117"
             landmarkName = "signUpUser()"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "0A30700C-7D1B-4869-9D45-5335692A311D - 8b213322989e223"
+                  uuid = "4F9303C2-6A3E-4286-A5B2-D7FFC963100E - 8b213322989e374"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -238,60 +222,12 @@
                   urlString = "file:///Users/fenominall/Documents/FirstiOSSteps/FirstProject/Features/LoginFeature/ViewModels/AuthenticationViewModel.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "126"
-                  endingLineNumber = "126"
-                  offsetFromSymbolStart = "671">
-               </Location>
-               <Location
-                  uuid = "0A30700C-7D1B-4869-9D45-5335692A311D - d1129e275be4f02e"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #2 () -&gt; () in FirstProject.AuthenticationViewModel.signUpUser() -&gt; ()"
-                  moduleName = "FirstProject"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/fenominall/Documents/FirstiOSSteps/FirstProject/Features/LoginFeature/ViewModels/AuthenticationViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "126"
-                  endingLineNumber = "126"
-                  offsetFromSymbolStart = "38">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "64239E18-60C7-4A44-A15B-8C0AF825AEFC"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FirstProject/Features/LoginFeature/ViewModels/AuthenticationViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "134"
-            endingLineNumber = "134"
-            landmarkName = "signUpUser()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "64239E18-60C7-4A44-A15B-8C0AF825AEFC - 8b213322989ed3b"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "FirstProject.AuthenticationViewModel.signUpUser() -&gt; ()"
-                  moduleName = "FirstProject"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/fenominall/Documents/FirstiOSSteps/FirstProject/Features/LoginFeature/ViewModels/AuthenticationViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "134"
-                  endingLineNumber = "134"
+                  startingLineNumber = "117"
+                  endingLineNumber = "117"
                   offsetFromSymbolStart = "1624">
                </Location>
                <Location
-                  uuid = "64239E18-60C7-4A44-A15B-8C0AF825AEFC - c78f226f3cf7ebe4"
+                  uuid = "4F9303C2-6A3E-4286-A5B2-D7FFC963100E - c78f226f3cf7e5ab"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -301,9 +237,9 @@
                   urlString = "file:///Users/fenominall/Documents/FirstiOSSteps/FirstProject/Features/LoginFeature/ViewModels/AuthenticationViewModel.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "134"
-                  endingLineNumber = "134"
-                  offsetFromSymbolStart = "72">
+                  startingLineNumber = "117"
+                  endingLineNumber = "117"
+                  offsetFromSymbolStart = "33">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -311,40 +247,8 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "5865E60B-2389-4B36-9916-A91E2031260F"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FirstProject/Features/LoginFeature/ViewModels/AuthenticationViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "135"
-            endingLineNumber = "135"
-            landmarkName = "signUpUser()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "0564713C-195F-4A67-9824-620EA5F84B6B"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FirstProject/Features/LoginFeature/ViewModels/AuthenticationViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "146"
-            endingLineNumber = "146"
-            landmarkName = "signUpUser()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "6EBA19A1-6147-46F2-AF0A-83FDA26733F3"
-            shouldBeEnabled = "No"
+            uuid = "C610A202-1DDE-4258-A293-38B6C0381E9B"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FirstProject/Features/LoginFeature/ViewModels/AuthenticationViewModel.swift"
@@ -352,31 +256,15 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "47"
             endingLineNumber = "47"
-            landmarkName = "checkIfUserAlreadyCreated(byUsername:completion:)"
+            landmarkName = "signUpUserProcess(with:password:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "D68BE38A-6B72-4230-ABA6-D4242E70AAFD"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FirstProject/Features/LoginFeature/ViewModels/AuthenticationViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
-            landmarkName = "checkIfUserAlreadyCreated(byUsername:completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "CB0F8E36-EF19-4D8F-9F83-F7999288F714"
-            shouldBeEnabled = "No"
+            uuid = "0CFCDB4F-350C-48F0-9DBA-8D18329993F5"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FirstProject/Features/LoginFeature/ViewModels/AuthenticationViewModel.swift"
@@ -384,23 +272,87 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "54"
             endingLineNumber = "54"
-            landmarkName = "checkIfUserAlreadyCreated(byUsername:completion:)"
+            landmarkName = "signUpUserProcess(with:password:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "F8F67B11-9B6A-49F1-88B9-F467924C348A"
-            shouldBeEnabled = "No"
+            uuid = "A0FDEBE4-40FD-4C22-B029-53D8E2E890DB"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FirstProject/Features/LoginFeature/ViewModels/AuthenticationViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
-            landmarkName = "checkIfUserAlreadyCreated(byUsername:completion:)"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "signUpUserProcess(with:password:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "87066D83-3036-44B8-9C60-9CEA15DBD7AC"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FirstProject/Features/LoginFeature/ViewModels/AuthenticationViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
+            landmarkName = "signUpUserProcess(with:password:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A3DFF603-FF9A-4B33-A4A9-AB4EF42EE3BF"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FirstProject/Features/LoginFeature/ViewModels/AuthenticationViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "118"
+            endingLineNumber = "118"
+            landmarkName = "signUpUser()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C99EA8EB-ECDC-43C5-8A0B-8623E501FF5A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FirstProject/Features/LoginFeature/ViewModels/AuthenticationViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
+            landmarkName = "signUpUser()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "41F40AB1-56CF-4571-AB56-AE9669F9913B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FirstProject/Features/LoginFeature/ViewModels/AuthenticationViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "124"
+            endingLineNumber = "124"
+            landmarkName = "signUpUser()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

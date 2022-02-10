@@ -8,6 +8,7 @@ import Photos
 import PhotosUI
 import UIKit
 import Parse
+import SnapKit
 
 protocol HomeViewControllerDelegate: AnyObject {
     func handleMenuToggle()
@@ -26,16 +27,19 @@ class HomeViewController: UIViewController, Coordinating {
     // MARK: UI Properties
     // UIViews
     private lazy var screenContainerUIView: UIView = {
-        let view = UIViewTemplates().containerUIView()
+        let view = UIView(frame: .zero)
+        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     private lazy var topContainerUIView: UIView = {
-        let view = UIViewTemplates().containerUIView()
+        let view = UIView(frame: .zero)
+        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     private lazy var bottomContainerUIView: UIView = {
-        let view = UIViewTemplates().containerUIView()
+        let view = UIView(frame: .zero)
+        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
@@ -47,7 +51,7 @@ class HomeViewController: UIViewController, Coordinating {
     
     private lazy var plusIcon: BaseImageView = {
         let imageView = BaseImageView(with: .plusIcon)
-
+        
         return imageView
     }()
     
@@ -66,6 +70,7 @@ class HomeViewController: UIViewController, Coordinating {
         let tap = UITapGestureRecognizer(target: self,
                                          action: #selector(didTapUploadImageButton))
         image.addGestureRecognizer(tap)
+        image.isUserInteractionEnabled = true
         return image
     }()
     
@@ -82,18 +87,6 @@ class HomeViewController: UIViewController, Coordinating {
     }()
     
     // UIButtons
-//    private(set) lazy var uploadImageButton: UIButton = {
-//        let button = UIButton(type: .system)
-//        button.translatesAutoresizingMaskIntoConstraints = false
-//        button.layer.masksToBounds = false
-//        button.layer.cornerRadius = 150 / 2
-//        button.clipsToBounds = true
-//        button.setImage(AppImages.userImage, for: .normal)
-//        button.imageView?.contentMode = .scaleAspectFill
-//        button.addTarget(self, action: #selector(didTapUploadImageButton), for: .touchUpInside)
-//        return button
-//    }()
-    
     private(set) lazy var sourceCodeButton: UIButton = {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -104,7 +97,7 @@ class HomeViewController: UIViewController, Coordinating {
         button.addTarget(self, action: #selector(didTapSourceCodeButton), for: .touchUpInside)
         return button
     }()
-
+    
     private lazy var editProfileButton: UIButton = {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -130,7 +123,7 @@ class HomeViewController: UIViewController, Coordinating {
         button.addTarget(self, action: #selector(didTapScheduleEventButton), for: .touchUpInside)
         return button
     }()
-   
+    
     // UIStackVies
     private lazy var buttonsStackView: UIStackView = {
         let buttonsStackView = UIStackView(arrangedSubviews: [editProfileButton, scheduleEventListButton])
@@ -183,7 +176,6 @@ extension HomeViewController {
     }
     
     @objc private func didTapUploadImageButton() {
-        print("Test")
         // Presenting PHPController with configurations to select and upload user image to the app
         AppAlerts.handleUserImageAlert(on: self) { [weak self] _ in
             var configurations = PHPickerConfiguration(photoLibrary: .shared())
@@ -198,7 +190,8 @@ extension HomeViewController {
             // Deleting uploaded image from FileManager
             self?.imageStorage.removeImage(forKey: .userImage, inStorageType: .fileSystem)
             // Setting the default image as user image
-            self?.userIconImage.image = AppImages.userImage
+            guard let image = AppImages.userDefaultImage.image else { return }
+            self?.userIconImage.image = image
         }
     }
 }
@@ -221,7 +214,7 @@ extension HomeViewController {
         navigationItem.setHidesBackButton(true, animated: false)
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.barStyle = .black
-     
+        
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log Out",
                                                             style: .plain,
                                                             target: self,
@@ -253,7 +246,7 @@ extension HomeViewController {
             $0.leading.trailing.equalTo(topContainerUIView)
             $0.height.equalTo(screenContainerUIView).multipliedBy(0.5)
         }
-
+        
         topContainerUIView.addSubview(circleBackGroundForUserImage)
         circleBackGroundForUserImage.snp.makeConstraints {
             $0.bottomMargin.equalTo(topContainerUIView.snp_bottomMargin)
@@ -275,28 +268,28 @@ extension HomeViewController {
         scheduleEventListButton.snp.makeConstraints {
             $0.height.equalTo(48)
         }
-
+        
         bottomContainerUIView.addSubview(buttonsStackView)
         buttonsStackView.snp.makeConstraints {
             $0.topMargin.equalTo(bottomContainerUIView.snp_topMargin).inset(25)
             $0.leading.trailing.equalTo(bottomContainerUIView).inset(30)
-          }
-
+        }
+        
         circleBackGroundForUserImage.snp.makeConstraints {
             $0.width.height.equalTo(200)
         }
-  
+        
         view.addSubview(userIconImage)
         userIconImage.snp.makeConstraints {
             $0.centerX.centerY.equalTo(circleBackGroundForUserImage)
             $0.width.height.equalTo(150)
         }
         
-//        view.addSubview(plusIcon)
-//        plusIcon.snp.makeConstraints {
-//            $0.top.equalTo(userIconImage.snp_bottomMargin).inset(12)
-//            $0.trailing.equalTo(userIconImage.snp_trailingMargin).inset(12)
-//        }
+        view.addSubview(plusIcon)
+        plusIcon.snp.makeConstraints {
+            $0.top.equalTo(userIconImage.snp_bottomMargin).inset(12)
+            $0.trailing.equalTo(userIconImage.snp_trailingMargin).inset(12)
+        }
         
         bottomContainerUIView.addSubview(sourceCodeButton)
         sourceCodeButton.snp.makeConstraints {
@@ -304,7 +297,7 @@ extension HomeViewController {
             $0.centerX.equalTo(bottomContainerUIView.snp.centerX)
         }
     }
-
+    
     /// Retrieving User data to load "username" and assign it to usernameLabel
     func loadUserName() {
         usernameLabel.text = homeViewModel.username
@@ -351,7 +344,7 @@ extension HomeViewController: PHPickerViewControllerDelegate {
     private func removeUserImageWhenSignedOut() {
         DispatchQueue.global(qos: .background).async { [weak self] in
             self?.imageStorage.removeImage(forKey: .userImage,
-                                          inStorageType: .fileSystem)
+                                           inStorageType: .fileSystem)
         }
     }
 }

@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class UserSettingsView: UIView {
+class EditUserProfileView: UIView {
     
     // MARK: UIView Container
     private lazy var containerUIView: UIView = {
@@ -20,7 +20,8 @@ class UserSettingsView: UIView {
     private lazy var backgroundImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = AppImages.waves
+        let image = AppImages.editProfileBackgroundImage.image
+        imageView.image = image
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()

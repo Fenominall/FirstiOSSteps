@@ -8,21 +8,7 @@
 import Foundation
 import UIKit
 
-struct AppImages {
-    static let appIcon = UIImage(named: "appIconF")!
-    static let loginBackgroundImage = UIImage(named: "loginImage")!
-    static let lightCircle = UIImage(named: "lightCircle")!
-    static let userImage = UIImage(named: "user")?.withRenderingMode(.alwaysOriginal)
-    static let homeBackgroundImage = UIImage(named: "blob-scene")!
-    static let waves = UIImage(named: "waves")!
-    static let plusIcon = UIImage(named: "plusIcon")!
-    static let git = UIImage(named: "git")!
-    static let eyeFill = UIImage(named: "eye.fill")
-    static let eyeSlash = UIImage(named: "eye.slash")
-}
-
-
-enum AppImagess {
+enum AppImages {
     case appIcon
     case loginBackgroundImage
     case lightCircle
@@ -35,7 +21,7 @@ enum AppImagess {
     case eyeSlash
 }
 
-extension AppImagess {
+extension AppImages {
     var image: UIImage? {
         switch self {
         case .appIcon:
@@ -64,7 +50,7 @@ extension AppImagess {
 
 class BaseImageView: UIImageView {
     
-    init(with preset: AppImagess) {
+    init(with preset: AppImages) {
         super.init(frame: .zero)
         translatesAutoresizingMaskIntoConstraints = false
         applyImagePreset(preset)
@@ -74,7 +60,7 @@ class BaseImageView: UIImageView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func applyImagePreset(_ preset: AppImagess) {
+    private func applyImagePreset(_ preset: AppImages) {
         image = preset.image
     }
 }

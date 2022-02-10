@@ -23,11 +23,12 @@
 		4F28BA7C2742989E001308E1 /* CreateEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F28BA7B2742989E001308E1 /* CreateEventView.swift */; };
 		4F28BA7E27429B57001308E1 /* ScheduleListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F28BA7D27429B57001308E1 /* ScheduleListViewCell.swift */; };
 		4F2A17B726C7050600205E03 /* Dynamic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2A17B626C7050600205E03 /* Dynamic.swift */; };
+		4F2A845D27B522820093BF79 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2A845C27B522820093BF79 /* LoginViewModel.swift */; };
 		4F2DEDF0274515B900C5F156 /* FileManager+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2DEDEF274515B900C5F156 /* FileManager+Extensions.swift */; };
 		4F2EA04526F7054300EF6884 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2EA04426F7054300EF6884 /* CustomTextField.swift */; };
 		4F31B22B27A72F8A003935B4 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F31B22A27A72F8A003935B4 /* NetworkMonitor.swift */; };
 		4F4C9F612745890600D345DC /* EventPersistenceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4C9F602745890600D345DC /* EventPersistenceHelper.swift */; };
-		4F4FDFBC268D862000736440 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4FDFBB268D862000736440 /* AuthenticationViewModel.swift */; };
+		4F4FDFBC268D862000736440 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4FDFBB268D862000736440 /* RegistrationViewModel.swift */; };
 		4F522AA8272DB7CF0099C5E8 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F522AA7272DB7CF0099C5E8 /* Images.swift */; };
 		4F695E902662B6C200606D03 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F695E8F2662B6C200606D03 /* LoginViewController.swift */; };
 		4F7D97B226D0391A00A9D253 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7D97B126D0391A00A9D253 /* HomeView.swift */; };
@@ -35,7 +36,7 @@
 		4F92895626A6B06600624B6E /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F92895526A6B06600624B6E /* Alerts.swift */; };
 		4F93710F2766752B007667F8 /* UIViewTemplates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F93710E2766752B007667F8 /* UIViewTemplates.swift */; };
 		4F9371122766759B007667F8 /* NSConstraintsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9371112766759B007667F8 /* NSConstraintsExtension.swift */; };
-		4FA5BB1826CEDB5F001C486D /* UserSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA5BB1726CEDB5F001C486D /* UserSettingsView.swift */; };
+		4FA5BB1826CEDB5F001C486D /* EditUserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA5BB1726CEDB5F001C486D /* EditUserProfileView.swift */; };
 		4FBBE319268B97E400D518B8 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBBE318268B97E400D518B8 /* UserModel.swift */; };
 		4FCDEBA9272FEC51002C3B06 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FCDEBA8272FEC51002C3B06 /* HomeViewModel.swift */; };
 		4FD2745C2683317300C8FA32 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD2745B2683317300C8FA32 /* HomeViewController.swift */; };
@@ -51,7 +52,6 @@
 		4FF9064726543BEF001387C9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF9064626543BEF001387C9 /* SceneDelegate.swift */; };
 		4FF9064E26543BF1001387C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FF9064D26543BF1001387C9 /* Assets.xcassets */; };
 		4FFC3F3B27B2AE06003E61F6 /* UserValidationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFC3F3A27B2AE06003E61F6 /* UserValidationState.swift */; };
-		4FFCD45B26BEC87000770D33 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFCD45A26BEC87000770D33 /* LoginView.swift */; };
 		4FFF2A1626BD27560064E610 /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFF2A1526BD27560064E610 /* HapticsManager.swift */; };
 		6276344789E465E1AF17D88B /* Pods_FirstProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CD6B5B3B38598214E1A7244 /* Pods_FirstProject.framework */; };
 /* End PBXBuildFile section */
@@ -74,11 +74,12 @@
 		4F28BA7B2742989E001308E1 /* CreateEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEventView.swift; sourceTree = "<group>"; };
 		4F28BA7D27429B57001308E1 /* ScheduleListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListViewCell.swift; sourceTree = "<group>"; };
 		4F2A17B626C7050600205E03 /* Dynamic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dynamic.swift; sourceTree = "<group>"; };
+		4F2A845C27B522820093BF79 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		4F2DEDEF274515B900C5F156 /* FileManager+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Extensions.swift"; sourceTree = "<group>"; };
 		4F2EA04426F7054300EF6884 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		4F31B22A27A72F8A003935B4 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 		4F4C9F602745890600D345DC /* EventPersistenceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventPersistenceHelper.swift; sourceTree = "<group>"; };
-		4F4FDFBB268D862000736440 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
+		4F4FDFBB268D862000736440 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		4F522AA7272DB7CF0099C5E8 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		4F695E8F2662B6C200606D03 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		4F7D97B126D0391A00A9D253 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -86,7 +87,7 @@
 		4F92895526A6B06600624B6E /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
 		4F93710E2766752B007667F8 /* UIViewTemplates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewTemplates.swift; sourceTree = "<group>"; };
 		4F9371112766759B007667F8 /* NSConstraintsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSConstraintsExtension.swift; sourceTree = "<group>"; };
-		4FA5BB1726CEDB5F001C486D /* UserSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsView.swift; sourceTree = "<group>"; };
+		4FA5BB1726CEDB5F001C486D /* EditUserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUserProfileView.swift; sourceTree = "<group>"; };
 		4FBBE318268B97E400D518B8 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		4FCDEBA8272FEC51002C3B06 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		4FD2745B2683317300C8FA32 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -104,7 +105,6 @@
 		4FF9064D26543BF1001387C9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4FF9065226543BF1001387C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4FFC3F3A27B2AE06003E61F6 /* UserValidationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserValidationState.swift; sourceTree = "<group>"; };
-		4FFCD45A26BEC87000770D33 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		4FFF2A1526BD27560064E610 /* HapticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsManager.swift; sourceTree = "<group>"; };
 		5CD6B5B3B38598214E1A7244 /* Pods_FirstProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FirstProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		68F12D2ACF30F7D7A9A93834 /* Pods-FirstProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirstProject.debug.xcconfig"; path = "Target Support Files/Pods-FirstProject/Pods-FirstProject.debug.xcconfig"; sourceTree = "<group>"; };
@@ -142,7 +142,6 @@
 		4F05B2C927A31FC300AFEEC6 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
-				4FFCD45A26BEC87000770D33 /* LoginView.swift */,
 				4F05B2CA27A3203800AFEEC6 /* RegistrationView.swift */,
 			);
 			path = Authentication;
@@ -260,8 +259,9 @@
 		4F4FDFBA268D860700736440 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				4F4FDFBB268D862000736440 /* AuthenticationViewModel.swift */,
+				4F4FDFBB268D862000736440 /* RegistrationViewModel.swift */,
 				4FCDEBA8272FEC51002C3B06 /* HomeViewModel.swift */,
+				4F2A845C27B522820093BF79 /* LoginViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -467,7 +467,7 @@
 			children = (
 				4F05B2C927A31FC300AFEEC6 /* Authentication */,
 				4F7D97B126D0391A00A9D253 /* HomeView.swift */,
-				4FA5BB1726CEDB5F001C486D /* UserSettingsView.swift */,
+				4FA5BB1726CEDB5F001C486D /* EditUserProfileView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -613,13 +613,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				4FD2745C2683317300C8FA32 /* HomeViewController.swift in Sources */,
-				4FFCD45B26BEC87000770D33 /* LoginView.swift in Sources */,
 				4FF3238327B03A0C009DA656 /* UIApplicationExtension.swift in Sources */,
 				4F28BA7E27429B57001308E1 /* ScheduleListViewCell.swift in Sources */,
 				4F05B2CB27A3203800AFEEC6 /* RegistrationView.swift in Sources */,
 				4FDB689026E146390006F8E3 /* UIColorHexExtension.swift in Sources */,
 				4F522AA8272DB7CF0099C5E8 /* Images.swift in Sources */,
 				4F87A91B273EA34800D34B02 /* ImageStorage.swift in Sources */,
+				4F2A845D27B522820093BF79 /* LoginViewModel.swift in Sources */,
 				4FBBE319268B97E400D518B8 /* UserModel.swift in Sources */,
 				4F083EE926D8063200B63DD7 /* Coordinator.swift in Sources */,
 				4F083EEB26D806B400B63DD7 /* MainCoordinator.swift in Sources */,
@@ -640,7 +640,7 @@
 				4F92895626A6B06600624B6E /* Alerts.swift in Sources */,
 				4F2DEDF0274515B900C5F156 /* FileManager+Extensions.swift in Sources */,
 				4F4C9F612745890600D345DC /* EventPersistenceHelper.swift in Sources */,
-				4F4FDFBC268D862000736440 /* AuthenticationViewModel.swift in Sources */,
+				4F4FDFBC268D862000736440 /* RegistrationViewModel.swift in Sources */,
 				4FF9064726543BEF001387C9 /* SceneDelegate.swift in Sources */,
 				4F695E902662B6C200606D03 /* LoginViewController.swift in Sources */,
 				4F93710F2766752B007667F8 /* UIViewTemplates.swift in Sources */,
@@ -649,7 +649,7 @@
 				4FCDEBA9272FEC51002C3B06 /* HomeViewModel.swift in Sources */,
 				4F9371122766759B007667F8 /* NSConstraintsExtension.swift in Sources */,
 				4FD4D58E26833C8D0078633E /* AppDataValidator.swift in Sources */,
-				4FA5BB1826CEDB5F001C486D /* UserSettingsView.swift in Sources */,
+				4FA5BB1826CEDB5F001C486D /* EditUserProfileView.swift in Sources */,
 				4FDB688E26E1455A0006F8E3 /* CustomUserDefaults.swift in Sources */,
 				4F257CFF2739B423007CB391 /* UserCaretaker.swift in Sources */,
 				4F28BA7C2742989E001308E1 /* CreateEventView.swift in Sources */,

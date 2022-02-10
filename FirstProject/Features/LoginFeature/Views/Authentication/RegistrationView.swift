@@ -10,19 +10,22 @@ import SnapKit
 
 class RegistrationView: UIView {
 
-    // MARK: - Properties
+    // MARK: - UIProperties
 
     // UIViews
     private lazy var screenContainerUIView: UIView = {
-        let view = UIViewTemplates().containerUIView()
+        let view = UIView(frame: .zero)
+        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     private lazy var topContainerUIView: UIView = {
-        let view = UIViewTemplates().containerUIView()
+        let view = UIView(frame: .zero)
+        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     private lazy var bottomContainerUIView: UIView = {
-        let view = UIViewTemplates().containerUIView()
+        let view = UIView(frame: .zero)
+        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
 
@@ -73,8 +76,7 @@ class RegistrationView: UIView {
         let customTextField = CustomTextField()
         customTextField.translatesAutoresizingMaskIntoConstraints = false
         customTextField.textColor = .white
-        customTextField.isSecureTextEntry = true
-//        customTextField.enablePasswordToggle()
+//        customTextField.isSecureTextEntry = true
         return customTextField
     }()
 

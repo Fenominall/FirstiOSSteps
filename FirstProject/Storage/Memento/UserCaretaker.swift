@@ -44,7 +44,8 @@ public final class UserCaretaker {
     }
     
     /// create new user
-    public static func createUser(user: User) throws {
+    public static func createUser(withUsername username: String, password: String) throws {
+        let user = User(username: username, password: password)
         newUser = user
         do {
             try save()

@@ -5,6 +5,7 @@
 //  Created by Fenominall on 18.05.2021.
 //
 import Foundation
+import SnapKit
 import UIKit
 
 
@@ -13,29 +14,143 @@ class LoginViewController: UIViewController, Coordinating {
     // MARK: - Properties
     var coordinator: Coordinator?
     
-    private var loginViewModel = AuthenticationViewModel()
-    var loginView = LoginView()
+    private var loginViewModel = RegistrationViewModel()
+    
+    // MARK: - UIProperties
+    
+    // UIViews
+    private lazy var screenContainerUIView: UIView = {
+        let view = UIView(frame: .zero)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    private lazy var topContainerUIView: UIView = {
+        let view = UIView(frame: .zero)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    private lazy var bottomContainerUIView: UIView = {
+        let view = UIView(frame: .zero)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    // UIImageViews
+    private lazy var loginImageView: BaseImageView = {
+        let imageView = BaseImageView(with: .loginBackgroundImage)
+        imageView.contentMode = .scaleToFill
+        return imageView
+    }()
+    
+    // UILables
+    private lazy var loginScreenLabel: UILabel = {
+        let label = UIViewTemplates().newUILabel(text: "Sign In",
+                                                 fontSize: 45,
+                                                 fontWeight: .semibold,
+                                                 textAlignment: .center,
+                                                 textColor: .white)
+        return label
+    }()
+    
+    private lazy var usernameLabel: UILabel = {
+        let label = UIViewTemplates().newUILabel(text: "Username",
+                                                 fontSize: 24,
+                                                 fontWeight: .regular,
+                                                 textAlignment: .natural,
+                                                 textColor: .lightGrayAccent ?? .white)
+        return label
+    }()
+    
+    private lazy var passwordLabel: UILabel = {
+        let label = UIViewTemplates().newUILabel(text: "Password",
+                                                 fontSize: 24,
+                                                 fontWeight: .regular,
+                                                 textAlignment: .natural,
+                                                 textColor: .lightGrayAccent ?? .white)
+        return label
+    }()
+    
+    // UITextFields
+    private(set) lazy var usernameTxtField: CustomTextField = {
+        let customTextField = CustomTextField()
+        customTextField.translatesAutoresizingMaskIntoConstraints = false
+        customTextField.textColor = .white
+        customTextField.clearButtonMode = .always
+        customTextField.delegate = self
+        customTextField.addBottomBorder()
+        return customTextField
+    }()
+    
+    private(set) lazy var passwordTxtField: CustomTextField = {
+        let customTextField = CustomTextField()
+        customTextField.translatesAutoresizingMaskIntoConstraints = false
+        customTextField.textColor = .white
+        customTextField.delegate = self
+        customTextField.isSecureTextEntry = true
+        customTextField.enablePasswordToggle()
+        return customTextField
+    }()
+    
+    // UIButtons
+    private(set) lazy var loginButton: UIButton = {
+        let button = UIViewTemplates().customButton(title: "LOGIN",
+                                                    fontSize: 40,
+                                                    fontWeight: .regular,
+                                                    tintColor: .white)
+        button.addTarget(self, action: #selector(loginButtonPressed), for: .touchUpInside)
+        return button
+    }()
+    
+    private(set) lazy var dontHaveAccountButton: UIButton = {
+        let button = UIViewTemplates().attributedButton("Don`t have account?", " Sign Up")
+        button.addTarget(self, action: #selector(handleShowSignUp), for: .touchUpInside)
+        return button
+    }()
+    
+    // UIActivityIndicator
+    private(set) lazy var loginIndicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView()
+        indicator.translatesAutoresizingMaskIntoConstraints = false
+        indicator.tintColor = .white
+        indicator.style = .large
+        indicator.isHidden = true
+        return indicator
+    }()
+    
+    // UIStackViews
+    private lazy var usernameStackView: UIStackView = {
+        let usernameStackView = UIStackView(arrangedSubviews: [usernameLabel,
+                                                               usernameTxtField])
+        usernameStackView.translatesAutoresizingMaskIntoConstraints = false
+        usernameStackView.axis = .vertical
+        usernameStackView.spacing = 10
+        return usernameStackView
+    }()
+    
+    private lazy var passwordStackView: UIStackView = {
+        let passwordStackView = UIStackView(arrangedSubviews: [passwordLabel,
+                                                               passwordTxtField])
+        passwordStackView.translatesAutoresizingMaskIntoConstraints = false
+        passwordStackView.axis = .vertical
+        passwordStackView.spacing = 10
+        return passwordStackView
+    }()
     
     //MARK: - lifecycle
-    override func loadView() {
-        view = loginView
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Notifications for showing and hiding keyboard
-        observeKeyboardNotifications()
-        configureData()
-        configureUI()
-        print(FileManager.getDocumentsDirectory())
         NetworkMonitor.shared.startMonitoring()
-
+        // Notifications for showing and hiding keyboard
+        configureLoginViewController()
+        
+        print(FileManager.getDocumentsDirectory())
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-        loginView.usernameTxtField.addBottomBorder()
-        loginView.passwordTxtField.addBottomBorder()
+        super.viewDidAppear(animated)
+        usernameTxtField.addBottomBorder()
+        passwordTxtField.addBottomBorder()
     }
     
     // MARK: - Selectors
@@ -43,27 +158,27 @@ class LoginViewController: UIViewController, Coordinating {
     /// - Parameter sender: Any
     @objc private func loginButtonPressed(_ sender: UIButton) {
         
-//        switch loginViewModel.validateUser(byUserAuthState: .login) {
-//        case .valid:
-//            // Navigation to HomeScreenViewController
-//            coordinator?.eventOccurred(with: .loginButtonTapped)
-//        case .empty:
-//            // Button Shake
-//            sender.shake()
-//            // Empty fields Error Alert
-//            AppAlerts.emptyFieldsErrorAlert(on: self)
-//        case .invalid:
-//            // Button Shake
-//            sender.shake()
-//            // Improper credentials Alert
-//            AppAlerts.incorrectCredentials(on: self)
-//        case .usernameAlreadyTaken:
-//            sender.shake()
-//            AppAlerts.incorrectCredentials(on: self)
-//        case .noInternetConnection:
-//            sender.shake()
-//            AppAlerts.noInternetConnectionAlert(on: self)
-//        }
+        //        switch loginViewModel.validateUser(byUserAuthState: .login) {
+        //        case .valid:
+        //            // Navigation to HomeScreenViewController
+        //            coordinator?.eventOccurred(with: .loginButtonTapped)
+        //        case .empty:
+        //            // Button Shake
+        //            sender.shake()
+        //            // Empty fields Error Alert
+        //            AppAlerts.emptyFieldsErrorAlert(on: self)
+        //        case .invalid:
+        //            // Button Shake
+        //            sender.shake()
+        //            // Improper credentials Alert
+        //            AppAlerts.incorrectCredentials(on: self)
+        //        case .usernameAlreadyTaken:
+        //            sender.shake()
+        //            AppAlerts.incorrectCredentials(on: self)
+        //        case .noInternetConnection:
+        //            sender.shake()
+        //            AppAlerts.noInternetConnectionAlert(on: self)
+        //        }
     }
     
     @objc private func handleShowSignUp() {
@@ -71,26 +186,82 @@ class LoginViewController: UIViewController, Coordinating {
     }
     
     // MARK: - Helpers
+    func configureLoginViewController() {
+        configureNavigationBar()
+        configureUI()
+        observeKeyboardNotifications()
+    }
     
-    func configureUI() {
+    func configureNavigationBar() {
         navigationController?.navigationBar.barStyle = .black
         navigationItem.setHidesBackButton(true, animated: false)
         navigationItem.backButtonTitle = ""
         navigationItem.leftBarButtonItem?.tintColor = .white
     }
     
-    func configureData() {
-        loginView.usernameTxtField.delegate = self
-        loginView.passwordTxtField.delegate = self
-        loginView.loginButton.addTarget(self, action: #selector(loginButtonPressed), for: .touchUpInside)
-        loginView.dontHaveAccountButton.addTarget(self, action: #selector(handleShowSignUp), for: .touchUpInside)
+    func configureUI() {
+        view.addSubview(screenContainerUIView)
         
-        // Binding TextFields to send data to the LoginViewModel in order to update a User model
-        loginView.usernameTxtField.bind { [weak self] in
-            self?.loginViewModel.updateUsername(username: $0.trimmingCharacters(in: .whitespaces))
+        screenContainerUIView.addSubview(loginImageView)
+        screenContainerUIView.addSubview(topContainerUIView)
+        screenContainerUIView.addSubview(bottomContainerUIView)
+        
+        topContainerUIView.addSubview(usernameStackView)
+        topContainerUIView.addSubview(loginScreenLabel)
+        
+        bottomContainerUIView.addSubview(passwordStackView)
+        bottomContainerUIView.addSubview(loginButton)
+        bottomContainerUIView.addSubview(loginIndicator)
+        bottomContainerUIView.addSubview(dontHaveAccountButton)
+        
+        screenContainerUIView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
         }
-        loginView.passwordTxtField.bind { [weak self] in
-            self?.loginViewModel.updatePassword(password: $0.trimmingCharacters(in: .whitespaces))
+        
+        loginImageView.snp.makeConstraints {
+            $0.edges.equalTo(screenContainerUIView)
+        }
+        
+        topContainerUIView.snp.makeConstraints {
+            $0.top.leading.trailing.equalTo(screenContainerUIView)
+            $0.height.equalTo(screenContainerUIView).multipliedBy(0.5)
+        }
+        
+        usernameStackView.snp.makeConstraints {
+            $0.bottom.equalTo(topContainerUIView.safeAreaLayoutGuide.snp.bottom).inset(25)
+            $0.leading.trailing.equalTo(topContainerUIView.safeAreaLayoutGuide).inset(20)
+            $0.centerX.equalTo(topContainerUIView)
+        }
+        
+        bottomContainerUIView.snp.makeConstraints {
+            $0.top.equalTo(topContainerUIView.safeAreaLayoutGuide.snp.bottom)
+            $0.leading.trailing.equalTo(screenContainerUIView.safeAreaLayoutGuide)
+            $0.height.equalTo(screenContainerUIView).multipliedBy(0.5)
+        }
+        
+        passwordStackView.snp.makeConstraints {
+            $0.top.equalTo(bottomContainerUIView.snp.top)
+            $0.leading.trailing.equalTo(bottomContainerUIView.safeAreaLayoutGuide).inset(20)
+            $0.centerX.equalTo(bottomContainerUIView)
+        }
+        
+        loginScreenLabel.snp.makeConstraints {
+            $0.centerY.equalTo(topContainerUIView).offset(-20)
+            $0.leading.equalTo(topContainerUIView.snp.leading).inset(20)
+        }
+        
+        loginButton.snp.makeConstraints {
+            $0.centerX.equalTo(bottomContainerUIView)
+            $0.bottom.equalTo(dontHaveAccountButton.snp.bottom).offset(-70)
+        }
+        
+        dontHaveAccountButton.snp.makeConstraints {
+            $0.bottom.equalTo(bottomContainerUIView.safeAreaLayoutGuide.snp.bottom)
+            $0.centerX.equalTo(bottomContainerUIView)
+        }
+        
+        loginIndicator.snp.makeConstraints {
+            $0.centerX.centerY.equalTo(bottomContainerUIView)
         }
     }
 }
@@ -104,12 +275,12 @@ extension LoginViewController: UITextFieldDelegate {
         }
         return true
     }
-
+    
     /// Dismiss keyboard when touching in any part of the view.
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
-
+    
     /// Dismiss/Hide the KeyBoard.
     /// - Parameter textField: UITextField
     /// - Returns: resignFirstResponder()
@@ -122,14 +293,14 @@ extension LoginViewController: UITextFieldDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
-
+    
     @objc func keyboardWillHide() {
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
             self.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
         }, completion: nil)
-
+        
     }
-
+    
     @objc func keyboardWillShow() {
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
             self.view.frame = CGRect(x: 0, y: -70, width: self.view.frame.width, height: self.view.frame.height)

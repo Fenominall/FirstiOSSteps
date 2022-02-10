@@ -16,8 +16,8 @@ class EditUserProfileViewController: UIViewController, Coordinating {
     
     // MARK: - Instance Properties
     var coordinator: Coordinator?
-    var userSettingsView = UserSettingsView()
-    private var loginViewModel = AuthenticationViewModel()
+    var userSettingsView = EditUserProfileView()
+    private var loginViewModel = RegistrationViewModel()
     
     weak var delegate: EditUserProfileDelegate?
     
@@ -98,14 +98,6 @@ class EditUserProfileViewController: UIViewController, Coordinating {
         userSettingsView.updateUsernameTextField.addTarget(self, action: #selector(textFieldEditingChanged(_:)), for: .editingChanged)
         userSettingsView.updatePasswordTextField.addTarget(self, action: #selector(textFieldEditingChanged(_:)), for: .editingChanged)
         userSettingsView.saveUserDataButton.addTarget(self, action: #selector(updateUserDataButtonTapped), for: .touchUpInside)
-        
-        // Binding TextFields to send data to the LoginViewModel in order to update a User model
-        userSettingsView.updateUsernameTextField.bind { [weak self] in
-            self?.loginViewModel.updateUsername(username: $0.trimmingCharacters(in: .whitespaces))
-        }
-        userSettingsView.updatePasswordTextField.bind { [weak self] in
-            self?.loginViewModel.updatePassword(password: $0.trimmingCharacters(in: .whitespaces))
-        }
         
         // Assigning user data to textField in UserSettingsViewController
         userSettingsView.updateUsernameTextField.text = loginViewModel.username

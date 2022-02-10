@@ -95,10 +95,12 @@ extension CustomTextField {
    
     @objc func togglePasswordView() {
         if isSecureTextEntry {
-            toggleButton.setImage(UIImage(systemName: "eye.fill"), for: .normal)
+            let eyeFill = AppImages.eyeFill.image
+            toggleButton.setImage(eyeFill, for: .normal)
             isSecureTextEntry.toggle()
         } else {
-            toggleButton.setImage(UIImage(systemName: "eye.slash"), for: .normal)
+            let eyeSlash = AppImages.eyeSlash.image
+            toggleButton.setImage(eyeSlash, for: .normal)
             isSecureTextEntry.toggle()
         }
     }

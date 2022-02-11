@@ -12,6 +12,7 @@
 		4F05B2CD27A3216A00AFEEC6 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F05B2CC27A3216A00AFEEC6 /* RegistrationViewController.swift */; };
 		4F083EE926D8063200B63DD7 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F083EE826D8063200B63DD7 /* Coordinator.swift */; };
 		4F083EEB26D806B400B63DD7 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F083EEA26D806B400B63DD7 /* MainCoordinator.swift */; };
+		4F1F5DBD27B65CDC009970F7 /* EditProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1F5DBC27B65CDC009970F7 /* EditProfileViewModel.swift */; };
 		4F234D392735118C00D1C00B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F234D382735118C00D1C00B /* LaunchScreen.storyboard */; };
 		4F257CFD2739B1AE007CB391 /* DiskCaretaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F257CFC2739B1AE007CB391 /* DiskCaretaker.swift */; };
 		4F257CFF2739B423007CB391 /* UserCaretaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F257CFE2739B423007CB391 /* UserCaretaker.swift */; };
@@ -60,6 +61,7 @@
 		4F05B2CC27A3216A00AFEEC6 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		4F083EE826D8063200B63DD7 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		4F083EEA26D806B400B63DD7 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		4F1F5DBC27B65CDC009970F7 /* EditProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewModel.swift; sourceTree = "<group>"; };
 		4F234D382735118C00D1C00B /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4F257CFC2739B1AE007CB391 /* DiskCaretaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskCaretaker.swift; sourceTree = "<group>"; };
 		4F257CFE2739B423007CB391 /* UserCaretaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCaretaker.swift; sourceTree = "<group>"; };
@@ -247,6 +249,7 @@
 				4F4FDFBB268D862000736440 /* RegistrationViewModel.swift */,
 				4FCDEBA8272FEC51002C3B06 /* HomeViewModel.swift */,
 				4F2A845C27B522820093BF79 /* LoginViewModel.swift */,
+				4F1F5DBC27B65CDC009970F7 /* EditProfileViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -605,6 +608,7 @@
 				4F2A17B726C7050600205E03 /* Dynamic.swift in Sources */,
 				4F28BA74274271A1001308E1 /* UserKey.swift in Sources */,
 				4F28BA762742889C001308E1 /* ScheduleListController.swift in Sources */,
+				4F1F5DBD27B65CDC009970F7 /* EditProfileViewModel.swift in Sources */,
 				4FF9064526543BEF001387C9 /* AppDelegate.swift in Sources */,
 				4F28BA7A27429692001308E1 /* Event.swift in Sources */,
 				4F05B2CD27A3216A00AFEEC6 /* RegistrationViewController.swift in Sources */,

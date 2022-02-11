@@ -48,17 +48,7 @@ extension RegistrationViewModel {
             }
         }
     }
-    
-    func updateCurrentUser(username: String, password: String) {
-        // Getting the current logged in user on Parse Server
-        let currentPFUser = PFUser.current()
-        // Updating currentPFUser with the inputed data that updated the User model in the app
-        currentPFUser?.username = username
-        currentPFUser?.password = password
-        // saving changes of currentPFUser to Parse Server
-        currentPFUser?.saveInBackground()
-    }
-    
+
     // Sign Up New User
     func signUpUserWith(username: String?, password: String?) {
         guard let username = username,

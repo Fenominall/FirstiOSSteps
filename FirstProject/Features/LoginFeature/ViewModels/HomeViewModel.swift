@@ -33,7 +33,6 @@ final class HomeViewModel {
         // Setting the flag that a user logged out and next time when he launches an app, he will see LoginScreen
         UserDefaults.standard.set(false, forKey: UserKey.isLoggedIn)
         PFUser.logOutInBackground()
-        
     }
 }
 

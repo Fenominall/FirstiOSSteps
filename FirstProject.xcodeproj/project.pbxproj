@@ -30,6 +30,8 @@
 		4F4C9F612745890600D345DC /* EventPersistenceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4C9F602745890600D345DC /* EventPersistenceHelper.swift */; };
 		4F4FDFBC268D862000736440 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4FDFBB268D862000736440 /* RegistrationViewModel.swift */; };
 		4F522AA8272DB7CF0099C5E8 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F522AA7272DB7CF0099C5E8 /* Images.swift */; };
+		4F5A4DF727B7A43A00BB9C6A /* FNLView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5A4DF627B7A43A00BB9C6A /* FNLView.swift */; };
+		4F5A4DFB27B7A52200BB9C6A /* FNLImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5A4DFA27B7A52200BB9C6A /* FNLImageView.swift */; };
 		4F695E902662B6C200606D03 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F695E8F2662B6C200606D03 /* LoginViewController.swift */; };
 		4F87A91B273EA34800D34B02 /* ImageStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F87A91A273EA34800D34B02 /* ImageStorage.swift */; };
 		4F92895626A6B06600624B6E /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F92895526A6B06600624B6E /* Alerts.swift */; };
@@ -79,6 +81,8 @@
 		4F4C9F602745890600D345DC /* EventPersistenceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventPersistenceHelper.swift; sourceTree = "<group>"; };
 		4F4FDFBB268D862000736440 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		4F522AA7272DB7CF0099C5E8 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
+		4F5A4DF627B7A43A00BB9C6A /* FNLView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FNLView.swift; sourceTree = "<group>"; };
+		4F5A4DFA27B7A52200BB9C6A /* FNLImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FNLImageView.swift; sourceTree = "<group>"; };
 		4F695E8F2662B6C200606D03 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		4F87A91A273EA34800D34B02 /* ImageStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageStorage.swift; sourceTree = "<group>"; };
 		4F92895526A6B06600624B6E /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
@@ -263,6 +267,22 @@
 			path = Constants;
 			sourceTree = "<group>";
 		};
+		4F5A4DF827B7A4D800BB9C6A /* FNLView */ = {
+			isa = PBXGroup;
+			children = (
+				4F5A4DF627B7A43A00BB9C6A /* FNLView.swift */,
+			);
+			path = FNLView;
+			sourceTree = "<group>";
+		};
+		4F5A4DF927B7A4FE00BB9C6A /* FNLImageView */ = {
+			isa = PBXGroup;
+			children = (
+				4F5A4DFA27B7A52200BB9C6A /* FNLImageView.swift */,
+			);
+			path = FNLImageView;
+			sourceTree = "<group>";
+		};
 		4F7C71D5277CB5BB00ADB4E1 /* Storage */ = {
 			isa = PBXGroup;
 			children = (
@@ -303,7 +323,7 @@
 			children = (
 				4FF3238127B039FE009DA656 /* UIApplication */,
 				4F3127F127A5548400E69100 /* DynamicObserver */,
-				4F93710D27667514007667F8 /* UIViewTemplates */,
+				4F93710D27667514007667F8 /* FNLUIViewTemplates */,
 				4FDB688C26E145400006F8E3 /* CustomUserDefaults */,
 				4F92895426A6B04F00624B6E /* Alerts */,
 				4F92895326A6AFBF00624B6E /* Validators */,
@@ -313,12 +333,14 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
-		4F93710D27667514007667F8 /* UIViewTemplates */ = {
+		4F93710D27667514007667F8 /* FNLUIViewTemplates */ = {
 			isa = PBXGroup;
 			children = (
+				4F5A4DF927B7A4FE00BB9C6A /* FNLImageView */,
+				4F5A4DF827B7A4D800BB9C6A /* FNLView */,
 				4F93710E2766752B007667F8 /* UIViewTemplates.swift */,
 			);
-			path = UIViewTemplates;
+			path = FNLUIViewTemplates;
 			sourceTree = "<group>";
 		};
 		4F93711027667578007667F8 /* NSContraintsExtension */ = {
@@ -612,6 +634,7 @@
 				4FF9064526543BEF001387C9 /* AppDelegate.swift in Sources */,
 				4F28BA7A27429692001308E1 /* Event.swift in Sources */,
 				4F05B2CD27A3216A00AFEEC6 /* RegistrationViewController.swift in Sources */,
+				4F5A4DF727B7A43A00BB9C6A /* FNLView.swift in Sources */,
 				4FFC3F3B27B2AE06003E61F6 /* UserValidationState.swift in Sources */,
 				4FF15B45279B1B30003E4542 /* AlertViewData.swift in Sources */,
 				4F92895626A6B06600624B6E /* Alerts.swift in Sources */,
@@ -632,6 +655,7 @@
 				4FF15B43279B197E003E4542 /* AlertFactoryService.swift in Sources */,
 				4F257CFD2739B1AE007CB391 /* DiskCaretaker.swift in Sources */,
 				4FEF699D26BAC0190022CAFD /* SourceCodeWebUIViewController.swift in Sources */,
+				4F5A4DFB27B7A52200BB9C6A /* FNLImageView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

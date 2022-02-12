@@ -9,8 +9,10 @@ import Parse
 
 class EditProfileViewModel {
     
+    // MARK: - Properties
     var onDidFinishUserValidationState: ((_ state: UserValidationState) -> Void)?
     
+    // MARK: - Actions
     private func updateCurrentUser(username: String, password: String, completion: @escaping (_ value: Bool) -> Void) {
         // Getting the current logged in user on Parse Server
         let currentPFUser = PFUser.current()

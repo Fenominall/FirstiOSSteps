@@ -17,26 +17,22 @@ class RegistrationViewController: UIViewController, Coordinating {
     // MARK: - UIProperties
     
     // UIViews
-    private lazy var screenContainerUIView: UIView = {
-        let view = UIView(frame: .zero)
-        view.translatesAutoresizingMaskIntoConstraints = false
+    private lazy var screenContainerUIView: FNLView = {
+        let view = FNLView(frame: .zero)
         return view
     }()
-    private lazy var topContainerUIView: UIView = {
-        let view = UIView(frame: .zero)
-        view.translatesAutoresizingMaskIntoConstraints = false
+    private lazy var topContainerUIView: FNLView = {
+        let view = FNLView(frame: .zero)
         return view
     }()
-    private lazy var bottomContainerUIView: UIView = {
-        let view = UIView(frame: .zero)
-        view.translatesAutoresizingMaskIntoConstraints = false
+    private lazy var bottomContainerUIView: FNLView = {
+        let view = FNLView(frame: .zero)
         return view
     }()
     
     // UIImageViews
-    private lazy var loginImageView: BaseImageView = {
-        let imageView = BaseImageView(with: .loginBackgroundImage)
-        imageView.contentMode = .scaleToFill
+    private lazy var loginImageView: FNLImageView = {
+        let imageView = FNLImageView(with: .loginBackgroundImage)
         return imageView
     }()
     

@@ -23,18 +23,14 @@ class EditUserProfileViewController: UIViewController, Coordinating {
     // MARK: - UI Properties
     
     // MARK: UIView Container
-    private lazy var containerUIView: UIView = {
-        let containerView = UIViewTemplates().containerUIView()
+    private lazy var containerUIView: FNLView = {
+        let containerView = FNLView(frame: .zero)
         return containerView
     }()
     
     // MARK: - UIImageViews
-    private lazy var backgroundImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        let image = AppImages.editProfileBackgroundImage.image
-        imageView.image = image
-        imageView.contentMode = .scaleAspectFill
+    private lazy var backgroundImageView: FNLImageView = {
+        let imageView = FNLImageView(with: .editProfileBackgroundImage)
         return imageView
     }()
 

@@ -21,44 +21,39 @@ class HomeViewController: UIViewController, Coordinating {
         
     // MARK: UI Properties
     // UIViews
-    private lazy var screenContainerUIView: UIView = {
-        let view = UIView(frame: .zero)
-        view.translatesAutoresizingMaskIntoConstraints = false
+    private lazy var screenContainerUIView: FNLView = {
+        let view = FNLView(frame: .zero)
         return view
     }()
     
-    private lazy var topContainerUIView: UIView = {
-        let view = UIView(frame: .zero)
-        view.translatesAutoresizingMaskIntoConstraints = false
+    private lazy var topContainerUIView: FNLView = {
+        let view = FNLView(frame: .zero)
         return view
     }()
-    private lazy var bottomContainerUIView: UIView = {
-        let view = UIView(frame: .zero)
-        view.translatesAutoresizingMaskIntoConstraints = false
+    private lazy var bottomContainerUIView: FNLView = {
+        let view = FNLView(frame: .zero)
         return view
     }()
     
     // UIImageViews
-    private lazy var circleBackGroundForUserImage: BaseImageView = {
-        let imageView = BaseImageView(with: .lightCircle)
+    private lazy var circleBackGroundForUserImage: FNLImageView = {
+        let imageView = FNLImageView(with: .lightCircle)
         return imageView
     }()
     
-    private lazy var plusIcon: BaseImageView = {
-        let imageView = BaseImageView(with: .plusIcon)
+    private lazy var plusIcon: FNLImageView = {
+        let imageView = FNLImageView(with: .plusIcon)
         
         return imageView
     }()
     
-    private lazy var homeScreenBackgroundImage: BaseImageView = {
-        let imageView = BaseImageView(with: .homeBackgroundImage)
-        imageView.contentMode = .scaleAspectFill
+    private lazy var homeScreenBackgroundImage: FNLImageView = {
+        let imageView = FNLImageView(with: .homeBackgroundImage)
         return imageView
     }()
     
-    private lazy var userIconImage: BaseImageView = {
-        let image = BaseImageView(with: .userDefaultImage)
-        image.contentMode = .scaleAspectFill
+    private lazy var userIconImage: FNLImageView = {
+        let image = FNLImageView(with: .userDefaultImage)
         image.layer.masksToBounds = false
         image.layer.cornerRadius = 150 / 2
         image.clipsToBounds = true

@@ -31,7 +31,7 @@ extension AppImages {
         case .lightCircle:
             return UIImage(named: "lightCircle")
         case .userDefaultImage:
-            return UIImage(named: "user")?.withRenderingMode(.alwaysOriginal)
+            return UIImage(named: "user")
         case .homeBackgroundImage:
             return UIImage(named: "blob-scene")
         case .editProfileBackgroundImage:
@@ -48,19 +48,3 @@ extension AppImages {
     }
 }
 
-class BaseImageView: UIImageView {
-    
-    init(with preset: AppImages) {
-        super.init(frame: .zero)
-        translatesAutoresizingMaskIntoConstraints = false
-        applyImagePreset(preset)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    private func applyImagePreset(_ preset: AppImages) {
-        image = preset.image
-    }
-}

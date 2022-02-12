@@ -9,13 +9,7 @@ import Foundation
 import UIKit
 
 class UIViewTemplates {
-    
-    func containerUIView() -> UIView {
-        let containerUIView = UIView(frame: .zero)
-        containerUIView.translatesAutoresizingMaskIntoConstraints = false
-        return containerUIView
-    }
-    
+
     func newUILabel(text: String,
                     fontSize: Int,
                     fontWeight: UIFont.Weight,
@@ -29,15 +23,7 @@ class UIViewTemplates {
         newUILabel.translatesAutoresizingMaskIntoConstraints = false
         return newUILabel
     }
-    
-    func imageView(image: UIImage) -> UIImageView {
-        let imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = image
-        imageView.contentMode = .scaleAspectFit
-        return imageView
-    }
-    
+
     func customButton(title: String,
                               fontSize: Int,
                               fontWeight: UIFont.Weight,
@@ -53,7 +39,7 @@ class UIViewTemplates {
         customButton.layer.shadowOpacity = 0.5
         return customButton
     }
-    
+
     // Button with attributed title
     func attributedButton(_ firstPart: String, _ secondPart: String) -> UIButton {
         let button = UIButton(type: .system)
@@ -62,5 +48,5 @@ class UIViewTemplates {
         button.setAttributedTitle(attributedTitle, for: .normal)
         return button
     }
-    
+
 }

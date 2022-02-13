@@ -24,21 +24,21 @@ class UIViewTemplates {
         return newUILabel
     }
 
-    func customButton(title: String,
-                              fontSize: Int,
-                              fontWeight: UIFont.Weight,
-                              tintColor: UIColor) -> UIButton {
-        let customButton = UIButton(type:.system)
-        customButton.translatesAutoresizingMaskIntoConstraints = false
-        customButton.setTitle(title, for: .normal)
-        customButton.titleLabel?.font = UIFont.systemFont(ofSize: CGFloat(fontSize), weight: fontWeight)
-        customButton.tintColor = tintColor
-        customButton.layer.shadowColor = UIColor.black.cgColor
-        customButton.layer.shadowOffset = CGSize(width: 0.0, height: 5.5)
-        customButton.layer.shadowRadius = 2.0
-        customButton.layer.shadowOpacity = 0.5
-        return customButton
-    }
+//    func customButton(title: String,
+//                              fontSize: Int,
+//                              fontWeight: UIFont.Weight,
+//                              tintColor: UIColor) -> UIButton {
+//        let customButton = UIButton(type:.system)
+//        customButton.translatesAutoresizingMaskIntoConstraints = false
+//        customButton.setTitle(title, for: .normal)
+//        customButton.titleLabel?.font = UIFont.systemFont(ofSize: CGFloat(fontSize), weight: fontWeight)
+//        customButton.tintColor = tintColor
+//        customButton.layer.shadowColor = UIColor.black.cgColor
+//        customButton.layer.shadowOffset = CGSize(width: 0.0, height: 5.5)
+//        customButton.layer.shadowRadius = 2.0
+//        customButton.layer.shadowOpacity = 0.5
+//        return customButton
+//    }
 
     // Button with attributed title
     func attributedButton(_ firstPart: String, _ secondPart: String) -> UIButton {

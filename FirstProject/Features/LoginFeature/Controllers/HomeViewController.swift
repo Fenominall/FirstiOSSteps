@@ -17,7 +17,6 @@ class HomeViewController: UIViewController, Coordinating {
     
     private var imageStorage = ImageStorage()
     private var homeViewModel = HomeViewModel()
-    var onDidLogOutHappened: (() -> Void)?
         
     // MARK: UI Properties
     // UIViews
@@ -65,51 +64,34 @@ class HomeViewController: UIViewController, Coordinating {
     }()
     
     // UILabels
-    private(set) lazy var usernameLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.boldSystemFont(ofSize: 40)
+    private(set) lazy var usernameLabel: FNLLabel = {
+        let label = FNLLabel(with: "",
+                             fontSize: 40,
+                             fontWeight: .bold,
+                             textColor: .white)
         label.textAlignment = .center
-        label.textColor = .white
-        label.contentMode = .scaleAspectFit
-        label.numberOfLines = 1
         return label
     }()
     
     // UIButtons
-    private(set) lazy var sourceCodeButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.layer.masksToBounds = false
-        button.clipsToBounds = true
-        button.setTitle("GitHub", for: .normal)
-        button.tintColor = .lightGrayAccent
+    private(set) lazy var sourceCodeButton: FNLButton = {
+        let button = FNLButton(title: "GitHub", fontSize: 18,
+                               fontWeight: .regular,
+                               titleColor: .lightGrayAccent ?? .lightGray)
         button.addTarget(self, action: #selector(didTapSourceCodeButton), for: .touchUpInside)
         return button
     }()
     
-    private lazy var editProfileButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.translatesAutoresizingMaskIntoConstraints = false
+    private lazy var editProfileButton: FNLButton = {
+        let button = FNLButton(title: "Edit Profile", fontSize: 14, fontWeight: .regular, titleColor: .white)
         button.configuration = .lightGrayButton()
-        button.setTitle("Edit Profile", for: .normal)
-        button.layer.shadowColor = UIColor.black.cgColor
-        button.layer.shadowOffset = CGSize(width: 0.0, height: 5.5)
-        button.layer.shadowRadius = 2.0
-        button.layer.shadowOpacity = 0.5
         button.addTarget(self, action: #selector(didTapEditProfileButton), for: .touchUpInside)
         return button
     }()
     
-    private lazy var scheduleEventListButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.translatesAutoresizingMaskIntoConstraints = false
+    private lazy var scheduleEventListButton: FNLButton = {
+        let button = FNLButton(title: "Scheduler", fontSize: 14, fontWeight: .regular, titleColor: .white)
         button.configuration = .lightGrayButton()
-        button.setTitle("Scheduler", for: .normal)
-        button.layer.shadowColor = UIColor.black.cgColor
-        button.layer.shadowOffset = CGSize(width: 0.0, height: 5.5)
-        button.layer.shadowRadius = 2.0
-        button.layer.shadowOpacity = 0.5
         button.addTarget(self, action: #selector(didTapScheduleEventButton), for: .touchUpInside)
         return button
     }()
@@ -158,7 +140,7 @@ extension HomeViewController {
     //    Navigation Button to FirstViewController
     @objc private func didTapLogOutButton() {
         coordinator?.eventOccurred(with: .logOutButtonTapped)
-        onDidLogOutHappened = { [weak self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
             self?.removeUserImageWhenSignedOut()
             self?.homeViewModel.logOutUser()
         }

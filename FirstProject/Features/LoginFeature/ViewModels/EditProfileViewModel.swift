@@ -30,6 +30,44 @@ class EditProfileViewModel {
         })
     }
     
-    
-    
+    func updateUser(withUsername username: String?, withPassword password: String?) {
+        guard let username = username,
+              let password = password else { return }
+        
+        AppDataValidator.checkIfInputIsEmpty(byUsername: username, password: password) { [weak self] in
+            self?.onDidFinishUserValidationState?(.empty)
+            HapticsManager.shared.vibrateForType(for: .warning)
+        }
+        
+        AppDataValidator.validateUserInputCredentials(byUsername: username, password: password) { [weak self] in
+            self?.onDidFinishUserValidationState?(.invalid)
+            HapticsManager.shared.vibrateForType(for: .warning)
+        }
+        
+        if NetworkMonitor.shared.isConnected {
+            updateCurrentUser(username: username, password: password) { [weak self] value in
+                switch value {
+                case true:
+                    do {
+                        try UserCaretaker.createUser(withUsername: username, password: password)
+                        UserDefaults.standard.set(true, forKey: UserKey.isLoggedIn)
+                        HapticsManager.shared.vibrateForType(for: .success)
+                        self?.onDidFinishUserValidationState?(.valid)
+
+                    } catch let (error) {
+                        print("DEBUG: An error occurred when trying to log in a user the data was not saved to disk \(error) ")
+                    }
+                case false:
+                    HapticsManager.shared.vibrateForType(for: .error)
+//                    self?.onDidFailLogInUser?()
+                }
+            }
+        } else {
+            // Stop monitoring if the device has internet connection
+            print("DEBUG: The device does not have internet connection.")
+            HapticsManager.shared.vibrateForType(for: .error)
+            self.onDidFinishUserValidationState?(.noInternetConnection)
+            NetworkMonitor.shared.stopMonitoring()
+        }
+    }
 }

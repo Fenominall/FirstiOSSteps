@@ -16,7 +16,7 @@ class EditUserProfileViewController: UIViewController, Coordinating {
     
     // MARK: - Instance Properties
     var coordinator: Coordinator?
-    private var loginViewModel = RegistrationViewModel()
+    private var editProfileViewModel = EditProfileViewModel()
     
     weak var delegate: EditUserProfileDelegate?
     
@@ -35,18 +35,17 @@ class EditUserProfileViewController: UIViewController, Coordinating {
     }()
 
     // MARK: - UILabels
-    private lazy var changeUserDataLabel: UILabel = {
-        let changeUserDataLabel = UILabel()
-        changeUserDataLabel.translatesAutoresizingMaskIntoConstraints = false
-        changeUserDataLabel.text = "Change your data"
-        changeUserDataLabel.font = changeUserDataLabel.font.withSize(40)
-        changeUserDataLabel.textAlignment = .center
-        changeUserDataLabel.textColor = .lightGrayAccent
-        return changeUserDataLabel
+    private lazy var changeUserDataLabel: FNLLabel = {
+        let label = FNLLabel(with: "Change your data",
+                             fontSize: 40,
+                             fontWeight: .regular,
+                             textColor: .lightGrayAccent ?? .white)
+        label.textAlignment = .center
+        return label
     }()
     
     // MARK: - UITextFields
-    private(set) lazy var updateUsernameTextField: CustomTextField = {
+    private lazy var updateUsernameTextField: CustomTextField = {
         let updateUsernameTextField = CustomTextField()
         updateUsernameTextField.translatesAutoresizingMaskIntoConstraints = false
         updateUsernameTextField.textColor = .white
@@ -56,7 +55,7 @@ class EditUserProfileViewController: UIViewController, Coordinating {
         return updateUsernameTextField
     }()
     
-    private(set) lazy var updatePasswordTextField: CustomTextField = {
+    private lazy var updatePasswordTextField: CustomTextField = {
         let updatePasswordTextField = CustomTextField()
         updatePasswordTextField.translatesAutoresizingMaskIntoConstraints = false
         updatePasswordTextField.textColor = .white
@@ -68,19 +67,14 @@ class EditUserProfileViewController: UIViewController, Coordinating {
     }()
     
     // MARK: - UIButtons
-    private(set) lazy var saveUserDataButton: UIButton = {
-        let saveUserDataButton = UIButton(type: .system)
-        saveUserDataButton.translatesAutoresizingMaskIntoConstraints = false
-        saveUserDataButton.setTitle("UPDATE", for: .normal)
-        saveUserDataButton.tintColor = .white
-        saveUserDataButton.isEnabled = false
-        saveUserDataButton.titleLabel?.font = UIFont.systemFont(ofSize: 40, weight: .regular)
-        saveUserDataButton.layer.shadowColor = UIColor.black.cgColor
-        saveUserDataButton.layer.shadowOffset = CGSize(width: 0.0, height: 5.5)
-        saveUserDataButton.layer.shadowRadius = 2.0
-        saveUserDataButton.layer.shadowOpacity = 0.5
-        saveUserDataButton.addTarget(self, action: #selector(updateUserDataButtonTapped), for: .touchUpInside)
-        return saveUserDataButton
+    private lazy var saveUserDataButton: FNLButton = {
+        let button = FNLButton(title: "UPDATE",
+                               fontSize: 40,
+                               fontWeight: .regular,
+                               titleColor: .white)
+        button.isEnabled = false
+        button.addTarget(self, action: #selector(updateUserDataButtonTapped), for: .touchUpInside)
+        return button
     }()
     
     // MARK: - UIstackViews
@@ -100,6 +94,7 @@ class EditUserProfileViewController: UIViewController, Coordinating {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureEditProfileController()
+        didReceiveUserValidationState()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -115,40 +110,45 @@ class EditUserProfileViewController: UIViewController, Coordinating {
     }
     
     @objc private func updateUserDataButtonTapped(_ sender: UIButton) {
-        
-//        guard let username = userSettingsView.updatePasswordTextField.text else { return }
-//        loginViewModel.checkIfUserAlreadyCreated(byUsername: username
-//        
-//        )
-    
-//        switch loginViewModel.validateUser(byUserAuthState: .update) {
-//        case .valid:
-//            // Navigation to HomeScreenViewController
-//            AppAlerts.updatedDataAlert(on: self) { [weak self]_ in
-//                guard let username = self?.userSettingsView.updateUsernameTextField.text else { return }
-//                // updating usernameLabel with received input in 
-//                self?.navigationController?.popViewController(animated: true)
-//                self?.delegate?.didUpdatedUserUsername(withUsername: username)
-//            }
-//        case .empty:
-//            // Button Shake
-//            sender.shake()
-//            // Empty fields Error Alert
-//            AppAlerts.emptyFieldsErrorAlert(on: self)
-//        case .invalid:
-//            sender.shake()
-//            // Improper credentials Alert
-//            AppAlerts.showIncompleteErrorUIAlert(on: self)
-//        case .usernameAlreadyTaken:
-//            sender.shake()
-//            AppAlerts.usernameIsAlreadyTakenAlert(on: self)
-//        case .noInternetConnection:
-//            sender.shake()
-//            AppAlerts.noInternetConnectionAlert(on: self)
-//        }
+        editProfileViewModel.updateUser(withUsername: updateUsernameTextField.text,
+                                        withPassword: updatePasswordTextField.text)
     }
     
     // MARK: - Helpers
+    
+    func didReceiveUserValidationState() {
+        editProfileViewModel.onDidFinishUserValidationState = { [weak self] state in
+            self?.handleUserValidationState(state)
+        }
+    }
+    
+    func handleUserValidationState(_ state: UserValidationState) {
+        switch state {
+        case .valid:
+            // Navigation to HomeScreenViewController
+            AppAlerts.updatedDataAlert(on: self) { [weak self]_ in
+                guard let username = self?.updateUsernameTextField.text else { return }
+                // updating usernameLabel with received input in
+                self?.navigationController?.popViewController(animated: true)
+                self?.delegate?.didUpdatedUserUsername(withUsername: username)
+            }
+        case .empty:
+            // Button Shake
+            saveUserDataButton.shake()
+            // Empty fields Error Alert
+            AppAlerts.emptyFieldsErrorAlert(on: self)
+        case .invalid:
+            saveUserDataButton.shake()
+            // Improper credentials Alert
+            AppAlerts.showIncompleteErrorUIAlert(on: self)
+        case .usernameAlreadyTaken:
+            saveUserDataButton.shake()
+            AppAlerts.usernameIsAlreadyTakenAlert(on: self)
+        case .noInternetConnection:
+            saveUserDataButton.shake()
+            AppAlerts.noInternetConnectionAlert(on: self)
+        }
+    }
     
     private func configureEditProfileController() {
         observeKeyboardNotifications()
@@ -166,8 +166,8 @@ class EditUserProfileViewController: UIViewController, Coordinating {
     
     func configureActions() {
         // Assigning user data to textField in UserSettingsViewController
-        updateUsernameTextField.text = loginViewModel.username
-        updatePasswordTextField.text = loginViewModel.password
+//        updateUsernameTextField.text = editProfileViewModel.username
+//        updatePasswordTextField.text = editProfileViewModel.password
     }
     
     func configureUI() {

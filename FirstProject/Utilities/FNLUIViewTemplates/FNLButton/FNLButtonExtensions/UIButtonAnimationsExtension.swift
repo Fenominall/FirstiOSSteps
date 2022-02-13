@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 // MARK: - UIButton Animations
-extension UIButton {
+extension FNLButton {
     
     /// Pulsate Button animation
     func pulsate() {
@@ -51,10 +51,6 @@ extension UIButton {
         shake.fromValue = fromValue
         shake.toValue = toValue
         layer.add(shake, forKey: nil)
-    }
-    
-    static func shadowButton() {
-        
     }
 }
 

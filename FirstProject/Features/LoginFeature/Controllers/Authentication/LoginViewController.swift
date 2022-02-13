@@ -39,30 +39,28 @@ class LoginViewController: UIViewController, Coordinating {
     }()
     
     // UILables
-    private lazy var loginScreenLabel: UILabel = {
-        let label = UIViewTemplates().newUILabel(text: "Sign In",
-                                                 fontSize: 45,
-                                                 fontWeight: .semibold,
-                                                 textAlignment: .center,
-                                                 textColor: .white)
+    private lazy var loginScreenLabel: FNLLabel = {
+        let label = FNLLabel(with: "Sign In",
+                             fontSize: 45,
+                             fontWeight: .semibold,
+                             textColor: .white)
+        label.textAlignment = .center
         return label
     }()
     
-    private lazy var usernameLabel: UILabel = {
-        let label = UIViewTemplates().newUILabel(text: "Username",
-                                                 fontSize: 24,
-                                                 fontWeight: .regular,
-                                                 textAlignment: .natural,
-                                                 textColor: .lightGrayAccent ?? .white)
+    private lazy var usernameLabel: FNLLabel = {
+        let label = FNLLabel(with: "Username",
+                             fontSize: 24,
+                             fontWeight: .regular,
+                             textColor: (.lightGrayAccent ?? .white))
         return label
     }()
     
-    private lazy var passwordLabel: UILabel = {
-        let label = UIViewTemplates().newUILabel(text: "Password",
-                                                 fontSize: 24,
-                                                 fontWeight: .regular,
-                                                 textAlignment: .natural,
-                                                 textColor: .lightGrayAccent ?? .white)
+    private lazy var passwordLabel: FNLLabel = {
+        let label = FNLLabel(with: "Password",
+                             fontSize: 24,
+                             fontWeight: .regular,
+                             textColor: (.lightGrayAccent ?? .white))
         return label
     }()
     
@@ -88,17 +86,17 @@ class LoginViewController: UIViewController, Coordinating {
     }()
     
     // UIButtons
-    private(set) lazy var loginButton: UIButton = {
-        let button = UIViewTemplates().customButton(title: "LOGIN",
-                                                    fontSize: 40,
-                                                    fontWeight: .regular,
-                                                    tintColor: .white)
+    private(set) lazy var loginButton: FNLButton = {
+        let button = FNLButton(title: "LOGIN",
+                               fontSize: 40,
+                               fontWeight: .regular,
+                               titleColor: .white)
         button.addTarget(self, action: #selector(loginButtonPressed), for: .touchUpInside)
         return button
     }()
     
-    private(set) lazy var dontHaveAccountButton: UIButton = {
-        let button = UIViewTemplates().attributedButton("Don`t have account?", " Sign Up")
+    private(set) lazy var dontHaveAccountButton: FNLAttributedButton = {
+        let button = FNLAttributedButton("Don`t have account?", " Sign Up")
         button.addTarget(self, action: #selector(handleShowSignUp), for: .touchUpInside)
         return button
     }()

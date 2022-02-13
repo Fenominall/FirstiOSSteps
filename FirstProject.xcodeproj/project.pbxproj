@@ -16,6 +16,9 @@
 		4F234D392735118C00D1C00B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F234D382735118C00D1C00B /* LaunchScreen.storyboard */; };
 		4F257CFD2739B1AE007CB391 /* DiskCaretaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F257CFC2739B1AE007CB391 /* DiskCaretaker.swift */; };
 		4F257CFF2739B423007CB391 /* UserCaretaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F257CFE2739B423007CB391 /* UserCaretaker.swift */; };
+		4F2582D327B9133800716EE7 /* FNLLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2582D227B9133800716EE7 /* FNLLabel.swift */; };
+		4F2582D627B91D8F00716EE7 /* FNLButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2582D527B91D8F00716EE7 /* FNLButton.swift */; };
+		4F2582D927B91E8700716EE7 /* FNLAttributedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2582D827B91E8700716EE7 /* FNLAttributedButton.swift */; };
 		4F28BA74274271A1001308E1 /* UserKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F28BA73274271A1001308E1 /* UserKey.swift */; };
 		4F28BA762742889C001308E1 /* ScheduleListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F28BA752742889C001308E1 /* ScheduleListController.swift */; };
 		4F28BA78274295EC001308E1 /* CreateEventController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F28BA77274295EC001308E1 /* CreateEventController.swift */; };
@@ -67,6 +70,9 @@
 		4F234D382735118C00D1C00B /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4F257CFC2739B1AE007CB391 /* DiskCaretaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskCaretaker.swift; sourceTree = "<group>"; };
 		4F257CFE2739B423007CB391 /* UserCaretaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCaretaker.swift; sourceTree = "<group>"; };
+		4F2582D227B9133800716EE7 /* FNLLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FNLLabel.swift; sourceTree = "<group>"; };
+		4F2582D527B91D8F00716EE7 /* FNLButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FNLButton.swift; sourceTree = "<group>"; };
+		4F2582D827B91E8700716EE7 /* FNLAttributedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FNLAttributedButton.swift; sourceTree = "<group>"; };
 		4F28BA73274271A1001308E1 /* UserKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserKey.swift; sourceTree = "<group>"; };
 		4F28BA752742889C001308E1 /* ScheduleListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListController.swift; sourceTree = "<group>"; };
 		4F28BA77274295EC001308E1 /* CreateEventController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEventController.swift; sourceTree = "<group>"; };
@@ -157,6 +163,24 @@
 				4F2DEDEF274515B900C5F156 /* FileManager+Extensions.swift */,
 			);
 			path = Memento;
+			sourceTree = "<group>";
+		};
+		4F2582D127B9132000716EE7 /* FNLLabel */ = {
+			isa = PBXGroup;
+			children = (
+				4F2582D227B9133800716EE7 /* FNLLabel.swift */,
+			);
+			path = FNLLabel;
+			sourceTree = "<group>";
+		};
+		4F2582D427B91D7D00716EE7 /* FNLButton */ = {
+			isa = PBXGroup;
+			children = (
+				4FCE23C927243D7C0068002F /* FNLButtonExtensions */,
+				4F2582D527B91D8F00716EE7 /* FNLButton.swift */,
+				4F2582D827B91E8700716EE7 /* FNLAttributedButton.swift */,
+			);
+			path = FNLButton;
 			sourceTree = "<group>";
 		};
 		4F2804C027A9A1D600254420 /* NetworkMonitor */ = {
@@ -336,6 +360,8 @@
 		4F93710D27667514007667F8 /* FNLUIViewTemplates */ = {
 			isa = PBXGroup;
 			children = (
+				4F2582D427B91D7D00716EE7 /* FNLButton */,
+				4F2582D127B9132000716EE7 /* FNLLabel */,
 				4F5A4DF927B7A4FE00BB9C6A /* FNLImageView */,
 				4F5A4DF827B7A4D800BB9C6A /* FNLView */,
 				4F93710E2766752B007667F8 /* UIViewTemplates.swift */,
@@ -379,13 +405,13 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		4FCE23C927243D7C0068002F /* UIButton */ = {
+		4FCE23C927243D7C0068002F /* FNLButtonExtensions */ = {
 			isa = PBXGroup;
 			children = (
 				4F05462E26B9810B006C5A04 /* UIButtonAnimationsExtension.swift */,
 				4F055F1B274B82A900C70670 /* UIButtonConfigurationExtension.swift */,
 			);
-			path = UIButton;
+			path = FNLButtonExtensions;
 			sourceTree = "<group>";
 		};
 		4FCE23CA27243DAD0068002F /* UITextField */ = {
@@ -418,7 +444,6 @@
 				4F93711027667578007667F8 /* NSContraintsExtension */,
 				4FCE23CB27243DCD0068002F /* UIColor */,
 				4FCE23CA27243DAD0068002F /* UITextField */,
-				4FCE23C927243D7C0068002F /* UIButton */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -618,6 +643,7 @@
 				4FDB689026E146390006F8E3 /* UIColorHexExtension.swift in Sources */,
 				4F522AA8272DB7CF0099C5E8 /* Images.swift in Sources */,
 				4F87A91B273EA34800D34B02 /* ImageStorage.swift in Sources */,
+				4F2582D327B9133800716EE7 /* FNLLabel.swift in Sources */,
 				4F2A845D27B522820093BF79 /* LoginViewModel.swift in Sources */,
 				4FBBE319268B97E400D518B8 /* UserModel.swift in Sources */,
 				4F083EE926D8063200B63DD7 /* Coordinator.swift in Sources */,
@@ -627,6 +653,7 @@
 				4F31B22B27A72F8A003935B4 /* NetworkMonitor.swift in Sources */,
 				4FD2745E268332F700C8FA32 /* EditUserProfileViewController.swift in Sources */,
 				4FFF2A1626BD27560064E610 /* HapticsManager.swift in Sources */,
+				4F2582D927B91E8700716EE7 /* FNLAttributedButton.swift in Sources */,
 				4F2A17B726C7050600205E03 /* Dynamic.swift in Sources */,
 				4F28BA74274271A1001308E1 /* UserKey.swift in Sources */,
 				4F28BA762742889C001308E1 /* ScheduleListController.swift in Sources */,
@@ -651,6 +678,7 @@
 				4FD4D58E26833C8D0078633E /* AppDataValidator.swift in Sources */,
 				4FDB688E26E1455A0006F8E3 /* CustomUserDefaults.swift in Sources */,
 				4F257CFF2739B423007CB391 /* UserCaretaker.swift in Sources */,
+				4F2582D627B91D8F00716EE7 /* FNLButton.swift in Sources */,
 				4F28BA7C2742989E001308E1 /* CreateEventView.swift in Sources */,
 				4FF15B43279B197E003E4542 /* AlertFactoryService.swift in Sources */,
 				4F257CFD2739B1AE007CB391 /* DiskCaretaker.swift in Sources */,

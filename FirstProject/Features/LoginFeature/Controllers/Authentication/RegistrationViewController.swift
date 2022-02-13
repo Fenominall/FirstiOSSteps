@@ -37,34 +37,28 @@ class RegistrationViewController: UIViewController, Coordinating {
     }()
     
     // UILables
-    private lazy var signUpLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Sign Up"
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: 45, weight: .semibold)
+    private lazy var signUpLabel: FNLLabel = {
+        let label = FNLLabel(with: "Sign Up",
+                             fontSize: 45,
+                             fontWeight: .semibold,
+                             textColor: .white)
         label.textAlignment = .center
-        label.textColor = .white
-        label.numberOfLines = 1
         return label
     }()
     
-    private lazy var usernameLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Username"
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: 24, weight: .regular)
-        label.textAlignment = .natural
-        label.textColor = .lightGrayAccent
+    private lazy var usernameLabel: FNLLabel = {
+        let label = FNLLabel(with: "Username",
+                             fontSize: 24,
+                             fontWeight: .regular,
+                             textColor: .lightGrayAccent ?? .lightGray)
         return label
     }()
     
-    private lazy var passwordLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Password"
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: 24, weight: .regular)
-        label.textAlignment = .natural
-        label.textColor = .lightGrayAccent
+    private lazy var passwordLabel: FNLLabel = {
+        let label = FNLLabel(with: "Password",
+                             fontSize: 24,
+                             fontWeight: .regular,
+                             textColor: .lightGrayAccent ?? .lightGray)
         return label
     }()
     // UITextFields
@@ -87,22 +81,17 @@ class RegistrationViewController: UIViewController, Coordinating {
     }()
     
     // UIButtons
-    private(set) lazy var registerButton: UIButton = {
-        let button = UIButton(type:.system)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("REGISTER", for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 40, weight: .regular)
-        button.tintColor = .white
-        button.layer.shadowColor = UIColor.black.cgColor
-        button.layer.shadowOffset = CGSize(width: 0.0, height: 5.5)
-        button.layer.shadowRadius = 2.0
-        button.layer.shadowOpacity = 0.5
+    private(set) lazy var registerButton: FNLButton = {
+        let button = FNLButton(title: "REGISTER",
+                               fontSize: 40,
+                               fontWeight: .regular,
+                               titleColor: .white)
         button.addTarget(self, action: #selector(registerButtonPressed), for: .touchUpInside)
         return button
     }()
     
-    private(set) lazy var loginToAccountButton: UIButton = {
-        let button = UIViewTemplates().attributedButton("Already have an account?", " Sign In")
+    private(set) lazy var loginToAccountButton: FNLAttributedButton = {
+        let button = FNLAttributedButton("Already have an account?", " Sign In")
         button.addTarget(self, action: #selector(handleShowLogIn), for: .touchUpInside)
         return button
     }()
@@ -137,11 +126,6 @@ class RegistrationViewController: UIViewController, Coordinating {
     }()
     
     // MARK: - Lifecycle
-    
-    override func loadView() {
-        super.loadView()
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         NetworkMonitor.shared.startMonitoring()

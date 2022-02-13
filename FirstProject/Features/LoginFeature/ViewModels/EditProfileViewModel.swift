@@ -10,7 +10,22 @@ import Parse
 class EditProfileViewModel {
     
     // MARK: - Properties
+    var username: String?
+    var password: String?
+    
     var onDidFinishUserValidationState: ((_ state: UserValidationState) -> Void)?
+    
+    // MARK: - Lifecycle
+    // Initializer that helps to retrieve UserData with the help of UserCaretaker class
+    init() {
+        do {
+            let user = try UserCaretaker.loadUserData()
+            self.username = user.username
+            self.password = user.password
+        } catch (let error) {
+            print("DEBUG: Error loading user data \(error)")
+        }
+    }
     
     // MARK: - Actions
     private func updateCurrentUser(username: String, password: String, completion: @escaping (_ value: Bool) -> Void) {

@@ -13,9 +13,7 @@ final class HomeViewModel {
     // MARK: - Properties
     /// Variable which stores User username
     var username: String?
-    
-//    private let imageStorage = ImageStorage()
-    
+        
     // MARK: - Lifecycle
     // Initializer that helps to retrieve UserData with the help of UserCaretaker class
     init() {

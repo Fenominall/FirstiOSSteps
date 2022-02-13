@@ -166,8 +166,8 @@ class EditUserProfileViewController: UIViewController, Coordinating {
     
     func configureActions() {
         // Assigning user data to textField in UserSettingsViewController
-//        updateUsernameTextField.text = editProfileViewModel.username
-//        updatePasswordTextField.text = editProfileViewModel.password
+        updateUsernameTextField.text = editProfileViewModel.username
+        updatePasswordTextField.text = editProfileViewModel.password
     }
     
     func configureUI() {

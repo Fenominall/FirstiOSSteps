@@ -477,12 +477,12 @@
 		4FF9064326543BEF001387C9 /* FirstProject */ = {
 			isa = PBXGroup;
 			children = (
-				4F31B22927A72F79003935B4 /* Services */,
 				4FBBE316268B97BB00D518B8 /* AppDelegate */,
 				4F522AA6272DB7BA0099C5E8 /* Constants */,
 				4F083EE726D8061A00B63DD7 /* Coordinator */,
 				4F3127F227A554E500E69100 /* Features */,
 				4FFF2A1326BD26730064E610 /* Resources */,
+				4F31B22927A72F79003935B4 /* Services */,
 				4F7C71D5277CB5BB00ADB4E1 /* Storage */,
 				4F93710C276674DD007667F8 /* Utilities */,
 			);

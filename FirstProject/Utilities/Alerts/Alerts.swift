@@ -40,8 +40,12 @@ struct AppAlerts {
     }
     
     
-    static func incorrectCredentials(on vc: UIViewController) {
+    static func incorrectCredentialsAlert(on vc: UIViewController) {
         errorUIAlert(on: vc, with: "Incorrect Credentials", message: incorrectCredentialsMessage, preferredStyle: .alert)
+    }
+    
+    static func failedUpdateUserAlert(on vc: UIViewController) {
+        errorUIAlert(on: vc, with: "Server Error", message: failedUpdateUserMessage, preferredStyle: .alert)
     }
     
     // Alert for a successfully created account for a user.
@@ -131,6 +135,7 @@ fileprivate let emptyFieldsAlertMessage = "Password and username fields are requ
 fileprivate let usernamesISAlreadyTakenErrorMessage = "The username you entered is already taken."
 fileprivate let successUpdatedDataMessage = "Your data was successfully updated."
 fileprivate let userAccountCreatedMessage = "Your account created your are logged in."
+fileprivate let failedUpdateUserMessage = "Sorry, we are having troubles, please try again later."
 fileprivate let incorrectCredentialsMessage = "The credentials you entered don`t appear to belong to an account. Please check your credentials and try again."
 fileprivate let passwordRequirementsAlertMessage = """
                           Username should be at least (min-4, max-20) characters long.

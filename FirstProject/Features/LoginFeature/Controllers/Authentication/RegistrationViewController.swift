@@ -162,26 +162,17 @@ class RegistrationViewController: UIViewController, Coordinating {
     func handleUserValidationState(_ state: UserValidationState) {
         switch state {
         case .valid:
-//            signUpIndicator.stopAnimating()
             registerButton.shake()
             coordinator?.eventOccurred(with: .registerButtonTapped)
-            // Success Alert
             AppAlerts.showCompleteSuccessUIAlert(on: self)
         case .empty:
-            // Button Shake
             registerButton.shake()
-//            signUpIndicator.stopAnimating()
-            // Empty fields Error Alert
             AppAlerts.emptyFieldsErrorAlert(on: self)
         case .invalid:
-            // Button Shake
             registerButton.shake()
-//            signUpIndicator.stopAnimating()
-            // Improper credentials Alert
             AppAlerts.showIncompleteErrorUIAlert(on: self)
         case .usernameAlreadyTaken:
             registerButton.shake()
-//            signUpIndicator.stopAnimating()
             AppAlerts.usernameIsAlreadyTakenAlert(on: self)
         case .noInternetConnection:
             registerButton.shake()

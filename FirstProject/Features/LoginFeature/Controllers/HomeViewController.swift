@@ -17,6 +17,7 @@ class HomeViewController: UIViewController, Coordinating {
     
     private var imageStorage = ImageStorage()
     private var homeViewModel = HomeViewModel()
+    var imagedToUpdate: UIImage?
         
     // MARK: UI Properties
     // UIViews
@@ -167,6 +168,7 @@ extension HomeViewController {
             // Setting the default image as user image
             guard let image = AppImages.userDefaultImage.image else { return }
             self?.userIconImage.image = image
+            self?.deleteUserImageFromParse()
         }
     }
 }
@@ -181,6 +183,28 @@ extension HomeViewController {
         retrieveUploadedUserImage()
         loadUserName()
     }
+    
+    
+    func uploadUserImageToParse(image: UIImage?) {
+        let user = PFUser.current()
+        guard let image = image else {
+            return
+        }
+        guard let imageData = image.jpegData(compressionQuality: 0.5) else { return }
+        
+        let imageFile = PFFileObject(name: "avatar.jpg", data: imageData)
+            
+        user?["avatar"] = imageFile
+        
+        user?.saveInBackground(block: { (success: Bool, error: Error?) in
+            if success {
+                print("DEBUG: WE DID IT THE IMAGE UPDATED")
+            } else {
+                print("DEBUG: WE FAILED IMAGE NOT UPDATED")
+            }
+        })
+    }
+    
     
     private func configureNavigationBar() {
         // NavigationBar settings
@@ -294,8 +318,11 @@ extension HomeViewController: PHPickerViewControllerDelegate {
                                                   forKey: .userImage,
                                                   withStorageType: .fileSystem)
                     DispatchQueue.main.async { [weak self] in
-                        // Display chosen image
-                        self?.userIconImage.image = urlImage.withRenderingMode(.alwaysOriginal)
+                        self?.imagedToUpdate = urlImage.withRenderingMode(.alwaysOriginal)
+                        // Uploading User Image to Parse server for the current user PFUser object
+                        self?.uploadUserImageToParse(image: self?.imagedToUpdate)
+                        // Displaying choosen image in the app
+                        self?.userIconImage.image = self?.imagedToUpdate
                     }
                 }
             }

@@ -12,7 +12,6 @@ class LoginViewModel {
     
     // MARK: - Properties
     var onDidiFinishUserValidation: ((_ state: UserValidationState) -> Void)?
-    var onDidFailLogInUser: (() -> Void)?
     
     // MARK: - Methods
     private func logInWithUsername(username: String, password: String, completion: @escaping (_ value: Bool) -> Void) {
@@ -37,35 +36,34 @@ class LoginViewModel {
             HapticsManager.shared.vibrateForType(for: .warning)
         }
         
-        AppDataValidator.validateUserInputCredentials(byUsername: username, password: password) { [weak self] in
-            self?.onDidiFinishUserValidation?(.invalid)
-            HapticsManager.shared.vibrateForType(for: .warning)
-        }
-        
-        if NetworkMonitor.shared.isConnected {
-            logInWithUsername(username: username, password: password) { [weak self] value in
-                switch value {
-                case true:
-                    do {
-                        try UserCaretaker.createUser(withUsername: username, password: password)
-                        UserDefaults.standard.set(true, forKey: UserKey.isLoggedIn)
-                        HapticsManager.shared.vibrateForType(for: .success)
-                        self?.onDidiFinishUserValidation?(.valid)
-
-                    } catch let (error) {
-                        print("DEBUG: An error occurred when trying to log in a user the data was not saved to disk \(error) ")
-                    }
-                case false:
-                    HapticsManager.shared.vibrateForType(for: .error)
-                    self?.onDidFailLogInUser?()
-                }
-            }
+        if !AppDataValidator.validateUserName(username) ||
+            !AppDataValidator.validatePassword(password) {
+            self.onDidiFinishUserValidation?(.invalid)
         } else {
-            // Stop monitoring if the device has internet connection
-            print("DEBUG: The device does not have internet connection.")
-            HapticsManager.shared.vibrateForType(for: .error)
-            self.onDidiFinishUserValidation?(.noInternetConnection)
-            NetworkMonitor.shared.stopMonitoring()
+            if NetworkMonitor.shared.isConnected {
+                logInWithUsername(username: username, password: password) { [weak self] value in
+                    switch value {
+                    case true:
+                        do {
+                            try UserCaretaker.createUser(withUsername: username, password: password)
+                            UserDefaults.standard.set(true, forKey: UserKey.isLoggedIn)
+                            HapticsManager.shared.vibrateForType(for: .success)
+                            self?.onDidiFinishUserValidation?(.valid)
+                        } catch let (error) {
+                            print("DEBUG: An error occurred when trying to log in a user the data was not saved to disk \(error) ")
+                        }
+                    case false:
+                        HapticsManager.shared.vibrateForType(for: .error)
+                        self?.onDidiFinishUserValidation?(.usernameAlreadyTaken)
+                    }
+                }
+            } else {
+                // Stop monitoring if the device has internet connection
+                print("DEBUG: The device does not have internet connection.")
+                HapticsManager.shared.vibrateForType(for: .error)
+                self.onDidiFinishUserValidation?(.noInternetConnection)
+                NetworkMonitor.shared.stopMonitoring()
+            }
         }
     }
 }

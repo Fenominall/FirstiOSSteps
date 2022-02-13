@@ -1,3 +1,4 @@
+
 //
 //  EditProfileViewModel.swift
 //  FirstProject
@@ -14,6 +15,7 @@ class EditProfileViewModel {
     var password: String?
     
     var onDidFinishUserValidationState: ((_ state: UserValidationState) -> Void)?
+    var onDidFailUpdateUser: (() -> Void)?
     
     // MARK: - Lifecycle
     // Initializer that helps to retrieve UserData with the help of UserCaretaker class
@@ -28,6 +30,7 @@ class EditProfileViewModel {
     }
     
     // MARK: - Actions
+
     private func updateCurrentUser(username: String, password: String, completion: @escaping (_ value: Bool) -> Void) {
         // Getting the current logged in user on Parse Server
         let currentPFUser = PFUser.current()
@@ -50,39 +53,38 @@ class EditProfileViewModel {
               let password = password else { return }
         
         AppDataValidator.checkIfInputIsEmpty(byUsername: username, password: password) { [weak self] in
+            HapticsManager.shared.vibrateForType(for: .warning)
             self?.onDidFinishUserValidationState?(.empty)
-            HapticsManager.shared.vibrateForType(for: .warning)
         }
         
-        AppDataValidator.validateUserInputCredentials(byUsername: username, password: password) { [weak self] in
-            self?.onDidFinishUserValidationState?(.invalid)
-            HapticsManager.shared.vibrateForType(for: .warning)
-        }
-        
-        if NetworkMonitor.shared.isConnected {
-            updateCurrentUser(username: username, password: password) { [weak self] value in
-                switch value {
-                case true:
-                    do {
-                        try UserCaretaker.createUser(withUsername: username, password: password)
-                        UserDefaults.standard.set(true, forKey: UserKey.isLoggedIn)
-                        HapticsManager.shared.vibrateForType(for: .success)
-                        self?.onDidFinishUserValidationState?(.valid)
-
-                    } catch let (error) {
-                        print("DEBUG: An error occurred when trying to log in a user the data was not saved to disk \(error) ")
-                    }
-                case false:
-                    HapticsManager.shared.vibrateForType(for: .error)
-//                    self?.onDidFailLogInUser?()
-                }
-            }
+        if !AppDataValidator.validateUserName(username) ||
+            !AppDataValidator.validatePassword(password) {
+                HapticsManager.shared.vibrateForType(for: .error)
+                onDidFinishUserValidationState?(.invalid)
         } else {
-            // Stop monitoring if the device has internet connection
-            print("DEBUG: The device does not have internet connection.")
-            HapticsManager.shared.vibrateForType(for: .error)
-            self.onDidFinishUserValidationState?(.noInternetConnection)
-            NetworkMonitor.shared.stopMonitoring()
+            if NetworkMonitor.shared.isConnected {
+                updateCurrentUser(username: username, password: password) { [weak self] value in
+                    switch value {
+                    case true:
+                        do {
+                            try UserCaretaker.createUser(withUsername: username, password: password)
+                            self?.onDidFinishUserValidationState?(.valid)
+                            print("DEBUG: THE USER DATA WAS UPDATED WITH USERNAME '\(username.uppercased())' AND PASSWORD \(password.uppercased()) ")
+                        } catch let (error) {
+                            print("DEBUG: An error occurred when trying to log in a user the data was not saved to disk \(error) ")
+                        }
+                    case false:
+                        HapticsManager.shared.vibrateForType(for: .error)
+                        self?.onDidFailUpdateUser?()
+                    }
+                }
+            } else {
+                // Stop monitoring if the device has internet connection
+                print("DEBUG: The device does not have internet connection.")
+                HapticsManager.shared.vibrateForType(for: .error)
+                self.onDidFinishUserValidationState?(.noInternetConnection)
+                NetworkMonitor.shared.stopMonitoring()
+            }
         }
     }
 }

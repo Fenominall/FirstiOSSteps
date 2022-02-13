@@ -26,6 +26,12 @@ final class HomeViewModel {
     }
     
     // MARK: - Helpers
+    
+    func uploadUserImageToParse() {
+        
+    }
+    
+    
     // LogOut the current user from the session on Parse Server
     func logOutUser() {
         // Setting the flag that a user logged out and next time when he launches an app, he will see LoginScreen

@@ -138,7 +138,6 @@ class LoginViewController: UIViewController, Coordinating {
         // Notifications for showing and hiding keyboard
         configureLoginViewController()
         didReceiveUserValidationState()
-        didFailLogInUser()
         print(FileManager.getDocumentsDirectory())
     }
     
@@ -163,13 +162,6 @@ class LoginViewController: UIViewController, Coordinating {
     
     // MARK: - Helpers
     
-    func didFailLogInUser() {
-        loginViewModel.onDidFailLogInUser = { [weak self] in
-            guard let self = self else { return }
-            AppAlerts.incorrectCredentials(on: self)
-        }
-    }
-    
     private func didReceiveUserValidationState() {
         loginViewModel.onDidiFinishUserValidation = { [weak self] state in
             self?.handleUserValidationState(state)
@@ -189,7 +181,7 @@ class LoginViewController: UIViewController, Coordinating {
             AppAlerts.showIncompleteErrorUIAlert(on: self)
         case .usernameAlreadyTaken:
             loginButton.shake()
-            AppAlerts.incorrectCredentials(on: self)
+            AppAlerts.incorrectCredentialsAlert(on: self)
         case .noInternetConnection:
             loginButton.shake()
             AppAlerts.noInternetConnectionAlert(on: self)

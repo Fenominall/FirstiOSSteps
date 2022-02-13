@@ -93,8 +93,11 @@ class EditUserProfileViewController: UIViewController, Coordinating {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        NetworkMonitor.shared.startMonitoring()
+        
         configureEditProfileController()
         didReceiveUserValidationState()
+        failedUpdateUser()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -115,6 +118,13 @@ class EditUserProfileViewController: UIViewController, Coordinating {
     }
     
     // MARK: - Helpers
+    
+    func failedUpdateUser() {
+        editProfileViewModel.onDidFailUpdateUser = { [weak self] in
+            guard let self = self else { return }
+            AppAlerts.failedUpdateUserAlert(on: self)
+        }
+    }
     
     func didReceiveUserValidationState() {
         editProfileViewModel.onDidFinishUserValidationState = { [weak self] state in

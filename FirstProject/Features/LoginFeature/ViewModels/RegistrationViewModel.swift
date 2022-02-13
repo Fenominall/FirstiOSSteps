@@ -60,37 +60,37 @@ extension RegistrationViewModel {
             HapticsManager.shared.vibrateForType(for: .warning)
         }
         
-        AppDataValidator.validateUserInputCredentials(byUsername: username, password: password) { [weak self] in
-            self?.onDidiFinishUserValidation?(.invalid)
-            HapticsManager.shared.vibrateForType(for: .warning)
-        }
-        
-        // Start monitoring if the device has internet connection
-        if NetworkMonitor.shared.isConnected {
-            print("DEBUG: The device has internet connection.")
-            signUpUserProcess(with: username, password: password) { [weak self] value in
-                switch value {
-                case true:
-                    do {
-                        try UserCaretaker.createUser(withUsername: username, password: password)
-                    } catch let (error) {
-                        print("DEBUG: An error occurred when creating new user and saving to disk \(error) ")
-                    }
-                    // saving user state as logged it if login successful
-                    UserDefaults.standard.setValue(true, forKey: UserKey.isLoggedIn)
-                    HapticsManager.shared.vibrateForType(for: .success)
-                    self?.onDidiFinishUserValidation?(.valid)
-                case false:
-                    HapticsManager.shared.vibrateForType(for: .error)
-                    self?.onDidiFinishUserValidation?(.usernameAlreadyTaken)
-                }
-            }
+        if !AppDataValidator.validateUserName(username) ||
+            !AppDataValidator.validatePassword(password) {
+                onDidiFinishUserValidation?(.invalid)
         } else {
-            // Stop monitoring if the device has internet connection
-            print("DEBUG: The device does not have internet connection.")
-            HapticsManager.shared.vibrateForType(for: .error)
-            self.onDidiFinishUserValidation?(.noInternetConnection)
-            NetworkMonitor.shared.stopMonitoring()
+            // Start monitoring if the device has internet connection
+            if NetworkMonitor.shared.isConnected {
+                print("DEBUG: The device has internet connection.")
+                signUpUserProcess(with: username, password: password) { [weak self] value in
+                    switch value {
+                    case true:
+                        do {
+                            try UserCaretaker.createUser(withUsername: username, password: password)
+                        } catch let (error) {
+                            print("DEBUG: An error occurred when creating new user and saving to disk \(error) ")
+                        }
+                        // saving user state as logged it if login successful
+                        UserDefaults.standard.setValue(true, forKey: UserKey.isLoggedIn)
+                        HapticsManager.shared.vibrateForType(for: .success)
+                        self?.onDidiFinishUserValidation?(.valid)
+                    case false:
+                        HapticsManager.shared.vibrateForType(for: .error)
+                        self?.onDidiFinishUserValidation?(.usernameAlreadyTaken)
+                    }
+                }
+            } else {
+                // Stop monitoring if the device has internet connection
+                print("DEBUG: The device does not have internet connection.")
+                HapticsManager.shared.vibrateForType(for: .error)
+                self.onDidiFinishUserValidation?(.noInternetConnection)
+                NetworkMonitor.shared.stopMonitoring()
+            }
         }
     }
 }

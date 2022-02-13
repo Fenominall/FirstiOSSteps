@@ -168,7 +168,6 @@ extension HomeViewController {
             // Setting the default image as user image
             guard let image = AppImages.userDefaultImage.image else { return }
             self?.userIconImage.image = image
-            self?.deleteUserImageFromParse()
         }
     }
 }
@@ -183,7 +182,6 @@ extension HomeViewController {
         retrieveUploadedUserImage()
         loadUserName()
     }
-    
     
     func uploadUserImageToParse(image: UIImage?) {
         let user = PFUser.current()

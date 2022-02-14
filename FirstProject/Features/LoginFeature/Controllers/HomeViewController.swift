@@ -115,8 +115,8 @@ class HomeViewController: UIViewController, Coordinating {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureHomeViewController()
-//        retrieveUserImage()
-        removeUserImageFromParse()
+        retrieveUserImage()
+//        removeUserImageFromParse()
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -170,6 +170,7 @@ extension HomeViewController {
             // Setting the default image as user image
             guard let image = AppImages.userDefaultImage.image else { return }
             self?.userIconImage.image = image
+            self?.uploadUserImageToParse(image: image)
         }
     }
 }
@@ -178,29 +179,6 @@ extension HomeViewController {
 // MARK: - Helpers
 extension HomeViewController {
     
-    func removeUserImageFromParse() {
-        guard let currentUser = PFUser.current() else { return }
-        guard let objectID = currentUser.objectId else { return }
-        
-        let query = PFUser.query()
-        query?.getObjectInBackground(withId: objectID, block: { (object: AnyObject?, error: Error?) -> Void in
-            if object != nil && error == nil {
-                if let avatar = object?["avatar"] as? PFObject {
-                    avatar.deleteInBackground { (success, error) in
-                        if success {
-                            print("The File was deleted")
-                        } else {
-                            print("THE FILE WAS NOT DELETED")
-                        }
-                    }
-                }
-                print("DEBUG: WE GOT IT \(String(describing: object?.objectId))")
-            } else {
-                print("Sorry")
-            }
-        })
-    }
-
     func configureHomeViewController() {
         configureNavigationBar()
         configureUI()

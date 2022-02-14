@@ -60,18 +60,32 @@ final class HomeViewModel {
         }
     }
     
-//    func removeUserImageFromParse() {
-//        guard let currentUser = PFUser.current() else { return }
-//
-//        let query = PFQuery(className: "User")
-//        query.getObjectInBackground(withId: currentUser.objectId ?? "") { (object: AnyObject?, error: Error?) in
-//            if object != nil && error == nil {
-//                print("DEBUG: WE GOT IT \(String(describing: object?.objectId))")
-//            } else {
-//                print("Sorry")
-//            }
-//        }
-//    }
+    
+    // ### Testing function
+    func removeUserImageFromParse() {
+        guard let currentUser = PFUser.current() else { return }
+        guard let objectID = currentUser.objectId else { return }
+        
+        let query = PFUser.query()
+        query?.getObjectInBackground(withId: objectID, block: { (object: AnyObject?, error: Error?) -> Void in
+            if object != nil && error == nil {
+                if let avatar = object?["avatar"] as? PFObject {
+                    avatar.deleteInBackground { (success, error) in
+                        if success {
+                            print("The File was deleted")
+                        } else {
+                            print("THE FILE WAS NOT DELETED")
+                        }
+                    }
+                }
+                print("DEBUG: WE GOT IT \(String(describing: object?.objectId))")
+            } else {
+                print("Sorry")
+            }
+        })
+    }
+    // ###
+    
     
     
     // LogOut the current user from the session on Parse Server

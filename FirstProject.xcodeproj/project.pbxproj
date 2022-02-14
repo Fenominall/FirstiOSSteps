@@ -30,6 +30,8 @@
 		4F2DEDF0274515B900C5F156 /* FileManager+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2DEDEF274515B900C5F156 /* FileManager+Extensions.swift */; };
 		4F2EA04526F7054300EF6884 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2EA04426F7054300EF6884 /* CustomTextField.swift */; };
 		4F31B22B27A72F8A003935B4 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F31B22A27A72F8A003935B4 /* NetworkMonitor.swift */; };
+		4F343EF327BA98A8008C2D70 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F343EF227BA98A8008C2D70 /* UserService.swift */; };
+		4F343EF527BA9BB6008C2D70 /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F343EF427BA9BB6008C2D70 /* ImageService.swift */; };
 		4F4C9F612745890600D345DC /* EventPersistenceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4C9F602745890600D345DC /* EventPersistenceHelper.swift */; };
 		4F4FDFBC268D862000736440 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4FDFBB268D862000736440 /* RegistrationViewModel.swift */; };
 		4F522AA8272DB7CF0099C5E8 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F522AA7272DB7CF0099C5E8 /* Images.swift */; };
@@ -84,6 +86,8 @@
 		4F2DEDEF274515B900C5F156 /* FileManager+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Extensions.swift"; sourceTree = "<group>"; };
 		4F2EA04426F7054300EF6884 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		4F31B22A27A72F8A003935B4 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
+		4F343EF227BA98A8008C2D70 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		4F343EF427BA9BB6008C2D70 /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
 		4F4C9F602745890600D345DC /* EventPersistenceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventPersistenceHelper.swift; sourceTree = "<group>"; };
 		4F4FDFBB268D862000736440 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		4F522AA7272DB7CF0099C5E8 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
@@ -328,6 +332,8 @@
 		4F863EBC27BA4D73001E97B6 /* ParseServices */ = {
 			isa = PBXGroup;
 			children = (
+				4F343EF227BA98A8008C2D70 /* UserService.swift */,
+				4F343EF427BA9BB6008C2D70 /* ImageService.swift */,
 			);
 			path = ParseServices;
 			sourceTree = "<group>";
@@ -679,6 +685,7 @@
 				4FF9064726543BEF001387C9 /* SceneDelegate.swift in Sources */,
 				4F695E902662B6C200606D03 /* LoginViewController.swift in Sources */,
 				4F93710F2766752B007667F8 /* UIViewTemplates.swift in Sources */,
+				4F343EF527BA9BB6008C2D70 /* ImageService.swift in Sources */,
 				4F05462F26B9810B006C5A04 /* UIButtonAnimationsExtension.swift in Sources */,
 				4F28BA78274295EC001308E1 /* CreateEventController.swift in Sources */,
 				4FCDEBA9272FEC51002C3B06 /* HomeViewModel.swift in Sources */,
@@ -689,6 +696,7 @@
 				4F2582D627B91D8F00716EE7 /* FNLButton.swift in Sources */,
 				4F28BA7C2742989E001308E1 /* CreateEventView.swift in Sources */,
 				4FF15B43279B197E003E4542 /* AlertFactoryService.swift in Sources */,
+				4F343EF327BA98A8008C2D70 /* UserService.swift in Sources */,
 				4F257CFD2739B1AE007CB391 /* DiskCaretaker.swift in Sources */,
 				4FEF699D26BAC0190022CAFD /* SourceCodeWebUIViewController.swift in Sources */,
 				4F5A4DFB27B7A52200BB9C6A /* FNLImageView.swift in Sources */,

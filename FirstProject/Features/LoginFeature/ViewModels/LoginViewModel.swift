@@ -14,19 +14,6 @@ class LoginViewModel {
     var onDidiFinishUserValidation: ((_ state: UserValidationState) -> Void)?
     
     // MARK: - Methods
-    private func logInWithUsername(username: String, password: String, completion: @escaping (_ value: Bool) -> Void) {
-        PFUser.logInWithUsername(inBackground: username,
-                                 password: password) {
-            (user: PFUser?, error: Error?) -> Void in
-            if user != nil {
-                completion(true)
-            } else {
-                completion(false)
-                print("DEBUG: AN ERROR OCCURRED WWHEN TRYING TO LOG IN THE USER \(error?.localizedDescription ?? "") ")
-            }
-        }
-    }
-    
     func loginUser(withUsername username: String?, withPassword password: String?) {
         guard let username = username,
               let password = password else { return }
@@ -41,7 +28,7 @@ class LoginViewModel {
             self.onDidiFinishUserValidation?(.invalid)
         } else {
             if NetworkMonitor.shared.isConnected {
-                logInWithUsername(username: username, password: password) { [weak self] value in
+                UserService.shared.logInWithUsername(username: username, password: password) { [weak self] value in
                     switch value {
                     case true:
                         do {

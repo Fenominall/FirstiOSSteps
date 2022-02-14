@@ -129,8 +129,8 @@ class RegistrationViewController: UIViewController, Coordinating {
     override func viewDidLoad() {
         super.viewDidLoad()
         NetworkMonitor.shared.startMonitoring()
-        configureRegistrationViewController()
         
+        configureRegistrationViewController()
         didReceiveUserValidationState()
     }
     

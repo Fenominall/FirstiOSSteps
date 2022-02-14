@@ -288,11 +288,11 @@ extension HomeViewController {
         guard let imageData =
                 image.jpegData(compressionQuality: 0.5) else { return }
         
-        homeViewModel.uploadUserImageToParse(imageData: imageData)
+        homeViewModel.uploadUserImageToServer(imageData: imageData)
     }
     
     func retrieveUserImage() {
-        homeViewModel.retrieveUserImageFromParse { [weak self] imageData in
+        homeViewModel.retrieveUserImageFromServer { [weak self] imageData in
             self?.userIconImage.image = UIImage(data: imageData)
         }
     }

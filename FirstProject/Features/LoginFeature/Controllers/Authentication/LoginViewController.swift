@@ -135,7 +135,7 @@ class LoginViewController: UIViewController, Coordinating {
     override func viewDidLoad() {
         super.viewDidLoad()
         NetworkMonitor.shared.startMonitoring()
-        // Notifications for showing and hiding keyboard
+        
         configureLoginViewController()
         didReceiveUserValidationState()
         print(FileManager.getDocumentsDirectory())

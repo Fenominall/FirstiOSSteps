@@ -45,25 +45,23 @@ class EditUserProfileViewController: UIViewController, Coordinating {
     }()
     
     // MARK: - UITextFields
-    private lazy var updateUsernameTextField: CustomTextField = {
-        let updateUsernameTextField = CustomTextField()
-        updateUsernameTextField.translatesAutoresizingMaskIntoConstraints = false
-        updateUsernameTextField.textColor = .white
-        updateUsernameTextField.clearButtonMode = .always
-        updateUsernameTextField.delegate = self
-        updateUsernameTextField.addTarget(self, action: #selector(textFieldEditingChanged(_:)), for: .editingChanged)
-        return updateUsernameTextField
+    private lazy var usernameTextField: FNLTextField = {
+        let textField = FNLTextField()
+        textField.textColor = .white
+        textField.clearButtonMode = .always
+        textField.delegate = self
+        textField.addTarget(self, action: #selector(textFieldEditingChanged(_:)), for: .editingChanged)
+        return textField
     }()
     
-    private lazy var updatePasswordTextField: CustomTextField = {
-        let updatePasswordTextField = CustomTextField()
-        updatePasswordTextField.translatesAutoresizingMaskIntoConstraints = false
-        updatePasswordTextField.textColor = .white
-        updatePasswordTextField.delegate = self
-        updatePasswordTextField.isSecureTextEntry = true
-        updatePasswordTextField.enablePasswordToggle()
-        updatePasswordTextField.addTarget(self, action: #selector(textFieldEditingChanged(_:)), for: .editingChanged)
-        return updatePasswordTextField
+    private lazy var passwordTextField: FNLTextField = {
+        let textField = FNLTextField()
+        textField.textColor = .white
+        textField.delegate = self
+        textField.isSecureTextEntry = true
+        textField.enablePasswordToggle()
+        textField.addTarget(self, action: #selector(textFieldEditingChanged(_:)), for: .editingChanged)
+        return textField
     }()
     
     // MARK: - UIButtons
@@ -80,8 +78,8 @@ class EditUserProfileViewController: UIViewController, Coordinating {
     // MARK: - UIstackViews
     private lazy var contentStackView: UIStackView = {
         let contentStackView = UIStackView(arrangedSubviews: [changeUserDataLabel,
-                                                              updateUsernameTextField,
-                                                              updatePasswordTextField,
+                                                              usernameTextField,
+                                                              passwordTextField,
                                                               saveUserDataButton])
         contentStackView.translatesAutoresizingMaskIntoConstraints = false
         contentStackView.axis = .vertical
@@ -102,8 +100,8 @@ class EditUserProfileViewController: UIViewController, Coordinating {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        updateUsernameTextField.addBottomBorder()
-        updatePasswordTextField.addBottomBorder()
+        usernameTextField.addBottomBorder()
+        passwordTextField.addBottomBorder()
     }
     
     // MARK: - Selectors
@@ -113,8 +111,8 @@ class EditUserProfileViewController: UIViewController, Coordinating {
     }
     
     @objc private func updateUserDataButtonTapped(_ sender: UIButton) {
-        editProfileViewModel.updateUser(withUsername: updateUsernameTextField.text,
-                                        withPassword: updatePasswordTextField.text)
+        editProfileViewModel.updateUser(withUsername: usernameTextField.text,
+                                        withPassword: passwordTextField.text)
     }
     
     // MARK: - Helpers
@@ -137,7 +135,7 @@ class EditUserProfileViewController: UIViewController, Coordinating {
         case .valid:
             // Navigation to HomeScreenViewController
             AppAlerts.updatedDataAlert(on: self) { [weak self]_ in
-                guard let username = self?.updateUsernameTextField.text else { return }
+                guard let username = self?.usernameTextField.text else { return }
                 // updating usernameLabel with received input in
                 self?.navigationController?.popViewController(animated: true)
                 self?.delegate?.didUpdatedUserUsername(withUsername: username)
@@ -176,8 +174,8 @@ class EditUserProfileViewController: UIViewController, Coordinating {
     
     func configureActions() {
         // Assigning user data to textField in UserSettingsViewController
-        updateUsernameTextField.text = editProfileViewModel.username
-        updatePasswordTextField.text = editProfileViewModel.password
+        usernameTextField.text = editProfileViewModel.username
+        passwordTextField.text = editProfileViewModel.password
     }
     
     func configureUI() {

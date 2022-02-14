@@ -62,26 +62,24 @@ class RegistrationViewController: UIViewController, Coordinating {
         return label
     }()
     // UITextFields
-    private(set) lazy var usernameTxtField: CustomTextField = {
-        let customTextField = CustomTextField()
-        customTextField.translatesAutoresizingMaskIntoConstraints = false
-        customTextField.textColor = .white
-        customTextField.clearButtonMode = .always
-        customTextField.delegate = self
-        return customTextField
+    private lazy var usernameTxtField: FNLTextField = {
+        let textField = FNLTextField()
+        textField.textColor = .white
+        textField.clearButtonMode = .always
+        textField.delegate = self
+        return textField
     }()
     
-    private(set) lazy var passwordTxtField: CustomTextField = {
-        let customTextField = CustomTextField()
-        customTextField.translatesAutoresizingMaskIntoConstraints = false
-        customTextField.textColor = .white
-        customTextField.delegate = self
+    private lazy var passwordTxtField: FNLTextField = {
+        let textField = FNLTextField()
+        textField.textColor = .white
+        textField.delegate = self
         //        customTextField.isSecureTextEntry = true
-        return customTextField
+        return textField
     }()
     
     // UIButtons
-    private(set) lazy var registerButton: FNLButton = {
+    private lazy var registerButton: FNLButton = {
         let button = FNLButton(title: "REGISTER",
                                fontSize: 40,
                                fontWeight: .regular,
@@ -90,14 +88,14 @@ class RegistrationViewController: UIViewController, Coordinating {
         return button
     }()
     
-    private(set) lazy var loginToAccountButton: FNLAttributedButton = {
+    private lazy var loginToAccountButton: FNLAttributedButton = {
         let button = FNLAttributedButton("Already have an account?", " Sign In")
         button.addTarget(self, action: #selector(handleShowLogIn), for: .touchUpInside)
         return button
     }()
     
     // UIActivityIndicator
-    private(set) lazy var signUpIndicator: UIActivityIndicatorView = {
+    private lazy var signUpIndicator: UIActivityIndicatorView = {
         let indicator = UIActivityIndicatorView()
         indicator.translatesAutoresizingMaskIntoConstraints = false
         indicator.tintColor = .white

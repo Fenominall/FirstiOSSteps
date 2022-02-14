@@ -65,28 +65,26 @@ class LoginViewController: UIViewController, Coordinating {
     }()
     
     // UITextFields
-    private(set) lazy var usernameTxtField: CustomTextField = {
-        let customTextField = CustomTextField()
-        customTextField.translatesAutoresizingMaskIntoConstraints = false
-        customTextField.textColor = .white
-        customTextField.clearButtonMode = .always
-        customTextField.delegate = self
-        customTextField.addBottomBorder()
-        return customTextField
+    private lazy var usernameTxtField: FNLTextField = {
+        let textField = FNLTextField()
+        textField.textColor = .white
+        textField.clearButtonMode = .always
+        textField.delegate = self
+        textField.addBottomBorder()
+        return textField
     }()
     
-    private(set) lazy var passwordTxtField: CustomTextField = {
-        let customTextField = CustomTextField()
-        customTextField.translatesAutoresizingMaskIntoConstraints = false
-        customTextField.textColor = .white
-        customTextField.delegate = self
-        customTextField.isSecureTextEntry = true
-        customTextField.enablePasswordToggle()
-        return customTextField
+    private lazy var passwordTxtField: FNLTextField = {
+        let textField = FNLTextField()
+        textField.textColor = .white
+        textField.delegate = self
+        textField.isSecureTextEntry = true
+        textField.enablePasswordToggle()
+        return textField
     }()
     
     // UIButtons
-    private(set) lazy var loginButton: FNLButton = {
+    private lazy var loginButton: FNLButton = {
         let button = FNLButton(title: "LOGIN",
                                fontSize: 40,
                                fontWeight: .regular,
@@ -95,14 +93,14 @@ class LoginViewController: UIViewController, Coordinating {
         return button
     }()
     
-    private(set) lazy var dontHaveAccountButton: FNLAttributedButton = {
+    private lazy var dontHaveAccountButton: FNLAttributedButton = {
         let button = FNLAttributedButton("Don`t have account?", " Sign Up")
         button.addTarget(self, action: #selector(handleShowSignUp), for: .touchUpInside)
         return button
     }()
     
     // UIActivityIndicator
-    private(set) lazy var loginIndicator: UIActivityIndicatorView = {
+    private lazy var loginIndicator: UIActivityIndicatorView = {
         let indicator = UIActivityIndicatorView()
         indicator.translatesAutoresizingMaskIntoConstraints = false
         indicator.tintColor = .white

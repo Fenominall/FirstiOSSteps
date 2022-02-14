@@ -266,6 +266,7 @@
 		4F31B22927A72F79003935B4 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				4F863EBC27BA4D73001E97B6 /* ParseServices */,
 				4F2804C027A9A1D600254420 /* NetworkMonitor */,
 			);
 			path = Services;
@@ -322,6 +323,13 @@
 				4F87A91A273EA34800D34B02 /* ImageStorage.swift */,
 			);
 			path = ImageStorage;
+			sourceTree = "<group>";
+		};
+		4F863EBC27BA4D73001E97B6 /* ParseServices */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ParseServices;
 			sourceTree = "<group>";
 		};
 		4F92895326A6AFBF00624B6E /* Validators */ = {
